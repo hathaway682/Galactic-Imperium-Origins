@@ -1,0 +1,523 @@
+############################
+#
+# Clone Army Origin Events
+#
+############################
+
+namespace = io_imperial_border
+
+# 化外之民
+country_event = {
+	id = io_imperial_border.1
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_outside_the_border
+		any_country = {
+			has_origin = origin_galactic_hegemon
+		}
+	}
+
+	immediate = {
+		force_add_civic = civic_outside_the_border
+	}
+}
+
+# 骨肉分离
+country_event = {
+	id = io_imperial_border.2
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_internal_border
+		any_country = {
+			has_origin = origin_galactic_hegemon
+		}
+	}
+
+	immediate = {
+		owner_main_species = {
+			save_event_target_as = internal_border_species
+		}
+		random_playable_country = {
+			limit = {
+				OR = { 
+					is_galactic_custodian = yes
+					is_galactic_emperor = yes
+				}
+			}
+			save_event_target_as = galactic_leader
+		}
+		random_galaxy_planet = {
+			limit = {
+				has_owner = no
+				is_ringworld = no
+				is_asteroid = no
+				is_star = no
+				solar_system = {
+					has_owner = no
+				}
+				distance = {
+					source = root.capital_scope
+					min_jumps = 3
+					max_jumps = 7
+				}
+				solar_system = {
+					NOT = { has_star_flag = hostile_system }
+					NOT = {
+						any_neighbor_system = {
+							has_owner = yes
+						}
+					}
+				}			
+			}
+			random_list = {
+				20 = { set_planet_size = 18 }
+				20 = { set_planet_size = 19 }
+				20 = { set_planet_size = 20 }
+				20 = { set_planet_size = 21 }
+				20 = { set_planet_size = 22 }
+			}
+			change_pc = event_target:internal_border_species
+			create_country = {
+				name = random
+				flag = random
+				species = event_target:internal_border_species
+				origin = origin_internal_border
+				type = default
+				effect = {
+					if = {
+						limit = {
+							OR = {
+								AND = {
+									this = { is_gestalt = no }
+									event_target:galactic_leader = { is_gestalt = no }
+								}
+								AND = {
+									this = { is_hive_empire = yes }
+									event_target:galactic_leader = { is_hive_empire = yes }
+								}
+								AND = {
+									this = { is_machine_empire = yes }
+									event_target:galactic_leader = { is_machine_empire = yes }
+								}
+							}
+						}
+						copy_ethos_and_authority = event_target:galactic_leader
+					}
+					set_name = random
+					save_event_target_as = internal_border_community_state
+					set_country_flag = internal_border_community_state
+					set_country_flag = civil_war@root
+					root = {
+						set_country_flag = civil_war@event_target:internal_border_community_state
+					}
+					every_playable_country = {
+						establish_communications_no_message = event_target:internal_border_community_state
+					}
+					add_to_galactic_community_no_message = yes
+					set_variable = {
+						which = expand
+						value = 3
+					}
+					create_leader = {
+						class = scientist
+						name = random
+						species = owner_main_species
+					}
+					create_leader = {
+						class = official
+						name = random
+						species = owner_main_species
+					}
+					create_fleet = {
+						effect = {
+							set_owner = prev
+			
+							create_ship = {
+								name = random
+								random_existing_design = science
+							}
+			
+							set_fleet_stance = evasive
+							#set_location = prev.capital_star
+							set_location = prev.capital_scope.star
+			
+							owner = {
+								create_leader = {
+									class = scientist
+									sub_type = survey
+									name = random
+									species = owner_main_species
+								}
+							}
+							set_leader = last_created_leader
+						}
+					}
+			
+					#constructor
+					create_fleet = {
+						effect = {
+							set_owner = prev
+			
+							create_ship = {
+								name = random
+								random_existing_design = constructor
+							}
+			
+							set_fleet_stance = evasive
+							set_location = prev.capital_star
+						}
+					}
+
+					add_resource = { energy = 50000	}
+					add_resource = { minerals = 50000 }
+					add_resource = { alloys = 5000	}
+					add_resource = { influence = 1000 }
+					if = {
+					limit = { country_uses_food = yes }
+					add_resource = { food = 10000 }
+					}
+					else = {	
+					add_resource = { energy = 50000 }
+					}
+					if = {
+					limit = { is_gestalt = no }
+					add_resource = { consumer_goods = 5000 }
+					}
+					else = {
+					add_resource = { minerals = 5000 }
+					}
+					add_resource = { exotic_gases = 1000 }
+					add_resource = { rare_crystals = 1000 }
+					add_resource = { volatile_motes = 1000 }
+					add_modifier = {
+						modifier = build_start_modifier
+						days = 3600
+					}
+				}
+			}
+			solar_system = {
+				create_starbase = {
+					size = starbase_starport
+					owner = event_target:internal_border_community_state
+				}
+			}
+			set_owner = event_target:internal_border_community_state
+			generate_start_pops = yes
+			generate_start_buildings_and_districts = yes
+			set_capital = yes
+		}
+	}
+}
+
+# 星海天罚
+country_event = {
+	id = io_imperial_border.3
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_galactic_nemesis
+		any_country = {
+			has_origin = origin_galactic_hegemon
+		}
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_ai_personality = became_the_crisis
+		}
+		set_country_flag = crisis_special_project_1_complete
+		set_country_flag = crisis_special_project_2_complete
+		set_country_flag = crisis_special_project_3_complete
+		set_country_flag = crisis_special_project_4_complete
+		add_tradition = tr_supremacy_adopt
+		add_tradition = tr_supremacy_fleet_logistical_corps
+		add_tradition = tr_supremacy_master_shipwrights
+		add_tradition = tr_supremacy_war_games
+		add_tradition = tr_supremacy_overwhelming_force
+		add_tradition = tr_supremacy_great_game
+		add_tradition = tr_supremacy_finish
+	}
+}
+
+# 星海天罚：开局提示
+country_event = {
+	id = io_imperial_border.4
+	title = io_imperial_border.4.name
+	desc = io_imperial_border.4.desc
+	picture = GFX_evt_burning_city
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_galactic_nemesis
+		any_country = {
+			OR = {
+				has_origin = origin_galactic_hegemon
+				has_origin = origin_galactic_custodian
+			}
+		}
+	}
+
+	option = {
+		name = io_imperial_border.4.a
+		activate_crisis_progression = nemesis_path
+		add_resource = { menace = 10000 }
+		custom_tooltip = tr_supremacy_complete
+		custom_tooltip = please_choose_ascension_perk
+	}
+}
+
+#覆灭
+country_event = {
+	id = io_imperial_border.5
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_galactic_nemesis
+		NOT = { has_ascension_perk = ap_become_the_crisis }
+		is_ai = no
+	}
+
+	immediate = {
+		set_global_flag = end_of_the_cycle_complete
+		set_country_flag = end_of_the_cycle_reckoning
+		clear_resources = yes
+
+		if = {
+			limit = { NOT = { exists = event_target:shroud_country } }
+			create_country = {
+				name = "NAME_Creatures_of_the_Shroud"
+				type = shroud_spirits
+				flag = {
+					icon = {
+						category = "special"
+						file = "the_shroud.dds"
+					}
+					background= {
+						category = "backgrounds"
+						file = "00_solid.dds"
+					}
+					colors={
+						"dark_purple"
+						"black"
+						"null"
+						"null"
+					}
+				}
+			}
+			last_created_country = {
+				establish_communications_no_message = root
+				save_global_event_target_as = shroud_country
+			}
+		}
+
+		capital_scope = {
+			save_event_target_as = former_capital
+		}
+
+		every_subject = {
+			set_subject_of = {
+				who = none
+			}
+		}
+		every_owned_leader = {
+			kill_leader = { show_notification = no }
+		}
+		every_owned_fleet = {
+			destroy_fleet = this
+		}
+		every_owned_planet = {
+			remove_modifier = covenant_shroud_marked
+			remove_all_armies = yes
+			every_owned_pop = {
+				root = {
+					change_variable = {
+						which = "end_power"
+						value = 1
+					}
+				}
+			}
+
+			if = {
+				limit = {
+					has_owner = yes
+					owner = { NOT = { has_country_flag = end_of_the_cycle_reckoning } }
+				}
+				owner = {
+					set_country_flag = end_of_the_cycle_reckoning
+					set_country_flag = end_of_cycle_lost_planets
+					country_event = { id = utopia.3321 }
+				}
+			}
+
+			if = {
+				limit = {
+					NOT = { is_same_value = event_target:former_capital }
+				}
+				create_fleet = {
+					name = "NAME_Shroud_Manifestation"
+					settings = {
+						spawn_debris = no
+						is_boss = yes
+					}
+					effect = {
+						set_owner = event_target:shroud_country
+						create_ship = {
+							name = "NAME_Fragment"
+							design = "NAME_Shroud_Manifestation"
+						}
+						set_location = prev
+						set_fleet_stance = aggressive
+						set_aggro_range_measure_from = return_point
+						set_aggro_range = 3000
+					}
+				}
+			}
+
+			if = {
+				limit = {
+					is_planet_class = pc_habitat
+				}
+				destroy_colony = yes
+				remove_planet = yes
+			}
+			else_if = {
+				limit = {
+					is_ringworld = yes
+				}
+				change_pc = pc_ringworld_habitable_damaged
+				clear_planet_modifiers = yes
+				clear_deposits = yes
+			}
+			else = {
+				change_pc = pc_shrouded
+				clear_planet_modifiers = yes
+				clear_deposits = yes
+			}
+		}
+
+		create_fleet = {
+			name = "NAME_The_End"
+			settings = {
+				spawn_debris = no
+				ai_ignore_strength = yes
+				is_boss = yes
+			}
+			effect = {
+				save_global_event_target_as = the_end_of_the_cycle
+				set_name = {
+					key = "NAME_Absorbed_Species"
+					variable_string = "[Root.GetSpeciesNamePlural]"
+				}
+				set_owner = event_target:shroud_country
+				create_ship = {
+					name = "NAME_Reckoning"
+					design = "NAME_Warped_Consciousness"
+				}
+				set_location = event_target:former_capital
+				set_fleet_stance = aggressive
+				set_aggro_range_measure_from = return_point
+				set_aggro_range = 3000
+				if = {
+					limit = {
+						root = {
+							check_variable = {
+								which = "end_power"
+								value < 500
+							}
+						}
+					}
+					add_modifier = {
+						modifier = "absorbed_consciousness_1"
+						days = -1
+					}
+				}
+				else_if = {
+					limit = {
+						root = {
+							check_variable = {
+								which = "end_power"
+								value < 1000
+							}
+						}
+					}
+					add_modifier = {
+						modifier = "absorbed_consciousness_2"
+						days = -1
+					}
+				}
+				else_if = {
+					limit = {
+						root = {
+							check_variable = {
+								which = "end_power"
+								value < 2500
+							}
+						}
+					}
+					add_modifier = {
+						modifier = "absorbed_consciousness_3"
+						days = -1
+					}
+				}
+				else_if = {
+					limit = {
+						root = {
+							check_variable = {
+								which = "end_power"
+								value < 5000
+							}
+						}
+					}
+					add_modifier = {
+						modifier = "absorbed_consciousness_4"
+						days = -1
+					}
+				}
+				else = {
+					add_modifier = {
+						modifier = "absorbed_consciousness_5"
+						days = -1
+					}
+				}
+			}
+		}
+	}
+}
+
+
+# 替换起源
+country_event = {
+	id = io_imperial_border.100
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			has_origin = origin_outside_the_border
+			has_origin = origin_internal_border
+			has_origin = origin_galactic_nemesis
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				NOT = {
+					any_country = {
+						OR = {
+							has_origin = origin_galactic_hegemon
+							has_origin = origin_galactic_custodian
+						}
+					}
+				}
+			}
+			set_origin = origin_default
+		}
+	}
+}

@@ -1,0 +1,77 @@
+@gaiaCost = 7500
+@gaiaTime = 3600
+
+@highestCost = 12500
+@highestTime = 9000
+
+@machineCost = 10000
+@machineTime = 7200
+
+@hiveCost = 10000
+@hiveTime = 7200
+
+@lClusterCost = 1000
+
+###################
+## Machine World ##
+###################
+
+# terraform_link = {
+# 	to = "pc_machine"
+# 	from = "pc_barren"
+#
+# 	resources = {
+# 		category = terraforming
+#
+# 		cost = {
+# 			energy = @machineCost
+# 		}
+# 	}
+#
+# 	duration = @machineTime
+#
+# 	potential = {
+# 		OR = {
+# 			AND = {
+# 				has_ascension_perk = ap_machine_worlds
+# 				from = { has_modifier = terraforming_candidate }
+# 			}
+# 			has_origin = origin_prospecting_machine
+# 		}
+# 	}
+#
+# 	ai_weight = {
+# 		weight = 20
+# 		#It's a barren world!
+# 	}
+# }
+#
+# terraform_link = {
+# 	to = "pc_machine"
+# 	from = "pc_barren_cold"
+#
+# 	resources = {
+# 		category = terraforming
+#
+# 		cost = {
+# 			energy = @machineCost
+# 		}
+# 	}
+#
+# 	duration = @machineTime
+#
+# 	potential = {
+# 		OR = {
+# 			AND = {
+# 				has_ascension_perk = ap_machine_worlds
+# 				from = { has_modifier = terraforming_candidate }
+# 			}
+# 			has_origin = origin_prospecting_machine
+# 		}
+# 	}
+#
+# 	ai_weight = {
+# 		weight = 20
+# 		#It's a barren world!
+# 	}
+# }

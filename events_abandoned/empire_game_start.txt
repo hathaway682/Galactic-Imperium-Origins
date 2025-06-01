@@ -1,0 +1,756 @@
+namespace = galactic_starts
+
+event = {
+	id = galactic_starts.1
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		set_timed_global_flag = {
+			flag = imperium_origins_active
+			days = 30
+		}
+	if = {
+		limit = {
+			any_country = {
+			has_origin = origin_galactic_hegemon
+			}
+		}
+		every_playable_country = {
+			limit = {
+				OR = {
+				has_origin = origin_common_ground
+				has_origin = origin_hegemon
+				# has_origin = originsextended_outreach
+				# has_origin = originsextended_research
+				}
+			}
+			country_event = { id = galactic_expand.2 }
+		}
+		every_playable_country = {
+			every_playable_country = {
+				establish_communications_no_message = prev
+			}
+		} 
+		set_global_flag = galactic_community_founded
+		set_global_flag = galactic_council_formed
+		
+		every_playable_country = {
+			if = {
+				limit = {
+					OR = {
+						has_origin = origin_common_ground
+						has_origin = origin_common_ground_npc
+						has_origin = origin_hegemon
+						has_origin = origin_hegemon_npc
+						has_origin = origin_scion
+						has_civic = civic_fanatic_purifiers
+						has_civic = civic_hive_devouring_swarm
+						has_civic = civic_machine_terminator
+						has_civic = civic_outside_the_border
+						# has_origin = originsextended_outreach
+						# has_origin = originsextended_outreach_npc
+						# has_origin = originsextended_research
+						# has_origin = originsextended_research_npc
+						# has_origin = origin_outside_the_border
+						# has_origin = origin_secondary_hegemon
+						has_origin = origin_secondary_hegemon_vassal
+						has_origin = origin_imperial_vassal
+						has_origin = origin_imperial_vassal_overlord
+						# has_origin = origin_red_satellite
+						# has_origin = origin_red_satellite_overlord
+						# has_origin = origin_ofe_fallen_empire
+						has_origin = origin_chosen_of_the_shroud
+						has_origin = origin_broken_shackles
+						has_origin = origin_payback
+						has_origin = origin_fear_of_the_dark
+						AND = {
+							has_origin = origin_internal_border
+							NOT = { has_country_flag = internal_border_community_state }
+						}
+					}
+				}
+				set_country_flag = galcom_form_nay
+			}
+			else = {
+				add_to_galactic_community_no_message = yes
+			}
+		}
+		random_playable_country = {
+			limit = {
+				has_origin = origin_galactic_hegemon
+		}
+		country_event = { id = galactic_origin.1 }	
+		pass_resolution_no_cooldown = resolution_council_denouncement
+		set_variable = {
+			which = galaxy_food
+			value = 0
+		}
+		set_variable = {
+			which = galaxy_minerals
+			value = 0
+		}
+		set_variable = {
+			which = galaxy_energy
+			value = 0
+		}
+		set_variable = {
+			which = galaxy_consumer_goods
+			value = 0
+		}
+		set_variable = {
+			which = galaxy_alloys
+			value = 0
+		}
+		}
+		every_playable_country = {
+			limit = {
+				has_origin = origin_clone_army
+				}
+			country_event = { id = clones.22 }
+		}
+		#划分领土
+			random_playable_country = {
+				limit = { is_ai = no NOT = { has_country_flag = tech_setting } }
+				set_variable = {
+					which = start_tech
+					value = 3
+				}
+				set_variable = {
+					which = start_a
+					value = 1
+				}
+				set_variable = {
+					which = start_b
+					value = 2
+				}
+				set_variable = {
+					which = start_c
+					value = 1
+				}
+				set_variable = {
+					which = start_f
+					value = 1
+				}
+				set_variable = {
+					which = start_empire
+					value = 1
+				}
+				if = {
+					limit = {
+						any_country = {
+							is_galactic_emperor = yes
+							has_civic = civic_vilified
+						}
+					}
+					set_variable = {
+						which = start_empire
+						value = 0
+					}
+				}
+				set_variable = {
+					which = start_h
+					value = 2
+				}
+				set_variable = {
+					which = start_i
+					value = 1
+				}
+				set_variable = {
+					which = start_j
+					value = 1
+				}
+				set_variable = {
+					which = start_expand
+					value = 9
+				}
+				country_event = { id = galactic_origin.100 }
+				set_country_flag = tech_setting
+			}
+		}
+	}
+}
+
+
+
+event = {
+	id = galactic_starts.2
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+			
+		if = {
+		limit = {
+			any_country = {
+			has_origin = origin_galactic_custodian
+			}
+			NOT = { any_country = {
+				has_origin = origin_galactic_hegemon
+			} }
+		}
+		every_playable_country = {
+			limit = {
+				OR = {
+				has_origin = origin_common_ground
+				has_origin = origin_hegemon
+				}
+			}
+			country_event = { id = galactic_expand.2 }
+		}
+		every_playable_country = {
+			every_playable_country = {
+				establish_communications_no_message = prev
+			}
+		} 
+		set_global_flag = galactic_community_founded
+		set_global_flag = galactic_council_formed
+		pass_resolution_no_cooldown = resolution_council_denouncement
+		every_playable_country = {
+			if = {
+				limit = {
+					OR = {
+						has_civic = civic_fanatic_purifiers
+						has_civic = civic_hive_devouring_swarm
+						has_civic = civic_machine_terminator
+						has_civic = civic_outside_the_border
+						has_origin = originsextended_outreach
+						has_origin = originsextended_outreach_npc
+						has_origin = originsextended_research
+						has_origin = originsextended_research_npc
+						has_origin = origin_outside_the_border
+						has_origin = origin_ofe_fallen_empire
+						has_origin = origin_chosen_of_the_shroud
+						has_origin = origin_broken_shackles
+						has_origin = origin_payback
+						has_origin = origin_fear_of_the_dark
+						AND = {
+							has_origin = origin_internal_border
+							NOT = { has_country_flag = internal_border_community_state }
+						}
+					}
+				}
+				set_country_flag = galcom_form_nay
+			}
+			else = {
+				add_to_galactic_community_no_message = yes
+			}
+		}
+		random_playable_country = {
+			limit = {
+				has_origin = origin_galactic_custodian
+		}
+		country_event = { id = galactic_origin.1000 }	
+		}
+		every_playable_country = {
+			limit = {
+				has_origin = origin_clone_army
+				}
+			country_event = { id = clones.22 }
+		}	
+			random_playable_country = {
+				limit = { is_ai = no NOT = { has_country_flag = tech_setting } }
+				country_event = { id = galactic_origin.200 }
+				set_country_flag = tech_setting
+				set_variable = {
+					which = start_tech
+					value = 3
+				}
+				set_variable = {
+					which = start_a
+					value = 1
+				}
+				set_variable = {
+					which = start_b
+					value = 2
+				}
+				set_variable = {
+					which = start_h
+					value = 2
+				}
+				set_variable = {
+					which = start_j
+					value = 1
+				}
+				set_variable = {
+					which = start_expand
+					value = 9
+				}
+			}
+		}
+	}
+}
+
+event = {
+	id = galactic_starts.3
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		#划分领土
+		if = {
+			limit = { 
+				is_ai = no
+			}
+			if = {
+				limit = { 
+					OR = {
+						has_origin = origin_galactic_hegemon 
+					}
+				}
+				country_event = { id = galactic_expand.1 }
+			}
+			else_if = {
+				limit = { 
+					OR = {
+						has_origin = origin_galactic_custodian
+					}
+				}
+				set_variable = {
+					which = expand
+					value = 8
+				}
+				country_event = { id = galactic_expand.1 }
+			}
+			else_if = {
+				limit = { 
+					OR = {
+						has_origin = origin_galactic_nemesis
+					}
+				}
+				set_variable = {
+					which = expand
+					value = 8
+				}
+				country_event = { id = galactic_expand.1 }
+			}
+			else_if = {
+				limit = {
+					OR = {
+						has_origin = origin_slavers
+					}
+				}
+				set_variable = {
+					which = expand
+					value = 6
+				}
+				country_event = { id = galactic_expand.1 }
+			}
+			else_if = {
+				limit = { 
+					OR = {
+						has_civic = civic_fanatic_purifiers
+						has_civic = civic_hive_devouring_swarm
+						has_civic = civic_machine_terminator
+						has_origin = origin_hegemon
+						has_origin = origin_old_alliance
+						has_origin = origin_common_ground
+						has_origin = originsextended_outreach
+						has_origin = originsextended_research
+						has_origin = origin_secondary_hegemon
+						has_origin = origin_chosen_of_the_shroud
+					}
+				}
+				set_variable = {
+					which = expand
+					value = 6
+				}
+				
+				country_event = { id = galactic_expand.1 }
+			}
+			else_if = {
+				limit = { 
+					OR = {
+						has_origin = origin_imperial_vassal
+						has_origin = origin_red_satellite
+					}
+				}
+				set_variable = {
+					which = expand
+					value = 1
+				}
+				
+				country_event = { id = galactic_expand.1 }
+			}
+			else_if = {
+				limit =  { has_civic = civic_outside_the_border }
+				set_variable = {
+					which = expand
+					value = 6
+				}
+				
+				country_event = { id = galactic_expand.1 }
+			}
+			else_if = {
+				limit =  { 
+					OR = {
+					has_origin = origin_internal_border
+					}
+				}
+				set_variable = {
+					which = expand
+					value = 3
+				}
+				if = {
+					limit = {
+						NOT = { has_country_flag = internal_border_community_state }
+					}
+					
+				}
+				country_event = { id = galactic_expand.1 }
+			}
+			else = {
+				set_variable = {
+					which = expand
+					value = 4
+				}
+				country_event = { id = galactic_expand.1 }
+			}
+		}
+		else_if = {
+			limit = { 
+				OR = {
+				has_origin = origin_galactic_hegemon 
+				has_origin = origin_galactic_custodian
+				}
+			}
+			set_variable = {
+				which = expand
+				value = 8
+			}
+			country_event = { id = galactic_expand.1 }
+		}
+		else_if = {
+			limit = { 
+				OR = {
+					has_origin = origin_galactic_nemesis
+				}
+			}
+			set_variable = {
+				which = expand
+				value = 8
+			}
+			country_event = { id = galactic_expand.1 }
+		}
+		else_if = {
+			limit =  { has_origin = origin_chosen_of_the_shroud }
+			set_variable = {
+				which = expand
+				value = 6
+			}
+			
+			country_event = { id = galactic_expand.1 days = 1 }
+		}
+		else_if = {
+			limit = {
+				OR = {
+					has_origin = origin_slavers
+				}
+			}
+			set_variable = {
+				which = expand
+				value = 6
+			}
+			country_event = { id = galactic_expand.1 }
+		}
+		else_if = {
+			limit =  { has_origin = origin_secondary_hegemon }
+			set_variable = {
+				which = expand
+				value = 6
+			}
+			
+			country_event = { id = galactic_expand.1 days = 1 }
+		}
+		else_if = {
+			limit =  { has_origin = origin_hegemon }
+			set_variable = {
+				which = expand
+				value = 6
+			}
+			
+			country_event = { id = galactic_expand.1 days = 1 }
+		}
+		else_if = {
+			limit =  { 
+				OR = {
+					has_origin = origin_common_ground 
+					has_origin = origin_old_alliance
+					has_origin = originsextended_outreach
+					has_origin = originsextended_research
+				}	
+			}
+			set_variable = {
+				which = expand
+				value = 6
+			}
+			
+			country_event = { id = galactic_expand.1 days = 1 }
+		}
+		else_if = {
+			limit =  { 
+				OR = {
+				has_origin = origin_internal_border
+				}
+			}
+			set_variable = {
+				which = expand
+				value = 3
+			}
+			country_event = { id = galactic_expand.1 days = 2 }
+		}
+		else_if = {
+			limit =  { OR = {
+				has_civic = civic_fanatic_purifiers
+				has_civic = civic_hive_devouring_swarm
+				has_civic = civic_machine_terminator
+			} }
+			set_variable = {
+				which = expand
+				value = 6
+			}
+			
+			country_event = { id = galactic_expand.1 days = 2 }
+		}
+		else_if = {
+			limit =  { has_origin = origin_secondary_hemegon_vassal }
+			set_variable = {
+				which = expand
+				value = 2
+			}
+			
+			country_event = { id = galactic_expand.1 days = 3 }
+		}
+		else_if = {
+			limit =  { has_origin = origin_hegemon_npc }
+			set_variable = {
+				which = expand
+				value = 4
+			}
+			
+			country_event = { id = galactic_expand.1 days = 3 }
+		}
+		else_if = {
+			limit =  { OR = {
+				has_origin = origin_common_ground_npc
+				has_origin = originsextended_outreach_npc
+				has_origin = originsextended_research_npc
+			} }
+			set_variable = {
+				which = expand
+				value = 4
+			}
+			
+			country_event = { id = galactic_expand.1 days = 3 }
+		}
+		else_if = {
+			limit =  { 
+				OR = {
+					has_origin = origin_outside_the_border
+					has_civic = civic_outside_the_border
+				}
+			}
+			set_variable = {
+				which = expand
+				value = 6
+			}
+			
+			country_event = { id = galactic_expand.1 days = 2 }
+		}
+		else_if = {
+			limit =  { 
+				OR = {
+					has_origin = origin_old_alliance
+				}
+			}
+			set_variable = {
+				which = expand
+				value = 6
+			}
+			country_event = { id = galactic_expand.1 days = 3 }
+		}
+		else_if = {
+			limit =  { 
+				OR = {
+				has_origin = origin_clone_guard
+				has_origin = origin_monopoly_chaebol
+				has_origin = origin_prospecting_machine
+				}
+			}
+			set_variable = {
+				which = expand
+				value = 4
+			}
+			country_event = { id = galactic_expand.1 days = 3 }
+		}
+		else_if = {
+			limit =  { 
+				OR = {
+					has_origin = origin_imperial_vassal_overlord
+					has_origin = origin_red_satellite_overlord
+				}
+			}
+			set_variable = {
+				which = expand
+				value = 7
+			}
+			
+			country_event = { id = galactic_expand.1 days = 2 }
+		}	
+		else_if = {
+			limit =  { 
+				OR = {
+					has_origin = origin_imperial_vassal
+					has_origin = origin_red_satellite
+				}
+			}
+			set_variable = {
+				which = expand
+				value = 1
+			}
+			
+			country_event = { id = galactic_expand.1 days = 1 }
+		}
+			else_if = {
+				limit =  { 
+					OR = {
+					has_ai_personality = metalhead
+					has_ai_personality = fanatic_befrienders
+					}
+				}
+				set_variable = {
+					which = expand
+					value = 4
+				}
+				country_event = { id = galactic_expand.1 days = 3 }
+			}
+			else_if = {
+				limit =  { 
+					OR = {
+					has_ai_personality = assimilators
+					has_ai_personality = honorbound_warriors 
+					has_ai_personality = hive_mind
+					}
+				}
+				set_variable = {
+					which = expand
+					value = 4
+				}
+				country_event = { id = galactic_expand.1 days = 4 }
+			}
+			else_if = {
+				limit =  { 
+					OR = {
+					has_ai_personality = hegemonic_imperialists
+					has_ai_personality = slaving_despots
+					has_ai_personality = evangelising_zealots
+					}
+				}
+				set_variable = {
+					which = expand
+					value = 4
+				}
+				country_event = { id = galactic_expand.1 days = 5 }
+			}
+			else_if = {
+				limit =  { 
+					OR = {
+					has_ai_personality = democratic_crusaders
+					has_ai_personality = machine_intelligence
+					has_ai_personality = ruthless_capitalists
+					}
+				}
+				set_variable = {
+					which = expand
+					value = 4
+				}
+				country_event = { id = galactic_expand.1 days = 6 }
+			}
+			else_if = {
+				limit =  { 
+					OR = {
+					has_ai_personality = erudite_explorers
+					has_ai_personality = federation_builders
+					has_ai_personality = servitors
+					}
+				}
+				set_variable = {
+					which = expand
+					value = 4
+				}
+				country_event = { id = galactic_expand.1 days = 7 }
+			}
+			else_if = {
+				limit =  { 
+					OR = {
+					has_ai_personality = decadent_hierarchy
+					has_ai_personality = harmonious_hierarchy
+					has_ai_personality = xenophobic_isolationists
+					has_ai_personality = peaceful_traders
+					}
+				}
+				set_variable = {
+					which = expand
+					value = 4
+				}
+				country_event = { id = galactic_expand.1 days = 8 }
+			}
+			else_if = {
+				limit =  { 
+					OR = {
+					has_ai_personality = spiritual_seekers
+					has_ai_personality = migrating_flock
+					}
+				}
+				set_variable = {
+					which = expand
+					value = 4
+				}
+				country_event = { id = galactic_expand.1 days = 9 }
+			}
+			else = {
+				set_variable = {
+					which = expand
+					value = 4
+				}
+				country_event = { id = galactic_expand.1 days = 10 }
+			}
+		}
+	}
+
+event = {
+	id = galactic_starts.4
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = {
+			any_country = {
+				OR = {
+					has_origin = origin_galactic_hegemon
+					has_origin = origin_galactic_custodian
+				}
+			}
+		}
+	}
+
+	immediate = {
+		every_country = {
+			force_remove_civic = civic_outside_the_border
+		}
+	}
+}
+
+event = {
+	id = galactic_starts.100
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		remove_global_flag = imperium_origins_active
+		set_timed_global_flag = {
+			flag = imperium_origins_active
+			days = 30
+		}
+	}
+}

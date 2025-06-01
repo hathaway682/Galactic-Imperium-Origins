@@ -1,0 +1,30 @@
+spriteTypes = {
+	spriteType = {
+		name = "GFX_wg_liberation_from_the_empire"
+		texturefile = "gfx/interface/icons/diplomacy/diplomacy_federation.dds"
+	}
+	spriteType = {
+		name = "GFX_wg_destroy_illegal_organizations"
+		texturefile = "gfx/interface/icons/diplomacy/diplomacy_imperial_crusade.dds"
+	}
+	spriteType = {
+		name = "GFX_wg_megacorp_subjugate_monopoly_chaebol"
+		texturefile = "gfx/interface/icons/diplomacy/diplomacy_issubsidiary.dds"
+	}
+	spriteType = {
+		name = "GFX_wg_conquer_imperial_member"
+		texturefile = "gfx/interface/icons/diplomacy/diplomacy_pathofchains.dds"
+	}
+	spriteType = {
+		name = "GFX_wg_chosen_of_the_shroud"
+		texturefile = "gfx/interface/icons/diplomacy/diplomacy_isvassal.dds"
+	}
+	spriteType = {
+		name = "GFX_wg_death_to_te_false_emperor"
+		texturefile = "gfx/interface/icons/diplomacy/crisis_menace_casusbelli.dds"
+	}
+	spriteType = {
+		name = "GFX_wg_end_threat_chosen_of_shroud"
+		texturefile = "gfx/interface/icons/diplomacy/crisis_menace_casusbelli.dds"
+	}
+}

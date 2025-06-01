@@ -1,0 +1,19 @@
+﻿l_simp_chinese:
+ ####################################
+ # Hathaway682
+ ####################################
+ opinion_imperial_rival:0 "帝国的宿敌"
+ opinion_galactic_tyrant:0 "银河暴君"
+ opinion_illegal_organization:0 "帝国外非法组织"
+ casus_belli_cb_io_liberation:0 "解放帝国成员"
+ casus_belli_cb_io_dio:0 "解散非法组织"
+ war_goal_wg_liberation_from_the_empire:0 "从帝国中解放"
+ war_goal_wg_liberation_from_the_empire_desc:0 "战争的目标是将他们从帝国中解放出去并并入我们的联邦。"
+ war_goal_wg_destroy_illegal_organizations:0 "摧毁非法组织"
+ war_goal_wg_destroy_illegal_organizations_desc:0 "战争的目标是摧毁他们的联邦并强迫他们并入帝国。"
+ galactic_origin.900.name:0 "并入帝国"
+ galactic_origin.900.desc:0 "我们最终还是被并入了帝国的版图，先前我们与帝国分庭抗礼的局面已经不复存在。"
+ galactic_origin.901.name:0 "帝国的瓦解"
+ galactic_origin.901.desc:0 "随着星海帝国的瓦解，银河系复归自由，我们再也不需要一个强大的假想敌团结我们的人民了。"
+ galactic_origin.902.name:0 "登基"
+ galactic_origin.902.desc:0 "我们胜利了，整个银河的皇座最终落入我们之手，我们应当立刻着手改革我们的行政来适应对整个银河的治理。"

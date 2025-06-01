@@ -1,0 +1,13 @@
+﻿l_simp_chinese:
+ war_goal_wg_emperor_intervention:0 "帝国干预"
+ war_goal_wg_emperor_intervention_desc:0 "战争的目的是维护星海帝国境内的秩序。"
+ casus_belli_cb_io_intervention:0 "干预"
+ war_goal_wg_independence_governorate:0 "帝国总督府起义"
+ war_goal_wg_independence_governorate_desc:0 "这场战争是为了获得独立。这个战争目标可以对皇帝随意使用，且不受“星海帝国治下的和平”的限制。"
+ SUBJECT_imperial_governorate:0 "帝国总督府"
+ SUBJECT_DESC_imperial_governorate:0 "星海帝国的特殊附庸形式。附庸国被迫向皇帝缴纳重税并放弃作为国家的主权。"
+ war_goal_wg_custodian_intervention:0 "监管人干预"
+ war_goal_wg_custodian_intervention_desc:0 "战争的目标是维护星海共同体内部的公理。"
+ SUBJECT_supervised_state:0 "监管国"
+ SUBJECT_DESC_supervised_state:0 "这一国家被迫接受星海共同体的监督。"
+ imperial_governorate.5.name:0 "自由！"

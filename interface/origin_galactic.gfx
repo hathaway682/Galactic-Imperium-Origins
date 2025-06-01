@@ -1,0 +1,104 @@
+spriteTypes = {
+
+	spriteType = {
+		name = "GFX_origin_galactic_custodian"
+		texturefile = "gfx/event_pictures/origins/origin_galactic_custodian.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_origin_galactic_hegemon"
+		texturefile = "gfx/event_pictures/origins/origin_galactic_hegemon.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_origin_clone_guard"
+		texturefile = "gfx/event_pictures/origins/origin_clone_guard.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_origin_esoteric_scholarium"
+		texturefile = "gfx/event_pictures/origins/origin_esoteric_scholarium.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_origin_monopoly_chaebol"
+		texturefile = "gfx/event_pictures/origins/origin_monopoly_chaebol.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_origin_outside_the_border"
+		texturefile = "gfx/event_pictures/origins/origin_outside_the_border.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_origin_internal_border"
+		texturefile = "gfx/event_pictures/origins/origin_internal_border.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_origin_galactic_nemesis"
+		texturefile = "gfx/event_pictures/origins/origin_galactic_nemesis.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_origin_old_alliance"
+		texturefile = "gfx/event_pictures/origins/origin_old_alliance.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_origin_secondary_hegemon"
+		texturefile = "gfx/event_pictures/origins/origin_secondary_hegemon.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_origin_prospecting_machine"
+		texturefile = "gfx/event_pictures/origins/origin_prospecting_machine.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_origin_prime_minister_in_silver"
+		texturefile = "gfx/event_pictures/origins/origin_prime_minister_in_silver.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_origin_chosen_of_the_shroud"
+		texturefile = "gfx/event_pictures/origins/origin_chosen_of_the_shroud.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_origin_everchosen_of_the_shroud"
+		texturefile = "gfx/event_pictures/origins/origin_everchosen_of_the_shroud.dds"
+		alwaystransparent = yes
+	}
+
+	spriteType = {
+		name = "GFX_diplomacy_status_is_imperial_governorate"
+		texturefile = "gfx/interface/icons/diplomacy/diplomacy_isvassal.dds"
+	}
+	spriteType = {
+		name = "GFX_diplomacy_status_is_supervised_state"
+		texturefile = "gfx/interface/icons/diplomacy/diplomacy_isvassal.dds"
+	}
+	spriteType = {
+		name = "GFX_diplomacy_status_is_march"
+		texturefile = "gfx/interface/icons/diplomacy/diplomacy_issatrapy.dds"
+	}
+	spriteType = {
+		name = "GFX_diplomacy_status_is_academy_territory"
+		texturefile = "gfx/interface/icons/diplomacy/diplomacy_research_agreement.dds"
+	}
+	spriteType = {
+		name = "GFX_diplomacy_status_is_industrial_network"
+		texturefile = "gfx/interface/icons/diplomacy/diplomacy_issubsidiary.dds"
+	}
+	spriteType = {
+		name = "GFX_ap_master_of_own_life"
+		texturefile = "gfx/interface/icons/ascension_perks/ap_master_of_own_life.dds"
+		alwaystransparent = yes
+	}
+
+	spriteType = {
+		name = "GFX_leader_trait_clone_soldier_perfect"
+		texturefile = "gfx/interface/icons/traits/trait_clone_soldier_perfect.dds"
+	}
+}

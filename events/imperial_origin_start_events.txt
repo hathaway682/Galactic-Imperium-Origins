@@ -1,0 +1,3372 @@
+namespace = io_start_events
+
+event = {
+    id = io_start_events.1
+    hide_window = yes
+    is_triggered_only = yes
+
+    immediate = {
+        #mod激活识别
+        set_timed_global_flag = {
+            flag = imperium_origins_active
+            days = 30
+        }
+        if = {
+            limit = {
+                any_country = {
+                    has_origin = origin_galactic_hegemon
+                }
+            }
+            #创建科技复制国
+            io_create_tech_dummy = yes
+            #成立星海共同体和理事会
+            every_playable_country = {
+                limit = {
+                    NOR = {
+                        is_low_tech_start = yes
+                        has_origin = origin_fear_of_the_dark
+                        has_origin = origin_unplugged
+                    }
+                }
+                every_playable_country = {
+                    limit = {
+                        NOR = {
+                            is_low_tech_start = yes
+                            has_origin = origin_fear_of_the_dark
+                            has_origin = origin_unplugged
+                        }
+                    }
+                    establish_communications_no_message = prev
+                }
+            }
+            set_global_flag = galactic_community_founded
+            set_global_flag = galactic_council_formed
+            every_playable_country = {
+                set_country_flag = has_market_access
+                if = {
+                    limit = {
+                        OR = {
+                            has_origin = origin_common_ground
+                            has_origin = origin_common_ground_npc
+                            has_origin = origin_hegemon
+                            has_origin = origin_hegemon_npc
+                            has_origin = origin_scion
+                            has_civic = civic_fanatic_purifiers
+                            has_civic = civic_hive_devouring_swarm
+                            has_civic = civic_machine_terminator
+                            has_civic = civic_barbaric_despoilers
+                            is_low_tech_start = yes
+                            has_origin = origin_fear_of_the_dark
+                            has_origin = origin_unplugged
+                        }
+                    }
+                    set_country_flag = galcom_form_nay
+                }
+                else = {
+                    add_to_galactic_community_no_message = yes
+                }
+            }
+            random_playable_country = {
+                limit = {
+                    has_origin = origin_galactic_hegemon
+                }
+                io_become_emperor = yes
+                set_variable = {
+                    which = galaxy_food
+                    value = 0
+                }
+                set_variable = {
+                    which = galaxy_minerals
+                    value = 0
+                }
+                set_variable = {
+                    which = galaxy_energy
+                    value = 0
+                }
+                set_variable = {
+                    which = galaxy_consumer_goods
+                    value = 0
+                }
+                set_variable = {
+                    which = galaxy_alloys
+                    value = 0
+                }
+            }
+            #划分领土
+            random_playable_country = {
+                limit = {
+                    is_ai = no
+                    NOT = { has_country_flag = io_setting_country }
+                }
+                set_variable = {
+                    which = io_setting_empire
+                    value = 1
+                }
+                set_variable = {
+                    which = io_setting_tech
+                    value = 3
+                }
+                set_variable = {
+                    which = io_setting_market
+                    value = 2
+                }
+                set_variable = {
+                    which = io_setting_ia
+                    value = 1
+                }
+                set_variable = {
+                    which = io_setting_legion
+                    value = 1
+                }
+                set_variable = {
+                    which = io_setting_ina
+                    value = 1
+                }
+                set_variable = {
+                    which = io_setting_gto
+                    value = 1
+                }
+                set_variable = {
+                    which = io_setting_isd
+                    value = 1
+                }
+                set_variable = {
+                    which = io_setting_bonus_planet
+                    value = 1
+                }
+                set_variable = {
+                    which = io_setting_expand_max
+                    value = 10
+                }
+                set_variable = {
+                    which = io_setting_start_border
+                    value = 2
+                }
+                set_variable = {
+                    which = io_setting_start_fleet
+                    value = 1
+                }
+                country_event = { id = io_start_events.2 }
+                set_country_flag = io_setting_country
+                save_global_event_target_as = io_setting_country
+            }
+        }
+        else_if = {
+            limit = {
+                any_country = {
+                    has_country_flag = fallen_empire_hive_control
+                }
+            }
+            random_playable_country = {
+                limit = {
+                    is_ai = no
+                    NOT = { has_country_flag = io_setting_country }
+                }
+                country_event = { id = io_start_events.1000 }
+            }
+        }
+        else = {
+            every_playable_country = {
+                force_remove_civic = civic_outside_the_border
+            }
+        }
+    }
+}
+
+country_event = {
+    id = io_start_events.1000
+    title = io_start_events.1000.name
+    desc = io_start_events.1000.desc
+    picture = GFX_evt_galactic_empire
+    is_triggered_only = yes
+
+    option = { #完成
+        name = io_start_events.1000.a
+        hidden_effect = {
+            set_variable = {
+                which = io_setting_empire
+                value = 99
+            }
+            save_global_event_target_as = io_setting_country
+            country_event = {
+                id = io_start_events.1001
+            }
+        }
+    }
+
+    option = { #完成
+        name = io_start_events.1000.b
+        hidden_effect = {
+            every_playable_country = {
+                force_remove_civic = civic_outside_the_border
+                if = {
+                    limit = {
+                        has_imperial_origin = yes
+                    }
+                }
+            }
+        }
+    }
+}
+
+event = {
+    id = io_start_events.1001
+    hide_window = yes
+    is_triggered_only = yes
+
+    immediate = {
+        #mod激活识别
+        set_timed_global_flag = {
+            flag = imperium_origins_active
+            days = 30
+        }
+        #创建科技复制国
+        io_create_tech_dummy = yes
+        #成立星海共同体和理事会
+        every_playable_country = {
+            limit = {
+                NOR = {
+                    is_low_tech_start = yes
+                    has_origin = origin_fear_of_the_dark
+                    has_origin = origin_unplugged
+                }
+            }
+            every_playable_country = {
+                limit = {
+                    NOR = {
+                        is_low_tech_start = yes
+                        has_origin = origin_fear_of_the_dark
+                        has_origin = origin_unplugged
+                    }
+                }
+                establish_communications_no_message = prev
+            }
+        }
+        set_global_flag = galactic_community_founded
+        set_global_flag = galactic_council_formed
+        every_playable_country = {
+            set_country_flag = has_market_access
+            if = {
+                limit = {
+                    OR = {
+                        has_origin = origin_common_ground
+                        has_origin = origin_common_ground_npc
+                        has_origin = origin_hegemon
+                        has_origin = origin_hegemon_npc
+                        has_origin = origin_scion
+                        has_civic = civic_fanatic_purifiers
+                        has_civic = civic_hive_devouring_swarm
+                        has_civic = civic_machine_terminator
+                        has_civic = civic_barbaric_despoilers
+                        is_low_tech_start = yes
+                        has_origin = origin_fear_of_the_dark
+                        has_origin = origin_unplugged
+                    }
+                }
+                set_country_flag = galcom_form_nay
+            }
+            else = {
+                add_to_galactic_community_no_message = yes
+            }
+        }
+        #觉醒蜂巢堕落
+        random_country = {
+            limit = {
+                has_country_flag = fallen_empire_hive_control
+            }
+            save_event_target_as = awakened_imperium
+            set_country_type = awakened_fallen_empire
+            set_country_flag = sleepers_awake_first_sleeper
+            change_government = {
+                civics = {
+                    civic = civic_restored_mind
+                    civic = civic_ancient_memories_of_control
+                }
+            }
+            add_to_galactic_community = yes
+            set_global_flag = control_awoke
+            change_country_flag = {
+                icon = {
+                    category = "special"
+                    file = "hive_fe_flag_restored.dds"
+                }
+                background = {
+                    category = "backgrounds"
+                    file = "flag_BG_39.dds"
+                }
+                colors = {
+                    "light_orange"
+                    "dark_orange"
+                    "black"
+                    "null"
+                }
+            }
+            every_country = {
+                limit = {
+                    has_ai_personality = fallen_empire_hive_mind
+                }
+                save_event_target_as = assimilated_fe
+                set_country_flag = got_assimialted
+                every_playable_country = {
+                    limit = {
+                        has_communications = event_target:awakened_imperium
+                        NOT = { is_same_value = event_target:awakened_imperium }
+                    }
+                    country_event = { id = fallen_empires_awakening.11 }
+                }
+                integrate_country_effect = {
+                    OWNER = event_target:awakened_imperium
+                }
+            }
+            random_system = {
+                limit = {
+                    has_star_flag = last_thought_system
+                }
+                create_starbase = {
+                    size = "starbase_outpost"
+                    owner = event_target:awakened_imperium
+                    effect = {
+                        while = {
+                            count = 2
+                            create_fallen_empire_platform = yes
+                        }
+                    }
+                }
+            }
+            event_target:fallen_empire_hive_forgotten = {
+                every_owned_fleet = {
+                    set_owner = event_target:awakened_imperium
+                }
+            }
+            add_awakened_fallen_empire_resources = yes
+            add_awakened_fallen_empire_fleet = yes
+
+            # Establish communications
+            every_country = {
+                limit = {
+                    OR = {
+                        is_country_type = default
+                        is_country_type = fallen_empire
+                        is_country_type = awakened_fallen_empire
+                    }
+                    NOT = { has_communications = event_target:awakened_imperium }
+                }
+                establish_communications_no_message = event_target:awakened_imperium
+            }
+            io_become_emperor = yes
+        }
+        #划分领土
+        event_target:io_setting_country = {
+            set_variable = {
+                which = io_setting_empire
+                value = 99
+            }
+            set_variable = {
+                which = io_setting_tech
+                value = 3
+            }
+            set_variable = {
+                which = io_setting_market
+                value = 1
+            }
+            set_variable = {
+                which = io_setting_ia
+                value = 99
+            }
+            set_variable = {
+                which = io_setting_legion
+                value = 1
+            }
+            set_variable = {
+                which = io_setting_ina
+                value = 1
+            }
+            set_variable = {
+                which = io_setting_gto
+                value = 1
+            }
+            set_variable = {
+                which = io_setting_isd
+                value = 1
+            }
+            set_variable = {
+                which = io_setting_bonus_planet
+                value = 99
+            }
+            set_variable = {
+                which = io_setting_expand_max
+                value = 10
+            }
+            set_variable = {
+                which = io_setting_start_border
+                value = 2
+            }
+            set_variable = {
+                which = io_setting_start_fleet
+                value = 1
+            }
+            country_event = { id = io_start_events.2 }
+            set_country_flag = io_setting_country
+            save_global_event_target_as = io_setting_country
+        }
+    }
+}
+
+#开局设置（皇帝）
+country_event = {
+    id = io_start_events.2
+    title = io_start_events.2.name
+    desc = io_start_events.2.desc
+    picture = GFX_evt_galactic_empire
+    is_triggered_only = yes
+
+    #科技等级
+    option = {
+        name = {
+            text = io_start_events.2.t0
+            trigger = { check_variable = { which = io_setting_tech value = 0 } }
+        }
+        name = {
+            text = io_start_events.2.t1
+            trigger = { check_variable = { which = io_setting_tech value = 1 } }
+        }
+        name = {
+            text = io_start_events.2.t2
+            trigger = { check_variable = { which = io_setting_tech value = 2 } }
+        }
+        name = {
+            text = io_start_events.2.t3
+            trigger = { check_variable = { which = io_setting_tech value = 3 } }
+        }
+        name = {
+            text = io_start_events.2.t4
+            trigger = { check_variable = { which = io_setting_tech value = 4 } }
+        }
+        name = {
+            text = io_start_events.2.t5
+            trigger = { check_variable = { which = io_setting_tech value = 5 } }
+        }
+        name = {
+            text = io_start_events.2.all
+            trigger = { check_variable = { which = io_setting_tech value = 10 } }
+        }
+        hidden_effect = {
+            if = {
+                limit = { check_variable = { which = io_setting_tech value = 5 } }
+                set_variable = { which = io_setting_tech value = 10 }
+            }
+            else_if = {
+                limit = { check_variable = { which = io_setting_tech value = 10 } }
+                set_variable = { which = io_setting_tech value = 0 }
+            }
+            else = {
+                change_variable = { which = io_setting_tech value = 1 }
+            }
+            country_event = { id = io_start_events.2 }
+        }
+    }
+    #帝国强度
+    option = {
+        name = {
+            text = io_start_events.2.empire1
+            trigger = { check_variable = { which = io_setting_empire value = 0 } }
+        }
+        name = {
+            text = io_start_events.2.empire2
+            trigger = { check_variable = { which = io_setting_empire value = 1 } }
+        }
+        name = {
+            text = io_start_events.2.empire3
+            trigger = { check_variable = { which = io_setting_empire value = 2 } }
+        }
+        name = {
+            text = io_start_events.2.empire4
+            trigger = { check_variable = { which = io_setting_empire value = 3 } }
+        }
+        name = {
+            text = io_start_events.2.empire5
+            trigger = { check_variable = { which = io_setting_empire value = 4 } }
+        }
+        name = {
+            text = io_start_events.2.empire6
+            trigger = { check_variable = { which = io_setting_empire value = 5 } }
+        }
+        name = {
+            text = io_start_events.2.awaken
+            trigger = { check_variable = { which = io_setting_empire value = 99 } }
+        }
+        hidden_effect = {
+            if = {
+                limit = { check_variable = { which = io_setting_empire value = 0 } }
+                if = {
+                    limit = { galactic_emperor = { has_civic = civic_vilified } }
+                    custom_tooltip = io_start_events.2.empire1.tooltip.2
+                }
+                else = {
+                    custom_tooltip = io_start_events.2.empire1.tooltip
+                    set_variable = { which = io_setting_empire value = 1 }
+                    set_variable = { which = io_setting_ia value = 1 }
+                    set_variable = { which = io_setting_legion value = 1 }
+                    set_variable = { which = io_setting_ina value = 1 }
+                    set_variable = { which = io_setting_gto value = 1 }
+                    set_variable = { which = io_setting_isd value = 1 }
+                }
+            }
+            else_if = {
+                limit = { check_variable = { which = io_setting_empire value = 1 } }
+                custom_tooltip = io_start_events.2.empire2.tooltip
+                set_variable = { which = io_setting_empire value = 2 }
+                set_variable = { which = io_setting_ia value = 2 }
+            }
+            else_if = {
+                limit = { check_variable = { which = io_setting_empire value = 2 } }
+                custom_tooltip = io_start_events.2.empire3.tooltip
+                set_variable = { which = io_setting_empire value = 3 }
+                set_variable = { which = io_setting_ia value = 10 }
+            }
+            else_if = {
+                limit = { check_variable = { which = io_setting_empire value = 3 } }
+                custom_tooltip = io_start_events.2.empire4.tooltip
+                set_variable = { which = io_setting_empire value = 4 }
+                set_variable = { which = io_setting_ia value = 20 }
+                if = {
+                    limit = { has_global_flag = flag_MECR_activated }
+                    set_variable = { which = io_setting_legion value = 2 }
+                }
+            }
+            else_if = {
+                limit = { check_variable = { which = io_setting_empire value = 4 } }
+                custom_tooltip = io_start_events.2.empire5.tooltip
+                set_variable = { which = io_setting_empire value = 5 }
+                set_variable = { which = io_setting_ia value = 30 }
+            }
+            else_if = {
+                limit = { check_variable = { which = io_setting_empire value = 5 } }
+                custom_tooltip = io_start_events.2.empire6.tooltip
+                set_variable = { which = io_setting_empire value = 0 }
+                set_variable = { which = io_setting_ia value = 0 }
+                set_variable = { which = io_setting_legion value = 0 }
+                set_variable = { which = io_setting_ina value = 0 }
+                set_variable = { which = io_setting_gto value = 0 }
+                set_variable = { which = io_setting_isd value = 0 }
+            }
+            else_if = {
+                limit = { check_variable = { which = io_setting_empire value = 99 } }
+                custom_tooltip = io_start_events.2.awaken.tooltip
+            }
+            country_event = { id = io_start_events.2 }
+        }
+    }
+    #帝国舰队
+    option = {
+        name = {
+            text = io_start_events.2.a1
+            trigger = { check_variable = { which = io_setting_ia value = 0 } }
+        }
+        name = {
+            text = io_start_events.2.a2
+            trigger = { check_variable = { which = io_setting_ia value = 1 } }
+        }
+        name = {
+            text = io_start_events.2.a3
+            trigger = { check_variable = { which = io_setting_ia value = 2 } }
+        }
+        name = {
+            text = io_start_events.2.as
+            trigger = { check_variable = { which = io_setting_ia value = 10 } }
+        }
+        name = {
+            text = io_start_events.2.ag
+            trigger = { check_variable = { which = io_setting_ia value = 20 } }
+        }
+        name = {
+            text = io_start_events.2.ah
+            trigger = { check_variable = { which = io_setting_ia value = 30 } }
+        }
+        name = {
+            text = io_start_events.2.az
+            trigger = { check_variable = { which = io_setting_ia value = 99 } }
+        }
+        hidden_effect = {
+            if = {
+                limit = { check_variable = { which = io_setting_ia value < 10 } }
+                if = {
+                    limit = { check_variable = { which = io_setting_ia value = 2 } }
+                    set_variable = { which = io_setting_ia value = 0 }
+                }
+                else = {
+                    change_variable = { which = io_setting_ia value = 1 }
+                }
+            }
+            else_if = {
+                limit = { check_variable = { which = io_setting_ia value = 10 } }
+                custom_tooltip = io_start_events.2.as.tooltip
+            }
+            else_if = {
+                limit = { check_variable = { which = io_setting_ia value = 20 } }
+                custom_tooltip = io_start_events.2.ag.tooltip
+            }
+            else_if = {
+                limit = { check_variable = { which = io_setting_ia value = 30 } }
+                custom_tooltip = io_start_events.2.ah.tooltip
+            }
+            else_if = {
+                limit = { check_variable = { which = io_setting_ia value = 99 } }
+                custom_tooltip = io_start_events.2.az.tooltip
+            }
+            country_event = { id = io_start_events.2 }
+        }
+    }
+    #帝国军团
+    option = {
+        name = {
+            text = io_start_events.2.c1
+            trigger = { check_variable = { which = io_setting_legion value = 0 } }
+        }
+        name = {
+            text = io_start_events.2.c2
+            trigger = { check_variable = { which = io_setting_legion value = 1 } }
+        }
+        hidden_effect = {
+            if = {
+                limit = { check_variable = { which = io_setting_legion value = 2 } }
+                set_variable = { which = io_setting_legion value = 0 }
+            }
+            else_if = {
+                limit = { check_variable = { which = io_setting_legion value = 1 } }
+                if = {
+                    limit = { has_global_flag = flag_MECR_activated }
+                    set_variable = { which = io_setting_legion value = 2 }
+                }
+                else = {
+                    set_variable = { which = io_setting_legion value = 0 }
+                }
+            }
+            else = {
+                change_variable = { which = io_setting_legion value = 1 }
+            }
+            country_event = { id = io_start_events.2 }
+        }
+    }
+    #泛星系贸易市场
+    option = {
+        name = {
+            text = io_start_events.2.b1
+            trigger = { check_variable = { which = io_setting_market value = 0 } }
+        }
+        name = {
+            text = io_start_events.2.b2
+            trigger = { check_variable = { which = io_setting_market value = 1 } }
+        }
+        name = {
+            text = io_start_events.2.b3
+            trigger = { check_variable = { which = io_setting_market value = 2 } }
+        }
+        name = {
+            text = io_start_events.2.b4
+            trigger = { check_variable = { which = io_setting_market value = 3 } }
+        }
+        hidden_effect = {
+            if = {
+                limit = {
+                    AND = {
+                        check_variable = { which = io_setting_market value = 1 }
+                        check_variable = { which = io_setting_empire value = 99 }
+                    }
+                }
+                set_variable = { which = io_setting_market value = 0 }
+            }
+            else_if = {
+                limit = { check_variable = { which = io_setting_market value = 3 } }
+                set_variable = { which = io_setting_market value = 0 }
+            }
+            else_if = {
+                limit = { check_variable = { which = io_setting_market value = 2 } }
+                if = {
+                    limit = { any_playable_country = { has_origin = origin_monopoly_chaebol } }
+                    set_variable = { which = io_setting_market value = 3 }
+                }
+                else = {
+                    set_variable = { which = io_setting_market value = 0 }
+                }
+            }
+            else = {
+                change_variable = { which = io_setting_market value = 1 }
+            }
+            country_event = { id = io_start_events.2 }
+        }
+    }
+    #帝国导航局
+    option = {
+        name = {
+            text = io_start_events.2.d1
+            trigger = { check_variable = { which = io_setting_ina value = 0 } }
+        }
+        name = {
+            text = io_start_events.2.d2
+            trigger = { check_variable = { which = io_setting_ina value = 1 } }
+        }
+        hidden_effect = {
+            if = {
+                limit = { check_variable = { which = io_setting_ina value = 1 } }
+                set_variable = { which = io_setting_ina value = 0 }
+            }
+            else = {
+                change_variable = { which = io_setting_ina value = 1 }
+            }
+            country_event = { id = io_start_events.2 }
+        }
+    }
+    #星系贸易组织/MECR帝国贸易局
+    option = {
+        name = {
+            text = io_start_events.2.e1
+            trigger = { check_variable = { which = io_setting_gto value = 0 } }
+        }
+        name = {
+            text = io_start_events.2.e2
+            trigger = { check_variable = { which = io_setting_gto value = 1 } }
+        }
+        hidden_effect = {
+            if = {
+                limit = { check_variable = { which = io_setting_gto value = 1 } }
+                set_variable = { which = io_setting_gto value = 0 }
+            }
+            else = {
+                change_variable = { which = io_setting_gto value = 1 }
+            }
+            country_event = { id = io_start_events.2 }
+        }
+    }
+    #帝国安全总局
+    option = {
+        name = {
+            text = io_start_events.2.f1
+            trigger = { check_variable = { which = io_setting_isd value = 0 } }
+        }
+        name = {
+            text = io_start_events.2.f2
+            trigger = { check_variable = { which = io_setting_isd value = 1 } }
+        }
+        hidden_effect = {
+            if = {
+                limit = { check_variable = { which = io_setting_isd value = 1 } }
+                set_variable = { which = io_setting_isd value = 0 }
+            }
+            else = {
+                change_variable = { which = io_setting_isd value = 1 }
+            }
+            country_event = { id = io_start_events.2 }
+        }
+    }
+
+    #MECR兼容部分
+    option = { #MECR帝国科学院
+        trigger = { has_global_flag = flag_MECR_activated }
+        name = {
+            text = io_start_events.2.ab1
+            trigger = { check_variable = { which = io_setting_mecr_b value = 0 } }
+        }
+        name = {
+            text = io_start_events.2.ab2
+            trigger = { check_variable = { which = io_setting_mecr_b value = 1 } }
+        }
+        hidden_effect = {
+            if = {
+                limit = { check_variable = { which = io_setting_mecr_b value = 1 } }
+                set_variable = { which = io_setting_mecr_b value = 0 }
+            }
+            else = {
+                change_variable = { which = io_setting_mecr_b value = 1 }
+            }
+            country_event = { id = io_start_events.2 }
+        }
+    }
+    option = { #MECR帝国工程署
+        trigger = { has_global_flag = flag_MECR_activated }
+        name = {
+            text = io_start_events.2.ac1
+            trigger = { check_variable = { which = io_setting_mecr_c value = 0 } }
+        }
+        name = {
+            text = io_start_events.2.ac2
+            trigger = { check_variable = { which = io_setting_mecr_c value = 1 } }
+        }
+        hidden_effect = {
+            if = {
+                limit = { check_variable = { which = io_setting_mecr_c value = 1 } }
+                set_variable = { which = io_setting_mecr_c value = 0 }
+            }
+            else = {
+                change_variable = { which = io_setting_mecr_c value = 1 }
+            }
+            country_event = { id = io_start_events.2 }
+        }
+    }
+    option = { #MECR帝国教育部
+        trigger = { has_global_flag = flag_MECR_activated }
+        name = {
+            text = io_start_events.2.ad1
+            trigger = { check_variable = { which = io_setting_mecr_d value = 0 } }
+        }
+        name = {
+            text = io_start_events.2.ad2
+            trigger = { check_variable = { which = io_setting_mecr_d value = 1 } }
+        }
+        hidden_effect = {
+            if = {
+                limit = { check_variable = { which = io_setting_mecr_d value = 1 } }
+                set_variable = { which = io_setting_mecr_d value = 0 }
+            }
+            else = {
+                change_variable = { which = io_setting_mecr_d value = 1 }
+            }
+            country_event = { id = io_start_events.2 }
+        }
+    }
+    option = { #MECR帝国国防部
+        trigger = { has_global_flag = flag_MECR_activated }
+        name = {
+            text = io_start_events.2.ae1
+            trigger = { check_variable = { which = io_setting_mecr_e value = 0 } }
+        }
+        name = {
+            text = io_start_events.2.ae2
+            trigger = { check_variable = { which = io_setting_mecr_e value = 1 } }
+        }
+        hidden_effect = {
+            if = {
+                limit = { check_variable = { which = io_setting_mecr_e value = 1 } }
+                set_variable = { which = io_setting_mecr_e value = 0 }
+            }
+            else = {
+                change_variable = { which = io_setting_mecr_e value = 1 }
+                if = { #有帝国国防部时至少要有建立帝国舰队
+                    limit = { check_variable = { which = io_setting_mecr_ value = 0 } }
+                    set_variable = { which = io_setting_mecr_ value = 1 }
+                }
+            }
+            country_event = { id = io_start_events.2 }
+        }
+    }
+
+    #奖励星球
+    option = {
+        name = {
+            text = io_start_events.2.i1
+            trigger = {
+                check_variable = { which = io_setting_bonus_planet value = 0 }
+            }
+        }
+        name = {
+            text = io_start_events.2.i2
+            trigger = { check_variable = { which = io_setting_bonus_planet value = 1 } }
+        }
+        name = {
+            text = io_start_events.2.i3
+            trigger = { check_variable = { which = io_setting_bonus_planet value = 99 } }
+        }
+        custom_tooltip = io_start_events.2.i.tooltip
+        hidden_effect = {
+            if = {
+                limit = { check_variable = { which = io_setting_bonus_planet value = 1 } }
+                set_variable = { which = io_setting_bonus_planet value = 0 }
+            }
+            else_if = {
+                limit = { check_variable = { which = io_setting_bonus_planet value = 0 } }
+                set_variable = { which = io_setting_bonus_planet value = 1 }
+            }
+            country_event = { id = io_start_events.2 }
+        }
+    }
+    #初始版图生成
+    option = {
+        name = {
+            text = io_start_events.2.h1
+            trigger = { check_variable = { which = io_setting_start_border value = 0 } }
+        }
+        name = {
+            text = io_start_events.2.h2
+            trigger = { check_variable = { which = io_setting_start_border value = 1 } }
+        }
+        name = {
+            text = io_start_events.2.h3
+            trigger = { check_variable = { which = io_setting_start_border value = 2 } }
+        }
+        hidden_effect = {
+            if = {
+                limit = { check_variable = { which = io_setting_start_border value = 0 } }
+                custom_tooltip = io_start_events.2.h3.tooltip
+                if = {
+                    limit = { is_galactic_emperor = yes }
+                    set_variable = { which = io_setting_start_border value = 2 }
+                }
+                else = {
+                    set_variable = { which = io_setting_start_border value = 1 }
+                }
+            }
+            else_if = {
+                limit = { check_variable = { which = io_setting_start_border value = 1 } }
+                set_variable = { which = io_setting_start_border value = 2 }
+            }
+            else_if = {
+                limit = { check_variable = { which = io_setting_start_border value = 2 } }
+                custom_tooltip = io_start_events.2.h3.tooltip
+                set_variable = { which = io_setting_start_border value = 0 }
+            }
+            country_event = { id = io_start_events.2 }
+        }
+    }
+    #初始舰队生成
+    option = {
+        name = {
+            text = io_start_events.2.j1
+            trigger = { check_variable = { which = io_setting_start_fleet value = 0 } }
+        }
+        name = {
+            text = io_start_events.2.j2
+            trigger = { check_variable = { which = io_setting_start_fleet value = 1 } }
+        }
+        hidden_effect = {
+            if = {
+                limit = { check_variable = { which = io_setting_start_fleet value = 1 } }
+                set_variable = { which = io_setting_start_fleet value = 0 }
+            }
+            else = {
+                change_variable = { which = io_setting_start_fleet value = 1 }
+            }
+            country_event = { id = io_start_events.2 }
+        }
+    }
+    #完成
+    option = {
+        name = io_start_events.2.z
+        country_event = {
+            id = io_start_events.3
+        }
+    }
+}
+
+#执行开局设置
+country_event = {
+    id = io_start_events.3
+    hide_window = yes
+    is_triggered_only = yes
+    
+    immediate = {
+        #全体国家设置
+        every_playable_country = {
+            limit = {
+                NOT = {
+                    is_low_tech_start = yes
+                }
+            }
+            io_add_start_modifiers = yes
+            #科技等级
+            set_variable = {
+                which = io_setting_tech
+                value = event_target:io_setting_country.io_setting_tech
+            }
+            if = {
+                limit = { check_variable = { which = io_setting_tech value = 1 } }
+                io_give_extra_t1 = yes
+                copy_techs_from = {
+                    target = event_target:io_t1_dummy_country
+                }
+            }
+            else_if = {
+                limit = { check_variable = { which = io_setting_tech value = 2 } }
+                io_give_extra_t2 = yes
+                copy_techs_from = {
+                    target = event_target:io_t2_dummy_country
+                }
+            }
+            else_if = {
+                limit = { check_variable = { which = io_setting_tech value = 3 } }
+                io_give_extra_t3 = yes
+                copy_techs_from = {
+                    target = event_target:io_t3_dummy_country
+                }
+            }
+            else_if = {
+                limit = { check_variable = { which = io_setting_tech value = 4 } }
+                io_give_extra_t4 = yes
+                copy_techs_from = {
+                    target = event_target:io_t4_dummy_country
+                }
+            }
+            else_if = {
+                limit = { check_variable = { which = io_setting_tech value = 5 } }
+                io_give_extra_t5 = yes
+                copy_techs_from = {
+                    target = event_target:io_all_tech_dummy_country
+                }
+            }
+            else_if = {
+                limit = { check_variable = { which = io_setting_tech value = 10 } }
+                io_give_extra_t5 = yes
+                copy_techs_from = {
+                    target = event_target:io_all_tech_dummy_country
+                }
+            }
+        }
+        #帝皇设置
+        galactic_emperor = {
+            #帝国强度
+            set_variable = {
+                which = io_setting_empire
+                value = event_target:io_setting_country.io_setting_empire
+            }
+            if = {
+                limit = { check_variable = { which = io_setting_empire value = 0 } }
+                io_give_extra_t2 = yes
+                copy_techs_from = {
+                    target = event_target:io_t2_dummy_country
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 4
+                }
+                if = {
+                    limit = {
+                        check_variable = {
+                            which = io_setting_tech
+                            value < 2
+                        }
+                    }
+                    set_variable = {
+                        which = io_setting_tech
+                        value = 2
+                    }
+                }
+                add_imperial_authority = -50
+                if = {
+                    limit = { has_civic = civic_vilified }
+                    add_imperial_authority = -50
+                }
+            }
+            else_if = {
+                limit = { check_variable = { which = io_setting_empire value = 1 } }
+                io_give_extra_t3 = yes
+                copy_techs_from = {
+                    target = event_target:io_t3_dummy_country
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 6
+                }
+                if = {
+                    limit = {
+                        check_variable = {
+                            which = io_setting_tech
+                            value < 3
+                        }
+                    }
+                    set_variable = {
+                        which = io_setting_tech
+                        value = 3
+                    }
+                }
+                pass_resolution_no_cooldown = resolution_emperor_food_2
+                pass_resolution_no_cooldown = resolution_emperor_minerals_2
+                pass_resolution_no_cooldown = resolution_emperor_energy_2
+                pass_resolution_no_cooldown = resolution_emperor_basic_2
+            }
+            else_if = {
+                limit = { check_variable = { which = io_setting_empire value = 2 } }
+                io_give_extra_t4 = yes
+                copy_techs_from = {
+                    target = event_target:io_t4_dummy_country
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 7
+                }
+                if = {
+                    limit = {
+                        check_variable = {
+                            which = io_setting_tech
+                            value < 4
+                        }
+                    }
+                    set_variable = {
+                        which = io_setting_tech
+                        value = 4
+                    }
+                }
+                pass_resolution_no_cooldown = resolution_emperor_food_3
+                pass_resolution_no_cooldown = resolution_emperor_minerals_3
+                pass_resolution_no_cooldown = resolution_emperor_energy_3
+                pass_resolution_no_cooldown = resolution_emperor_consumer_goods_2
+                pass_resolution_no_cooldown = resolution_emperor_alloys_2
+                pass_resolution_no_cooldown = resolution_emperor_basic_3
+                pass_resolution_no_cooldown = resolution_emperor_advanced_2
+                add_imperial_authority = 50
+            }
+            else_if = {
+                limit = { check_variable = { which = io_setting_empire value = 3 } }
+                io_give_extra_t5 = yes
+                copy_techs_from = {
+                    target = event_target:io_t5_dummy_country
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 8
+                }
+                if = {
+                    limit = {
+                        check_variable = {
+                            which = io_setting_tech
+                            value < 5
+                        }
+                    }
+                    set_variable = {
+                        which = io_setting_tech
+                        value = 5
+                    }
+                }
+                pass_resolution_no_cooldown = resolution_emperor_basic_4
+                pass_resolution_no_cooldown = resolution_emperor_advanced_3
+                pass_resolution_no_cooldown = resolution_emperor_strategic_2
+                add_imperial_authority = 100
+            }
+            else_if = {
+                limit = { check_variable = { which = io_setting_empire value = 4 } }
+                io_give_extra_t5 = yes
+                set_country_flag = io_fe_emperor
+                copy_techs_from = {
+                    target = event_target:io_all_tech_dummy_country
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 9
+                }
+                if = {
+                    limit = {
+                        check_variable = {
+                            which = io_setting_tech
+                            value < 10
+                        }
+                    }
+                    set_variable = {
+                        which = io_setting_tech
+                        value = 10
+                    }
+                }
+                pass_resolution_no_cooldown = resolution_emperor_food_4
+                pass_resolution_no_cooldown = resolution_emperor_minerals_4
+                pass_resolution_no_cooldown = resolution_emperor_energy_4
+                pass_resolution_no_cooldown = resolution_emperor_consumer_goods_3
+                pass_resolution_no_cooldown = resolution_emperor_alloys_3
+                pass_resolution_no_cooldown = resolution_emperor_basic_4
+                pass_resolution_no_cooldown = resolution_emperor_advanced_3
+                pass_resolution_no_cooldown = resolution_emperor_strategic_2
+                add_imperial_authority = 100
+            }
+            else_if = {
+                limit = { check_variable = { which = io_setting_empire value = 5 } }
+                set_country_flag = io_fe_emperor
+                io_give_extra_t5 = yes
+                io_give_cosmogenesis_technologys = yes
+                copy_techs_from = {
+                    target = event_target:io_all_tech_dummy_country
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 10
+                }
+                if = {
+                    limit = {
+                        check_variable = {
+                            which = io_setting_tech
+                            value < 10
+                        }
+                    }
+                    set_variable = {
+                        which = io_setting_tech
+                        value = 10
+                    }
+                }
+                pass_resolution_no_cooldown = resolution_emperor_food_5
+                pass_resolution_no_cooldown = resolution_emperor_minerals_5
+                pass_resolution_no_cooldown = resolution_emperor_energy_5
+                pass_resolution_no_cooldown = resolution_emperor_consumer_goods_4
+                pass_resolution_no_cooldown = resolution_emperor_alloys_4
+                pass_resolution_no_cooldown = resolution_emperor_basic_5
+                pass_resolution_no_cooldown = resolution_emperor_advanced_4
+                pass_resolution_no_cooldown = resolution_emperor_strategic_3
+                pass_resolution_no_cooldown = resolution_emperor_rare_2
+                add_imperial_authority = 100
+            }
+            #帝国海军
+            set_variable = {
+                which = io_setting_ia
+                value = event_target:io_setting_country.io_setting_ia
+            }
+            if = {
+                limit = { check_variable = { which = io_setting_ia value = 1 } }
+                pass_resolution_no_cooldown = resolution_emperor_imperial_armada
+            }
+            else_if = {
+                limit = { check_variable = { which = io_setting_ia value = 2 } }
+                pass_resolution_no_cooldown = resolution_emperor_imperial_armada
+                pass_resolution_no_cooldown = resolution_emperor_expand_ia
+            }
+            else_if = {
+                limit = { check_variable = { which = io_setting_ia value = 10 } }
+                pass_resolution_no_cooldown = resolution_emperor_imperial_armada
+                pass_resolution_no_cooldown = resolution_emperor_expand_ia
+                if = {
+                    limit = { has_global_flag = flag_MECR_activated }
+                    pass_resolution_no_cooldown = resolution_emperor_expand_ia_3
+                    pass_resolution_no_cooldown = resolution_emperor_expand_ia_4
+                    pass_resolution_no_cooldown = resolution_emperor_expand_ia_5
+                }
+            }
+            else_if = {
+                limit = { check_variable = { which = io_setting_ia value = 20 } }
+                pass_resolution_no_cooldown = resolution_emperor_imperial_armada
+                pass_resolution_no_cooldown = resolution_emperor_expand_ia
+                if = {
+                    limit = { has_global_flag = flag_MECR_activated }
+                    pass_resolution_no_cooldown = resolution_emperor_expand_ia_3
+                    pass_resolution_no_cooldown = resolution_emperor_expand_ia_4
+                    pass_resolution_no_cooldown = resolution_emperor_expand_ia_5
+                    pass_resolution_no_cooldown = resolution_emperor_expand_ia_6
+                    pass_resolution_no_cooldown = resolution_emperor_expand_ia_7
+                }
+            }
+            else_if = {
+                limit = { check_variable = { which = io_setting_ia value = 30 } }
+                pass_resolution_no_cooldown = resolution_emperor_imperial_armada
+                pass_resolution_no_cooldown = resolution_emperor_expand_ia
+                if = {
+                    limit = { has_global_flag = flag_MECR_activated }
+                    pass_resolution_no_cooldown = resolution_emperor_expand_ia_3
+                    pass_resolution_no_cooldown = resolution_emperor_expand_ia_4
+                    pass_resolution_no_cooldown = resolution_emperor_expand_ia_5
+                    pass_resolution_no_cooldown = resolution_emperor_expand_ia_6
+                    pass_resolution_no_cooldown = resolution_emperor_expand_ia_7
+                    pass_resolution_no_cooldown = resolution_emperor_expand_ia_8
+                    pass_resolution_no_cooldown = resolution_emperor_expand_ia_9
+                }
+            }
+            else_if = {
+                limit = { check_variable = { which = io_setting_ia value = 99 } }
+                pass_resolution_no_cooldown = resolution_emperor_imperial_armada
+                pass_resolution_no_cooldown = resolution_emperor_expand_ia
+                if = {
+                    limit = { has_global_flag = flag_MECR_activated }
+                    pass_resolution_no_cooldown = resolution_emperor_expand_ia_3
+                    pass_resolution_no_cooldown = resolution_emperor_expand_ia_4
+                    pass_resolution_no_cooldown = resolution_emperor_expand_ia_5
+                    pass_resolution_no_cooldown = resolution_emperor_expand_ia_6
+                    pass_resolution_no_cooldown = resolution_emperor_expand_ia_7
+                    pass_resolution_no_cooldown = resolution_emperor_expand_ia_8
+                    pass_resolution_no_cooldown = resolution_emperor_expand_ia_9
+                }
+            }
+            #帝国军团
+            set_variable = {
+                which = io_setting_legion
+                value = event_target:io_setting_country.io_setting_legion
+            }
+            if = {
+                limit = { check_variable = { which = io_setting_legion value = 1 } }
+                pass_resolution_no_cooldown = resolution_emperor_imperial_legions
+                if = { #MECR的自动招募写在议案里了
+                    limit = { NOT = { has_global_flag = flag_MECR_activated } }
+                    galactic_emperor = {
+                        capital_scope = {
+                            while = {
+                                count = 12
+                                create_army = {
+                                    name = random
+                                    owner = prev
+                                    type = imperial_legion
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else_if = {
+                limit = { check_variable = { which = io_setting_legion value = 2 } }
+                pass_resolution_no_cooldown = resolution_emperor_imperial_legions
+                pass_resolution_no_cooldown = resolution_emperor_imperial_legions_extensive_recruitment
+                #MECR的自动招募写在议案里了
+            }
+            #泛星系贸易市场
+            set_variable = {
+                which = io_setting_market
+                value = event_target:io_setting_country.io_setting_market
+            }
+            if = {
+                limit = { check_variable = { which = io_setting_market value = 1 } }
+                pass_resolution_no_cooldown = resolution_galactic_market_form
+            }
+            else_if = {
+                limit = { check_variable = { which = io_setting_market value = 2 } }
+                set_global_flag = ongoing_market_nomination
+                galactic_emperor = {
+                    set_country_flag = market_nomination_eligible
+                    begin_event_chain = { event_chain = market_founding_chain target = this }
+                    set_variable = { which = market_rating value = 5 }
+                    capital_scope = { add_modifier = { modifier = market_nominee_level_5 } }
+                    country_event = { id = action.98 }
+                }
+            }
+            else_if = {
+                limit = { check_variable = { which = io_setting_market value = 3 } }
+                set_global_flag = ongoing_market_nomination
+                random_playable_country = {
+                    limit = {
+                        has_origin = origin_monopoly_chaebol
+                    }
+                    set_country_flag = market_nomination_eligible
+                    begin_event_chain = { event_chain = market_founding_chain target = this }
+                    set_variable = { which = market_rating value = 5 }
+                    capital_scope = { add_modifier = { modifier = market_nominee_level_5 } }
+                    country_event = { id = action.98 }
+                }
+            }
+            #帝国安全总局
+            set_variable = {
+                which = io_setting_isd
+                value = event_target:io_setting_country.io_setting_isd
+            }
+            if = {
+                limit = { check_variable = { which = io_setting_isd value = 1 } }
+                pass_resolution_no_cooldown = resolution_emperor_isd
+            }
+            #帝国导航局
+            set_variable = {
+                which = io_setting_ina
+                value = event_target:io_setting_country.io_setting_ina
+            }
+            if = {
+                limit = { check_variable = { which = io_setting_ina value = 1 } }
+                pass_resolution_no_cooldown = resolution_emperor_ina
+            }
+            #星系贸易组织
+            set_variable = {
+                which = io_setting_gto
+                value = event_target:io_setting_country.io_setting_gto
+            }
+            if = {
+                limit = { check_variable = { which = io_setting_gto value = 1 } }
+                pass_resolution_no_cooldown = resolution_emperor_gto
+            }
+            
+            #MECR兼容部分
+            if = { #MECR帝国央行
+                limit = { check_variable = { which = io_setting_mecr_a value = 1 } }
+                pass_resolution_no_cooldown = resolution_commerce_buzzword_standardization
+                pass_resolution_no_cooldown = resolution_emperor_imperial_bank
+            }
+            if = { #帝国安全总局
+                limit = { check_variable = { which = start_f value = 1 } }
+                pass_resolution_no_cooldown = resolution_emperor_isd
+            }
+            if = { #MECR帝国科学院
+                limit = { check_variable = { which = io_setting_mecr_b value = 1 } }
+                give_technology = { tech = tech_global_research_initiative message = no }
+                pass_resolution_no_cooldown = resolution_galacticstudies_cooperative_research_channels
+                galactic_emperor = { set_country_flag = flag_debug_yes_i_have_a_think_tank }
+                pass_resolution_no_cooldown = resolution_emperor_imperial_academy_of_sciences
+            }
+            if = { #MECR帝国工程署
+                limit = { check_variable = { which = io_setting_mecr_c value = 1 } }
+                pass_resolution_no_cooldown = resolution_industry_regulatory_facilitation
+                galactic_emperor = { set_country_flag = flag_debug_yes_i_have_master_builders }
+                pass_resolution_no_cooldown = resolution_emperor_imperial_department_of_engineering
+            }
+            if = { #MECR帝国教育部
+                limit = { check_variable = { which = io_setting_mecr_d value = 1 } }
+                pass_resolution_no_cooldown = resolution_emperor_imperial_ministry_of_education
+            }
+            if = { #MECR帝国国防部
+                limit = { check_variable = { which = io_setting_mecr_e value = 1 } }
+                if = {
+                    limit = { NOT = { is_active_resolution = resolution_emperor_imperial_armada } }
+                    pass_resolution_no_cooldown = resolution_emperor_imperial_armada
+                }
+                galactic_emperor = { set_country_flag = flag_debug_yes_i_have_a_strategic_coordination_center }
+                pass_resolution_no_cooldown = resolution_emperor_imperial_ministry_of_defence
+            }
+        }
+        #执行起源效果
+        every_playable_country = {
+            limit = {
+                has_origin = origin_old_alliance
+            }
+            add_permanent_councillor = yes
+        }
+        every_playable_country = {
+            limit = {
+                has_origin = origin_monopoly_chaebol
+            }
+            pass_targeted_resolution = {
+                resolution = resolution_emperor_imperial_charter
+                target = this
+            }
+        }
+        #初始版图生成
+        if = {
+            limit = { check_variable = { which = io_setting_start_border value = 1 } }
+            every_playable_country = {
+                limit = { is_ai = yes }
+                country_event = { id = io_start_events.10 }
+            }
+        }
+        else_if = {
+            limit = { check_variable = { which = io_setting_start_border value = 2 } }
+            every_playable_country = {
+                country_event = { id = io_start_events.10 }
+            }
+        }
+    }
+}
+
+#开局设置（监管人）
+country_event = {
+    id = io_start_events.4
+    title = io_start_events.4.name
+    desc = io_start_events.4.desc
+    picture = GFX_evt_galactic_empire
+    is_triggered_only = yes
+
+    option = { #科技等级
+        name = {
+            text = io_start_events.2.t0
+            trigger = { check_variable = { which = io_setting_tech value = 0 } }
+        }
+        name = {
+            text = io_start_events.2.t1
+            trigger = { check_variable = { which = io_setting_tech value = 1 } }
+        }
+        name = {
+            text = io_start_events.2.t2
+            trigger = { check_variable = { which = io_setting_tech value = 2 } }
+        }
+        name = {
+            text = io_start_events.2.t3
+            trigger = { check_variable = { which = io_setting_tech value = 3 } }
+        }
+        name = {
+            text = io_start_events.2.t4
+            trigger = { check_variable = { which = io_setting_tech value = 4 } }
+        }
+        name = {
+            text = io_start_events.2.t5
+            trigger = { check_variable = { which = io_setting_tech value = 5 } }
+        }
+        name = {
+            text = io_start_events.2.all
+            trigger = { check_variable = { which = io_setting_tech value = 10 } }
+        }
+        hidden_effect = {
+            if = {
+                limit = { check_variable = { which = io_setting_tech value = 5 } }
+                set_variable = { which = io_setting_tech value = 10 }
+            }
+            else_if = {
+                limit = { check_variable = { which = io_setting_tech value = 10 } }
+                set_variable = { which = io_setting_tech value = 0 }
+            }
+            else = {
+                change_variable = { which = io_setting_tech value = 1 }
+            }
+            country_event = { id = io_start_events.2 }
+        }
+    }
+    ###TODO:监管人强度
+
+    option = { #泛星系防卫军
+        name = {
+            text = io_start_events.4.a1
+            trigger = { check_variable = { which = io_setting_ia value = 0 } }
+        }
+        name = {
+            text = io_start_events.4.a2
+            trigger = { check_variable = { which = io_setting_ia value = 1 } }
+        }
+        name = {
+            text = io_start_events.4.a3
+            trigger = { check_variable = { which = io_setting_ia value = 2 } }
+        }
+        hidden_effect = {
+            if = {
+                if = {
+                    limit = { check_variable = { which = io_setting_ia value = 2 } }
+                    set_variable = { which = io_setting_ia value = 0 }
+                }
+                else = {
+                    change_variable = { which = io_setting_ia value = 1 }
+                }
+            }
+            country_event = { id = io_start_events.2 }
+        }
+    }
+    option = { #泛星系贸易市场
+        name = {
+            text = io_start_events.2.b1
+            trigger = { check_variable = { which = io_setting_market value = 0 } }
+        }
+        name = {
+            text = io_start_events.2.b2
+            trigger = { check_variable = { which = io_setting_market value = 1 } }
+        }
+        name = {
+            text = io_start_events.4.b3
+            trigger = { check_variable = { which = io_setting_market value = 2 } }
+        }
+        hidden_effect = {
+            if = {
+                limit = {
+                    AND = {
+                        check_variable = { which = io_setting_market value = 2 }
+                    }
+                }
+                set_variable = { which = io_setting_market value = 0 }
+            }
+            else = {
+                change_variable = { which = io_setting_market value = 1 }
+            }
+            country_event = { id = io_start_events.2 }
+        }
+    }
+    option = { #星际导航局
+        name = {
+            text = io_start_events.4.c1
+            trigger = { check_variable = { which = io_setting_ina value = 0 } }
+        }
+        name = {
+            text = io_start_events.4.c2
+            trigger = { check_variable = { which = io_setting_ina value = 1 } }
+        }
+        hidden_effect = {
+            if = {
+                limit = { check_variable = { which = io_setting_ina value = 1 } }
+                set_variable = { which = io_setting_ina value = 0 }
+            }
+            else = {
+                change_variable = { which = io_setting_ina value = 1 }
+            }
+            country_event = { id = io_start_events.2 }
+        }
+    }
+    option = { #星系贸易组织
+        name = {
+            text = io_start_events.4.d1
+            trigger = { check_variable = { which = io_setting_gto value = 0 } }
+        }
+        name = {
+            text = io_start_events.4.d2
+            trigger = { check_variable = { which = io_setting_gto value = 1 } }
+        }
+        hidden_effect = {
+            if = {
+                limit = { check_variable = { which = io_setting_gto value = 1 } }
+                set_variable = { which = io_setting_gto value = 0 }
+            }
+            else = {
+                change_variable = { which = io_setting_gto value = 1 }
+            }
+            country_event = { id = io_start_events.2 }
+        }
+    }
+    option = { #星际刑警组织
+        name = {
+            text = io_start_events.4.e1
+            trigger = { check_variable = { which = io_setting_galpol value = 0 } }
+        }
+        name = {
+            text = io_start_events.4.e2
+            trigger = { check_variable = { which = io_setting_galpol value = 1 } }
+        }
+        hidden_effect = {
+            if = {
+                limit = { check_variable = { which = io_setting_isd value = 1 } }
+                set_variable = { which = io_setting_isd value = 0 }
+            }
+            else = {
+                change_variable = { which = io_setting_isd value = 1 }
+            }
+            country_event = { id = io_start_events.2 }
+        }
+    }
+
+    option = { #初始版图生成
+        name = {
+            text = io_start_events.2.h1
+            trigger = { check_variable = { which = io_setting_start_border value = 0 } }
+        }
+        name = {
+            text = io_start_events.2.h2
+            trigger = { check_variable = { which = io_setting_start_border value = 1 } }
+        }
+        name = {
+            text = io_start_events.2.h3
+            trigger = { check_variable = { which = io_setting_start_border value = 2 } }
+        }
+        hidden_effect = {
+            if = {
+                limit = { check_variable = { which = io_setting_start_border value = 0 } }
+                custom_tooltip = io_start_events.2.h3.tooltip
+                if = {
+                    limit = { is_galactic_emperor = yes }
+                    set_variable = { which = io_setting_start_border value = 2 }
+                }
+                else = {
+                    set_variable = { which = io_setting_start_border value = 1 }
+                }
+            }
+            else_if = {
+                limit = { check_variable = { which = io_setting_start_border value = 1 } }
+                set_variable = { which = io_setting_start_border value = 2 }
+            }
+            else_if = {
+                limit = { check_variable = { which = io_setting_start_border value = 2 } }
+                custom_tooltip = io_start_events.2.h3.tooltip
+                set_variable = { which = io_setting_start_border value = 0 }
+            }
+            country_event = { id = io_start_events.2 }
+        }
+    }
+    option = { #初始舰队生成
+        name = {
+            text = io_start_events.2.j1
+            trigger = { check_variable = { which = io_setting_start_fleet value = 0 } }
+        }
+        name = {
+            text = io_start_events.2.j2
+            trigger = { check_variable = { which = io_setting_start_fleet value = 1 } }
+        }
+        hidden_effect = {
+            if = {
+                limit = { check_variable = { which = io_setting_start_fleet value = 1 } }
+                set_variable = { which = io_setting_start_fleet value = 0 }
+            }
+            else = {
+                change_variable = { which = io_setting_start_fleet value = 1 }
+            }
+            country_event = { id = io_start_events.2 }
+        }
+    }
+    # option = { #初始边界扩张上限
+    #     name = {
+    #         text = io_start_events.2.expand
+    #         trigger = { check_variable = { which = io_setting_expand_max value < 9 } }
+    #     }
+    #     name = {
+    #         text = io_start_events.2.expand1
+    #         trigger = { check_variable = { which = io_setting_expand_max value = 10 } }
+    #     }
+    #     hidden_effect = {
+    #         if = {
+    #             limit = { check_variable = { which = io_setting_expand_max value = 10 } }
+    #             set_variable = { which = io_setting_expand_max value = 0 }
+    #         }
+    #         else = {
+    #             change_variable = { which = io_setting_expand_max value = 1 }
+    #         }
+    #         country_event = { id = io_start_events.2 }
+    #     }
+    # }
+
+    option = { #完成
+        name = io_start_events.2.z
+        country_event = {
+            id = io_start_events.3
+        }
+    }
+}
+
+#开局领土生成延迟
+country_event = {
+    id = io_start_events.10
+    hide_window = yes
+    is_triggered_only = yes
+
+    immediate = {
+        #划分领土
+        if = {
+            limit = {
+                is_ai = no
+            }
+            if = {
+                limit = {
+                    OR = {
+                        has_origin = origin_galactic_hegemon
+                    }
+                }
+                country_event = { id = io_start_events.100 }
+            }
+            else_if = {
+                limit = {
+                    OR = {
+                        has_origin = origin_galactic_custodian
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 8
+                }
+                country_event = { id = io_start_events.100 }
+            }
+            else_if = {
+                limit = {
+                    OR = {
+                        has_origin = origin_galactic_nemesis
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 8
+                }
+                country_event = { id = io_start_events.100 }
+            }
+            else_if = {
+                limit = {
+                    OR = {
+                        has_origin = origin_hegemon
+                        has_origin = origin_common_ground
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 6
+                }
+                country_event = { id = io_start_events.103 }
+            }
+            else_if = {
+                limit = {
+                    OR = {
+                        has_origin = origin_slavers
+                        has_origin = origin_old_alliance
+                        has_origin = origin_secondary_hegemon
+                        has_origin = origin_chosen_of_the_shroud
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 6
+                }
+                country_event = { id = io_start_events.100 }
+            }
+            else_if = {
+                limit = {
+                    OR = {
+                        has_origin = origin_imperial_vassal
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 1
+                }
+                country_event = { id = io_start_events.100 }
+            }
+            else_if = {
+                limit =  {
+                    OR = {
+                        has_origin = origin_internal_border
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 3
+                }
+                country_event = { id = io_start_events.100 }
+            }
+            else_if = {
+                limit = {
+                   OR = {
+                       has_origin = origin_void_dwellers
+                       has_origin = origin_void_machines
+                   }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 4
+                }
+                country_event = { id = io_start_events.101 }
+            }
+            else_if = {
+                limit = {
+                    has_origin = origin_shattered_ring
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 4
+                }
+                country_event = { id = io_start_events.102 }
+            }
+            else_if = {
+                limit = {
+                    OR = {
+                        has_civic = civic_outside_the_border
+                        has_civic = civic_fanatic_purifiers
+                        has_civic = civic_hive_devouring_swarm
+                        has_civic = civic_machine_terminator
+                        has_civic = civic_barbaric_despoilers
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 6
+                }
+                country_event = { id = io_start_events.100 }
+            }
+            else_if = {
+                limit = {
+                    NOR = {
+                        has_origin = origin_fear_of_the_dark
+                        has_origin = origin_unplugged
+                        is_low_tech_start = yes
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 4
+                }
+                country_event = { id = io_start_events.100 }
+            }
+        }
+        else_if = {
+            limit = {
+                OR = {
+                    has_origin = origin_galactic_hegemon
+                }
+            }
+            country_event = { id = io_start_events.100 }
+        }
+        else_if = {
+            limit = {
+                OR = {
+                    has_origin = origin_galactic_custodian
+                }
+            }
+            set_variable = {
+                which = io_setting_expand
+                value = 8
+            }
+            country_event = { id = io_start_events.100 }
+        }
+        else_if = {
+            limit = {
+                OR = {
+                    has_origin = origin_galactic_nemesis
+                    has_origin = origin_chosen_of_the_shroud
+                }
+            }
+            set_variable = {
+                which = io_setting_expand
+                value = 8
+            }
+            country_event = { id = io_start_events.100 }
+        }
+        else_if = {
+            limit = {
+                OR = {
+                    has_origin = origin_slavers
+                }
+            }
+            set_variable = {
+                which = io_setting_expand
+                value = 6
+            }
+            country_event = { id = io_start_events.100 }
+        }
+        else_if = {
+            limit = {
+                OR = {
+                    has_origin = origin_hegemon
+                    has_origin = origin_common_ground
+                }
+            }
+            set_variable = {
+                which = io_setting_expand
+                value = 6
+            }
+            country_event = { id = io_start_events.103 days = 1 }
+        }
+        else_if = {
+            limit = {
+                has_origin = origin_secondary_hegemon
+            }
+            set_variable = {
+                which = io_setting_expand
+                value = 6
+            }
+            country_event = { id = io_start_events.100 days = 1 }
+        }
+        else_if = {
+            limit =  {
+                OR = {
+                    has_origin = origin_imperial_vassal
+                }
+            }
+            set_variable = {
+                which = io_setting_expand
+                value = 1
+            }
+            country_event = { id = io_start_events.100 days = 1 }
+        }
+        else_if = {
+            limit =  {
+                OR = {
+                    has_origin = origin_imperial_vassal_overlord
+                }
+            }
+            set_variable = {
+                which = io_setting_expand
+                value = 7
+            }
+            country_event = { id = io_start_events.100 days = 2 }
+        }
+        else_if = {
+            limit =  {
+                OR = {
+                    has_origin = origin_internal_border
+                }
+            }
+            set_variable = {
+                which = io_setting_expand
+                value = 3
+            }
+            country_event = { id = io_start_events.100 days = 2 }
+        }
+        else_if = {
+            limit =  {
+                OR = {
+                    has_origin = origin_common_ground_npc
+                    has_origin = origin_hegemon_npc
+                }
+            }
+            set_variable = {
+                which = io_setting_expand
+                value = 4
+            }
+            country_event = { id = io_start_events.104 days = 2 }
+        }
+        else_if = {
+            limit =  { has_origin = origin_secondary_hemegon_vassal }
+            set_variable = {
+                which = io_setting_expand
+                value = 2
+            }
+            country_event = { id = io_start_events.100 days = 2 }
+        }
+        else_if = {
+            limit =  {
+                OR = {
+                    has_origin = origin_clone_guard
+                    has_origin = origin_monopoly_chaebol
+                    has_origin = origin_prospecting_machine
+                }
+            }
+            set_variable = {
+                which = io_setting_expand
+                value = 4
+            }
+            country_event = { id = io_start_events.100 days = 3 }
+        }
+        else_if = {
+            limit =  {
+                OR = {
+                    has_origin = origin_outside_the_border
+                }
+            }
+            set_variable = {
+                which = io_setting_expand
+                value = 6
+            }
+            country_event = { id = io_start_events.100 days = 3 }
+        }
+        else_if = {
+            limit = {
+                OR = {
+                    has_origin = origin_void_dwellers
+                    has_origin = origin_void_machines
+                }
+            }
+            set_variable = {
+                which = io_setting_expand
+                value = 4
+            }
+            country_event = { id = io_start_events.101 days = 3 }
+        }
+        else_if = {
+            limit = {
+                has_origin = origin_shattered_ring
+            }
+            set_variable = {
+                which = io_setting_expand
+                value = 4
+            }
+            country_event = { id = io_start_events.102 days = 3 }
+        }
+        else_if = {
+            limit =  {
+                OR = {
+                    has_civic = civic_outside_the_border
+                    has_civic = civic_fanatic_purifiers
+                    has_civic = civic_hive_devouring_swarm
+                    has_civic = civic_machine_terminator
+                    has_civic = civic_outside_the_border
+                    has_civic = civic_barbaric_despoilers
+                }
+            }
+            set_variable = {
+                which = io_setting_expand
+                value = 6
+            }
+            country_event = { id = io_start_events.100 days = 3 }
+        }
+        else_if = {
+            limit =  {
+                OR = {
+                    has_ai_personality = metalhead
+                    has_ai_personality = fanatic_befrienders
+                }
+            }
+            set_variable = {
+                which = io_setting_expand
+                value = 4
+            }
+            country_event = { id = io_start_events.100 days = 3 }
+        }
+        else_if = {
+            limit =  {
+                OR = {
+                    has_ai_personality = assimilators
+                    has_ai_personality = honorbound_warriors
+                    has_ai_personality = hive_mind
+                }
+            }
+            set_variable = {
+                which = io_setting_expand
+                value = 4
+            }
+            country_event = { id = io_start_events.100 days = 4 }
+        }
+        else_if = {
+            limit =  {
+                OR = {
+                    has_ai_personality = honorbound_warriors
+                    has_ai_personality = hive_mind_friend
+                    has_ai_personality = evangelising_zealots
+                }
+            }
+            set_variable = {
+                which = io_setting_expand
+                value = 4
+            }
+            country_event = { id = io_start_events.100 days = 5 }
+        }
+        else_if = {
+            limit =  {
+                OR = {
+                    has_ai_personality = democratic_crusaders
+                    has_ai_personality = machine_intelligence
+                    has_ai_personality = ruthless_capitalists
+                }
+            }
+            set_variable = {
+                which = io_setting_expand
+                value = 4
+            }
+            country_event = { id = io_start_events.100 days = 6 }
+        }
+        else_if = {
+            limit =  {
+                OR = {
+                    has_ai_personality = erudite_explorers
+                    has_ai_personality = federation_builders
+                    has_ai_personality = servitors
+                }
+            }
+            set_variable = {
+                which = io_setting_expand
+                value = 4
+            }
+            country_event = { id = io_start_events.100 days = 7 }
+        }
+        else_if = {
+            limit =  {
+                OR = {
+                    has_ai_personality = decadent_hierarchy
+                    has_ai_personality = harmonious_hierarchy
+                    has_ai_personality = xenophobic_isolationists
+                    has_ai_personality = peaceful_traders
+                }
+            }
+            set_variable = {
+                which = io_setting_expand
+                value = 4
+            }
+            country_event = { id = io_start_events.100 days = 8 }
+        }
+        else_if = {
+            limit =  {
+                OR = {
+                    has_ai_personality = spiritual_seekers
+                    has_ai_personality = migrating_flock
+                }
+            }
+            set_variable = {
+                which = io_setting_expand
+                value = 4
+            }
+            country_event = { id = io_start_events.100 days = 9 }
+        }
+        else_if = {
+            limit = {
+                NOR = {
+                    has_origin = origin_fear_of_the_dark
+                    has_origin = origin_unplugged
+                    is_low_tech_start = yes
+                }
+            }
+            set_variable = {
+                which = io_setting_expand
+                value = 4
+            }
+            country_event = { id = io_start_events.100 days = 10 }
+        }
+    }
+}
+
+#标准起源
+country_event = {
+    id = io_start_events.100
+
+    hide_window = yes
+
+    is_triggered_only = yes
+
+    trigger = {
+        NOR = {
+            has_origin = origin_void_dwellers
+            has_origin = origin_void_machines
+            has_origin = origin_fear_of_the_dark
+            has_origin = origin_unplugged
+            is_low_tech_start = yes
+        }
+    }
+
+    immediate = {
+        #给予资源
+        io_add_start_resources = yes
+        #母星设置
+        capital_scope = {
+            io_save_secondery_pop = yes
+            io_clear_planet = yes
+            clear_blockers = yes
+            if = {
+                limit = {
+                    owner = {
+                        has_country_flag = io_fe_emperor
+                    }
+                }
+                io_fe_planet_set = yes
+            }
+            else_if = {
+                limit = {
+                    owner = {
+                        is_galactic_emperor = yes
+                        NOT = {
+                            check_variable = {
+                                which = io_setting_empire
+                                value = 0
+                            }
+                        }
+                    }
+                }
+                io_districts_city_world = yes
+                io_building_captial = yes
+            }
+            else = {
+                io_districts_captial = yes
+                io_districts_placement = yes
+                io_building_captial = yes
+            }
+            if = {
+                limit = {
+                    owner = {
+                        has_origin = origin_clone_army
+                    }
+                }
+                io_set_planet_pop = {
+                    pop = 7500
+                }
+            }
+            else = {
+                io_fullize_planet_pop = yes
+            }
+            set_planet_flag = planet_intialized
+            solar_system = {
+                starbase = {
+                    io_upgrade_starbase_by_tech = yes
+                }
+            }
+        }
+        #高级AI殖民地设置
+        if = {
+            limit = {
+                has_country_flag = is_advanced_start_AI
+            }
+            every_owned_planet = {
+                limit = {
+                    is_capital = no
+                    NOT = {
+                        has_planet_flag = toxic_knights_habitat
+                    }
+                }
+                io_clear_planet = yes
+                io_districts_colony = yes
+                io_districts_placement = yes
+                io_building_colony = yes
+                set_planet_flag = planet_intialized
+            }
+        }
+        #电弧焊机/射向星际
+        if = {
+            limit = {
+                has_origin = origin_arc_welders
+            }
+            io_expand_border_arc = yes
+            set_country_flag = surveyed_welders_system
+            set_country_flag = second_furnace_built
+            give_technology = {
+                tech = tech_mega_engineering
+                message = yes
+            }
+            random_megastructure = {
+                limit = {
+                    is_megastructure_type = orbital_arc_furnace_1
+                }
+                upgrade_megastructure_to = orbital_arc_furnace_2
+                finish_upgrade = yes
+            }
+        }
+        else_if = {
+            limit = {
+                has_origin = origin_star_slingshot
+            }
+            io_expand_border_star = yes
+            give_technology = {
+                tech = tech_quantum_catapult
+            }
+        }
+        else = {
+            io_expand_border = yes
+        }
+        #帝皇巨构奖励
+        #默认：星际集会
+        if = {
+            limit = {
+                is_galactic_emperor = yes
+                check_variable = {
+                    which = io_setting_empire
+                    value >= 1
+                }
+            }
+            capital_scope = {
+                solar_system = {
+                    random_system_planet = {
+                        limit = {
+                            is_colonizable = no
+                            is_colony = no
+                        }
+                        save_event_target_as = loaction_planet
+                    }
+                    spawn_megastructure = {
+                        type = interstellar_assembly_4
+                        owner = root
+                        planet = event_target:location_planet
+                    }
+                }
+            }
+        }
+        #安泰或科学局：科研枢纽
+        if = {
+            limit = {
+                is_galactic_emperor = yes
+                OR = {
+                    check_variable = {
+                        which = io_setting_empire
+                        value >= 2
+                    }
+                    check_variable = {
+                        which = io_setting_mecr_e
+                        value = 1
+                    }
+                }
+            }
+            random_system_within_border = {
+                limit = {
+                    has_any_megastructure = no
+                }
+                random_system_planet = {
+                    limit = {
+                        is_colonizable = no
+                        is_colony = no
+                    }
+                    save_event_target_as = loaction_planet
+                }
+                spawn_megastructure = {
+                    type = think_tank_3
+                    owner = root
+                    planet = event_target:location_planet
+                }
+            }
+        }
+        #安泰或国防部：指挥中心
+        if = {
+            limit = {
+                is_galactic_emperor = yes
+                OR = {
+                    check_variable = {
+                        which = io_setting_empire
+                        value >= 2
+                    }
+                    check_variable = {
+                        which = io_setting_mecr_b
+                        value = 1
+                    }
+                }
+            }
+            random_system_within_border = {
+                limit = {
+                    has_any_megastructure = no
+                }
+                random_system_planet = {
+                    limit = {
+                        is_colonizable = no
+                        is_colony = no
+                    }
+                    save_event_target_as = loaction_planet
+                }
+                spawn_megastructure = {
+                    type = strategic_coordination_center_3
+                    owner = root
+                    planet = event_target:location_planet
+                }
+            }
+        }
+        #安泰或教育部：艺术设施
+        if = {
+            limit = {
+                is_galactic_emperor = yes
+                OR = {
+                    check_variable = {
+                        which = io_setting_empire
+                        value >= 2
+                    }
+                    check_variable = {
+                        which = io_setting_mecr_d
+                        value = 1
+                    }
+                }
+            }
+            random_system_within_border = {
+                limit = {
+                    has_any_megastructure = no
+                }
+                random_system_planet = {
+                    save_event_target_as = loaction_planet
+                }
+                spawn_megastructure = {
+                    type = mega_art_installation_4
+                    owner = root
+                    planet = event_target:location_planet
+                }
+            }
+        }
+        #鼎盛以上：戴森球
+        if = {
+            limit = {
+                is_galactic_emperor = yes
+                check_variable = {
+                    which = io_setting_empire
+                    value >= 3
+                }
+            }
+            random_system_within_border = {
+                limit = {
+                    has_any_megastructure = no
+                    NOR = {
+                        any_system_planet = {
+                            OR = {
+                                is_colonizable = yes
+                                is_colony = yes
+                            }
+                        }
+                        star = {
+                            OR = {
+                                is_planet_class = pc_black_hole
+                                is_planet_class = pc_neutron_star
+                                is_planet_class = pc_pulsar
+                                is_binary_star = yes
+                                is_trinary_star = yes
+                            }
+                        }
+                    }
+                }
+                spawn_megastructure = {
+                    type = dyson_sphere_5
+                    owner = root
+                }
+            }
+        }
+        #鼎盛以上：物质解压器
+        if = {
+            limit = {
+                is_galactic_emperor = yes
+                check_variable = {
+                    which = io_setting_empire
+                    value >= 3
+                }
+                any_system_within_border = {
+                    has_any_megastructure = no
+                    NOT = {
+                        any_system_planet = {
+                            OR = {
+                                is_colonizable = yes
+                                is_colony = yes
+                            }
+                        }
+                    }
+                    star = {
+                        is_planet_class = pc_black_hole
+                    }
+                }
+            }
+            random_system_within_border = {
+                limit = {
+                    has_any_megastructure = no
+                    NOT = {
+                        any_system_planet = {
+                            OR = {
+                                is_colonizable = yes
+                                is_colony = yes
+                            }
+                        }
+                    }
+                    star = {
+                        is_planet_class = pc_black_hole
+                    }
+                }
+                spawn_megastructure = {
+                    type = matter_decompressor_4
+                    owner = root
+                }
+            }
+        }
+        else_if = {
+            limit = {
+                is_galactic_emperor = yes
+                check_variable = {
+                    which = io_setting_empire
+                    value >= 3
+                }
+            }
+            random_system_within_border = {
+                limit = {
+                    has_any_megastructure = no
+                    NOR = {
+                        any_system_planet = {
+                            OR = {
+                                is_colonizable = yes
+                                is_colony = yes
+                            }
+                        }
+                        star = {
+                            OR = {
+                                is_planet_class = pc_neutron_star
+                                is_planet_class = pc_pulsar
+                                is_binary_star = yes
+                                is_trinary_star = yes
+                            }
+                        }
+                    }
+                }
+                star = {
+                    change_pc = pc_black_hole
+                }
+                spawn_megastructure = {
+                    type = matter_decompressor_4
+                    owner = root
+                }
+            }
+        }
+        #暂时不给哨兵阵列
+        #殖民固定星球
+        every_planet_within_border = {
+            limit = {
+                is_colonizable = yes
+                is_colony = no
+                has_planet_flag = prescripted_ideal
+                NOT = { has_modifier = holy_planet }
+            }
+            set_owner = root
+            remove_all_buildings = yes
+            if = {
+                limit = {
+                    owner = {
+                        has_country_flag = io_fe_emperor
+                    }
+                }
+                io_fe_planet_set = yes
+            }
+            else = {
+                io_districts_colony = yes
+                io_districts_placement = yes
+                io_building_colony = yes
+            }
+            if = {
+                limit = {
+                    owner = {
+                        has_origin = origin_clone_army
+                    }
+                }
+                io_set_planet_pop = {
+                    pop = 2500
+                }
+            }
+            else = {
+                io_fullize_planet_pop = yes
+            }
+        }
+        #殖民随机星球
+        if = {
+            limit = {
+                has_country_flag = io_fe_emperor
+            }
+            every_planet_within_border = {
+                limit = {
+                    is_colonizable = yes
+                    is_colony = no
+                    NOT = { has_modifier = holy_planet }
+                }
+                change_pc = pc_gaia
+                reroll_deposits = yes
+                set_owner = root
+                remove_all_buildings = yes
+                io_districts_fe_colony = yes
+                io_districts_placement = yes
+                io_building_fe_colony = yes
+                io_fullize_planet_pop = yes
+            }
+        }
+        if = {
+            limit = {
+                is_galactic_emperor = yes
+                event_target:io_setting_country = {
+                    check_variable = {
+                        which = io_setting_bonus_planet
+                        value = 1
+                    }
+                }
+            }
+            io_generate_energy_bonus_planet = yes
+            reroll_random = yes
+            io_generate_minerals_bonus_planet = yes
+            reroll_random = yes
+            if = {
+                limit = {
+                    has_valid_civic = civic_machine_servitor
+                }
+                io_generate_servitor_bonus_planet = yes
+            }
+            else_if = {
+                limit = {
+                    OR = {
+                        is_machine_empire = yes
+                        is_individual_machine = yes
+                    }
+                    NOT = {
+                        country_uses_food = yes
+                    }
+                }
+                io_generate_machine_bonus_planet = yes
+            }
+            else_if = {
+                limit = {
+                    country_uses_food = no
+                }
+                io_generate_lithoid_bonus_planet = yes
+            }
+            else = {
+                io_generate_food_bonus_planet = yes
+            }
+            reroll_random = yes
+        }
+        #建造站点
+        every_planet_within_border = {
+            limit = {
+                has_deposit_for = shipclass_mining_station
+                has_mining_station = no
+            }
+            create_mining_station = {
+                owner = ROOT
+            }
+        }
+        every_planet_within_border = {
+            limit = {
+                has_deposit_for = shipclass_research_station
+                has_research_station = no
+            }
+            create_research_station = {
+                owner = ROOT
+            }
+        }
+        country_event = {
+            id = io_start_events.200
+            days = 1
+        }
+    }
+}
+
+#虚空居者起源
+country_event = {
+    id = io_start_events.101
+
+    hide_window = yes
+
+    is_triggered_only = yes
+
+    trigger = {
+        OR = {
+            has_origin = origin_void_dwellers
+            has_origin = origin_void_machines
+        }
+    }
+
+    immediate = {
+        #给予资源和修正
+        io_add_start_modifiers = yes
+        io_add_start_resources = yes
+        #母星设置
+        capital_scope = {
+            io_save_secondery_pop = yes
+            io_clear_planet = yes
+            clear_blockers = yes
+            io_districts_hab_captial = yes
+            io_building_captial_hab = yes
+            io_fullize_planet_pop = yes
+            set_planet_flag = planet_intialized
+            solar_system = {
+                starbase = {
+                    io_upgrade_starbase_by_tech = yes
+                }
+            }
+        }
+        #扩张边界
+        if = {
+            limit = {
+                check_variable = {
+                    which = io_setting_expand
+                    value > event_target:io_setting_country.io_setting_expand
+                }
+            }
+            set_variable = {
+                which = io_setting_expand
+                value = event_target:io_setting_country.io_setting_expand
+            }
+        }
+        io_expand_border = yes
+        #生成居住站
+        every_system_within_border = {
+            limit = {
+                OR = {
+                    has_star_flag = ideal_habitat_t1
+                    has_star_flag = ideal_habitat_t2
+                }
+            }
+            spawn_planet = {
+                class = pc_habitat
+                generate_random_name = yes
+                location = this
+                orbit_location = yes
+                orbit_distance_offset = 10
+                orbit_angle_offset = 5
+                init_effect = {
+                    set_planet_flag = habitat
+                    set_planet_flag = habitat_level_1
+                    set_planet_entity = {
+                        entity = "habitat_phase_03_entity"
+                        graphical_culture = root
+                    }
+                    set_planet_flag = habitat_to_colonize
+                }
+            }
+        }
+        #殖民
+        every_planet_within_border = {
+            limit = {
+                is_colonizable = yes
+                is_colony = no
+                has_planet_flag = habitat_to_colonize
+            }
+            set_owner = root
+            remove_all_buildings = yes
+            io_districts_colony = yes
+            io_districts_placement = yes
+            io_building_colony = yes
+            io_fullize_planet_pop = yes
+            remove_planet_flag = habitat_to_colonize
+        }
+        every_planet_within_border = {
+            limit = {
+                has_planet_flag = prescripted_ideal
+            }
+            save_event_target_as = habitat_new_planet
+            solar_system = {
+                spawn_orbital_effect = {
+                    TYPE = major
+                    HABITAT_OWNER = root
+                    TARGET_PLANET = event_target:habitat_new_planet
+                }
+            }
+        }
+        #建造站点
+        every_planet_within_border = {
+            limit = {
+                has_deposit_for = shipclass_mining_station
+                has_mining_station = no
+            }
+            create_mining_station = {
+                owner = ROOT
+            }
+        }
+        every_planet_within_border = {
+            limit = {
+                has_deposit_for = shipclass_research_station
+                has_research_station = no
+            }
+            create_research_station = {
+                owner = ROOT
+            }
+        }
+        country_event = {
+            id = io_start_events.200
+            days = 1
+        }
+    }
+}
+
+#破碎之环起源
+country_event = {
+    id = io_start_events.102
+
+    hide_window = yes
+
+    is_triggered_only = yes
+
+    trigger = {
+        OR = {
+            has_origin = origin_shattered_ring
+        }
+    }
+
+    immediate = {
+        #给予资源和修正
+        io_add_start_modifiers = yes
+        io_add_start_resources = yes
+        #母星设置
+        capital_scope = {
+            io_save_secondery_pop = yes
+            io_clear_planet = yes
+            clear_blockers = yes
+            io_districts_captial = yes
+            io_districts_placement = yes
+            io_building_captial = yes
+            set_planet_flag = planet_intialized
+            solar_system = {
+                starbase = {
+                    io_upgrade_starbase_by_tech = yes
+                }
+            }
+        }
+        #扩张边界
+        if = {
+            limit = {
+                check_variable = {
+                    which = io_setting_expand
+                    value > event_target:io_setting_country.io_setting_expand
+                }
+            }
+            set_variable = {
+                which = io_setting_expand
+                value = event_target:io_setting_country.io_setting_expand
+            }
+        }
+        io_expand_border = yes
+        #高级AI殖民地设置
+        if = {
+            limit = {
+                has_country_flag = is_advanced_start_AI
+            }
+            every_owned_planet = {
+                limit = {
+                    is_capital = no
+                    NOT = {
+                        has_planet_flag = toxic_knights_habitat
+                    }
+                }
+                io_clear_planet = yes
+                io_districts_colony = yes
+                io_districts_placement = yes
+                io_building_colony = yes
+                set_planet_flag = planet_intialized
+            }
+        }
+        #扩张边界
+        if = {
+            limit = {
+                check_variable = {
+                    which = io_setting_expand
+                    value > event_target:io_setting_country.io_setting_expand
+                }
+            }
+            set_variable = {
+                which = io_setting_expand
+                value = event_target:io_setting_country.io_setting_expand
+            }
+        }
+        io_expand_border = yes
+        #殖民
+        every_planet_within_border = {
+            limit = {
+                is_colonizable = yes
+                is_colony = no
+                is_planet_class = pc_shattered_ring_habitable
+            }
+            set_owner = root
+            clear_blockers = yes
+            remove_all_buildings = yes
+            io_districts_colony = yes
+            io_districts_placement = yes
+            io_building_colony = yes
+            io_fullize_planet_pop = yes
+        }
+        #建造站点
+        every_planet_within_border = {
+            limit = {
+                has_deposit_for = shipclass_mining_station
+                has_mining_station = no
+            }
+            create_mining_station = {
+                owner = ROOT
+            }
+        }
+        every_planet_within_border = {
+            limit = {
+                has_deposit_for = shipclass_research_station
+                has_research_station = no
+            }
+            create_research_station = {
+                owner = ROOT
+            }
+        }
+        country_event = {
+            id = io_start_events.200
+            days = 1
+        }
+    }
+}
+
+#联邦起源
+country_event = {
+    id = io_start_events.103
+
+    hide_window = yes
+
+    is_triggered_only = yes
+
+    trigger = {
+        NOR = {
+            has_origin = origin_void_dwellers
+            has_origin = origin_void_machines
+            has_origin = origin_fear_of_the_dark
+            has_origin = origin_unplugged
+            is_low_tech_start = yes
+        }
+    }
+
+    immediate = {
+        #给予资源和修正
+        io_add_start_modifiers = yes
+        io_add_start_resources = yes
+        #母星设置
+        capital_scope = {
+            io_save_secondery_pop = yes
+            io_clear_planet = yes
+            clear_blockers = yes
+            io_districts_captial = yes
+            io_districts_placement = yes
+            io_building_captial = yes
+            io_fullize_planet_pop = yes
+            set_planet_flag = planet_intialized
+            solar_system = {
+                starbase = {
+                    io_upgrade_starbase_by_tech = yes
+                }
+            }
+        }
+        #高级AI殖民地设置
+        if = {
+            limit = {
+                has_country_flag = is_advanced_start_AI
+            }
+            every_owned_planet = {
+                limit = {
+                    is_capital = no
+                    NOT = {
+                        has_planet_flag = toxic_knights_habitat
+                    }
+                }
+                io_clear_planet = yes
+                io_districts_colony = yes
+                io_districts_placement = yes
+                io_building_colony = yes
+                set_planet_flag = planet_intialized
+            }
+        }
+        #转移联邦盟友
+        while = {
+            count = 2
+            random_playable_country = {
+                limit = {
+                    is_in_federation_with = root
+                    is_federation_leader = no
+                    NOR = {
+                        has_country_flag = io_member_country_1
+                        has_country_flag = io_member_country_2
+                    }
+                }
+                capital_scope = {
+                    if = {
+                        limit = {
+                            root = {
+                                NOT = {
+                                    has_country_flag = io_member_country_1_saved
+                                }
+                            }
+                        }
+                        save_event_target_as = io_old_captial_1
+                        set_planet_flag = io_old_captial
+                        owner = { set_country_flag = io_member_country_1 }
+                        root = { set_country_flag = io_member_country_1_saved }
+                    }
+                    else = {
+                        save_event_target_as = io_old_captial_2
+                        set_planet_flag = io_old_captial
+                        owner = { set_country_flag = io_member_country_2 }
+                    }
+                    closest_system = {
+                        min_steps = 8
+                        max_steps = 16
+                        limit = {
+                            count_neighbor_system = {
+                                count >= 2
+                            }
+                            any_system_planet = {
+                                OR = {
+                                    is_ringworld = no
+                                    is_asteroid = no
+                                    is_star = no
+                                    is_moon = no
+                                    is_colonizable = no
+                                    NOT = { is_planet_class = pc_gas_giant }
+                                }
+                            }
+                            NOR = {
+                                has_owner = yes
+                                has_star_flag = empire_home_system
+                                has_star_flag = empire_cluster
+                                has_star_flag = hostile_system
+                            }
+                            NOT = {
+                                any_neighbor_system = {
+                                    OR = {
+                                        has_owner = yes
+                                        has_star_flag = empire_home_system
+                                        has_star_flag = empire_cluster
+                                        has_star_flag = hostile_system
+                                    }
+                                }
+                            }
+                        }
+                        create_starbase = {
+                            size = starbase_starport
+                            owner = prevprev
+                            module = shipyard
+                            module = shipyard
+                            building = crew_quarters
+                        }
+                        set_star_flag = empire_home_system
+                        set_star_flag = empire_cluster
+                        every_neighbor_system = {
+                            set_star_flag = empire_cluster
+                            every_neighbor_system = {
+                                set_star_flag = empire_cluster
+                            }
+                        }
+                        random_system_planet = {
+                            limit = {
+                                is_ringworld = no
+                                is_asteroid = no
+                                is_star = no
+                                is_moon = no
+                                is_colonizable = no
+                                NOT = { is_planet_class = pc_gas_giant }
+                            }
+                            random_list = {
+                                20 = { set_planet_size = 18 }
+                                20 = { set_planet_size = 19 }
+                                20 = { set_planet_size = 20 }
+                                20 = { set_planet_size = 21 }
+                                20 = { set_planet_size = 22 }
+                            }
+                            change_pc = prevprevprev.species
+                            set_owner = prevprevprev
+                            generate_start_deposits_and_blockers = yes
+                            generate_start_buildings_and_districts = yes
+                            generate_start_pops = yes
+                            generate_home_planet_final_pass = yes
+                            set_capital = yes
+                            owner_main_species = {
+                                set_species_homeworld = prev
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        event_target:io_old_captial_1 = {
+            solar_system = {
+                starbase = {
+                    set_owner = root
+                }
+            }
+            set_owner = root
+            io_fullize_planet_pop = yes
+        }
+        event_target:io_old_captial_2 = {
+            solar_system = {
+                starbase = {
+                    set_owner = root
+                }
+            }
+            set_owner = root
+            io_fullize_planet_pop = yes
+        }
+        federation = {
+            add_federation_experience = 6000
+            set_federation_law = centralization_medium
+            set_federation_law = vote_weight_diplomatic
+            if = { limit = { NOT = { has_federation_type = hegemony_federation } }
+                set_federation_law = fleet_contribution_medium
+                set_federation_law = declare_war_majority_vote
+                set_federation_law = invite_members_majority_vote
+            }
+            else = {
+                set_federation_law = fleet_contribution_medium_hegemony
+            }
+            set_federation_law = free_migration_yes
+            add_cohesion = 1000
+        }
+        #扩张边界
+        if = {
+            limit = {
+                check_variable = {
+                    which = io_setting_expand
+                    value > event_target:io_setting_country.io_setting_expand
+                }
+            }
+            set_variable = {
+                which = io_setting_expand
+                value = event_target:io_setting_country.io_setting_expand
+            }
+        }
+        io_expand_border_federation = yes
+        #殖民
+        every_planet_within_border = {
+            limit = {
+                is_colonizable = yes
+                is_colony = no
+                has_planet_flag = prescripted_ideal
+                NOT = { has_modifier = holy_planet }
+            }
+            set_owner = root
+            remove_all_buildings = yes
+            io_districts_colony = yes
+            io_districts_placement = yes
+            io_building_colony = yes
+            io_fullize_planet_pop = yes
+        }
+        #建造站点
+        every_planet_within_border = {
+            limit = {
+                has_deposit_for = shipclass_mining_station
+                has_mining_station = no
+            }
+            create_mining_station = {
+                owner = ROOT
+            }
+        }
+        every_planet_within_border = {
+            limit = {
+                has_deposit_for = shipclass_research_station
+                has_research_station = no
+            }
+            create_research_station = {
+                owner = ROOT
+            }
+        }
+        country_event = {
+            id = io_start_events.200
+            days = 1
+        }
+    }
+}
+
+#联邦起源NPC
+country_event = {
+    id = io_start_events.104
+
+    hide_window = yes
+
+    is_triggered_only = yes
+
+    trigger = {
+        NOR = {
+            has_origin = origin_void_dwellers
+            has_origin = origin_void_machines
+            has_origin = origin_fear_of_the_dark
+            has_origin = origin_unplugged
+            is_low_tech_start = yes
+        }
+    }
+
+    immediate = {
+        #给予资源和修正
+        io_add_start_modifiers = yes
+        io_add_start_resources = yes
+        #母星设置
+        capital_scope = {
+            io_save_secondery_pop = yes
+            io_clear_planet = yes
+            clear_blockers = yes
+            io_districts_captial = yes
+            io_districts_placement = yes
+            io_building_captial = yes
+            io_fullize_planet_pop = yes
+            set_planet_flag = planet_intialized
+            solar_system = {
+                starbase = {
+                    io_upgrade_starbase_by_tech = yes
+                }
+            }
+        }
+        #扩张边界
+        if = {
+            limit = {
+                check_variable = {
+                    which = io_setting_expand
+                    value > event_target:io_setting_country.io_setting_expand
+                }
+            }
+            set_variable = {
+                which = io_setting_expand
+                value = event_target:io_setting_country.io_setting_expand
+            }
+        }
+        io_expand_border_federation_npc = yes
+        #建造站点
+        every_planet_within_border = {
+            limit = {
+                has_deposit_for = shipclass_mining_station
+                has_mining_station = no
+            }
+            create_mining_station = {
+                owner = ROOT
+            }
+        }
+        every_planet_within_border = {
+            limit = {
+                has_deposit_for = shipclass_research_station
+                has_research_station = no
+            }
+            create_research_station = {
+                owner = ROOT
+            }
+        }
+        country_event = {
+            id = io_start_events.200
+            days = 1
+        }
+    }
+}
+
+#生成舰队
+country_event = {
+    id = io_start_events.200
+
+    hide_window = yes
+
+    is_triggered_only = yes
+
+    immediate = {
+        #添加恒星基地
+        export_trigger_value_to_variable = {
+            trigger = max_starbase_capacity
+            variable = starbase_to_add
+        }
+        subtract_variable = {
+            which = starbase_to_add
+            value = 1
+        }
+        while = {
+            count = starbase_to_add
+            io_upgrade_starbase = yes
+        }
+        #移除一开始的舰队
+        every_owned_fleet = {
+            limit = { is_ship_class = shipclass_military }
+            leader = {
+                unassign_leader = this
+            }
+            delete_fleet = this
+        }
+        if = {
+            limit = {
+                event_target:io_setting_country = {
+                    check_variable = { which = io_setting_start_fleet value = 1 }
+                }
+            }
+            #生成舰队
+            if = {
+                limit = {
+                    is_galactic_emperor = yes
+                    check_variable = {
+                        which = io_setting_ia
+                        value = 1
+                    }
+                }
+                io_create_community_fleet = yes
+            }
+            if = {
+                limit = {
+                    is_galactic_emperor = yes
+                    check_variable = {
+                        which = io_setting_ia
+                        value = 2
+                    }
+                }
+                io_create_community_fleet = yes
+                io_create_community_fleet = yes
+            }
+            if = {
+                limit = {
+                    is_galactic_emperor = yes
+                    check_variable = {
+                        which = io_setting_ia
+                        value = 10
+                    }
+                }
+                io_create_community_battleship_fleet = yes
+                io_create_community_battleship_fleet = yes
+            }
+            if = {
+                limit = {
+                    is_galactic_emperor = yes
+                    check_variable = {
+                        which = io_setting_ia
+                        value = 20
+                    }
+                }
+                io_create_community_battleship_fleet = yes
+                io_create_community_battleship_fleet = yes
+                io_create_fe_emperor_fleet = yes
+                io_create_fe_emperor_fleet = yes
+                io_create_fe_emperor_fleet = yes
+                io_create_fe_emperor_fleet = yes
+            }
+            if = {
+                limit = {
+                    is_galactic_emperor = yes
+                    check_variable = {
+                        which = io_setting_ia
+                        value = 30
+                    }
+                }
+                io_create_community_fleet = yes
+                io_create_community_fleet = yes
+                io_create_fe_emperor_fleet = yes
+                io_create_fe_emperor_fleet = yes
+                io_create_fe_emperor_fleet = yes
+                io_create_fe_emperor_fleet = yes
+            }
+            if = {
+                limit = {
+                    is_federation_leader = yes
+                }
+                create_fleet_from_naval_cap = { fraction = 1 ship_owner_type = federation }
+            }
+            if = {
+                limit = {
+                    has_technology = tech_titans
+                }
+                create_fleet = {
+                    effect = {
+                        set_owner = root
+                        create_ship = {
+                            name = random
+                            random_existing_design = titan
+                        }
+                        set_location = root.capital_scope
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    has_technology = tech_juggernaut
+                    OR = {
+                        is_galactic_emperor = yes
+                        is_federation_leader = yes
+                    }
+                }
+                create_fleet = {
+                    effect = {
+                        set_owner = root
+                        create_ship = {
+                            name = random
+                            random_existing_design = juggernaut
+                        }
+                        set_location = root.capital_scope
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    is_ai = yes
+                    is_unfriendly = yes
+                }
+                create_fleet_from_naval_cap = 0.4
+                create_fleet_from_naval_cap = 0.3
+                create_fleet_from_naval_cap = 0.1
+            }
+            else = {
+                create_fleet_from_naval_cap = 0.1
+                create_fleet_from_naval_cap = 0.1
+                create_fleet_from_naval_cap = 0.1
+            }
+        }
+    }
+}
+

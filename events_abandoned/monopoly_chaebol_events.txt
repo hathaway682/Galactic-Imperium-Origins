@@ -1,0 +1,134 @@
+############################
+#
+# Clone Army Origin Events
+#
+############################
+
+namespace = io_chaebol
+
+# 初始化贸易垄断
+country_event = {
+	id = io_chaebol.1
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_monopoly_chaebol
+	}
+
+	immediate = {
+		set_variable = {
+			which = monopoly_value
+			value = 0
+		}
+		set_variable = {
+			which = imperium_value
+			value = 0
+		}
+		every_playable_country = {
+			limit = {
+				is_galactic_community_member = yes
+				is_galactic_emperor = no
+				NOT = { is_same_value = root }
+			}
+			every_system_within_border = {
+				root = {
+					change_variable = {
+						which = imperium_value
+						value = prev.trigger:has_system_trade_value
+					}
+				}
+			}
+		}
+	}
+}
+
+# 月结算贸易垄断
+country_event = {
+	id = io_chaebol.2
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_monopoly_chaebol
+	}
+
+	immediate = {
+		remove_modifier = trade_monopoly
+		set_variable = {
+			which = monopoly_value
+			value = 0
+		}
+		set_variable = {
+			which = imperium_value
+			value = 0
+		}
+		every_playable_country = {
+			limit = {
+				is_galactic_community_member = yes
+				is_galactic_emperor = no
+				NOT = { is_same_value = root }
+			}
+			every_system_within_border = {
+				root = {
+					change_variable = {
+						which = imperium_value
+						value = prev.trigger:has_system_trade_value
+					}
+				}
+				if = {
+					limit = {
+						any_system_planet = {
+							branch_office_owner = {
+								is_same_value = root
+							}
+						}
+					}
+					root = {
+						change_variable = {
+							which = monopoly_value
+							value = prev.trigger:has_system_trade_value
+						}
+					}
+				}
+			}
+		}
+		set_variable = {
+			which = monopoly_percent
+			value = monopoly_value
+		}
+		divide_variable = {
+			which = monopoly_percent
+			value = imperium_value
+		}
+		add_modifier = {
+			modifier = trade_monopoly
+			multiplier = monopoly_percent
+		}
+	}
+}
+
+#替换起源
+# Give techs
+country_event = {
+	id = io_chaebol.3
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_monopoly_chaebol
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				NOT = {
+					any_country = {
+						has_origin = origin_galactic_hegemon
+					}
+				}
+			}
+			set_origin = origin_default
+		}
+	}
+}

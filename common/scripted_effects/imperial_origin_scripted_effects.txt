@@ -1,0 +1,5593 @@
+io_become_emperor = {
+    set_galactic_emperor = yes
+    save_global_event_target_as = gal_emperor
+    set_country_flag = original_emperor
+    random_country = {
+        limit = { is_country_type = global_event }
+        change_variable = {
+            which = galactic_empires
+            value = 1
+        }
+    }
+    store_galactic_community_leader_backup_data = {
+        FLAG = yes
+        ROOM = yes
+        NAME = yes
+        ETHICS = yes
+        GOVERNMENT = yes
+    }
+    if = {
+        limit = {
+            is_country_type = awakened_fallen_empire
+        }
+        set_name = random
+        room_name_override = ""
+        change_country_flag = {
+            icon = {
+                category = "special"
+                file = "hive_fe_flag_restored.dds"
+            }
+            background= {
+                category = "backgrounds"
+                file = "00_solid.dds"
+            }
+            colors={
+                "red"
+                "red"
+                "null"
+                "null"
+            }
+        }
+    }
+    room_name_override = ""
+    if = {
+        limit = {
+            is_gestalt = no
+            is_megacorp = no
+        }
+        if = {
+            limit = {
+                has_origin = origin_legendary_leader_dictatorial
+            }
+            change_government = {
+                authority = auth_imperial
+                cooldown = no
+                remove_invalid_civics = yes
+            }
+            set_origin = origin_legendary_leader_imperial
+        }
+        #shift_ethic = "ethic_fanatic_authoritarian"
+        # change_government = {
+        #     authority = auth_imperial
+        #     cooldown = no
+        #     remove_invalid_civics = yes
+        # }
+        force_add_civic = civic_galactic_sovereign
+    }
+    else_if = {
+        limit = { is_gestalt = yes }
+        force_add_civic = civic_galactic_sovereign
+    }
+    else_if = {
+        limit = { is_megacorp = yes }
+        #shift_ethic = "ethic_fanatic_authoritarian"
+        force_add_civic = civic_galactic_sovereign_megacorp
+        # change_government = {
+        #     authority = auth_imperial
+        #     cooldown = no
+        #     remove_invalid_civics = yes
+        # }
+    }
+    set_government_cooldown = no
+    pass_resolution_no_cooldown = resolution_emperor_restore_council
+    pass_resolution_no_cooldown = resolution_emperor_by_election
+    pass_resolution_no_cooldown = resolution_council_denouncement
+}
+
+io_create_tech_dummy = {
+    create_country = {
+        name = "Tech Dummy 1"
+        type = io_tech_dummy_1_rare
+        flag = {
+            icon = {
+                category = "special"
+                file = "the_shroud.dds"
+            }
+            background= {
+                category = "backgrounds"
+                file = "00_solid.dds"
+            }
+            colors={
+                "black"
+                "black"
+                "null"
+                "null"
+            }
+        }
+        effect = {
+            save_global_event_target_as = io_t1_dummy_country
+        }
+    }
+    create_country = {
+        name = "Tech Dummy 2"
+        type = io_tech_dummy_2_rare
+        flag = {
+            icon = {
+                category = "special"
+                file = "the_shroud.dds"
+            }
+            background= {
+                category = "backgrounds"
+                file = "00_solid.dds"
+            }
+            colors={
+                "black"
+                "black"
+                "null"
+                "null"
+            }
+        }
+        effect = {
+            save_global_event_target_as = io_t2_dummy_country
+        }
+    }
+    create_country = {
+        name = "Tech Dummy 3"
+        type = io_tech_dummy_3_rare
+        flag = {
+            icon = {
+                category = "special"
+                file = "the_shroud.dds"
+            }
+            background= {
+                category = "backgrounds"
+                file = "00_solid.dds"
+            }
+            colors={
+                "black"
+                "black"
+                "null"
+                "null"
+            }
+        }
+        effect = {
+            save_global_event_target_as = io_t3_dummy_country
+        }
+    }
+    create_country = {
+        name = "Tech Dummy 4"
+        type = io_tech_dummy_4_rare
+        flag = {
+            icon = {
+                category = "special"
+                file = "the_shroud.dds"
+            }
+            background= {
+                category = "backgrounds"
+                file = "00_solid.dds"
+            }
+            colors={
+                "black"
+                "black"
+                "null"
+                "null"
+            }
+        }
+        effect = {
+            save_global_event_target_as = io_t4_dummy_country
+        }
+    }
+    create_country = {
+        name = "Tech Dummy 5"
+        type = io_tech_dummy_5_rare
+        flag = {
+            icon = {
+                category = "special"
+                file = "the_shroud.dds"
+            }
+            background= {
+                category = "backgrounds"
+                file = "00_solid.dds"
+            }
+            colors={
+                "black"
+                "black"
+                "null"
+                "null"
+            }
+        }
+        effect = {
+            save_global_event_target_as = io_t5_dummy_country
+        }
+    }
+    create_country = {
+        name = "Tech Dummy All"
+        type = io_tech_dummy_all
+        flag = {
+            icon = {
+                category = "special"
+                file = "the_shroud.dds"
+            }
+            background= {
+                category = "backgrounds"
+                file = "00_solid.dds"
+            }
+            colors={
+                "black"
+                "black"
+                "null"
+                "null"
+            }
+        }
+        effect = {
+            save_global_event_target_as = io_all_tech_dummy_country
+        }
+    }
+}
+
+io_give_extra_t1 = {
+    #t1
+    give_technology = { tech = tech_automated_exploration message = no }
+    give_technology = { tech = tech_alien_life_studies message = no }
+    io_give_tech_tier_1_effect = yes
+}
+
+io_give_extra_t2 = {
+    #t1
+    give_technology = { tech = tech_automated_exploration message = no }
+    give_technology = { tech = tech_alien_life_studies message = no }
+    io_give_tech_tier_1_effect = yes
+    #t2
+    give_technology = { tech = tech_mine_betharian message = no }
+    give_technology = { tech = tech_mine_volatile_motes message = no }
+    give_technology = { tech = tech_mine_exotic_gases message = no }
+    give_technology = { tech = tech_mine_rare_crystals message = no }
+    give_technology = { tech = tech_astral_harvesting message = no }
+    give_technology = { tech = tech_epigenetic_triggers message = no }
+    give_technology = { tech = tech_colonial_bureaucracy message = no }
+    io_give_tech_tier_2_effect = yes
+}
+
+io_give_extra_t3 = {
+    #t1
+    give_technology = { tech = tech_automated_exploration message = no }
+    give_technology = { tech = tech_alien_life_studies message = no }
+    io_give_tech_tier_1_effect = yes
+    #t2
+    give_technology = { tech = tech_mine_betharian message = no }
+    give_technology = { tech = tech_mine_volatile_motes message = no }
+    give_technology = { tech = tech_mine_exotic_gases message = no }
+    give_technology = { tech = tech_mine_rare_crystals message = no }
+    give_technology = { tech = tech_astral_harvesting message = no }
+    give_technology = { tech = tech_epigenetic_triggers message = no }
+    give_technology = { tech = tech_colonial_bureaucracy message = no }
+    io_give_tech_tier_2_effect = yes
+    #t3
+    give_technology = { tech = tech_wormhole_stabilization message = no }
+    give_technology = { tech = tech_mine_zro message = no }
+    give_technology = { tech = tech_mine_dark_matter message = no }
+    give_technology = { tech = tech_galactic_bureaucracy message = no }
+}
+
+io_give_extra_t4 = {
+    #t1
+    give_technology = { tech = tech_automated_exploration message = no }
+    give_technology = { tech = tech_alien_life_studies message = no }
+    io_give_tech_tier_1_effect = yes
+    #t2
+    give_technology = { tech = tech_mine_betharian message = no }
+    give_technology = { tech = tech_mine_volatile_motes message = no }
+    give_technology = { tech = tech_mine_exotic_gases message = no }
+    give_technology = { tech = tech_mine_rare_crystals message = no }
+    give_technology = { tech = tech_astral_harvesting message = no }
+    give_technology = { tech = tech_epigenetic_triggers message = no }
+    give_technology = { tech = tech_colonial_bureaucracy message = no }
+    io_give_tech_tier_2_effect = yes
+    #t3
+    give_technology = { tech = tech_wormhole_stabilization message = no }
+    give_technology = { tech = tech_mine_zro message = no }
+    give_technology = { tech = tech_mine_dark_matter message = no }
+    give_technology = { tech = tech_galactic_bureaucracy message = no }
+    #t4
+    give_technology = { tech = tech_gateway_activation message = no }
+    give_technology = { tech = tech_habitat_2 message = no }
+    give_technology = { tech = tech_habitat_3 message = no }
+    give_technology = { tech = tech_mass_accelerator_1 message = no }
+    give_technology = { tech = tech_mass_accelerator_2 message = no }
+    give_technology = { tech = tech_energy_lance_1 message = no }
+    give_technology = { tech = tech_energy_lance_2 message = no }
+    give_technology = { tech = tech_arc_emitter_1 message = no }
+    give_technology = { tech = tech_arc_emitter_2 message = no }
+}
+
+io_give_extra_t5 = {
+    #t1
+    give_technology = { tech = tech_automated_exploration message = no }
+    give_technology = { tech = tech_alien_life_studies message = no }
+    io_give_tech_tier_1_effect = yes
+    #t2
+    give_technology = { tech = tech_mine_betharian message = no }
+    give_technology = { tech = tech_mine_volatile_motes message = no }
+    give_technology = { tech = tech_mine_exotic_gases message = no }
+    give_technology = { tech = tech_mine_rare_crystals message = no }
+    give_technology = { tech = tech_astral_harvesting message = no }
+    give_technology = { tech = tech_epigenetic_triggers message = no }
+    give_technology = { tech = tech_colonial_bureaucracy message = no }
+    io_give_tech_tier_2_effect = yes
+    #t3
+    give_technology = { tech = tech_wormhole_stabilization message = no }
+    give_technology = { tech = tech_mine_zro message = no }
+    give_technology = { tech = tech_mine_dark_matter message = no }
+    give_technology = { tech = tech_galactic_bureaucracy message = no }
+    #t4
+    give_technology = { tech = tech_gateway_activation message = no }
+    give_technology = { tech = tech_habitat_2 message = no }
+    give_technology = { tech = tech_habitat_3 message = no }
+    give_technology = { tech = tech_mass_accelerator_1 message = no }
+    give_technology = { tech = tech_mass_accelerator_2 message = no }
+    give_technology = { tech = tech_energy_lance_1 message = no }
+    give_technology = { tech = tech_energy_lance_2 message = no }
+    give_technology = { tech = tech_arc_emitter_1 message = no }
+    give_technology = { tech = tech_arc_emitter_2 message = no }
+    #t5
+    give_technology = { tech = tech_gateway_construction message = no }
+    give_technology = { tech = tech_mine_living_metal message = no }
+}
+
+io_give_tech_tier_1_effect = {
+    give_technology = { tech = tech_basic_science_lab_2 message = no }
+    give_technology = { tech = tech_space_science_1 message = no }
+    give_technology = { tech = tech_space_science_2 message = no }
+    give_technology = { tech = tech_administrative_ai message = no }
+    give_technology = { tech = tech_cryostasis_1 message = no }
+    give_technology = { tech = tech_automated_exploration message = no }
+    give_technology = { tech = tech_combat_computers_1 message = no }
+    give_technology = { tech = tech_auxiliary_fire_control message = no }
+    give_technology = { tech = tech_encryption_1 message = no }
+    give_technology = { tech = tech_decryption_1 message = no }
+    give_technology = { tech = tech_fusion_power message = no }
+    give_technology = { tech = tech_reactor_boosters_2 message = no }
+    give_technology = { tech = tech_reactor_boosters_3 message = no }
+    give_technology = { tech = tech_shields_2 message = no }
+    give_technology = { tech = tech_power_plant_2 message = no }
+    give_technology = { tech = tech_power_hub_1 message = no }
+    give_technology = { tech = tech_corvette_build_speed message = no }
+    give_technology = { tech = tech_corvette_hull_1 message = no }
+    give_technology = { tech = tech_strike_craft_1 message = no }
+    give_technology = { tech = tech_ship_armor_2 message = no }
+    give_technology = { tech = tech_powered_exoskeletons message = no }
+    give_technology = { tech = tech_space_mining_1 message = no }
+    give_technology = { tech = tech_space_mining_2 message = no }
+    give_technology = { tech = tech_mining_1 message = no }
+    give_technology = { tech = tech_mineral_purification_1 message = no }
+    give_technology = { tech = tech_alloys_1 message = no }
+    give_technology = { tech = tech_luxuries_1 message = no }
+    give_technology = { tech = tech_robotic_workers message = no }
+    give_technology = { tech = tech_afterburners_1 message = no }
+    give_technology = { tech = tech_assembly_pattern message = no }
+    if = {
+        limit = {
+            is_regular_empire = yes
+        }
+        give_technology = { tech = tech_space_trading message = no }
+    }
+    give_technology = { tech = tech_eco_simulation message = no }
+    give_technology = { tech = tech_food_processing_1 message = no }
+    if = {
+        limit = {
+            is_regular_empire = yes
+        }
+        give_technology = { tech = tech_alien_life_studies message = no }
+    }
+    if = {
+        limit = {
+            is_regular_empire = yes
+        }
+        give_technology = { tech = tech_frontier_health  message = no }
+    }
+    give_technology = { tech = tech_dense_jungle message = no }
+    give_technology = { tech = tech_quicksand_basin message = no }
+    give_technology = { tech = tech_noxious_swamp message = no }
+    give_technology = { tech = tech_massive_glacier message = no }
+    give_technology = { tech = tech_toxic_kelp message = no }
+    give_technology = { tech = tech_deep_sinkhole message = no }
+    if = {
+        limit = {
+            OR = {
+                is_machine_empire = no
+                has_civic = civic_machine_assimilator
+                has_civic = civic_machine_servitor
+            }
+        }
+        give_technology = { tech = tech_genome_mapping message = no }
+    }
+    give_technology = { tech = tech_ground_defense_planning message = no }
+    give_technology = { tech = tech_planetary_unification message = no }
+    give_technology = { tech = tech_adaptive_bureaucracy message = no }
+    if = {
+        limit = {
+            is_regular_empire = yes
+        }
+        give_technology = { tech = tech_neural_implants message = no }
+    }
+    if = {
+        limit = {
+            is_gestalt = no
+        }
+        give_technology = { tech = tech_hyper_entertainment_forum message = no }
+    }
+    if = {
+        limit = {
+            NOR = {
+                has_ethic = ethic_spiritualist
+                has_ethic = ethic_fanatic_spiritualist
+                has_valid_civic = civic_machine_servitor
+            }
+        }
+        give_technology = { tech = tech_heritage_site message = no }
+    }
+}
+
+io_give_tech_tier_2_effect = {
+    give_technology = { tech = tech_physics_2 message = no }
+    give_technology = { tech = tech_society_2 message = no }
+    give_technology = { tech = tech_engineering_2 message = no }
+    give_technology = { tech = tech_curator_lab message = no }
+    if = {
+        limit = {
+            has_ancrel = yes
+        }
+        give_technology = { tech = tech_archeology_lab_ancrel message = no }
+    }
+    else = {
+        give_technology = { tech = tech_archeology_lab message = no }
+    }
+    give_technology = { tech = tech_space_science_3 message = no }
+    give_technology = { tech = tech_space_science_4 message = no }
+    give_technology = { tech = tech_self_aware_logic message = no }
+    if = {
+        limit = {
+            OR = {
+                is_gestalt = no
+                has_valid_civic = civic_machine_servitor
+            }
+        }
+        give_technology = { tech = tech_consumer_good_refinement_1 message = no }
+    }
+    give_technology = { tech = tech_encryption_2 message = no }
+    give_technology = { tech = tech_decryption_2 message = no }
+    give_technology = { tech = tech_cold_fusion_power message = no }
+    give_technology = { tech = tech_shields_3 message = no }
+    give_technology = { tech = tech_shield_rechargers_1 message = no }
+    give_technology = { tech = tech_sensors_2 message = no }
+    give_technology = { tech = tech_power_plant_3 message = no }
+    give_technology = { tech = tech_power_hub_2 message = no }
+    give_technology = { tech = tech_hyper_drive_2 message = no }
+    give_technology = { tech = tech_ftl_inhibitor message = no }
+    give_technology = { tech = tech_destroyers message = no }
+    give_technology = { tech = tech_corvette_hull_2 message = no }
+    give_technology = { tech = tech_destroyer_build_speed message = no }
+    give_technology = { tech = tech_destroyer_hull_1 message = no }
+    give_technology = { tech = tech_starbase_3 message = no }
+    give_technology = { tech = tech_modular_engineering message = no }
+    give_technology = { tech = tech_strike_craft_2 message = no }
+    give_technology = { tech = tech_ship_armor_3 message = no }
+    give_technology = { tech = tech_crystal_armor_1 message = no }
+    give_technology = { tech = tech_thrusters_2 message = no }
+    give_technology = { tech = tech_defense_platform_hull_1 message = no }
+    give_technology = { tech = tech_space_mining_3 message = no }
+    give_technology = { tech = tech_space_mining_4 message = no }
+    give_technology = { tech = tech_mining_2 message = no }
+    give_technology = { tech = tech_mineral_purification_2 message = no }
+    give_technology = { tech = tech_advanced_metallurgy_1 message = no }
+    give_technology = { tech = tech_droid_workers message = no }
+    give_technology = { tech = tech_housing_1 message = no }
+    give_technology = { tech = tech_gene_crops message = no }
+    give_technology = { tech = tech_arcane_deciphering message = no }
+    if = {
+        limit = {
+            OR = {
+                is_machine_empire = no
+                has_civic = civic_machine_assimilator
+                has_civic = civic_machine_servitor
+            }
+        }
+        give_technology = { tech = tech_colonization_2 message = no }
+    }
+    if = {
+        limit = {
+            OR = {
+                is_machine_empire = no
+                has_civic = civic_machine_assimilator
+                has_civic = civic_machine_servitor
+            }
+        }
+        give_technology = { tech = tech_colonization_3 message = no }
+    }
+    if = {
+        limit = {
+            is_gestalt = no
+        }
+        give_technology = { tech = tech_frontier_hospital message = no }
+    }
+    give_technology = { tech = tech_mountain_range message = no }
+    give_technology = { tech = tech_volcano message = no }
+    give_technology = { tech = tech_dangerous_wildlife message = no }
+    give_technology = { tech = tech_terrestrial_sculpting message = no }
+    if = {
+        limit = {
+            OR = {
+                is_machine_empire = no
+                has_civic = civic_machine_assimilator
+            }
+        }
+        give_technology = { tech = tech_vitality_boosters message = no }
+    }
+    if = {
+        limit = {
+            NOT = {
+                has_valid_civic = civic_fanatic_purifiers
+                #has_valid_civic = civic_machine_terminator # covered by not being machine
+                #has_valid_civic = civic_hive_devouring_swarm # can uplift to make delicious
+            }
+            OR = {
+                is_machine_empire = no
+                is_wilderness_empire = no
+                has_civic = civic_machine_assimilator
+                has_civic = civic_machine_servitor
+            }
+        }
+        give_technology = { tech = tech_epigenetic_triggers message = no }
+    }
+    if = {
+        limit = {
+            OR = {
+                is_machine_empire = no
+                has_civic = civic_machine_assimilator
+            }
+        }
+        give_technology = { tech = tech_cloning message = no }
+    }
+    if = {
+        limit = {
+            OR = {
+                is_machine_empire = no
+                is_wilderness_empire = no
+                has_civic = civic_machine_assimilator
+            }
+        }
+        give_technology = { tech = tech_gene_banks message = no }
+    }
+    give_technology = { tech = tech_doctrine_fleet_size_1 message = no }
+    give_technology = { tech = tech_doctrine_fleet_size_2 message = no }
+    give_technology = { tech = tech_interstellar_fleet_traditions message = no }
+    give_technology = { tech = tech_doctrine_navy_size_1 message = no }
+    give_technology = { tech = tech_centralized_command message = no }
+    give_technology = { tech = tech_global_defense_grid message = no }
+    give_technology = { tech = tech_galactic_ambitions message = no }
+    give_technology = { tech = tech_interstellar_campaigns message = no }
+    give_technology = { tech = tech_colonial_centralization message = no }
+    give_technology = { tech = tech_planetary_infrastructure_1 message = no }
+    if = {
+        limit = {
+            NOT = { has_ethic = ethic_gestalt_consciousness	}
+        }
+        give_technology = { tech = tech_subdermal_stimulation message = no }
+    }
+    give_technology = { tech = tech_effective_bureaucracy message = no }
+    give_technology = { tech = tech_colonial_bureaucracy message = no }
+    if = {
+        limit = {
+            NOT = { has_ethic = ethic_gestalt_consciousness }
+        }
+        give_technology = { tech = tech_living_state message = no }
+    }
+    if = {
+        limit = {
+            has_ethic = ethic_gestalt_consciousness
+        }
+        give_technology = { tech = tech_autonomous_agents message = no }
+    }
+    if = {
+        limit = {
+            NOT = { has_ethic = ethic_gestalt_consciousness }
+        }
+        give_technology = { tech = tech_artificial_moral_codes message = no }
+    }
+    if = {
+        limit = {
+            is_gestalt = yes
+        }
+        give_technology = { tech = tech_unity_of_purpose message = no }
+    }
+    if = {
+        limit = {
+            has_ethic = ethic_gestalt_consciousness
+        }
+        give_technology = { tech = tech_holographic_rituals message = no }
+    }
+    if = {
+        limit = {
+            is_hive_empire = yes
+            is_wilderness_empire = no
+        }
+        give_technology = { tech = tech_hive_cluster message = no }
+    }
+    if = {
+        limit = {
+            is_wilderness_empire = yes
+        }
+        give_technology = { tech = tech_wilderness_cluster message = no }
+    }
+    if = {
+        limit = {
+            is_gestalt = no
+        }
+        give_technology = { tech = tech_slave_colonies message = no }
+    }
+    if = {
+        limit = {
+            is_regular_empire = yes
+        }
+        give_technology = { tech = tech_xeno_diplomacy message = no }
+    }
+    give_technology = { tech = tech_capital_productivity_1 message = no }
+}
+
+io_give_cosmogenesis_technologys = {
+    give_technology = { tech = tech_fe_affluence_1 message = no }
+    give_technology = { tech = tech_fe_affluence_2 message = no }
+    give_technology = { tech = tech_fe_nourishment_1 message = no }
+    give_technology = { tech = tech_fe_nourishment_2 message = no }
+    give_technology = { tech = tech_fe_fabricator_1 message = no }
+    give_technology = { tech = tech_fe_fabricator_2 message = no }
+    give_technology = { tech = tech_fe_singularity_1 message = no }
+    give_technology = { tech = tech_fe_singularity_2 message = no }
+    give_technology = { tech = tech_fe_forge_1 message = no }
+    give_technology = { tech = tech_fe_forge_2 message = no }
+    give_technology = { tech = tech_fe_dome_1 message = no }
+    give_technology = { tech = tech_fe_dome_2 message = no }
+    give_technology = { tech = tech_fe_fortress_1 message = no }
+    give_technology = { tech = tech_fe_fortress_2 message = no }
+    give_technology = { tech = tech_fe_administration_1 message = no }
+    give_technology = { tech = tech_fe_administration_2 message = no }
+    if = {
+        limit = {
+            is_hive_empire = no
+        }
+        give_technology = { tech = tech_fe_assembly_1 message = no }
+        give_technology = { tech = tech_fe_assembly_2 message = no }
+    }
+    if = {
+        limit = {
+            is_machine_empire = no
+        }
+        give_technology = { tech = tech_fe_clinic_1 message = no }
+        give_technology = { tech = tech_fe_clinic_2 message = no }
+    }
+    give_technology = { tech = tech_fe_security_1 message = no }
+    give_technology = { tech = tech_fe_security_2 message = no }
+    if = {
+        limit = {
+            is_gestalt = no
+        }
+        give_technology = { tech = tech_fe_market_1 message = no }
+        give_technology = { tech = tech_fe_market_2 message = no }
+    }
+    give_technology = { tech = tech_fe_silo_1 message = no }
+    give_technology = { tech = tech_fe_silo_2 message = no }
+    if = {
+        limit = {
+            is_gestalt = no
+        }
+        give_technology = { tech = tech_fe_entertainment_1 message = no }
+        give_technology = { tech = tech_fe_entertainment_2 message = no }
+    }
+    give_technology = { tech = tech_fe_lab_1 message = no }
+    give_technology = { tech = tech_fe_lab_2 message = no }
+    give_technology = { tech = tech_fe_mine_1 message = no }
+    give_technology = { tech = tech_fe_mine_2 message = no }
+    give_technology = { tech = tech_cosmogenesis_escort message = no }
+    give_technology = { tech = tech_cosmogenesis_battlecruiser message = no }
+    give_technology = { tech = tech_cosmogenesis_FE_titan message = no }
+    give_technology = { tech = tech_dark_matter_deflector message = no }
+    give_technology = { tech = tech_dark_matter_power_core message = no }
+    give_technology = { tech = tech_dark_matter_propulsion message = no }
+    give_technology = { tech = tech_enigmatic_decoder message = no }
+    give_technology = { tech = tech_enigmatic_encoder message = no }
+    give_technology = { tech = tech_dragon_armor message = no }
+    give_technology = { tech = tech_nanite_repair_system message = no }
+    give_technology = { tech = tech_nanite_flak_batteries message = no }
+    give_technology = { tech = tech_nanite_autocannon message = no }
+}
+
+io_add_start_modifiers = {
+    add_modifier = {
+        modifier = build_start_modifier
+        days = 1800
+    }
+    add_modifier = {
+        modifier = explore_modifier
+        days = -1
+    }
+    if = {
+        limit = {
+            is_ai = yes
+            has_origin = origin_chosen_of_the_shroud
+        }
+        add_modifier = {
+            modifier = ai_shourd_chosen
+            days = -1
+        }
+    }
+    if = {
+        limit = {
+            is_ai = yes
+            OR = {
+                is_unfriendly = yes
+                has_country_flag = io_fe_emperor
+            }
+        }
+        add_modifier = {
+            modifier = fe_ship_cost_modifier
+            days = -1
+        }
+    }
+}
+
+io_add_start_resources = {
+    add_resource = { energy = 100000 }
+    add_resource = { minerals = 100000 }
+    add_resource = { alloys = 100000 }
+    add_resource = { influence = 1000 }
+    if = {
+        limit = { country_uses_food = yes }
+        add_resource = { food = 100000 }
+    }
+    if = {
+        limit = { country_uses_consumer_goods = yes  }
+        add_resource = { consumer_goods = 100000 }
+    }
+    if = {
+        limit = {
+            check_variable = {
+                which = io_setting_tech
+                value >= 2
+            }
+        }
+        add_resource = { volatile_motes = 1000 }
+        add_resource = { exotic_gases = 1000 }
+        add_resource = { rare_crystals = 1000 }
+    }
+    if = {
+        limit = {
+            check_variable = {
+                which = io_setting_tech
+                value >= 3
+            }
+        }
+        add_resource = { sr_zro = 1000 }
+        add_resource = { sr_dark_matter = 1000 }
+    }
+    if = {
+        limit = {
+            check_variable = {
+                which = io_setting_tech
+                value >= 5
+            }
+        }
+        add_resource = { sr_living_metal = 1000 }
+    }
+}
+
+add_outpost_if_can = {
+    if = {
+        limit = {
+            has_owner = no
+        }
+        create_starbase = {
+            size = starbase_outpost
+            owner = root
+        }
+    }
+}
+
+io_expand_border = {
+    capital_scope.solar_system = {
+        every_neighbor_system = {
+            limit = {
+                io_expand_trigger = yes
+            }
+            add_outpost_if_can = yes
+            every_neighbor_system = {
+                limit = {
+                    io_expand_trigger = yes
+                }
+                add_outpost_if_can = yes
+            }
+        }
+        if = {
+            limit = {
+                has_star_flag = sol_system #巴纳德星和南河三没有flag，也许因为蠢驴歧视地联
+            }
+            if = {
+                limit = {
+                    num_guaranteed_colonies >= 1
+                }
+                closest_system = {
+                    min_steps = 1
+                    max_steps = 3
+                    limit = {
+                        has_star_flag = neighbor_t1_first_colony
+                    }
+                    add_outpost_if_can = yes
+                    every_neighbor_system = {
+                        limit = {
+                            io_expand_trigger = yes
+                        }
+                        add_outpost_if_can = yes
+                        every_neighbor_system = {
+                            limit = {
+                                io_expand_trigger = yes
+                            }
+                            add_outpost_if_can = yes
+                        }
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    num_guaranteed_colonies >= 2
+                }
+                closest_system = {
+                    min_steps = 1
+                    max_steps = 3
+                    limit = {
+                        has_star_flag = neighbor_t2_second_colony
+                    }
+                    add_outpost_if_can = yes
+                    every_neighbor_system = {
+                        limit = {
+                            io_expand_trigger = yes
+                        }
+                        add_outpost_if_can = yes
+                        every_neighbor_system = {
+                            limit = {
+                                io_expand_trigger = yes
+                            }
+                            add_outpost_if_can = yes
+                        }
+                    }
+                }
+            }
+        }
+        else = {
+            if = {
+                limit = {
+                    num_guaranteed_colonies >= 1
+                }
+                closest_system = {
+                    min_steps = 1
+                    max_steps = 3
+                    limit = {
+                        has_star_flag = neighbor_t1_first_colony
+                    }
+                    add_outpost_if_can = yes
+                    every_neighbor_system = {
+                        limit = {
+                            io_expand_trigger = yes
+                        }
+                        add_outpost_if_can = yes
+                    }
+                    closest_system = {
+                        min_steps = 1
+                        max_steps = 3
+                        limit = {
+                            has_star_flag = neighbor_t2
+                        }
+                        add_outpost_if_can = yes
+                        every_neighbor_system = {
+                            limit = {
+                                io_expand_trigger = yes
+                            }
+                            add_outpost_if_can = yes
+                        }
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    num_guaranteed_colonies >= 2
+                }
+                closest_system = {
+                    limit = {
+                        has_star_flag = neighbor_t1
+                    }
+                    add_outpost_if_can = yes
+                    every_neighbor_system = {
+                        limit = {
+                            io_expand_trigger = yes
+                        }
+                        add_outpost_if_can = yes
+                    }
+                    closest_system = {
+                        limit = {
+                            has_star_flag = neighbor_t2_second_colony
+                        }
+                        add_outpost_if_can = yes
+                        every_neighbor_system = {
+                            limit = {
+                                io_expand_trigger = yes
+                            }
+                            add_outpost_if_can = yes
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+io_expand_border_arc = {
+    capital_scope.solar_system = {
+        every_neighbor_system = {
+            limit = {
+                io_expand_trigger = yes
+            }
+            add_outpost_if_can = yes
+            every_neighbor_system = {
+                limit = {
+                    io_expand_trigger = yes
+                }
+                add_outpost_if_can = yes
+            }
+        }
+        closest_system = {
+            limit = {
+                has_star_flag = arc_welders_construction_system
+            }
+            add_outpost_if_can = yes
+            every_neighbor_system = {
+                limit = {
+                    io_expand_trigger = yes
+                }
+                add_outpost_if_can = yes
+                every_neighbor_system = {
+                    limit = {
+                        io_expand_trigger = yes
+                    }
+                    add_outpost_if_can = yes
+                }
+            }
+            random_system_planet = {
+                limit = {
+                    is_planet_class = pc_molten
+                }
+                save_event_target_as = arc_furnace_site
+            }
+            spawn_megastructure = {
+                type = orbital_arc_furnace_1
+                owner = root
+                planet = event_target:arc_furnace_site
+                coords_from = event_target:arc_furnace_site
+                graphical_culture = root
+            }
+        }
+        if = {
+            limit = {
+                has_star_flag = sol_system #巴纳德星和南河三没有flag，也许因为蠢驴歧视地联
+            }
+            if = {
+                limit = {
+                    num_guaranteed_colonies >= 1
+                }
+                closest_system = {
+                    min_steps = 1
+                    max_steps = 3
+                    limit = {
+                        has_star_flag = neighbor_t1_first_colony
+                    }
+                    add_outpost_if_can = yes
+                    every_neighbor_system = {
+                        limit = {
+                            io_expand_trigger = yes
+                        }
+                        add_outpost_if_can = yes
+                        every_neighbor_system = {
+                            limit = {
+                                io_expand_trigger = yes
+                            }
+                            add_outpost_if_can = yes
+                        }
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    num_guaranteed_colonies >= 2
+                }
+                closest_system = {
+                    min_steps = 1
+                    max_steps = 3
+                    limit = {
+                        has_star_flag = neighbor_t2_second_colony
+                    }
+                    add_outpost_if_can = yes
+                    every_neighbor_system = {
+                        limit = {
+                            io_expand_trigger = yes
+                        }
+                        add_outpost_if_can = yes
+                        every_neighbor_system = {
+                            limit = {
+                                io_expand_trigger = yes
+                            }
+                            add_outpost_if_can = yes
+                        }
+                    }
+                }
+            }
+        }
+        else = {
+            if = {
+                limit = {
+                    num_guaranteed_colonies >= 1
+                }
+                closest_system = {
+                    min_steps = 1
+                    max_steps = 3
+                    limit = {
+                        has_star_flag = neighbor_t1_first_colony
+                    }
+                    add_outpost_if_can = yes
+                    every_neighbor_system = {
+                        limit = {
+                            io_expand_trigger = yes
+                        }
+                        add_outpost_if_can = yes
+                    }
+                    closest_system = {
+                        min_steps = 1
+                        max_steps = 3
+                        limit = {
+                            has_star_flag = neighbor_t2
+                        }
+                        add_outpost_if_can = yes
+                        every_neighbor_system = {
+                            limit = {
+                                io_expand_trigger = yes
+                            }
+                            add_outpost_if_can = yes
+                        }
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    num_guaranteed_colonies >= 2
+                }
+                closest_system = {
+                    limit = {
+                        has_star_flag = neighbor_t1
+                    }
+                    add_outpost_if_can = yes
+                    every_neighbor_system = {
+                        limit = {
+                            io_expand_trigger = yes
+                        }
+                        add_outpost_if_can = yes
+                    }
+                    closest_system = {
+                        limit = {
+                            has_star_flag = neighbor_t2_second_colony
+                        }
+                        add_outpost_if_can = yes
+                        every_neighbor_system = {
+                            limit = {
+                                io_expand_trigger = yes
+                            }
+                            add_outpost_if_can = yes
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+io_expand_border_star = {
+    capital_scope.solar_system = {
+        every_neighbor_system = {
+            limit = {
+                io_expand_trigger = yes
+            }
+            add_outpost_if_can = yes
+            every_neighbor_system = {
+                limit = {
+                    io_expand_trigger = yes
+                }
+                add_outpost_if_can = yes
+            }
+        }
+        closest_system = {
+            limit = {
+                has_star_flag = quantum_catapult_system_flag@root
+            }
+            add_outpost_if_can = yes
+            every_neighbor_system = {
+                limit = {
+                    io_expand_trigger = yes
+                }
+                add_outpost_if_can = yes
+                every_neighbor_system = {
+                    limit = {
+                        io_expand_trigger = yes
+                    }
+                    add_outpost_if_can = yes
+                }
+            }
+            random_megastructure = {
+                limit = {
+                    is_megastructure_type = quantum_catapult_ruined_slingshot
+                }
+                upgrade_megastructure_to = quantum_catapult_restored_slingshot
+                finish_upgrade = yes
+                upgrade_megastructure_to = quantum_catapult_improved_slingshot
+                finish_upgrade = yes
+            }
+        }
+        if = {
+            limit = {
+                has_star_flag = sol_system #巴纳德星和南河三没有flag，也许因为蠢驴歧视地联
+            }
+            if = {
+                limit = {
+                    num_guaranteed_colonies >= 1
+                }
+                closest_system = {
+                    min_steps = 1
+                    max_steps = 3
+                    limit = {
+                        has_star_flag = neighbor_t1_first_colony
+                    }
+                    add_outpost_if_can = yes
+                    every_neighbor_system = {
+                        limit = {
+                            io_expand_trigger = yes
+                        }
+                        add_outpost_if_can = yes
+                        every_neighbor_system = {
+                            limit = {
+                                io_expand_trigger = yes
+                            }
+                            add_outpost_if_can = yes
+                        }
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    num_guaranteed_colonies >= 2
+                }
+                closest_system = {
+                    min_steps = 1
+                    max_steps = 3
+                    limit = {
+                        has_star_flag = neighbor_t2_second_colony
+                    }
+                    add_outpost_if_can = yes
+                    every_neighbor_system = {
+                        limit = {
+                            io_expand_trigger = yes
+                        }
+                        add_outpost_if_can = yes
+                        every_neighbor_system = {
+                            limit = {
+                                io_expand_trigger = yes
+                            }
+                            add_outpost_if_can = yes
+                        }
+                    }
+                }
+            }
+        }
+        else = {
+            if = {
+                limit = {
+                    num_guaranteed_colonies >= 1
+                }
+                closest_system = {
+                    min_steps = 1
+                    max_steps = 3
+                    limit = {
+                        has_star_flag = neighbor_t1_first_colony
+                    }
+                    add_outpost_if_can = yes
+                    every_neighbor_system = {
+                        limit = {
+                            io_expand_trigger = yes
+                        }
+                        add_outpost_if_can = yes
+                    }
+                    closest_system = {
+                        min_steps = 1
+                        max_steps = 3
+                        limit = {
+                            has_star_flag = neighbor_t2
+                        }
+                        add_outpost_if_can = yes
+                        every_neighbor_system = {
+                            limit = {
+                                io_expand_trigger = yes
+                            }
+                            add_outpost_if_can = yes
+                        }
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    num_guaranteed_colonies >= 2
+                }
+                closest_system = {
+                    limit = {
+                        has_star_flag = neighbor_t1
+                    }
+                    add_outpost_if_can = yes
+                    every_neighbor_system = {
+                        limit = {
+                            io_expand_trigger = yes
+                        }
+                        add_outpost_if_can = yes
+                    }
+                    closest_system = {
+                        limit = {
+                            has_star_flag = neighbor_t2_second_colony
+                        }
+                        add_outpost_if_can = yes
+                        every_neighbor_system = {
+                            limit = {
+                                io_expand_trigger = yes
+                            }
+                            add_outpost_if_can = yes
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+io_expand_border_federation = {
+    capital_scope.solar_system = {
+        every_neighbor_system = {
+            limit = {
+                io_expand_trigger = yes
+            }
+            add_outpost_if_can = yes
+            every_neighbor_system = {
+                limit = {
+                    io_expand_trigger = yes
+                }
+                add_outpost_if_can = yes
+            }
+        }
+        if = {
+            limit = {
+                has_star_flag = sol_system #巴纳德星和南河三没有flag，也许因为蠢驴歧视地联
+            }
+            if = {
+                limit = {
+                    num_guaranteed_colonies >= 1
+                }
+                closest_system = {
+                    min_steps = 1
+                    max_steps = 3
+                    limit = {
+                        has_star_flag = neighbor_t1_first_colony
+                    }
+                    add_outpost_if_can = yes
+                    every_neighbor_system = {
+                        limit = {
+                            io_expand_trigger = yes
+                        }
+                        add_outpost_if_can = yes
+                        every_neighbor_system = {
+                            limit = {
+                                io_expand_trigger = yes
+                            }
+                            add_outpost_if_can = yes
+                        }
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    num_guaranteed_colonies >= 2
+                }
+                closest_system = {
+                    min_steps = 1
+                    max_steps = 3
+                    limit = {
+                        has_star_flag = neighbor_t2_second_colony
+                    }
+                    add_outpost_if_can = yes
+                    every_neighbor_system = {
+                        limit = {
+                            io_expand_trigger = yes
+                        }
+                        add_outpost_if_can = yes
+                        every_neighbor_system = {
+                            limit = {
+                                io_expand_trigger = yes
+                            }
+                            add_outpost_if_can = yes
+                        }
+                    }
+                }
+            }
+        }
+        else = {
+            if = {
+                limit = {
+                    num_guaranteed_colonies >= 1
+                }
+                closest_system = {
+                    min_steps = 1
+                    max_steps = 3
+                    limit = {
+                        has_star_flag = neighbor_t1_first_colony
+                    }
+                    add_outpost_if_can = yes
+                    every_neighbor_system = {
+                        limit = {
+                            io_expand_trigger = yes
+                        }
+                        add_outpost_if_can = yes
+                    }
+                    closest_system = {
+                        min_steps = 1
+                        max_steps = 3
+                        limit = {
+                            has_star_flag = neighbor_t2
+                        }
+                        add_outpost_if_can = yes
+                        every_neighbor_system = {
+                            limit = {
+                                io_expand_trigger = yes
+                            }
+                            add_outpost_if_can = yes
+                        }
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    num_guaranteed_colonies >= 2
+                }
+                closest_system = {
+                    limit = {
+                        has_star_flag = neighbor_t1
+                    }
+                    add_outpost_if_can = yes
+                    every_neighbor_system = {
+                        limit = {
+                            io_expand_trigger = yes
+                        }
+                        add_outpost_if_can = yes
+                    }
+                    closest_system = {
+                        limit = {
+                            has_star_flag = neighbor_t2_second_colony
+                        }
+                        add_outpost_if_can = yes
+                        every_neighbor_system = {
+                            limit = {
+                                io_expand_trigger = yes
+                            }
+                            add_outpost_if_can = yes
+                        }
+                    }
+                }
+            }
+        }
+    }
+    event_target:io_old_captial_1.solar_system = {
+        every_neighbor_system = {
+            if = {
+                limit = {
+                    io_expand_trigger = yes
+                }
+                add_outpost_if_can = yes
+                every_neighbor_system = {
+                    if = {
+                        limit = {
+                            io_expand_trigger = yes
+                        }
+                        add_outpost_if_can = yes
+                    }
+                }
+            }
+        }
+    }
+    event_target:io_old_captial_2.solar_system = {
+        every_neighbor_system = {
+            if = {
+                limit = {
+                    io_expand_trigger = yes
+                }
+                add_outpost_if_can = yes
+                every_neighbor_system = {
+                    if = {
+                        limit = {
+                            io_expand_trigger = yes
+                        }
+                        add_outpost_if_can = yes
+                    }
+                }
+            }
+        }
+    }
+}
+
+io_expand_border_federation_npc = {
+    capital_scope.solar_system = {
+        every_neighbor_system = {
+            limit = {
+                io_expand_trigger = yes
+            }
+            add_outpost_if_can = yes
+            every_neighbor_system = {
+                limit = {
+                    io_expand_trigger = yes
+                }
+                add_outpost_if_can = yes
+            }
+        }
+    }
+}
+
+io_save_secondery_pop = {
+    if = {
+        limit = {
+            has_subspecies_civic_or_origin = yes
+        }
+        random_owned_species = {
+            limit = {
+                is_sapient = yes
+                NOT = {
+                    is_exact_same_species = owner_main_species
+                }
+            }
+            save_event_target_as = secondery_species
+        }
+    }
+}
+
+io_fullize_planet_pop = {
+    export_trigger_value_to_variable = {
+        trigger = num_housing
+        variable = pop_to_add
+    }
+    export_trigger_value_to_variable = {
+        trigger = count_owned_pop_amount
+        variable = pop_current
+    }
+    # if = {
+    #     limit = {
+    #         is_capital = yes
+    #         owner = {
+    #             is_galactic_emperor = yes
+    #         }
+    #     }
+    #     change_variable = {
+    #         which = pop_to_add
+    #         value = 3000
+    #     }
+    # }
+    # else_if = {
+    #     limit = {
+    #         is_capital = yes
+    #         owner = {
+    #             OR = {
+    #                 check_variable = {
+    #                     which = io_setting_tech
+    #                     value >= 3
+    #                 }
+    #                 AND = {
+    #                     is_hive_empire = yes
+    #                     is_wilderness_empire = no
+    #                     check_variable = {
+    #                         which = io_setting_tech
+    #                         value >= 2
+    #                     }
+    #                 }
+    #             }
+    #         }
+    #     }
+    #     change_variable = {
+    #         which = pop_to_add
+    #         value = 2000
+    #     }
+    # }
+    # else_if = {
+    #     limit = {
+    #         is_capital = yes
+    #         owner = {
+    #             check_variable = {
+    #                 which = io_setting_tech
+    #                 value >= 2
+    #             }
+    #         }
+    #     }
+    #     change_variable = {
+    #         which = pop_to_add
+    #         value = 1500
+    #     }
+    # }
+    # else = {
+    #     change_variable = {
+    #         which = pop_to_add
+    #         value = 1000
+    #     }
+    # }
+    subtract_variable = {
+        which = pop_to_add
+        value = pop_current
+    }
+    divide_variable = {
+        which = pop_to_add
+        value = 100
+    }
+    floor_variable = pop_to_add
+    while = {
+        count = pop_to_add
+        if = {
+            limit = {
+                has_subspecies_civic_or_origin = yes
+                NOT = {
+                    has_civic = civic_machine_servitor
+                }
+            }
+            create_pop_group = {
+                species = owner_main_species
+                size = 75
+            }
+            create_pop_group = {
+                species = event_target:secondary_species
+                size = 25
+            }
+        }
+        else = {
+            create_pop_group = {
+                species = owner_main_species
+                size = 100
+            }
+        }
+    }
+}
+
+io_fullize_planet_pop_special = {
+    export_trigger_value_to_variable = {
+        trigger = num_housing
+        variable = pop_to_add
+    }
+    export_trigger_value_to_variable = {
+        trigger = count_owned_pop_amount
+        variable = pop_current
+    }
+    subtract_variable = {
+        which = pop_to_add
+        value = pop_current
+    }
+    divide_variable = {
+        which = pop_to_add
+        value = 100
+    }
+    floor_variable = pop_to_add
+    while = {
+        count = pop_to_add
+        create_pop_group = {
+            species = event_target:colonize_species
+            size = 100
+        }
+    }
+}
+
+io_set_planet_pop = {
+    set_variable = {
+        which = pop_to_add
+        value = $pop$
+    }
+    export_trigger_value_to_variable = {
+        trigger = count_owned_pop_amount
+        variable = pop_current
+    }
+    subtract_variable = {
+        which = pop_to_add
+        value = pop_current
+    }
+    divide_variable = {
+        which = pop_to_add
+        value = 100
+    }
+    floor_variable = pop_to_add
+    while = {
+        count = pop_to_add
+        if = {
+            limit = {
+                OR = {
+                    has_origin = origin_syncretic_evolution
+                    has_origin = origin_necrophage
+                }
+            }
+            create_pop_group = {
+                species = owner_main_species
+                size = 75
+            }
+            create_pop_group = {
+                species = event_target:syncretic_species
+                size = 25
+            }
+        }
+        else_if = {
+            limit = {
+                has_origin = origin_mechanists
+            }
+            create_pop_group = {
+                species = owner_main_species
+                size = 80
+            }
+            create_pop_group = {
+                species = event_target:mechanical_species
+                size = 20
+            }
+        }
+        else_if = {
+            limit = {
+                OR = {
+                    has_civic = civic_machine_assimilator
+                    has_civic = civic_hive_bodysnatcher
+                }
+            }
+            create_pop_group = {
+                species = owner_main_species
+                size = 80
+            }
+            create_pop_group = {
+                species = event_target:secondery_species
+                size = 20
+            }
+        }
+        else = {
+            create_pop_group = {
+                species = owner_main_species
+                size = 100
+            }
+        }
+    }
+}
+
+io_clear_planet = {
+    remove_all_districts = yes
+    remove_building = building_capital
+    remove_building = building_hive_capital
+    remove_building = building_machine_capital
+    remove_building = building_capital_wilderness
+    remove_building = building_hab_capital
+    remove_building = building_hab_major_capital
+}
+
+io_districts_placement = {
+    subtract_variable = {
+        which = city_districts
+        value = 1
+    }
+    # Cities
+    if = {
+        limit = {
+            check_variable = {
+                which = city_districts
+                value >= 1
+            }
+        }
+        if = {
+            limit = {
+                owner = {
+                    is_wilderness_empire = yes
+                }
+            }
+            while = {
+                count = city_districts
+                add_district = district_craglands
+            }
+        }
+        else_if = {
+            limit = {
+                owner = {
+                    is_hive_empire = yes
+                }
+            }
+            while = {
+                count = city_districts
+                add_district = district_hive
+            }
+            if = {
+                limit = {
+                    is_capital = yes
+                }
+                add_building = {
+                    building = building_foundry_1
+                    zone = zone_foundry
+                }
+            }
+        }
+        else_if = {
+            limit = {
+                owner = {
+                    is_machine_empire = yes
+                }
+            }
+            while = {
+                count = city_districts
+                add_district = district_nexus
+            }
+            if = {
+                limit = {
+                    is_capital = yes
+                }
+                if = {
+                    limit = {
+                        owner = {
+                            OR = {
+                                has_valid_civic = civic_machine_servitor
+                                has_valid_civic = civic_machine_obsessional_directive
+                            }
+                        }
+                    }
+                    add_building = {
+                        building = building_foundry_1
+                        zone = zone_industrial
+                    }
+                }
+                else = {
+                    add_building = {
+                        building = building_foundry_1
+                        zone = zone_foundry
+                    }
+                }
+            }
+        }
+        else_if = {
+            limit = {
+                is_planet_class = pc_habitat
+            }
+            add_district_and_planet_size_if_needed_effect_amount = {
+                amount = city_districts
+                district = district_hab_housing
+            }
+            if = {
+                limit = {
+                    is_capital = yes
+                }
+                if = {
+                    limit = {
+                        owner = {
+                            OR = {
+                                is_gestalt = no
+                                has_valid_civic = civic_machine_servitor
+                                has_valid_civic = civic_machine_obsessional_directive
+                            }
+                        }
+                    }
+                    add_building = {
+                        building = building_foundry_1
+                        zone = zone_industrial
+                    }
+                }
+                else = {
+                    add_building = {
+                        building = building_foundry_1
+                        zone = zone_foundry
+                    }
+                }
+                add_zone = {
+                    zone = zone_trade
+                    district = district_hab_housing
+                    zone_slot = 2
+                }
+            }
+        }
+        else = {
+            while = {
+                count = city_districts
+                add_district = district_city
+            }
+            if = {
+                limit = {
+                    is_capital = yes
+                }
+                add_building = {
+                    building = building_foundry_1
+                    zone = zone_industrial
+                }
+            }
+        }
+    }
+    # Generators
+    if = {
+        limit = {
+            check_variable = {
+                which = energy_districts
+                value >= 1
+            }
+        }
+        if = {
+            limit = {
+                is_wilderness_empire = yes
+            }
+            add_district_and_planet_size_if_needed_effect_amount = {
+                amount = energy_districts
+                district = district_photosynthesis_fields
+            }
+            io_add_zone_for_generator = {
+                zone = zone_energy_wilderness
+                district = district_photosynthesis_fields
+            }
+        }
+        else_if = {
+            limit = {
+                has_planet_flag = uncapped_energy
+            }
+            add_district_and_planet_size_if_needed_effect_amount = {
+                amount = energy_districts
+                district = district_generator_uncapped
+            }
+            io_add_zone_for_generator = {
+                zone = zone_energy
+                district = district_generator_uncapped
+            }
+        }
+        else_if = {
+            limit = {
+                is_planet_class = pc_machine
+            }
+            while = {
+                count = energy_districts
+                add_district = district_nexus_1
+            }
+            add_zone = {
+                district = district_nexus_1
+                zone = zone_energy
+            }
+        }
+        else_if = {
+            limit = {
+                is_planet_class = pc_habitat
+            }
+            add_district_and_planet_size_if_needed_effect_amount = {
+                amount = energy_districts
+                district = district_hab_energy
+            }
+            io_add_zone_for_generator = {
+                zone = zone_energy
+                district = district_hab_energy
+            }
+        }
+        else = {
+            add_district_and_planet_size_if_needed_effect_amount = {
+                amount = energy_districts
+                district = district_generator
+            }
+            io_add_zone_for_generator = {
+                zone = zone_energy
+                district = district_generator
+            }
+        }
+    }
+    # Mining
+    if = {
+        limit = {
+            check_variable = {
+                which = mining_districts
+                value >= 1
+            }
+        }
+        if = {
+            limit = {
+                is_wilderness_empire = yes
+            }
+            add_district_and_planet_size_if_needed_effect_amount = {
+                amount = mining_districts
+                district = district_hollow_mountains
+            }
+            io_add_zone_for_mining = {
+                zone = zone_minerals_wilderness
+                district = district_hollow_mountains
+            }
+        }
+        else_if = {
+            limit = {
+                has_planet_flag = uncapped_mining
+            }
+            add_district_and_planet_size_if_needed_effect_amount = {
+                amount = mining_districts
+                district = district_mining_uncapped
+            }
+            io_add_zone_for_mining = {
+                zone = zone_minerals
+                district = district_mining_uncapped
+            }
+        }
+        else_if = {
+            limit = {
+                is_planet_class = pc_machine
+            }
+            while = {
+                count = mining_districts
+                add_district = district_nexus_2
+            }
+            add_zone = {
+                district = district_nexus_2
+                zone = zone_minerals
+            }
+        }
+        else_if = {
+            limit = {
+                is_planet_class = pc_habitat
+            }
+            add_district_and_planet_size_if_needed_effect_amount = {
+                amount = mining_districts
+                district = district_hab_mining
+            }
+            io_add_zone_for_mining = {
+                zone = zone_minerals
+                district = district_hab_mining
+            }
+        }
+        else = {
+            add_district_and_planet_size_if_needed_effect_amount = {
+                amount = mining_districts
+                district = district_mining
+            }
+            io_add_zone_for_mining = {
+                zone = zone_minerals
+                district = district_mining
+            }
+        }
+    }
+    # Agriculture
+    if = {
+        limit = {
+            check_variable = {
+                which = farming_districts
+                value >= 1
+            }
+        }
+        if = {
+            limit = {
+                is_wilderness_empire = yes
+            }
+            add_district_and_planet_size_if_needed_effect_amount = {
+                amount = farming_districts
+                district = district_orchard_forests
+            }
+            io_add_zone_for_farming = {
+                zone = zone_food_wilderness
+                district = district_orchard_forests
+            }
+        }
+        else_if = {
+            limit = {
+                has_planet_flag = uncapped_farming
+            }
+            add_district_and_planet_size_if_needed_effect_amount = {
+                amount = farming_districts
+                district = district_farming_uncapped
+            }
+            io_add_zone_for_farming = {
+                zone = zone_food
+                district = district_farming_uncapped
+            }
+        }
+        else_if = {
+            limit = {
+                is_planet_class = pc_machine
+            }
+            # Do nothing
+            # Included to prevent the final else statement from trying to add districts
+        }
+        else_if = {
+            limit = {
+                is_planet_class = pc_habitat
+            }
+            add_zone = {
+                district = district_hab_energy
+                zone = zone_habitat_hydroponics
+            }
+            add_district_and_planet_size_if_needed_effect_amount = {
+                amount = farming_districts
+                district = district_hab_energy
+            }
+            while = {
+                count = 2
+                remove_district = district_hab_energy
+            }
+            # add_building = {
+            #     zone = zone_habitat_hydroponics
+            #     building = building_hydroponics_farm
+            # }
+        }
+        else = {
+            add_district_and_planet_size_if_needed_effect_amount = {
+                amount = farming_districts
+                district = district_farming
+            }
+            io_add_zone_for_farming = {
+                zone = zone_food
+                district = district_farming
+            }
+        }
+    }
+    # Clear variables and flags
+    clear_variable = city_districts
+    clear_variable = energy_districts
+    clear_variable = mining_districts
+    clear_variable = farming_districts
+    remove_planet_flag = uncapped_energy
+    remove_planet_flag = uncapped_mining
+    remove_planet_flag = uncapped_farming
+    remove_planet_flag = wilderness_planet
+}
+
+io_districts_captial = {
+    if = {
+        limit = {
+            owner = {
+                is_galactic_emperor = yes
+                check_variable = {
+                    which = io_setting_empire
+                    value = 0
+                }
+            }
+        }
+        change_pc = pc_relic
+        set_planet_size = 30
+    }
+    if = {
+        limit = {
+            owner = {
+                has_origin = origin_arc_welders
+            }
+        }
+        set_variable = {
+            which = city_districts
+            value = 6
+        }
+        set_variable = {
+            which = energy_districts
+            value = 6
+        }
+        set_variable = {
+            which = mining_districts
+            value = 2
+        }
+    }
+    else_if = {
+        limit = {
+            owner_main_species = {
+                is_robotic = yes
+            }
+        }
+        set_variable = {
+            which = city_districts
+            value = 6
+        }
+        set_variable = {
+            which = energy_districts
+            value = 6
+        }
+        set_variable = {
+            which = mining_districts
+            value = 6
+        }
+    }
+    else_if = {
+        limit = {
+            owner_main_species = {
+                is_lithoid = yes
+            }
+        }
+        set_variable = {
+            which = city_districts
+            value = 6
+        }
+        set_variable = {
+            which = energy_districts
+            value = 4
+        }
+        set_variable = {
+            which = mining_districts
+            value = 8
+        }
+    }
+    else = {
+        set_variable = {
+            which = city_districts
+            value = 6
+        }
+        set_variable = {
+            which = energy_districts
+            value = 4
+        }
+        set_variable = {
+            which = mining_districts
+            value = 4
+        }
+        set_variable = {
+            which = farming_districts
+            value = 4
+        }
+    }
+    #无限农业区
+    if = {
+        limit = {
+            exists = owner
+            OR = {
+                AND = {
+                    owner = {
+                        is_anglers_empire = yes
+                    }
+                    is_planet_class = pc_ocean
+                }
+                owner = {
+                    OR = {
+                        has_origin = origin_ocean_paradise
+                        has_origin = origin_ocean_machines
+                        has_origin = origin_shattered_ring
+                    }
+                }
+            }
+
+        }
+        set_planet_flag = uncapped_farming
+    }
+    #无限采矿区
+    if = {
+        limit = {
+            exists = owner
+            owner = {
+                OR = {
+                    is_subterranean_empire = yes
+                    has_origin = origin_shattered_ring
+                }
+            }
+        }
+        set_planet_flag = uncapped_mining
+    }
+    #无限能源区
+    if = {
+        limit = {
+            exists = owner
+            owner = {
+                has_origin = origin_shattered_ring
+            }
+        }
+        set_planet_flag = uncapped_energy
+    }
+    #石头有机第二种族
+    if = {
+        limit = {
+            has_subspecies_civic_or_origin = yes
+        }
+        if = {
+            limit = {
+                owner = {
+                    any_owned_pop_group = {
+                        OR = {
+                            is_lithoid = yes
+                            has_trait = trait_machine_unit
+                        }
+                    }
+                }
+            }
+            owner = {
+                set_country_flag = lithoid_subspecies
+            }
+        }
+        else = {
+            owner = {
+                set_country_flag = non_lithoid_subspecies
+            }
+            change_variable = {
+                which = farming_districts
+                value = 1
+            }
+        }
+    }
+    #催化加工
+    if = {
+        limit = {
+            exists = owner
+            owner = {
+                is_catalytic_empire = yes
+            }
+        }
+        change_variable = {
+            which = mining_districts
+            value = -1
+        }
+        change_variable = {
+            which = farming_districts
+            value = 2
+        }
+    }
+    #肉船
+    if = {
+        limit = {
+            exists = owner
+            owner = {
+                uses_ship_category = bio_ship
+            }
+        }
+        change_variable = {
+            which = farming_districts
+            value = 1
+        }
+    }
+}
+
+io_districts_hab_captial = {
+    if = {
+        limit = {
+            owner_main_species = {
+                is_robotic = yes
+            }
+        }
+        set_variable = {
+            which = city_districts
+            value = 6
+        }
+        set_variable = {
+            which = energy_districts
+            value = 8
+        }
+        set_variable = {
+            which = mining_districts
+            value = 6
+        }
+    }
+    else_if = {
+        limit = {
+            owner_main_species = {
+                is_lithoid = yes
+            }
+        }
+        set_variable = {
+            which = city_districts
+            value = 6
+        }
+        set_variable = {
+            which = energy_districts
+            value = 4
+        }
+        set_variable = {
+            which = mining_districts
+            value = 10
+        }
+    }
+    else = {
+        set_variable = {
+            which = city_districts
+            value = 6
+        }
+        set_variable = {
+            which = energy_districts
+            value = 4
+        }
+        set_variable = {
+            which = mining_districts
+            value = 4
+        }
+        set_variable = {
+            which = farming_districts
+            value = 6
+        }
+    }
+    #石头有机第二种族
+    if = {
+        limit = {
+            owner = {
+                has_subspecies_civic_or_origin = yes
+            }
+        }
+        if = {
+            limit = {
+                owner = {
+                    any_owned_pop_group = {
+                        OR = {
+                            is_lithoid = yes
+                            has_trait = trait_machine_unit
+                        }
+                    }
+                }
+            }
+            owner = {
+                set_country_flag = lithoid_subspecies
+            }
+        }
+        else = {
+            owner = {
+                set_country_flag = non_lithoid_subspecies
+            }
+            if = {
+                limit = {
+                    OR = {
+                        has_origin = origin_necrophage
+                        has_origin = origin_syncretic_evolution
+                    }
+                }
+                change_variable = {
+                    which = mining_districts
+                    value = -2
+                }
+                change_variable = {
+                    which = farming_districts
+                    value = 2
+                }
+            }
+            else = {
+                change_variable = {
+                    which = mining_districts
+                    value = -1
+                }
+                change_variable = {
+                    which = farming_districts
+                    value = 1
+                }
+            }
+        }
+    }
+    #催化加工
+    if = {
+        limit = {
+            exists = owner
+            owner = {
+                is_catalytic_empire = yes
+            }
+        }
+        change_variable = {
+            which = mining_districts
+            value = -2
+        }
+        change_variable = {
+            which = farming_districts
+            value = 2
+        }
+    }
+    #肉船
+    if = {
+        limit = {
+            exists = owner
+            owner = {
+                uses_ship_category = bio_ship
+            }
+        }
+        change_variable = {
+            which = mining_districts
+            value = -2
+        }
+        change_variable = {
+            which = farming_districts
+            value = 2
+        }
+    }
+}
+
+io_districts_city_world = {
+    if = {
+        limit = {
+            planet_size < 30
+        }
+        set_planet_size = 30
+    }
+    if = {
+        limit = {
+            owner = {
+                check_variable = {
+                    which = io_setting_empire
+                    value = 1
+                }
+            }
+        }
+        set_variable = {
+            which = city_districts
+            value = 12
+        }
+        add_district = district_arcology_urban_1
+        add_district = district_arcology_urban_2
+        add_district = district_arcology_urban_3
+    }
+    else_if = {
+        limit = {
+            owner = {
+                check_variable = {
+                    which = io_setting_empire
+                    value = 2
+                }
+            }
+        }
+        set_variable = {
+            which = city_districts
+            value = 18
+        }
+        add_district = district_arcology_urban_1
+        add_district = district_arcology_urban_2
+        add_district = district_arcology_urban_3
+    }
+    else_if = {
+        limit = {
+            owner = {
+                check_variable = {
+                    which = io_setting_empire
+                    value >= 3
+                }
+            }
+        }
+        set_variable = {
+            which = city_districts
+            value = 24
+        }
+        add_district = district_arcology_urban_1
+        add_district = district_arcology_urban_2
+        add_district = district_arcology_urban_3
+    }
+    add_zone = {
+        zone = zone_research_unity
+        district = district_arcology_housing
+        zone_slot = 1
+    }
+    if = {
+        limit = {
+            owner = {
+                OR = {
+                    is_gestalt = no
+                    has_valid_civic = civic_machine_servitor
+                    has_valid_civic = civic_machine_obsessional_directive
+                }
+            }
+        }
+        add_zone = {
+            district = district_arcology_housing
+            zone = zone_industrial
+            zone_slot = 2
+        }
+    }
+    else = {
+        add_zone = {
+            district = district_arcology_housing
+            zone = zone_foundry
+            zone_slot = 2
+        }
+    }
+    subtract_variable = {
+        which = city_districts
+        value = 1
+    }
+    while = {
+        count = city_districts
+        add_district = district_arcology_housing
+    }
+}
+
+io_add_fe_unity = {
+    if = {
+        limit = {
+            owner = {
+                is_hive_empire = yes
+            }
+        }
+        add_building = {
+            building = building_fe_administration_hive_2
+            zone = $zone$
+            district = $district$
+        }
+    }
+    else_if = {
+        limit = {
+            owner = {
+                is_machine_empire = yes
+            }
+        }
+        add_building = {
+            building = building_fe_administration_machine_2
+            zone = $zone$
+            district = $district$
+        }
+    }
+    else_if = {
+        limit = {
+            owner = {
+                is_spiritualist = yes
+            }
+        }
+        add_building = {
+            building = building_fe_temple_2
+            zone = $zone$
+            district = $district$
+        }
+    }
+    else = {
+        add_building = {
+            building = building_fe_administration_2
+            zone = $zone$
+            district = $district$
+        }
+    }
+}
+
+io_fe_planet_set = {
+    if = {
+        limit = {
+            NOT = {
+                is_planet_class = pc_city
+            }
+        }
+        change_pc = pc_city
+    }
+    clear_blockers = yes
+    clear_deposits = yes
+    remove_all_buildings = yes
+    remove_all_districts = yes
+    if = {
+        limit = {
+            planet_size < 30
+        }
+        set_planet_size = 30
+    }
+    while = {
+        count = 26
+        add_district = district_arcology_housing
+    }
+    add_district = district_arcology_urban_1
+    add_district = district_arcology_urban_2
+    add_district = district_arcology_urban_3
+    add_zone = {
+        district = district_arcology_urban_1
+        zone = zone_urban
+    }
+    add_zone = {
+        district = district_arcology_urban_2
+        zone = zone_urban
+    }
+    add_zone = {
+        district = district_arcology_urban_3
+        zone = zone_urban
+    }
+    #首府区
+    if = {
+        limit = {
+            is_capital = yes
+        }
+        if = {
+            limit = {
+                owner = {
+                    is_hive_empire = yes
+                }
+            }
+            add_building = {
+                building = building_imperial_hive_capital
+                zone = zone_default
+            }
+            add_building = {
+                building = building_fe_stronghold
+                zone = zone_default
+            }
+            add_building = {
+                building = building_fe_security_2
+                zone = zone_default
+            }
+            add_building = {
+                building = building_fe_clinic_2
+                zone = zone_default
+            }
+            add_building = {
+                building = building_fe_entertainment_2
+                zone = zone_default
+            }
+            add_building = {
+                building = building_fe_dome
+                zone = zone_default
+            }
+        }
+        if = {
+            limit = {
+                owner = {
+                    is_machine_empire = yes
+                }
+            }
+            add_building = {
+                building = building_imperial_machine_capital
+                zone = zone_default
+            }
+            add_building = {
+                building = building_fe_stronghold
+                zone = zone_default
+            }
+            add_building = {
+                building = building_fe_security_2
+                zone = zone_default
+            }
+            add_building = {
+                building = building_fe_assembly_2
+                zone = zone_default
+            }
+            add_building = {
+                building = building_fe_entertainment_2
+                zone = zone_default
+            }
+            add_building = {
+                building = building_fe_dome
+                zone = zone_default
+            }
+        }
+        else_if = {
+            limit = {
+                owner = {
+                    is_individual_machine = yes
+                }
+            }
+            add_building = {
+                building = building_imperial_capital
+                zone = zone_default
+            }
+            add_building = {
+                building = building_fe_stronghold
+                zone = zone_default
+            }
+            add_building = {
+                building = building_fe_security_2
+                zone = zone_default
+            }
+            add_building = {
+                building = building_fe_assembly_2
+                zone = zone_default
+            }
+            add_building = {
+                building = building_fe_entertainment_2
+                zone = zone_default
+            }
+            add_building = {
+                building = building_fe_dome
+                zone = zone_default
+            }
+        }
+        else = {
+            add_building = {
+                building = building_imperial_capital
+                zone = zone_default
+            }
+            add_building = {
+                building = building_fe_stronghold
+                zone = zone_default
+            }
+            add_building = {
+                building = building_fe_security_2
+                zone = zone_default
+            }
+            add_building = {
+                building = building_fe_clinic_2
+                zone = zone_default
+            }
+            add_building = {
+                building = building_fe_entertainment_2
+                zone = zone_default
+            }
+            add_building = {
+                building = building_fe_dome
+                zone = zone_default
+            }
+        }
+    }
+    else = {
+        if = {
+            limit = {
+                owner = {
+                    is_hive_empire = yes
+                }
+            }
+            add_building = building_hive_major_capital
+            add_building = {
+                building = building_fe_stronghold
+                zone = zone_default
+            }
+            add_building = {
+                building = building_fe_security_2
+                zone = zone_default
+            }
+            add_building = {
+                building = building_fe_clinic_2
+                zone = zone_default
+            }
+            add_building = {
+                building = building_fe_entertainment_2
+                zone = zone_default
+            }
+            add_building = {
+                building = building_fe_dome
+                zone = zone_default
+            }
+        }
+        if = {
+            limit = {
+                owner = {
+                    is_machine_empire = yes
+                }
+            }
+            add_building = building_machine_system_capital
+            add_building = {
+                building = building_fe_stronghold
+                zone = zone_default
+            }
+            add_building = {
+                building = building_fe_security_2
+                zone = zone_default
+            }
+            add_building = {
+                building = building_fe_assembly_2
+                zone = zone_default
+            }
+            add_building = {
+                building = building_fe_entertainment_2
+                zone = zone_default
+            }
+            add_building = {
+                building = building_fe_dome
+                zone = zone_default
+            }
+        }
+        else_if = {
+            limit = {
+                owner = {
+                    is_individual_machine = yes
+                }
+            }
+            add_building = building_system_capital
+            add_building = {
+                building = building_fe_stronghold
+                zone = zone_default
+            }
+            add_building = {
+                building = building_fe_security_2
+                zone = zone_default
+            }
+            add_building = {
+                building = building_fe_assembly_2
+                zone = zone_default
+            }
+            add_building = {
+                building = building_fe_entertainment_2
+                zone = zone_default
+            }
+            add_building = {
+                building = building_fe_dome
+                zone = zone_default
+            }
+        }
+        else = {
+            add_building = building_system_capital
+            add_building = {
+                building = building_fe_stronghold
+                zone = zone_default
+            }
+            add_building = {
+                building = building_fe_security_2
+                zone = zone_default
+            }
+            add_building = {
+                building = building_fe_clinic_2
+                zone = zone_default
+            }
+            add_building = {
+                building = building_fe_entertainment_2
+                zone = zone_default
+            }
+            add_building = {
+                building = building_fe_dome
+                zone = zone_default
+            }
+        }
+    }
+    #首都zone设置
+    if = {
+        limit = {
+            is_capital = yes
+        }
+        if = {
+            limit = {
+                NOT = {
+                    has_zone = {
+                        zone = zone_research_unity
+                    }
+                }
+            }
+            add_zone = {
+                district = district_arcology_housing
+                zone = zone_research_unity
+                zone_slot = 1
+            }
+        }
+        if = {
+            limit = {
+                owner = {
+                    has_civic = civic_machine_servitor
+                }
+            }
+            every_owned_pop_group = {
+                limit = {
+                    is_organic_species = yes
+                }
+                kill_all_pop = yes #猜猜他们去哪了？
+            }
+            add_building = {
+                building = building_ancient_cryo_chamber
+                district = district_arcology_housing
+                zone = zone_research_unity
+            }
+        }
+        else_if = {
+            limit = {
+                owner = {
+                    is_spiritualist = yes
+                }
+            }
+            add_building = {
+                building = building_empyrean_shrine
+                district = district_arcology_housing
+                zone = zone_research_unity
+            }
+        }
+        else = {
+            add_building = {
+                building = building_master_archive
+                district = district_arcology_housing
+                zone = zone_research_unity
+            }
+        }
+        add_building = {
+            building = building_fe_lab_2
+            district = district_arcology_housing
+            zone = zone_research_unity
+        }
+        io_add_fe_unity = {
+            district = district_arcology_housing
+            zone = zone_research_unity
+        }
+        if = {
+            limit = {
+                owner = {
+                    country_uses_consumer_goods = yes
+                }
+            }
+            add_zone = {
+                district = district_arcology_housing
+                zone = zone_industrial
+                zone_slot = 2
+            }
+            add_building = {
+                building = building_affluence_center
+                district = district_arcology_housing
+                zone = zone_industrial
+            }
+            add_building = {
+                building = building_nano_forge
+                district = district_arcology_housing
+                zone = zone_industrial
+            }
+            add_building = {
+                building = building_dimensional_fabricator
+                district = district_arcology_housing
+                zone = zone_industrial
+            }
+        }
+        else_if = {
+            limit = {
+                has_zone = {
+                    zone = zone_foundry
+                }
+            }
+            add_zone = {
+                district = district_arcology_housing
+                zone = zone_foundry
+                zone_slot = 2
+            }
+            while = {
+                count = 2
+                add_building = {
+                    building = building_nano_forge
+                    district = district_arcology_housing
+                    zone = zone_foundry
+                }
+            }
+            add_building = {
+                building = building_dimensional_fabricator
+                district = district_arcology_housing
+                zone = zone_foundry
+            }
+        }
+    }
+    #第一球zone设置
+    else_if = {
+        limit = {
+            has_planet_flag = prescripted_ideal
+            solar_system = {
+                has_star_flag = neighbor_t1_first_colony
+            }
+        }
+        add_zone = {
+            district = district_arcology_housing
+            zone = zone_trade
+        }
+        while = {
+            count = 3
+            add_building = {
+                building = building_fe_market_2
+                district = district_arcology_housing
+                zone = zone_trade
+            }
+        }
+        if = {
+            limit = {
+                owner = {
+                    country_uses_consumer_goods = yes
+                }
+            }
+            add_zone = {
+                district = district_arcology_housing
+                zone = zone_factory
+                zone_slot = 2
+            }
+            while = {
+                count = 2
+                add_building = {
+                    building = building_affluence_center
+                    district = district_arcology_housing
+                    zone = zone_factory
+                }
+            }
+            add_building = {
+                building = building_dimensional_fabricator
+                district = district_arcology_housing
+                zone = zone_factory
+            }
+        }
+        else = {
+            add_zone = {
+                district = district_arcology_housing
+                zone = zone_foundry
+                zone_slot = 2
+            }
+            while = {
+                count = 2
+                add_building = {
+                    building = building_nano_forge
+                    district = district_arcology_housing
+                    zone = zone_foundry
+                }
+            }
+            add_building = {
+                building = building_dimensional_fabricator
+                district = district_arcology_housing
+                zone = zone_foundry
+            }
+        }
+        set_colony_type = col_ecu_factory
+    }
+    #第二球zone设置
+    else_if = {
+        limit = {
+            has_planet_flag = prescripted_ideal
+            solar_system = {
+                has_star_flag = neighbor_t2_second_colony
+            }
+        }
+        add_zone = {
+            district = district_arcology_housing
+            zone = zone_fortress
+        }
+        while = {
+            count = 3
+            add_building = {
+                building = building_fe_stronghold
+                district = district_arcology_housing
+                zone = zone_fortress
+            }
+        }
+        add_zone = {
+            district = district_arcology_housing
+            zone = zone_foundry
+            zone_slot = 2
+        }
+        while = {
+            count = 2
+            add_building = {
+                building = building_nano_forge
+                district = district_arcology_housing
+                zone = zone_foundry
+            }
+        }
+        add_building = {
+            building = building_dimensional_fabricator
+            district = district_arcology_housing
+            zone = zone_foundry
+        }
+        set_colony_type = col_ecu_foundry
+    }
+    #资源zone
+    if = {
+        limit = {
+            owner = {
+                country_uses_food = yes
+            }
+        }
+        while = {
+            count = 3
+            add_building = {
+                building = building_nourishment_center
+                district = district_arcology_urban_1
+                zone = zone_urban
+            }
+        }
+    }
+    else = {
+        add_building = {
+            building = building_dimensional_fabricator
+            district = district_arcology_urban_1
+            zone = zone_urban
+        }
+        add_building = {
+            building = building_class_4_singularity
+            district = district_arcology_urban_1
+            zone = zone_urban
+        }
+        add_building = {
+            building = building_fe_mine_2
+            district = district_arcology_urban_1
+            zone = zone_urban
+        }
+    }
+    while = {
+        count = 3
+        add_building = {
+            building = building_class_4_singularity
+            district = district_arcology_urban_2
+            zone = zone_urban
+        }
+    }
+    while = {
+        count = 3
+        add_building = {
+            building = building_fe_mine_2
+            district = district_arcology_urban_3
+            zone = zone_urban
+        }
+    }
+}
+
+io_building_captial_wilderness = {
+    #首府建筑
+    if = {
+        limit = {
+            owner = {
+                is_galactic_emperor = yes
+            }
+        }
+        add_building = {
+            building = building_imperial_capital_wilderness
+            zone = zone_default
+        }
+    }
+    else_if = {
+        limit = {
+            owner = {
+                check_variable = {
+                    which = io_setting_tech
+                    value >= 3
+                }
+            }
+        }
+        add_building = {
+            building = building_system_capital_wilderness
+            zone = zone_default
+        }
+    }
+    else_if = {
+        limit = {
+            owner = {
+                check_variable = {
+                    which = io_setting_tech
+                    value >= 2
+                }
+            }
+        }
+        add_building = {
+            building = building_major_capital_wilderness
+            zone = zone_default
+        }
+    }
+    else = {
+        add_building = {
+            building = building_capital_wilderness
+            zone = zone_default
+        }
+    }
+    add_building = building_cradle_of_rebirth
+}
+
+io_building_captial_machine = {
+    #首府建筑
+    if = {
+        limit = {
+            owner = {
+                is_galactic_emperor = yes
+            }
+        }
+        add_building = {
+            building = building_imperial_machine_capital
+            zone = zone_default
+        }
+    }
+    else_if = {
+        limit = {
+            owner = {
+                check_variable = {
+                    which = io_setting_tech
+                    value >= 3
+                }
+            }
+        }
+        add_building = {
+            building = building_machine_system_capital
+            zone = zone_default
+        }
+    }
+    else_if = {
+        limit = {
+            owner = {
+                check_variable = {
+                    which = io_setting_tech
+                    value >= 2
+                }
+            }
+        }
+        add_building = {
+            building = building_machine_major_capital
+            zone = zone_default
+        }
+    }
+    else = {
+        add_building = {
+            building = building_machine_capital
+            zone = zone_default
+        }
+    }
+    if = {
+        limit = {
+            owner = {
+                check_variable = {
+                    which = io_setting_tech
+                    value >= 4
+                }
+            }
+        }
+        add_building = building_machine_assembly_complex
+    }
+    else = {
+        add_building = building_machine_assembly_plant
+    }
+}
+
+io_building_captial_hive = {
+    #首府建筑
+    if = {
+        limit = {
+            owner = {
+                is_galactic_emperor = yes
+            }
+        }
+        add_building = {
+            building = building_imperial_hive_capital
+            zone = zone_default
+        }
+    }
+    else_if = {
+        limit = {
+            owner = {
+                check_variable = {
+                    which = io_setting_tech
+                    value >= 2
+                }
+            }
+        }
+        add_building = {
+            building = building_hive_major_capital
+            zone = zone_default
+        }
+    }
+    else = {
+        add_building = {
+            building = building_hive_capital
+            zone = zone_default
+        }
+    }
+    if = {
+        limit = {
+            owner = {
+                has_origin = origin_progenitor_hive
+            }
+        }
+        add_building = building_offspring_nest
+    }
+    else = {
+        add_building = building_spawning_pool
+    }
+}
+
+io_building_captial_regular = {
+    #首府建筑
+    if = {
+        limit = {
+            owner = {
+                is_galactic_emperor = yes
+            }
+        }
+        add_building = {
+            building = building_imperial_capital
+            zone = zone_default
+        }
+    }
+    else_if = {
+        limit = {
+            owner = {
+                check_variable = {
+                    which = io_setting_tech
+                    value >= 3
+                }
+            }
+        }
+        add_building = {
+            building = building_system_capital
+            zone = zone_default
+        }
+    }
+    else_if = {
+        limit = {
+            owner = {
+                check_variable = {
+                    which = io_setting_tech
+                    value >= 2
+                }
+            }
+        }
+        add_building = {
+            building = building_major_capital
+            zone = zone_default
+        }
+    }
+    else = {
+        add_building = {
+            building = building_capital
+            zone = zone_default
+        }
+    }
+    if = {
+        limit = {
+            owner = {
+                has_origin = origin_clone_army
+            }
+        }
+        add_building = building_clone_army_clone_vat
+    }
+    else_if = {
+        limit = {
+            owner = {
+                has_origin = origin_necrophage
+                NOT = { has_civic = civic_fanatic_purifiers } #purges them instead
+                NOT = { has_ai_personality_behaviour = purger }
+                owner = {
+                    check_variable = {
+                        which = io_setting_tech
+                        value >= 3
+                    }
+                }
+            }
+        }
+        add_building = building_necrophage_house_of_apotheosis
+    }
+    else_if = {
+        limit = {
+            owner = {
+                has_origin = origin_necrophage
+                NOT = { has_civic = civic_fanatic_purifiers } #purges them instead
+                NOT = { has_ai_personality_behaviour = purger }
+            }
+        }
+        add_building = building_necrophage_elevation_chamber
+    }
+    else_if = {
+        limit = {
+            owner = {
+                is_individual_machine = yes
+            }
+        }
+        add_building = building_machine_assembly_complex
+    }
+    else_if = {
+        limit = {
+            owner = {
+                is_individual_machine = yes
+            }
+        }
+        add_building = building_machine_assembly_plant
+    }
+    else_if = {
+        limit = {
+            owner = {
+                has_policy_flag = robots_allowed
+                check_variable = {
+                    which = io_setting_tech
+                    value >= 4
+                }
+            }
+        }
+        add_building = building_robot_assembly_complex
+    }
+    else_if = {
+        limit = {
+            owner = {
+                 has_policy_flag = robots_allowed
+            }
+        }
+        add_building = building_robot_assembly_plant
+    }
+}
+
+io_building_captial_hab = {
+    #首府建筑
+    if = {
+        limit = {
+            owner = {
+                check_variable = {
+                    which = io_setting_tech
+                    value >= 3
+                }
+            }
+        }
+        add_building = {
+            building = building_hab_system_capital
+            zone = zone_default
+        }
+    }
+    else = {
+        add_building = {
+            building = building_hab_major_capital
+            zone = zone_default
+        }
+    }
+    if = {
+        limit = {
+            owner = {
+                has_origin = origin_necrophage
+                NOT = { has_civic = civic_fanatic_purifiers } #purges them instead
+                NOT = { has_ai_personality_behaviour = purger }
+                owner = {
+                    check_variable = {
+                        which = io_setting_tech
+                        value >= 3
+                    }
+                }
+            }
+        }
+        add_building = building_necrophage_house_of_apotheosis
+    }
+    else_if = {
+        limit = {
+            owner = {
+                has_origin = origin_necrophage
+                NOT = { has_civic = civic_fanatic_purifiers } #purges them instead
+                NOT = { has_ai_personality_behaviour = purger }
+            }
+        }
+        add_building = building_necrophage_elevation_chamber
+    }
+    else_if = {
+        limit = {
+            owner = {
+                has_origin = origin_progenitor_hive
+            }
+        }
+        add_building = building_offspring_nest
+    }
+    else_if = {
+        limit = {
+            owner = {
+                is_hive_empire = yes
+            }
+        }
+        add_building = building_spawning_pool
+    }
+    else_if = {
+        limit = {
+            owner = {
+                is_individual_machine = yes
+            }
+        }
+        add_building = building_machine_assembly_complex
+    }
+    else_if = {
+        limit = {
+            owner = {
+                is_individual_machine = yes
+            }
+        }
+        add_building = building_machine_assembly_plant
+    }
+    else_if = {
+        limit = {
+            owner = {
+                 has_policy_flag = robots_allowed
+                check_variable = {
+                    which = io_setting_tech
+                    value >= 4
+                }
+            }
+        }
+        add_building = building_robot_assembly_complex
+    }
+    else_if = {
+        limit = {
+            owner = {
+                 has_policy_flag = robots_allowed
+            }
+        }
+        add_building = building_robot_assembly_plant
+    }
+}
+
+io_building_captial = {
+    if = {
+        limit = {
+            owner = {
+                is_wilderness_empire = yes
+            }
+        }
+        io_building_captial_wilderness = yes
+    }
+    else_if = {
+        limit = {
+            owner = {
+                is_hive_empire = yes
+            }
+        }
+        io_building_captial_hive = yes
+    }
+    else_if = {
+        limit = {
+            owner = {
+                is_machine_empire = yes
+            }
+        }
+        io_building_captial_machine = yes
+    }
+    else = {
+        io_building_captial_regular = yes
+    }
+}
+
+io_districts_colony = {
+    if = {
+        limit = {
+            owner_main_species = {
+                is_robotic = yes
+            }
+        }
+        set_variable = {
+            which = city_districts
+            value = 2
+        }
+        set_variable = {
+            which = energy_districts
+            value = 2
+        }
+        set_variable = {
+            which = mining_districts
+            value = 1
+        }
+    }
+    else_if = {
+        limit = {
+            owner_main_species = {
+                is_lithoid = yes
+            }
+        }
+        set_variable = {
+            which = city_districts
+            value = 2
+        }
+        set_variable = {
+            which = energy_districts
+            value = 1
+        }
+        set_variable = {
+            which = mining_districts
+            value = 2
+        }
+    }
+    else = {
+        set_variable = {
+            which = city_districts
+            value = 2
+        }
+        set_variable = {
+            which = energy_districts
+            value = 1
+        }
+        set_variable = {
+            which = mining_districts
+            value = 1
+        }
+        set_variable = {
+            which = farming_districts
+            value = 1
+        }
+    }
+}
+
+io_districts_fe_colony = {
+    if = {
+        limit = {
+            owner_main_species = {
+                is_robotic = yes
+            }
+        }
+        set_variable = {
+            which = city_districts
+            value = 4
+        }
+        set_variable = {
+            which = energy_districts
+            value = 4
+        }
+        set_variable = {
+            which = mining_districts
+            value = 2
+        }
+    }
+    else_if = {
+        limit = {
+            owner_main_species = {
+                is_lithoid = yes
+            }
+        }
+        set_variable = {
+            which = city_districts
+            value = 4
+        }
+        set_variable = {
+            which = energy_districts
+            value = 2
+        }
+        set_variable = {
+            which = mining_districts
+            value = 4
+        }
+    }
+    else = {
+        set_variable = {
+            which = city_districts
+            value = 4
+        }
+        set_variable = {
+            which = energy_districts
+            value = 2
+        }
+        set_variable = {
+            which = mining_districts
+            value = 2
+        }
+        set_variable = {
+            which = farming_districts
+            value = 2
+        }
+    }
+}
+
+io_building_colony = {
+    if = {
+        limit = {
+            owner = {
+                is_wilderness_empire = yes
+            }
+        }
+        add_building = building_capital_wilderness
+        io_add_zone_for_city = {
+            district = district_craglands
+        }
+    }
+    else_if = {
+        limit = {
+            owner = {
+                is_hive_empire = yes
+            }
+        }
+        add_building = building_hive_capital
+        io_add_zone_for_city = {
+            district = district_hive
+        }
+    }
+    else_if = {
+        limit = {
+            owner = {
+                is_machine_empire = yes
+            }
+        }
+        add_building = building_machine_capital
+        io_add_zone_for_city = {
+            district = district_nexus
+        }
+    }
+    else_if = {
+        limit = {
+            is_planet_class = pc_habitat
+        }
+        add_building = building_hab_capital
+        io_add_zone_for_city = {
+            district = district_hab_housing
+        }
+    }
+    else = {
+        add_building = building_capital
+        io_add_zone_for_city = {
+            district = district_city
+        }
+    }
+    if = {
+        limit = {
+            owner = {
+                has_origin = origin_clone_army
+            }
+        }
+        add_building = building_clone_army_clone_vat
+    }
+    else_if = {
+        limit = {
+            owner = {
+                has_origin = origin_necrophage
+                NOT = { has_civic = civic_fanatic_purifiers } #purges them instead
+                NOT = { has_ai_personality_behaviour = purger }
+            }
+        }
+        add_building = building_necrophage_elevation_chamber
+    }
+    else_if = {
+        limit = {
+            owner = {
+                OR = {
+                    is_machine_empire = yes
+                    is_individual_machine = yes
+                }
+            }
+        }
+        add_building = building_machine_assembly_plant
+    }
+    else_if = {
+        limit = {
+            owner = {
+                has_policy_flag = robots_allowed
+            }
+        }
+        add_building = building_robot_assembly_plant
+    }
+}
+
+io_building_fe_colony = {
+    if = {
+        limit = {
+            owner = {
+                is_wilderness_empire = yes
+            }
+        }
+        add_building = building_capital_wilderness
+        add_building = building_fe_dome
+    }
+    else_if = {
+        limit = {
+            owner = {
+                is_hive_empire = yes
+            }
+        }
+        add_building = building_hive_capital
+        add_building = {
+            district = district_hive
+            zone = zone_default
+            building = building_fe_dome
+        }
+    }
+    else_if = {
+        limit = {
+            owner = {
+                is_machine_empire = yes
+            }
+        }
+        add_building = building_machine_capital
+        add_building = {
+            district = district_nexus
+            zone = zone_default
+            building = building_fe_dome
+        }
+    }
+    else_if = {
+        limit = {
+            is_planet_class = pc_habitat
+        }
+        add_building = building_hab_capital
+        add_building = {
+            district = district_hab_housing
+            zone = zone_default
+            building = building_fe_dome
+        }
+    }
+    else = {
+        add_building = building_capital
+        add_building = {
+            district = district_city
+            zone = zone_default
+            building = building_fe_dome
+        }
+    }
+    if = {
+        limit = {
+            owner = {
+                has_origin = origin_necrophage
+                NOT = { has_civic = civic_fanatic_purifiers } #purges them instead
+                NOT = { has_ai_personality_behaviour = purger }
+            }
+        }
+        add_building = building_necrophage_house_of_apotheosis
+    }
+    else_if = {
+        limit = {
+            owner = {
+                OR = {
+                    is_machine_empire = yes
+                    is_individual_machine = yes
+                }
+            }
+        }
+        add_building = building_machine_assembly_complex
+    }
+    else_if = {
+        limit = {
+            owner = {
+                has_policy_flag = robots_allowed
+            }
+        }
+        add_building = building_robot_assembly_complex
+    }
+}
+
+io_add_zone_for_city = {
+    if = {
+        limit = {
+            has_planet_flag = prescripted_ideal
+            solar_system = {
+                has_star_flag = neighbor_t1_first_colony
+            }
+        }
+        if = {
+            limit = {
+                owner = {
+                    OR = {
+                        is_gestalt = no
+                        has_valid_civic = civic_machine_servitor
+                        has_valid_civic = civic_machine_obsessional_directive
+                    }
+                }
+            }
+            add_zone = {
+                district = $district$
+                zone = zone_factory
+                zone_slot = 1
+            }
+            add_building = {
+                district = $district$
+                zone = zone_factory
+                building = building_factory_1
+            }
+        }
+        else_if = {
+            limit = {
+                owner = {
+                    is_wilderness_empire = yes
+                }
+            }
+            add_zone = {
+                district = $district$
+                zone = zone_foundry_wilderness
+                zone_slot = 1
+            }
+            add_building = {
+                district = $district$
+                zone = zone_foundry_wilderness
+                building = building_natural_furnace_0
+            }
+        }
+        else = {
+            add_zone = {
+                district = $district$
+                zone = zone_foundry
+                zone_slot = 1
+            }
+            add_building = {
+                district = $district$
+                zone = zone_foundry
+                building = building_foundry_1
+            }
+        }
+    }
+    if = {
+        limit = {
+            has_planet_flag = prescripted_ideal
+            solar_system = {
+                has_star_flag = neighbor_t2_second_colony
+            }
+        }
+        if = {
+            limit = {
+                owner = {
+                    is_wilderness_empire = yes
+                }
+            }
+            add_zone = {
+                district = $district$
+                zone = zone_foundry_wilderness
+                zone_slot = 1
+            }
+            add_building = {
+                district = $district$
+                zone = zone_foundry_wilderness
+                building = building_natural_furnace_0
+            }
+        }
+        else = {
+            add_zone = {
+                district = $district$
+                zone = zone_foundry
+                zone_slot = 1
+            }
+            add_building = {
+                district = $district$
+                zone = zone_foundry
+                building = building_foundry_1
+            }
+        }
+    }
+    if = {
+        limit = {
+            is_planet_class = pc_shattered_ring_habitable
+        }
+        if = {
+            limit = {
+                owner = {
+                    OR = {
+                        is_gestalt = no
+                        has_valid_civic = civic_machine_servitor
+                        has_valid_civic = civic_machine_obsessional_directive
+                    }
+                    NOT = {
+                        any_owned_planet = {
+                            has_planet_flag = io_factory_1_planet
+                        }
+                    }
+                }
+            }
+            add_zone = {
+                district = $district$
+                zone = zone_factory
+                zone_slot = 1
+            }
+            add_building = {
+                district = $district$
+                zone = zone_factory
+                building = building_factory_1
+            }
+            set_planet_flag = io_factory_1_planet
+        }
+        else = {
+            add_zone = {
+                district = $district$
+                zone = zone_foundry
+                zone_slot = 1
+            }
+            add_building = {
+                district = $district$
+                zone = zone_foundry
+                building = building_foundry_1
+            }
+        }
+    }
+}
+
+io_add_zone_for_generator = {
+    if = {
+        limit = {
+            OR = {
+                is_capital = yes
+                has_planet_flag = prescripted_ideal
+            }
+        }
+        if = {
+            limit = {
+                owner = {
+                    OR = {
+                        has_civic = civic_functional_architecture
+                        check_variable = {
+                            which = io_setting_tech
+                            value >= 1
+                        }
+                    }
+                }
+            }
+            add_zone = {
+                zone = $zone$
+                district = $district$
+            }
+            # if = {
+            #     limit = {
+            #         owner = {
+            #             is_wilderness_empire = yes
+            #             check_variable = {
+            #                 which = io_setting_tech
+            #                 value >= 2
+            #             }
+            #         }
+            #     }
+            #     add_building = {
+            #         building = building_bioelectric_stimulator_4
+            #         zone = $zone$
+            #         district = $district$
+            #     }
+            # }
+            # else_if = {
+            #     limit = {
+            #         owner = {
+            #             is_wilderness_empire = yes
+            #             check_variable = {
+            #                 which = io_setting_tech
+            #                 value >= 1
+            #             }
+            #         }
+            #     }
+            #     add_building = {
+            #         building = building_bioelectric_stimulator_3
+            #         zone = $zone$
+            #         district = $district$
+            #     }
+            # }
+            else_if = {
+                limit = {
+                    owner = {
+                        is_wilderness_empire = yes
+                    }
+                }
+                add_building = {
+                    building = building_bioelectric_stimulator_2
+                    zone = $zone$
+                    district = $district$
+                }
+            }
+            # else_if = {
+            #     limit = {
+            #         owner = {
+            #             check_variable = {
+            #                 which = io_setting_tech
+            #                 value >= 2
+            #             }
+            #         }
+            #     }
+            #     add_building = {
+            #         building = building_energy_nexus
+            #         zone = $zone$
+            #         district = $district$
+            #     }
+            # }
+            else_if = {
+                limit = {
+                    owner = {
+                        check_variable = {
+                            which = io_setting_tech
+                            value >= 1
+                        }
+                    }
+                }
+                add_building = {
+                    building = building_energy_grid
+                    zone = $zone$
+                    district = $district$
+                }
+            }
+        }
+    }
+    else_if = {
+        limit = {
+            owner = {
+                has_country_flag = io_fe_emperor
+            }
+        }
+        add_zone = {
+            zone = $zone$
+            district = $district$
+        }
+        add_building = {
+            building = building_class_4_singularity
+            zone = $zone$
+            district = $district$
+        }
+    }
+}
+
+io_add_zone_for_mining = {
+    if = {
+        limit = {
+            OR = {
+                is_capital = yes
+                has_planet_flag = prescripted_ideal
+            }
+        }
+        if = {
+            limit = {
+                is_capital = yes
+                owner = {
+                    OR = {
+                        has_civic = civic_functional_architecture
+                        check_variable = {
+                            which = io_setting_tech
+                            value >= 1
+                        }
+                    }
+                }
+            }
+            add_zone = {
+                zone = $zone$
+                district = $district$
+            }
+            # if = {
+            #     limit = {
+            #         owner = {
+            #             is_wilderness_empire = yes
+            #             check_variable = {
+            #                 which = io_setting_tech
+            #                 value >= 2
+            #             }
+            #         }
+            #     }
+            #     add_building = {
+            #         building = building_churning_tunnels_4
+            #         zone = $zone$
+            #         district = $district$
+            #     }
+            # }
+            # else_if = {
+            #     limit = {
+            #         owner = {
+            #             is_wilderness_empire = yes
+            #             check_variable = {
+            #                 which = io_setting_tech
+            #                 value >= 1
+            #             }
+            #         }
+            #     }
+            #     add_building = {
+            #         building = building_churning_tunnels_3
+            #         zone = $zone$
+            #         district = $district$
+            #     }
+            # }
+            else_if = {
+                limit = {
+                    owner = {
+                        is_wilderness_empire = yes
+                    }
+                }
+                add_building = {
+                    building = building_churning_tunnels_2
+                    zone = $zone$
+                    district = $district$
+                }
+            }
+            # else_if = {
+            #     limit = {
+            #         owner = {
+            #             check_variable = {
+            #                 which = io_setting_tech
+            #                 value >= 2
+            #             }
+            #         }
+            #     }
+            #     add_building = {
+            #         building = building_mineral_purification_hub
+            #         zone = $zone$
+            #         district = $district$
+            #     }
+            # }
+            else_if = {
+                limit = {
+                    owner = {
+                        check_variable = {
+                            which = io_setting_tech
+                            value >= 1
+                        }
+                    }
+                }
+                add_building = {
+                    building = building_mineral_purification_plant
+                    zone = $zone$
+                    district = $district$
+                }
+            }
+        }
+    }
+    else_if = {
+        limit = {
+            owner = {
+                has_country_flag = io_fe_emperor
+            }
+        }
+        add_zone = {
+            zone = $zone$
+            district = $district$
+        }
+        add_building = {
+            building = building_fe_mine_2
+            zone = $zone$
+            district = $district$
+        }
+    }
+}
+
+io_add_zone_for_farming = {
+    if = {
+        limit = {
+            OR = {
+                is_capital = yes
+                has_planet_flag = prescripted_ideal
+            }
+        }
+        if = {
+            limit = {
+                is_capital = yes
+                owner = {
+                    OR = {
+                        has_civic = civic_functional_architecture
+                        check_variable = {
+                            which = io_setting_tech
+                            value >= 1
+                        }
+                    }
+                }
+            }
+            add_zone = {
+                zone = $zone$
+                district = $district$
+            }
+            # if = {
+            #     limit = {
+            #         owner = {
+            #             is_wilderness_empire = yes
+            #             check_variable = {
+            #                 which = io_setting_tech
+            #                 value >= 2
+            #             }
+            #         }
+            #     }
+            #     add_building = {
+            #         building = building_massive_growth_4
+            #         zone = $zone$
+            #         district = $district$
+            #     }
+            # }
+            # else_if = {
+            #     limit = {
+            #         owner = {
+            #             is_wilderness_empire = yes
+            #             check_variable = {
+            #                 which = io_setting_tech
+            #                 value >= 1
+            #             }
+            #         }
+            #     }
+            #     add_building = {
+            #         building = building_massive_growth_3
+            #         zone = $zone$
+            #         district = $district$
+            #     }
+            # }
+            else_if = {
+                limit = {
+                    owner = {
+                        is_wilderness_empire = yes
+                    }
+                }
+                add_building = {
+                    building = building_massive_growth_2
+                    zone = $zone$
+                    district = $district$
+                }
+            }
+            # else_if = {
+            #     limit = {
+            #         owner = {
+            #             check_variable = {
+            #                 which = io_setting_tech
+            #                 value >= 2
+            #             }
+            #         }
+            #     }
+            #     add_building = {
+            #         building = building_food_processing_center
+            #         zone = $zone$
+            #         district = $district$
+            #     }
+            # }
+            else_if = {
+                limit = {
+                    owner = {
+                        check_variable = {
+                            which = io_setting_tech
+                            value >= 1
+                        }
+                    }
+                }
+                add_building = {
+                    building = building_food_processing_facility
+                    zone = $zone$
+                    district = $district$
+                }
+            }
+        }
+    }
+    else_if = {
+        limit = {
+            owner = {
+                has_country_flag = io_fe_emperor
+            }
+        }
+        add_zone = {
+            zone = $zone$
+            district = $district$
+        }
+        add_building = {
+            building = building_nourishment_center
+            zone = $zone$
+            district = $district$
+        }
+    }
+}
+
+io_upgrade_starbase = {
+    if = {
+        limit = {
+            any_system_within_border = {
+                OR = {
+                    count_bypass_in_system = {
+                        count >= 1
+                    }
+                    has_natural_wormhole = yes
+                }
+                starbase = {
+                    has_starbase_size = starbase_outpost
+                }
+            }
+        }
+        random_system_within_border = {
+            limit = {
+                OR = {
+                    count_bypass_in_system = {
+                        count >= 1
+                    }
+                    has_natural_wormhole = yes
+                }
+                starbase = {
+                    has_starbase_size = starbase_outpost
+                }
+            }
+            starbase = {
+                io_upgrade_starbase_by_tech = yes
+            }
+        }
+    }
+    else_if = {
+        limit = {
+            any_system_within_border = {
+                count_system_megastructure = {
+                    count >= 1
+                }
+                starbase = {
+                    has_starbase_size = starbase_outpost
+                }
+            }
+        }
+        random_system_within_border = {
+            limit = {
+                count_system_megastructure = {
+                    count >= 1
+                }
+                starbase = {
+                    has_starbase_size = starbase_outpost
+                }
+            }
+            starbase = {
+                io_upgrade_starbase_by_tech = yes
+            }
+        }
+    }
+    else_if = {
+        limit = {
+            any_system_within_border = {
+                any_system_planet = {
+                    is_colony = yes
+                }
+                starbase = {
+                    has_starbase_size = starbase_outpost
+                }
+            }
+        }
+        random_system_within_border = {
+            limit = {
+                any_system_planet = {
+                    is_colony = yes
+                }
+                starbase = {
+                    has_starbase_size = starbase_outpost
+                }
+            }
+            starbase = {
+                io_upgrade_starbase_by_tech = yes
+            }
+        }
+    }
+    else_if = {
+        limit = {
+            any_system_within_border = {
+                any_system_planet = {
+                    is_colonizable = yes
+                }
+                starbase = {
+                    has_starbase_size = starbase_outpost
+                }
+            }
+        }
+        random_system_within_border = {
+            limit = {
+                any_system_planet = {
+                    is_colonizable = yes
+                }
+                starbase = {
+                    has_starbase_size = starbase_outpost
+                }
+            }
+            starbase = {
+                io_upgrade_starbase_by_tech = yes
+            }
+        }
+    }
+    else_if = {
+        limit = {
+            any_system_within_border = {
+                is_bottleneck_system = yes
+                starbase = {
+                    has_starbase_size = starbase_outpost
+                }
+            }
+        }
+        random_system_within_border = {
+            limit = {
+                is_bottleneck_system = yes
+                starbase = {
+                    has_starbase_size = starbase_outpost
+                }
+            }
+            starbase = {
+                io_upgrade_starbase_by_tech = yes
+            }
+        }
+    }
+    else = {
+        random_system_within_border = {
+            limit = {
+                starbase = {
+                    has_starbase_size = starbase_outpost
+                }
+            }
+            starbase = {
+                io_upgrade_starbase_by_tech = yes
+            }
+        }
+    }
+}
+
+io_upgrade_starbase_by_tech = {
+    if = {
+        limit = {
+            owner = {
+                check_variable = {
+                    which = io_setting_tech
+                    value >= 4
+                }
+            }
+        }
+        set_starbase_size = starbase_citadel
+        set_starbase_module = {
+            slot = 1
+            module = shipyard
+        }
+        set_starbase_module = {
+            slot = 2
+            module = shipyard
+        }
+        set_starbase_module = {
+            slot = 3
+            module = shipyard
+        }
+        set_starbase_module = {
+            slot = 4
+            module = anchorage
+        }
+        set_starbase_module = {
+            slot = 5
+            module = anchorage
+        }
+        set_starbase_module = {
+            slot = 6
+            module = anchorage
+        }
+    }
+    else_if = {
+        limit = {
+            owner = {
+                check_variable = {
+                    which = io_setting_tech
+                    value >= 3
+                }
+            }
+        }
+        set_starbase_size = starbase_starfortress
+        set_starbase_module = {
+            slot = 1
+            module = shipyard
+        }
+        set_starbase_module = {
+            slot = 2
+            module = shipyard
+        }
+        set_starbase_module = {
+            slot = 3
+            module = shipyard
+        }
+        set_starbase_module = {
+            slot = 4
+            module = anchorage
+        }
+        set_starbase_module = {
+            slot = 5
+            module = anchorage
+        }
+        set_starbase_module = {
+            slot = 6
+            module = anchorage
+        }
+    }
+    else_if = {
+        limit = {
+            owner = {
+                check_variable = {
+                    which = io_setting_tech
+                    value >= 2
+                }
+            }
+        }
+        set_starbase_size = starbase_starhold
+        set_starbase_module = {
+            slot = 1
+            module = shipyard
+        }
+        set_starbase_module = {
+            slot = 2
+            module = shipyard
+        }
+        set_starbase_module = {
+            slot = 3
+            module = anchorage
+        }
+        set_starbase_module = {
+            slot = 4
+            module = anchorage
+        }
+    }
+    else = {
+        set_starbase_size = starbase_starport
+        set_starbase_module = {
+            slot = 1
+            module = shipyard
+        }
+        set_starbase_module = {
+            slot = 2
+            module = anchorage
+        }
+    }
+}
+
+io_create_community_fleet = {
+    if = {
+        limit = { max_naval_capacity > 900 }
+        create_fleet_from_naval_cap = { fraction = 0.4 ship_owner_type = galactic_community }
+    }
+    else_if = {
+        limit = { max_naval_capacity > 800 }
+        create_fleet_from_naval_cap = { fraction = 0.44 ship_owner_type = galactic_community }
+    }
+    else_if = {
+        limit = { max_naval_capacity > 700 }
+        create_fleet_from_naval_cap = { fraction = 0.5 ship_owner_type = galactic_community }
+    }
+    else_if = {
+        limit = { max_naval_capacity > 600 }
+        create_fleet_from_naval_cap = { fraction = 0.57 ship_owner_type = galactic_community }
+    }
+    else_if = {
+        limit = { max_naval_capacity > 500 }
+        create_fleet_from_naval_cap = { fraction = 0.67 ship_owner_type = galactic_community }
+    }
+    else_if = {
+        limit = { max_naval_capacity > 400 }
+        create_fleet_from_naval_cap = { fraction = 0.8 ship_owner_type = galactic_community }
+    }
+    else = {
+        create_fleet_from_naval_cap = { fraction = 1 ship_owner_type = galactic_community }
+    }
+}
+
+io_create_community_battleship_fleet = {
+    create_fleet_from_naval_cap = { fraction = 4 ship_owner_type = galactic_community }
+    last_created_fleet = {
+        every_owned_ship = {
+            limit = {
+                NOT = {
+                    ship_uses_battleship_components = yes
+                }
+            }
+            delete_ship = this
+        }
+    }
+}
+
+io_create_fe_emperor_fleet = {
+    create_leader = {
+        class = commander
+        species = owner_main_species
+        name = random
+        skill = 10
+        leader_age_min = 25
+        leader_age_max = 45
+    }
+    create_fleet = {
+        effect = {
+            set_location = root.capital_scope
+            set_owner = root
+            create_galactic_empire_titan = yes
+            while = {
+                count = 12
+                create_galactic_empire_large_ship = yes
+            }
+            while = {
+                count = 36
+                create_galactic_empire_small_ship = yes
+            }
+        }
+        settings = {
+            uses_naval_capacity = no
+            can_disband = no
+            can_change_composition = no
+        }
+    }
+    last_created_fleet = {
+        assign_leader = last_created_leader
+        add_modifier = { modifier = io_ancient_fleet_modifier }
+    }
+}
+
+create_galactic_empire_titan = {
+    if = {
+        limit = {
+            owner = { is_gestalt = yes }
+        }
+        create_ship = {
+            name = random
+            design = "NAME_Alpha"
+            graphical_culture = fallen_machine_empire_01
+        }
+    }
+    else_if = {
+        limit = {
+            owner = {
+                has_ethic = ethic_fanatic_spiritualist
+            }
+        }
+        create_ship = {
+            name = random
+            design = "NAME_Eternal"
+            graphical_culture = fallen_empire_01
+        }
+    }
+    else_if = {
+        limit = {
+            owner = {
+                has_ethic = ethic_fanatic_materialist
+            }
+        }
+        create_ship = {
+            name = random
+            design = "NAME_Savant"
+            graphical_culture = fallen_empire_02
+        }
+    }
+    else_if = {
+        limit = {
+            owner = {
+                OR = {
+                    has_ethic = ethic_fanatic_xenophile
+                    AND = {
+                        has_ethic = ethic_fanatic_pacifist
+                        is_xenophobe = no
+                    }
+                }
+            }
+        }
+        create_ship = {
+            name = random
+            design = "NAME_Keeper"
+            graphical_culture = fallen_empire_03
+        }
+    }
+    else_if = {
+        limit = {
+            owner = {
+                OR = {
+                    has_ethic = ethic_fanatic_xenophobe
+                    AND = {
+                        has_ethic = ethic_fanatic_militarist
+                        is_xenophile = no
+                    }
+                }
+            }
+        }
+        create_ship = {
+            name = random
+            design = "NAME_Imperium"
+            graphical_culture = fallen_empire_04
+        }
+    }
+    else_if = {
+        limit = {
+            owner = { is_spiritualist = yes }
+        }
+        create_ship = {
+            name = random
+            design = "NAME_Eternal"
+            graphical_culture = fallen_empire_01
+        }
+    }
+    else_if = {
+        limit = {
+            owner = { is_materialist = yes }
+        }
+        create_ship = {
+            name = random
+            design = "NAME_Savant"
+            graphical_culture = fallen_empire_02
+        }
+    }
+    else_if = {
+        limit = {
+            owner = {
+                OR = {
+                    is_xenophile = yes
+                    AND = {
+                        is_pacifist = yes
+                        is_xenophobe = no
+                    }
+                }
+            }
+        }
+        create_ship = {
+            name = random
+            design = "NAME_Keeper"
+            graphical_culture = fallen_empire_03
+        }
+    }
+    else = {
+        create_ship = {
+            name = random
+            design = "NAME_Imperium"
+            graphical_culture = fallen_empire_04
+        }
+    }
+}
+
+create_galactic_empire_large_ship = {
+    if = {
+        limit = {
+            owner = { is_gestalt = yes }
+        }
+        create_ship = {
+            name = random
+            design = "NAME_Beta"
+            graphical_culture = fallen_machine_empire_01
+        }
+    }
+    else_if = {
+        limit = {
+            owner = {
+                has_ethic = ethic_fanatic_spiritualist
+            }
+        }
+        create_ship = {
+            name = random
+            design = "NAME_Avatar"
+            graphical_culture = fallen_empire_01
+        }
+    }
+    else_if = {
+        limit = {
+            owner = {
+                has_ethic = ethic_fanatic_materialist
+            }
+        }
+        create_ship = {
+            name = random
+            design = "NAME_Scholar"
+            graphical_culture = fallen_empire_02
+        }
+    }
+    else_if = {
+        limit = {
+            owner = {
+                OR = {
+                    has_ethic = ethic_fanatic_xenophile
+                    AND = {
+                        has_ethic = ethic_fanatic_pacifist
+                        is_xenophobe = no
+                    }
+                }
+            }
+        }
+        create_ship = {
+            name = random
+            design = "NAME_Custodian"
+            graphical_culture = fallen_empire_03
+        }
+    }
+    else_if = {
+        limit = {
+            owner = {
+                OR = {
+                    has_ethic = ethic_fanatic_xenophobe
+                    AND = {
+                        has_ethic = ethic_fanatic_militarist
+                        is_xenophile = no
+                    }
+                }
+            }
+        }
+        create_ship = {
+            name = random
+            design = "NAME_Supremacy"
+            graphical_culture = fallen_empire_04
+        }
+    }
+    else_if = {
+        limit = {
+            owner = { is_spiritualist = yes }
+        }
+        create_ship = {
+            name = random
+            design = "NAME_Avatar"
+            graphical_culture = fallen_empire_01
+        }
+    }
+    else_if = {
+        limit = {
+            owner = { is_materialist = yes }
+        }
+        create_ship = {
+            name = random
+            design = "NAME_Scholar"
+            graphical_culture = fallen_empire_02
+        }
+    }
+
+    else_if = {
+        limit = {
+            owner = {
+                OR = {
+                    is_xenophile = yes
+                    AND = {
+                        is_pacifist = yes
+                        is_xenophobe = no
+                    }
+                }
+            }
+        }
+        create_ship = {
+            name = random
+            design = "NAME_Custodian"
+            graphical_culture = fallen_empire_03
+        }
+    }
+    else = {
+        create_ship = {
+            name = random
+            design = "NAME_Supremacy"
+            graphical_culture = fallen_empire_04
+        }
+    }
+}
+
+create_galactic_empire_small_ship = {
+    if = {
+        limit = {
+            owner = { is_gestalt = yes }
+        }
+        create_ship = {
+            name = random
+            design = "NAME_Gamma"
+            graphical_culture = fallen_machine_empire_01
+        }
+    }
+    else_if = {
+        limit = {
+            owner = {
+                has_ethic = ethic_fanatic_spiritualist
+            }
+        }
+        create_ship = {
+            name = random
+            design = "NAME_Zealot"
+            graphical_culture = fallen_empire_01
+        }
+    }
+    else_if = {
+        limit = {
+            owner = {
+                has_ethic = ethic_fanatic_materialist
+            }
+        }
+        create_ship = {
+            name = random
+            design = "NAME_Sage"
+            graphical_culture = fallen_empire_02
+        }
+    }
+    else_if = {
+        limit = {
+            owner = {
+                OR = {
+                    has_ethic = ethic_fanatic_xenophile
+                    AND = {
+                        has_ethic = ethic_fanatic_pacifist
+                        is_xenophobe = no
+                    }
+                }
+            }
+        }
+        create_ship = {
+            name = random
+            design = "NAME_Overseer"
+            graphical_culture = fallen_empire_03
+        }
+    }
+    else_if = {
+        limit = {
+            owner = {
+                OR = {
+                    has_ethic = ethic_fanatic_xenophobe
+                    AND = {
+                        has_ethic = ethic_fanatic_militarist
+                        is_xenophile = no
+                    }
+                }
+            }
+        }
+        create_ship = {
+            name = random
+            design = "NAME_Glory"
+            graphical_culture = fallen_empire_04
+        }
+    }
+    else_if = {
+        limit = {
+            owner = { is_spiritualist = yes }
+        }
+        create_ship = {
+            name = random
+            design = "NAME_Zealot"
+            graphical_culture = fallen_empire_01
+        }
+    }
+    else_if = {
+        limit = {
+            owner = { is_materialist = yes }
+        }
+        create_ship = {
+            name = random
+            design = "NAME_Sage"
+            graphical_culture = fallen_empire_02
+        }
+    }
+    else_if = {
+        limit = {
+            owner = {
+                OR = {
+                    is_xenophile = yes
+                    AND = {
+                        is_pacifist = yes
+                        is_xenophobe = no
+                    }
+                }
+            }
+        }
+        create_ship = {
+            name = random
+            design = "NAME_Overseer"
+            graphical_culture = fallen_empire_03
+        }
+    }
+    else = {
+        create_ship = {
+            name = random
+            design = "NAME_Glory"
+            graphical_culture = fallen_empire_04
+        }
+    }
+}
+
+io_bouns_planet_expand = {
+    solar_system = {
+        set_star_flag = bonus_planet_system
+        every_neighbor_system = {
+            limit = {
+                io_expand_trigger = yes
+            }
+            add_outpost_if_can = yes
+            every_neighbor_system = {
+                limit = {
+                    io_expand_trigger = yes
+                }
+                add_outpost_if_can = yes
+            }
+        }
+    }
+}
+
+io_generate_bonus_planet_urban = {
+    add_zone = {
+        district = $district$
+        zone = $zone$
+        zone_slot = 1
+    }
+    add_zone = {
+        district = $district$
+        zone = $zone$
+        zone_slot = 2
+    }
+}
+
+io_generate_energy_bonus_planet = {
+    random_planet_within_border = {
+        limit = {
+            io_bonus_planet_trigger = yes
+        }
+        if = {
+            limit = {
+                root = {
+                    has_country_flag = io_fe_emperor
+                }
+            }
+            change_pc = pc_gaia
+        }
+        else = {
+            change_pc = root.owner_main_species
+        }
+        set_planet_size = 20
+        set_owner = root
+        clear_planet_modifiers = yes
+        reroll_deposits = yes
+        remove_all_districts = yes
+        clear_blockers = yes
+        add_modifier = { modifier = hazardous_weather }
+        add_deposit = d_dust_desert
+        add_deposit = d_searing_desert
+        add_deposit = d_underwater_vent
+        add_deposit = d_tempestous_mountain
+        add_district = district_generator
+        if = {
+            limit = {
+                is_hive_empire = yes
+            }
+            io_generate_bonus_planet_urban = {
+                district = district_hive
+                zone = zone_urban_energy
+            }
+            remove_building = building_hive_capital
+            add_building = building_hive_major_capital
+        }
+        else_if = {
+            limit = {
+                is_machine_empire = yes
+            }
+            io_generate_bonus_planet_urban = {
+                district = district_nexus
+                zone = zone_urban_energy
+            }
+            remove_building = building_deployment_post
+            add_building = building_machine_system_capital
+        }
+        else = {
+            io_generate_bonus_planet_urban = {
+                district = district_city
+                zone = zone_urban_energy
+            }
+            remove_building = building_colony_shelter
+            add_building = building_system_capital
+        }
+        add_zone = {
+            district = district_generator
+            zone = zone_energy
+        }
+        add_building = {
+            district = district_generator
+            zone = zone_energy
+            building = building_mote_harvesters
+        }
+        add_building = {
+            district = district_generator
+            zone = zone_energy
+            building = building_generator_districts_4
+        }
+        add_building = {
+            district = district_generator
+            zone = zone_energy
+            building = building_energy_nexus
+        }
+        set_variable = {
+            which = energy_districts
+            value = 18
+        }
+        io_districts_placement = yes
+        io_set_planet_pop = {
+            pop = 7500
+        }
+        set_colony_type = col_generator
+        io_bouns_planet_expand = yes
+    }
+}
+
+io_generate_minerals_bonus_planet = {
+    random_planet_within_border = {
+        limit = {
+            io_bonus_planet_trigger = yes
+        }
+        if = {
+            limit = {
+                root = {
+                    has_country_flag = io_fe_emperor
+                }
+            }
+            change_pc = pc_gaia
+        }
+        else = {
+            change_pc = root.owner_main_species
+        }
+        set_planet_size = 20
+        set_owner = root
+        clear_planet_modifiers = yes
+        reroll_deposits = yes
+        remove_all_districts = yes
+        clear_blockers = yes
+        add_modifier = { modifier = ultra_rich }
+        add_deposit = d_crystal_forest
+        add_deposit = d_ore_rich_caverns
+        add_deposit = d_prosperous_mesa
+        add_deposit = d_submerged_ore_veins
+        add_district = district_mining
+        if = {
+            limit = {
+                owner = {
+                    is_hive_empire = yes
+                }
+            }
+            io_generate_bonus_planet_urban = {
+                district = district_hive
+                zone = zone_urban_minerals
+            }
+            remove_building = building_hive_capital
+            add_building = building_hive_major_capital
+        }
+        else_if = {
+            limit = {
+                owner = {
+                    is_machine_empire = yes
+                }
+            }
+            io_generate_bonus_planet_urban = {
+                district = district_nexus
+                zone = zone_urban_minerals
+            }
+            remove_building = building_deployment_post
+            add_building = building_machine_system_capital
+        }
+        else = {
+            io_generate_bonus_planet_urban = {
+                district = district_city
+                zone = zone_urban_minerals
+            }
+            remove_building = building_colony_shelter
+            add_building = building_system_capital
+        }
+        add_zone = {
+            district = district_mining
+            zone = zone_minerals
+        }
+        add_building = {
+            district = district_mining
+            zone = zone_minerals
+            building = building_crystal_mines
+        }
+        add_building = {
+            district = district_mining
+            zone = zone_minerals
+            building = building_mining_districts_4
+        }
+        add_building = {
+            district = district_mining
+            zone = zone_minerals
+            building = building_mineral_purification_hub
+        }
+        set_variable = {
+            which = mining_districts
+            value = 18
+        }
+        io_districts_placement = yes
+        io_set_planet_pop = {
+            pop = 7500
+        }
+        set_colony_type = col_mining
+        io_bouns_planet_expand = yes
+    }
+}
+
+io_generate_food_bonus_planet = {
+    random_planet_within_border = {
+        limit = {
+            io_bonus_planet_trigger = yes
+        }
+        if = {
+            limit = {
+                root = {
+                    has_country_flag = io_fe_emperor
+                }
+            }
+            change_pc = pc_gaia
+        }
+        else = {
+            change_pc = root.owner_main_species
+        }
+        set_planet_size = 20
+        set_owner = root
+        clear_planet_modifiers = yes
+        reroll_deposits = yes
+        remove_all_districts = yes
+        clear_blockers = yes
+        add_modifier = { modifier = lush_planet }
+        add_deposit = d_fuming_bog
+        add_deposit = d_lush_jungle
+        add_deposit = d_teeming_reef
+        add_deposit = d_black_soil
+        set_variable = {
+            which = city_districts
+            value = 2
+        }
+        add_district = district_farming
+        if = {
+            limit = {
+                owner = {
+                    is_hive_empire = yes
+                }
+            }
+            io_generate_bonus_planet_urban = {
+                district = district_hive
+                zone = zone_urban_food
+            }
+            remove_building = building_hive_capital
+            add_building = building_hive_major_capital
+        }
+        else_if = {
+            limit = {
+                owner = {
+                    is_machine_empire = yes
+                }
+            }
+            io_generate_bonus_planet_urban = {
+                district = district_nexus
+                zone = zone_urban_food
+            }
+            remove_building = building_deployment_post
+            add_building = building_machine_system_capital
+        }
+        else = {
+            io_generate_bonus_planet_urban = {
+                district = district_city
+                zone = zone_urban_food
+            }
+            remove_building = building_colony_shelter
+            add_building = building_system_capital
+        }
+        add_zone = {
+            district = district_farming
+            zone = zone_food
+        }
+        add_building = {
+            district = district_farming
+            zone = zone_food
+            building = building_gas_extractors
+        }
+        add_building = {
+            district = district_farming
+            zone = zone_food
+            building = building_farming_districts_4
+        }
+        add_building = {
+            district = district_farming
+            zone = zone_food
+            building = building_food_processing_center
+        }
+        set_variable = {
+            which = farming_districts
+            value = 18
+        }
+        io_districts_placement = yes
+        io_set_planet_pop = {
+            pop = 7500
+        }
+        set_colony_type = col_farming
+        io_bouns_planet_expand = yes
+    }
+}
+
+io_generate_lithoid_bonus_planet = {
+    random_planet_within_border = {
+        limit = {
+            io_bonus_planet_trigger = yes
+        }
+        if = {
+            limit = {
+                root = {
+                    has_country_flag = io_fe_emperor
+                }
+            }
+            change_pc = pc_gaia
+        }
+        else = {
+            change_pc = root.owner_main_species
+        }
+        set_planet_size = 20
+        set_owner = root
+        clear_planet_modifiers = yes
+        reroll_deposits = yes
+        remove_all_districts = yes
+        clear_blockers = yes
+        add_modifier = { modifier = ultra_rich }
+        add_deposit = d_fuming_bog
+        add_deposit = d_ore_rich_caverns
+        add_deposit = d_prosperous_mesa
+        add_deposit = d_submerged_ore_veins
+        add_district = district_mining
+        io_districts_placement = yes
+        if = {
+            limit = {
+                is_hive_empire = yes
+            }
+            io_generate_bonus_planet_urban = {
+                district = district_hive
+                zone = zone_urban_minerals
+            }
+            remove_building = building_hive_capital
+            add_building = building_hive_major_capital
+        }
+        else_if = {
+            limit = {
+                is_machine_empire = yes
+            }
+            io_generate_bonus_planet_urban = {
+                district = district_nexus
+                zone = zone_urban_minerals
+            }
+            remove_building = building_deployment_post
+            add_building = building_machine_system_capital
+        }
+        else = {
+            io_generate_bonus_planet_urban = {
+                district = district_city
+                zone = zone_urban_minerals
+            }
+            remove_building = building_colony_shelter
+            add_building = building_system_capital
+        }
+        add_zone = {
+            district = district_mining
+            zone = zone_minerals
+        }
+        add_building = {
+            district = district_mining
+            zone = zone_minerals
+            building = building_mine_generic
+        }
+        add_building = {
+            district = district_mining
+            zone = zone_minerals
+            building = building_mining_districts_4
+        }
+        add_building = {
+            district = district_mining
+            zone = zone_minerals
+            building = building_mineral_purification_hub
+        }
+        set_variable = {
+            which = mining_districts
+            value = 18
+        }
+        io_districts_placement = yes
+        io_set_planet_pop = {
+            pop = 7500
+        }
+        set_colony_type = col_mining
+        io_bouns_planet_expand = yes
+    }
+}
+
+io_generate_machine_bonus_planet = {
+    random_planet_within_border = {
+        limit = {
+            io_bonus_planet_trigger = yes
+        }
+        change_pc = pc_machine
+        set_planet_size = 20
+        set_owner = root
+        clear_planet_modifiers = yes
+        reroll_deposits = yes
+        remove_all_districts = yes
+        clear_blockers = yes
+        add_deposit = d_machine_minerals
+        solar_system = {
+            every_system_planet = {
+                limit = {
+                    colonizable_planet = no
+                    is_star = no
+                }
+                clear_deposits = yes
+            }
+            every_system_planet = {
+                limit = {
+                    is_asteroid = yes
+                }
+                remove_planet = yes
+            }
+            every_system_planet = {
+                limit = {
+                    colonizable_planet = no
+                    is_star = no
+                    is_asteroid = no
+                    NOT = { is_planet_class = pc_gas_giant }
+                }
+                change_pc = pc_broken
+            }
+            every_system_planet = {
+                limit = {
+                    colonizable_planet = no
+                    is_star = no
+                    is_planet_class = pc_gas_giant
+                }
+                change_pc = pc_molten
+                add_modifier = { modifier = chthonian_planet }
+                every_moon = {
+                    limit = {
+                        colonizable_planet = no
+                    }
+                    remove_planet = yes
+                }
+                while = {
+                    limit = {
+                        planet_size >= 20
+                    }
+                    change_planet_size = -6
+                }
+            }
+        }
+        set_variable = {
+            which = city_districts
+            value = 6
+        }
+        set_variable = {
+            which = energy_districts
+            value = 6
+        }
+        set_variable = {
+            which = mining_districts
+            value = 6
+        }
+        io_districts_placement = yes
+        remove_building = building_deployment_post
+        add_building =  building_machine_system_capital
+        if = {
+            limit = {
+                owner = {
+                    has_valid_civic = civic_machine_obsessional_directive
+                }
+            }
+            add_zone = {
+                district = district_nexus
+                zone = zone_factory
+                zone_slot = 1
+            }
+            add_building = {
+                district = district_nexus
+                zone = zone_factory
+                building = building_factory_efficiency_1
+            }
+            add_building = {
+                district = district_nexus
+                zone = zone_factory
+                building = building_factory_upkeep_1
+            }
+            add_building = {
+                district = district_nexus
+                zone = zone_factory
+                building = building_refinery
+            }
+        }
+        else = {
+            add_zone = {
+                district = district_nexus
+                zone = zone_foundry
+                zone_slot = 1
+            }
+            add_building = {
+                district = district_nexus
+                zone = zone_foundry
+                building = building_refinery
+            }
+            add_building = {
+                district = district_nexus
+                zone = zone_foundry
+                building = building_foundry_efficiency_1
+            }
+            add_building = {
+                district = district_nexus
+                zone = zone_foundry
+                building = building_foundry_upkeep_1
+            }
+        }
+        add_zone = {
+            district = district_nexus
+            zone = zone_foundry
+            zone_slot = 2
+        }
+        add_building = {
+            district = district_nexus_1
+            zone = zone_energy
+            building = building_energy_nexus
+        }
+        add_building = {
+            district = district_nexus_2
+            zone = zone_minerals
+            building = building_mineral_purification_hub
+        }
+        io_set_planet_pop = {
+            pop = 7500
+        }
+        set_colony_type = col_mac_foundry
+        io_bouns_planet_expand = yes
+    }
+}
+
+io_generate_servitor_bonus_planet = {
+    random_planet_within_border = {
+        limit = {
+            io_bonus_planet_trigger = yes
+        }
+        change_pc = pc_city
+        set_planet_size = 20
+        set_owner = root
+        clear_planet_modifiers = yes
+        reroll_deposits = yes
+        remove_all_districts = yes
+        clear_blockers = yes
+        io_districts_placement = yes
+        remove_building = building_deployment_post
+        add_building =  building_machine_system_capital
+        while = {
+            count = 6
+            add_district = district_arcology_housing
+        }
+        add_zone = {
+            district = district_arcology_housing
+            zone = zone_factory
+            zone_slot = 1
+        }
+        add_zone = {
+            district = district_arcology_housing
+            zone = zone_foundry
+            zone_slot = 2
+        }
+        add_building = {
+            district = district_arcology_housing
+            zone = zone_factory
+            building = building_refinery
+        }
+        add_building = {
+            district = district_arcology_housing
+            zone = zone_factory
+            building = building_factory_efficiency_1
+        }
+        add_building = {
+            district = district_arcology_housing
+            zone = zone_factory
+            building = building_factory_upkeep_1
+        }
+        add_zone = {
+            district = district_arcology_housing
+            zone = zone_unity_bio_trophy
+            zone_slot = 1
+        }
+        while = {
+            count = 2
+            add_district = district_arcology_organic_housing
+        }
+        while = {
+            count = 3
+            add_building = {
+                building = building_hydroponics_farm
+                district = district_arcology_organic_housing
+            }
+        }
+        io_set_planet_pop = {
+            pop = 7500
+        }
+        every_playable_country = {
+            limit = {
+                is_galactic_community_member = yes
+                is_gestalt = no
+                is_individual_machine = no
+            }
+            owner_species = {
+                save_event_target_as = collection
+                prevprev = {
+                    create_pop_group = {
+                        species = event_target:collection
+                    }
+                }
+            }
+        }
+        io_bouns_planet_expand = yes
+    }
+}

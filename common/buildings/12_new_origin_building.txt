@@ -1,0 +1,233 @@
+#############
+# Government buildings
+#############
+
+# building_clone_guard_clone_vat = {
+# 	icon = building_ancient_relics
+# 	base_buildtime = 90
+# 	position_priority = 100
+#
+# 	empire_limit = {
+# 		base = 5
+# 		modifier = {
+# 			add = 1
+# 			has_technology = tech_society_1
+# 		}
+# 		modifier = {
+# 			add = 1
+# 			has_technology = tech_society_2
+# 		}
+# 		modifier = {
+# 			add = 1
+# 			has_technology = tech_society_3
+# 		}
+# 		modifier = {
+# 			add = 1
+# 			has_technology = tech_genome_mapping
+# 		}
+# 		modifier = {
+# 			add = 1
+# 			has_technology = tech_vitality_boosters
+# 		}
+# 		modifier = {
+# 			add = 1
+# 			has_technology = tech_epigenetic_triggers
+# 		}
+# 		modifier = {
+# 			add = 1
+# 			has_technology = tech_gene_seed_purification
+# 		}
+# 		modifier = {
+# 			add = 1
+# 			has_technology = tech_morphogenetic_field_mastery
+# 		}
+# 		modifier = {
+# 			add = 1
+# 			has_technology = tech_gene_tailoring
+# 		}
+# 		modifier = {
+# 			add = 1
+# 			has_technology = tech_glandular_acclimation
+# 		}
+# 		modifier = {
+# 			add = 1
+# 			has_technology = tech_gene_expressions
+# 		}
+# 	}
+#
+# 	category = pop_assembly
+#
+# 	potential = {
+# 		exists = owner
+# 		owner = {
+# 			has_origin = origin_clone_guard
+# 			NOT = {
+# 				has_country_flag = clone_army_fertility_unlocked
+# 			}
+# 		}
+# 		if = {
+# 			limit = {
+# 				owner = { is_ai = yes }
+# 			}
+# 			NOR = {
+# 				has_building = building_clone_guard_clone_vat
+# 				AND = {
+# 					exists = assembling_species
+# 					assembling_species = { is_robotic_species = yes }
+# 				}
+# 			}
+# 		}
+# 	}
+#
+# 	destroy_trigger = {
+# 		exists = owner
+# 		OR = {
+# 			owner = {
+# 				OR = {
+# 					NOT = { has_origin = origin_clone_guard }
+# 					is_synthetic_empire = yes
+#
+# 				}
+# 			}
+# 		}
+# 	}
+#
+# 	triggered_planet_modifier = {
+# 		potential = {
+# 			exists = owner
+# 			owner = { is_ai = yes }
+# 			can_assemble_clone_soldier_pop = yes
+# 			owner = { NOT = { has_country_flag = clone_army_fertility_unlocked } }
+# 		}
+# 		planet_pop_assembly_organic_add = 2
+# 	}
+#
+# 	triggered_planet_modifier = {
+# 		potential = {
+# 			exists = owner
+# 			owner = { has_country_flag = clone_army_fertility_unlocked }
+# 		}
+# 		planet_pop_assembly_organic_add = 3
+# 	}
+#
+# 	triggered_planet_modifier = {
+# 		potential = {
+# 			exists = owner
+# 			owner = { has_origin = origin_clone_guard }
+# 		}
+# 		job_elite_soldier_add = 1
+# 	}
+#
+# 	# Add growth from 0 to 25 depending on 'clone_pops_missing_per_vat'.
+# 	triggered_planet_modifier = {
+# 		potential = {
+# 			can_assemble_clone_soldier_pop = yes
+# 			owner = { NOT = { has_country_flag = clone_army_fertility_unlocked } }
+# 			check_variable = { which = clone_pops_missing_per_vat value > 0 }
+# 		}
+# 		modifier = { planet_pop_assembly_organic_add = 2 }
+# 	}
+# 	triggered_planet_modifier = {
+# 		potential = {
+# 			can_assemble_clone_soldier_pop = yes
+# 			owner = { NOT = { has_country_flag = clone_army_fertility_unlocked } }
+# 			check_variable = { which = clone_pops_missing_per_vat value > 1 }
+# 		}
+# 		modifier = { planet_pop_assembly_organic_add = 3 }
+# 	}
+# 	triggered_planet_modifier = {
+# 		potential = {
+# 			can_assemble_clone_soldier_pop = yes
+# 			owner = { NOT = { has_country_flag = clone_army_fertility_unlocked } }
+# 			check_variable = { which = clone_pops_missing_per_vat value > 4 }
+# 		}
+# 		modifier = { planet_pop_assembly_organic_add = 2 }
+# 	}
+# 	triggered_planet_modifier = {
+# 		potential = {
+# 			can_assemble_clone_soldier_pop = yes
+# 			owner = { NOT = { has_country_flag = clone_army_fertility_unlocked } }
+# 			check_variable = { which = clone_pops_missing_per_vat value > 8 }
+# 		}
+# 		modifier = { planet_pop_assembly_organic_add = 3 }
+# 	}
+# 	triggered_planet_modifier = {
+# 		potential = {
+# 			can_assemble_clone_soldier_pop = yes
+# 			owner = { NOT = { has_country_flag = clone_army_fertility_unlocked } }
+# 			years_passed > 10
+# 			check_variable = { which = clone_pops_missing_per_vat value > 12 }
+# 		}
+# 		modifier = { planet_pop_assembly_organic_add = 5 }
+# 	}
+#
+# 	resources = {
+# 		category = planet_buildings
+# 		cost = {
+# 			minerals = @b2_minerals
+# 		}
+# 		upkeep = {
+# 			energy = @b2_upkeep
+# 		}
+# 	}
+#
+# 	upgrades = {
+# 	}
+#
+# 	prerequisites = {
+# 	}
+#
+# 	triggered_desc = {
+# 		text = building_clone_guard_clone_vat_effect_desc
+# 	}
+# 	triggered_desc = {
+# 		trigger = {
+# 			OR = {
+# 				has_building = building_robot_assembly_plant
+# 				AND = {
+# 					exists = assembling_species
+# 					assembling_species = { is_robotic_species = yes }
+# 				}
+# 			}
+# 		}
+# 		text = tooltip_organic_and_artificial_assembly_warning
+# 	}
+#
+# 	is_essential = yes
+# }
+#
+# building_curator_archive = {
+# 	base_buildtime = @b2_time
+# 	can_build = no
+# 	can_demolish = yes
+# 	icon = building_master_archive
+#
+# 	potential = {
+# 	}
+#
+# 	country_modifier = {
+# 		all_technology_research_speed = 0.1
+# 		num_tech_alternatives_add = 1
+# 		add_base_country_intel = 10
+# 	}
+#
+# 	planet_modifier = {
+# 		planet_researchers_minor_artifacts_produces_add = 1
+# 	}
+#
+# 	resources = {
+# 		category = planet_buildings
+# 		produces = {
+# 			physics_research = 100
+# 			society_research = 100
+# 			engineering_research = 100
+# 			minor_artifacts = 6
+# 		}
+# 		cost = {
+# 			minerals = @b2_minerals
+# 		}
+# 	}
+#
+# 	upgrades = {
+# 	}
+# }

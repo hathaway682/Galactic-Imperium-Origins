@@ -1,0 +1,660 @@
+@minor_artifact_decision_cost = 2
+@minor_artifact_decision_duration = 3600
+@minor_artifact_ai_threshold = 20
+
+artifact_space_whale_weapon = {
+	resources = {
+		category = artifact_actions
+		cost = {
+			minor_artifacts = 1000
+			exotic_gases = 250
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+
+	potential = {
+		has_origin = origin_esoteric_scholarium
+		NOT = { has_technology = tech_space_whale_weapon_1 }
+		NOT = { has_country_flag = artifact_space_whale_weapon }
+	}
+
+	allow = {
+		has_technology = tech_lasers_1
+	}
+
+	effect = {
+		add_research_option = tech_space_whale_weapon_1
+		set_country_flag = artifact_space_whale_weapon
+	}
+}
+
+artifact_mining_drone_weapon = {
+	resources = {
+		category = artifact_actions
+		cost = {
+			minor_artifacts = 1000
+			rare_crystals = 500
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+
+	potential = {
+		has_origin = origin_esoteric_scholarium
+		NOT = { has_technology = tech_mining_drone_weapon_1 }
+		NOT = { has_country_flag = artifact_mining_drone_weapon }
+	}
+
+	allow = {
+		has_technology = tech_lasers_2
+	}
+
+	effect = {
+		add_research_option = tech_mining_drone_weapon_1
+		set_country_flag = artifact_mining_drone_weapon
+	}
+}
+
+
+artifact_space_cloud_weapon = {
+	resources = {
+		category = artifact_actions
+		cost = {
+			minor_artifacts = 1000
+			exotic_gases = 1000
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+
+	potential = {
+		has_origin = origin_esoteric_scholarium
+		NOT = { has_technology = tech_mining_drone_weapon_1 }
+		NOT = { has_country_flag = artifact_space_cloud_weapon }
+	}
+
+	allow = {
+		has_technology = tech_disruptors_1
+	}
+
+	effect = {
+		add_research_option = tech_space_cloud_weapon_1
+		set_country_flag = artifact_space_cloud_weapon
+	}
+}
+
+artifact_null_void_beam = {
+	resources = {
+		category = artifact_actions
+		cost = {
+			minor_artifacts = 2000
+			sr_zro = 100
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+
+	potential = {
+		has_origin = origin_esoteric_scholarium
+		NOT = { has_technology = tech_mining_drone_weapon_1 }
+		NOT = { has_country_flag = artifact_null_void_beam }
+	}
+
+	allow = {
+		has_technology = tech_lasers_2
+	}
+
+	effect = {
+		add_research_option = null_void_beam
+		set_country_flag = artifact_null_void_beam
+	}
+}
+
+artifact_amoeba_strike_craft = {
+	resources = {
+		category = artifact_actions
+		cost = {
+			minor_artifacts = 1000
+			food = 1000
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+
+	potential = {
+		has_origin = origin_esoteric_scholarium
+		NOT = { has_technology = tech_mining_drone_weapon_1 }
+		NOT = { has_country_flag = artifact_amoeba_strike_craft }
+	}
+
+	allow = {
+		has_technology = tech_strike_craft_2
+	}
+
+	effect = {
+		add_research_option = tech_amoeba_strike_craft_1
+		set_country_flag = artifact_amoeba_strike_craft
+	}
+}
+
+artifact_extradimensional_weapon = {
+	resources = {
+		category = artifact_actions
+		cost = {
+			minor_artifacts = 5000
+			rare_crystals = 1000
+			sr_zro = 100
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+
+	potential = {
+		has_origin = origin_esoteric_scholarium
+		NOT = { has_technology = tech_mining_drone_weapon_1 }
+		NOT = { has_country_flag = artifact_extradimensional_weapon }
+	}
+
+	allow = {
+		has_technology = tech_lasers_5
+		has_technology = tech_energy_torpedoes_2
+	}
+
+	effect = {
+		add_research_option = tech_extradimensional_weapon_1
+		set_country_flag = artifact_extradimensional_weapon
+	}
+}
+
+artifact_swarm_weapon = {
+	resources = {
+		category = artifact_actions
+		cost = {
+			minor_artifacts = 5000
+			exotic_gases = 1000
+			food = 10000
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+
+	potential = {
+		has_origin = origin_esoteric_scholarium
+		NOT = { has_technology = tech_mining_drone_weapon_1 }
+		NOT = { has_country_flag = artifact_swarm_weapon }
+	}
+
+	allow = {
+		has_technology = tech_missiles_5
+		has_technology = tech_strike_craft_3
+	}
+
+	effect = {
+		add_research_option = tech_scourge_missile_1
+		add_research_option = tech_swarm_strike_craft_1
+		set_country_flag = artifact_swarm_weapon
+	}
+}
+
+artifact_regenerative_hull_tissue = {
+	resources = {
+		category = artifact_actions
+		cost = {
+			minor_artifacts = 1000
+			alloys = 500
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+
+	potential = {
+		has_origin = origin_esoteric_scholarium
+		NOT = { has_technology = tech_mining_drone_weapon_1 }
+		NOT = { has_country_flag = artifact_regenerative_hull_tissue }
+	}
+
+	allow = {
+		has_technology = tech_ship_armor_3
+	}
+
+	effect = {
+		add_research_option = tech_regenerative_hull_tissue
+		set_country_flag = artifact_regenerative_hull_tissue
+	}
+}
+
+artifact_nanite_repair_system = {
+	resources = {
+		category = artifact_actions
+		cost = {
+			minor_artifacts = 2000
+			alloys = 1000
+			nanites = 100
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+
+	potential = {
+		has_origin = origin_esoteric_scholarium
+		NOT = { has_technology = tech_mining_drone_weapon_1 }
+		NOT = { has_country_flag = artifact_nanite_repair_system }
+	}
+
+	allow = {
+		has_technology = tech_ship_armor_5
+		has_technology = tech_regenerative_hull_tissue		
+	}
+
+	effect = {
+		add_research_option = tech_nanite_repair_system
+		set_country_flag = artifact_nanite_repair_system
+	}
+}
+
+artifact_enigmatic = {
+	resources = {
+		category = artifact_actions
+		cost = {
+			minor_artifacts = 5000
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+
+	potential = {
+		has_origin = origin_esoteric_scholarium
+		NOT = { has_technology = tech_mining_drone_weapon_1 }
+		NOT = { has_country_flag = artifact_enigmatic }
+	}
+
+	allow = {
+		has_technology = tech_combat_computers_autonomous
+	}
+
+	effect = {
+		add_research_option = tech_enigmatic_encoder
+		add_research_option = tech_enigmatic_decoder
+		set_country_flag = artifact_enigmatic
+	}
+}
+
+
+artifact_crystal_armor_1 = {
+	resources = {
+		category = artifact_actions
+		cost = {
+			minor_artifacts = 1000
+			rare_crystals = 1000
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+
+	potential = {
+		has_origin = origin_esoteric_scholarium
+		NOT = { has_technology = tech_crystal_armor_1 }
+		NOT = { has_country_flag = artifact_crystal_armor_1 }
+	}
+
+	allow = {
+		has_technology = tech_ship_armor_2
+	}
+
+	effect = {
+		add_research_option = tech_crystal_armor_1
+		set_country_flag = artifact_crystal_armor_1
+	}
+}
+
+artifact_crystal_armor_2 = {
+	resources = {
+		category = artifact_actions
+		cost = {
+			minor_artifacts = 2000
+			rare_crystals = 2500
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+
+	potential = {
+		has_origin = origin_esoteric_scholarium
+		NOT = { has_technology = tech_crystal_armor_2 }
+		NOT = { has_country_flag = artifact_crystal_armor_2 }
+	}
+
+	allow = {
+		has_technology = tech_ship_armor_4
+		has_technology = tech_crystal_armor_1
+	}
+
+	effect = {
+		add_research_option = tech_crystal_armor_2
+		set_country_flag = artifact_crystal_armor_2
+	}
+}
+
+artifact_dragon_armor = {
+	resources = {
+		category = artifact_actions
+		cost = {
+			minor_artifacts = 2000
+			alloys = 10000
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+
+	potential = {
+		has_origin = origin_esoteric_scholarium
+		NOT = { has_technology = tech_dragon_armor }
+		NOT = { has_country_flag = artifact_dragon_armor }
+	}
+
+	allow = {
+		has_technology = tech_ship_armor_5
+	}
+
+	effect = {
+		add_research_option = tech_dragon_armor
+		set_country_flag = artifact_dragon_armor
+	}
+}
+
+artifact_dark_matter = {
+	resources = {
+		category = artifact_actions
+		cost = {
+			minor_artifacts = 2000
+			sr_dark_matter = 100
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+
+	potential = {
+		has_origin = origin_esoteric_scholarium
+		OR = {
+			NOT = { has_technology = tech_dark_matter_deflector }
+			NOT = { has_technology = tech_dark_matter_power_core }
+			NOT = { has_technology = tech_dark_matter_propulsion }
+		}
+
+		NOT = { has_country_flag = artifact_dragon_armor }
+	}
+
+	allow = {
+		AND = {
+			has_technology = tech_shields_5
+			has_technology = tech_zero_point_power
+			has_technology = tech_thrusters_4
+		}
+	}
+
+	effect = {
+		add_research_option = tech_dragon_armor
+		set_country_flag = artifact_dragon_armor
+	}
+}
+
+artifact_psionic_barrier = {
+	resources = {
+		category = artifact_actions
+		cost = {
+			minor_artifacts = 2000
+			sr_zro = 100
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+
+	potential = {
+		has_origin = origin_esoteric_scholarium
+		NOT = { has_technology = tech_psionic_barrier }
+		NOT = { has_country_flag = artifact_psionic_barrier }
+	}
+
+	allow = {
+		has_technology = tech_shields_2
+	}
+
+	effect = {
+		add_research_option = tech_psionic_barrier
+		add_research_option = tech_psionic_theory
+		set_country_flag = artifact_psionic_barrier
+	}
+}
+
+artifact_secrets_boal = {
+	resources = {
+		category = artifact_actions
+		cost = {
+			minor_artifacts = 5000
+			food = 10000
+			consumer_goods = 2500
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+
+	potential = {
+		has_origin = origin_esoteric_scholarium
+		NOT = { has_technology = tech_secrets_baol }
+		NOT = { has_country_flag = ttech_secrets_baol }
+	}
+
+	allow = {
+		has_technology = tech_gene_crops
+	}
+
+	effect = {
+		add_research_option = tech_secrets_baol
+		set_country_flag = tech_secrets_baol
+	}
+}
+
+artifact_secrets_cybrex = {
+	resources = {
+		category = artifact_actions
+		cost = {
+			minor_artifacts = 5000
+			minerals = 10000
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+
+	potential = {
+		has_origin = origin_esoteric_scholarium
+		NOT = { has_technology = tech_secrets_cybrex }
+		NOT = { has_country_flag = ttech_secrets_cybrex }
+	}
+
+	allow = {
+		has_technology = tech_space_mining_5
+	}
+
+	effect = {
+		add_research_option = tech_secrets_cybrex
+		set_country_flag = tech_secrets_cybrex
+	}
+}
+
+artifact_secrets_irassian = {
+	resources = {
+		category = artifact_actions
+		cost = {
+			minor_artifacts = 5000
+			alloys = 5000
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+
+	potential = {
+		has_origin = origin_esoteric_scholarium
+		NOT = { has_technology = tech_secrets_irassian }
+		NOT = { has_country_flag = ttech_secrets_irassian }
+	}
+
+	allow = {
+		has_technology =  tech_refit_standards	}
+
+	effect = {
+		add_research_option = tech_secrets_irassian
+		set_country_flag = tech_secrets_irassian
+	}
+}
+
+artifact_secrets_league = {
+	resources = {
+		category = artifact_actions
+		cost = {
+			minor_artifacts = 5000
+			unity = 2500
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+
+	potential = {
+		has_origin = origin_esoteric_scholarium
+		NOT = { has_technology = tech_secrets_league }
+		NOT = { has_country_flag = tech_secrets_league }
+	}
+
+	allow = {
+		has_technology = tech_galactic_bureaucracy
+	}
+
+	effect = {
+		add_research_option = tech_secrets_league
+		set_country_flag = tech_secrets_league
+	}
+}
+
+artifact_secrets_vultaum = {
+	resources = {
+		category = artifact_actions
+		cost = {
+			minor_artifacts = 10000
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+
+	potential = {
+		has_origin = origin_esoteric_scholarium
+		NOT = { has_technology = tech_secrets_vultaum }
+		NOT = { has_country_flag = tech_secrets_vultaum }
+	}
+
+	allow = {
+		has_technology = tech_physics_3
+	}
+
+	effect = {
+		add_research_option = tech_secrets_vultaum
+		set_country_flag = tech_secrets_vultaum
+	}
+}
+
+artifact_secrets_yuht = {
+	resources = {
+		category = artifact_actions
+		cost = {
+			minor_artifacts = 5000
+			energy = 10000
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+
+	potential = {
+		has_origin = origin_esoteric_scholarium
+		NOT = { has_technology = tech_secrets_yuht }
+		NOT = { has_country_flag = tech_secrets_yuht }
+	}
+
+	allow = {
+		has_technology = tech_sensors_4
+	}
+
+	effect = {
+		add_research_option = tech_secrets_yuht
+		set_country_flag = tech_secrets_yuht
+	}
+}
+
+artifact_secrets_zroni = {
+	resources = {
+		category = artifact_actions
+		cost = {
+			minor_artifacts = 5000
+			sr_zro = 100
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+
+	potential = {
+		has_origin = origin_esoteric_scholarium
+		NOT = { has_technology = tech_secrets_zroni }
+		NOT = { has_country_flag = tech_secrets_zroni }
+	}
+
+	allow = {
+		has_technology = tech_psionic_shield
+	}
+
+	effect = {
+		add_research_option = tech_secrets_zroni
+		set_country_flag = tech_secrets_yuht
+	}
+}

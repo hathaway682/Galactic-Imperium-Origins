@@ -1,0 +1,14 @@
+spriteTypes = {
+	spriteType = {
+		name = "GFX_wg_custodian_intervention"
+		texturefile = "gfx/interface/icons/diplomacy/diplomacy_restore_community.dds"
+	}
+	spriteType = {
+		name = "GFX_wg_emperor_intervention"
+		texturefile = "gfx/interface/icons/diplomacy/diplomacy_imperial_crusade.dds"
+	}
+	spriteType = {
+		name = "GFX_wg_independence_governorate"
+		texturefile = "gfx/interface/icons/diplomacy/diplomacy_integrating.dds"
+	}
+}

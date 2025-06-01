@@ -1,0 +1,1513 @@
+############################
+#
+# Clone Army Origin Events
+#
+############################
+
+namespace = io_chosen
+
+# 选择你的混沌神
+country_event = {
+	id = io_chosen.1
+	title = io_chosen.1.name
+	desc = io_chosen.1.desc
+	picture = GFX_evt_shroudwalker_enclave
+
+	is_triggered_only = yes
+
+	trigger = {
+		any_country = {
+			OR = {
+				has_origin = origin_galactic_hegemon
+				has_origin = origin_galactic_custodian
+			}
+		}
+		has_origin = origin_chosen_of_the_shroud
+	}
+
+	immediate = {
+		add_tradition = tr_psionics_adopt
+		add_tradition = tr_psionics_psi_corps
+		add_tradition = tr_psionics_mind_readers
+		add_tradition = tr_psionics_psionic_assimilation
+		add_tradition = tr_psionics_breach_shroud
+		add_tradition = tr_psionics_shrouded_encryption
+		add_tradition = tr_psionics_finish
+		give_technology = {
+			tech = tech_psionic_theory
+			message = no
+		}
+		give_technology = {
+			tech = tech_telepathy
+			message = no
+		}
+		give_technology = {
+			tech = tech_thought_enforcement
+			message = no
+		}
+		random_country = {
+			limit = { is_country_type = shroud }
+			save_event_target_as = the_shroud
+		}
+		establish_communications_no_message = event_target:the_shroud
+		force_add_civic = civic_psionic_sovereign
+		set_government_cooldown = no
+	}
+
+	option = { #Confirm Composer of Strands
+		name = "io_chosen.1.a"
+		trigger = {
+			OR = {
+				has_ethic = ethic_fanatic_xenophile
+				has_ethic = ethic_xenophile
+			}
+		}
+		add_modifier = {
+			modifier = covenant_composer_of_strands
+		}
+		give_technology = {
+			tech = tech_covenant_composer
+			message = yes
+		}
+		capital_scope = {
+			add_building = building_composer_sanctum
+		}
+		custom_tooltip = io_chaos_warriors_comes_composer
+		begin_event_chain = {
+			event_chain = "composer_covenant_chain"
+			target = this
+		}
+		hidden_effect = {
+			set_country_flag = composer_covenant_confirmed
+			set_country_flag = composer_covenant_rank_1
+			set_country_flag = composer_covenant_rank_2
+			set_country_flag = composer_covenant_rank_3
+			set_country_flag = composer_covenant_rank_4
+			ruler = {
+				add_trait = leader_trait_composer_chosen
+				remove_trait = leader_trait_psionic
+				set_skill = 5
+			}
+			create_leader = {
+				name = random
+				species = owner_main_species
+				class = official
+				skill = 5
+			}
+			last_created_leader = {
+				add_trait = leader_trait_composer_chosen
+				remove_trait = leader_trait_psionic
+			}
+			create_leader = {
+				name = random
+				species = owner_main_species
+				class = scientist
+				skill = 5
+			}
+			last_created_leader = {
+				add_trait = leader_trait_composer_chosen
+				remove_trait = leader_trait_psionic
+			}
+			create_leader = {
+				name = random
+				species = owner_main_species
+				class = commander
+				skill = 5
+			}
+			last_created_leader = {
+				add_trait = leader_trait_composer_chosen
+				remove_trait = leader_trait_psionic
+			}
+			set_variable = {
+				which = composer_covenant_rank
+				value = 1000
+			}
+		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				mult = 1000
+				has_ethic = ethic_fanatic_xenophile
+			}
+		}
+	}
+	option = { #Confirm Eater of Worlds
+		name = "io_chosen.1.b"
+		trigger = {
+			OR = {
+				has_ethic = ethic_fanatic_militarist
+				has_ethic = ethic_militarist
+			}
+		}
+		add_modifier = {
+			modifier = covenant_eater_of_worlds
+		}
+		give_technology = {
+			tech = tech_covenant_eater
+			message = yes
+		}
+		capital_scope = {
+			add_building = building_eater_sanctum
+		}
+		custom_tooltip = io_chaos_warriors_comes_eater
+		begin_event_chain = {
+			event_chain = "eater_covenant_chain"
+			target = this
+		}
+		hidden_effect = {
+			ruler = {
+				add_trait = leader_trait_eater_chosen
+				remove_trait = leader_trait_psionic
+				set_skill = 5
+			}
+			create_leader = {
+				name = random
+				species = owner_main_species
+				class = official
+				skill = 5
+			}
+			last_created_leader = {
+				add_trait = leader_trait_eater_chosen
+				remove_trait = leader_trait_psionic
+			}
+			create_leader = {
+				name = random
+				species = owner_main_species
+				class = scientist
+				skill = 5
+			}
+			last_created_leader = {
+				add_trait = leader_trait_eater_chosen
+				remove_trait = leader_trait_psionic
+			}
+			create_leader = {
+				name = random
+				species = owner_main_species
+				class = commander
+				skill = 5
+			}
+			last_created_leader = {
+				add_trait = leader_trait_eater_chosen
+				remove_trait = leader_trait_psionic
+			}
+			set_country_flag = eater_covenant_confirmed
+			set_country_flag = eater_covenant_rank_1
+			set_country_flag = eater_covenant_rank_2
+			set_country_flag = eater_covenant_rank_3
+			set_country_flag = eater_covenant_rank_4
+			set_variable = {
+				which = eater_covenant_rank
+				value = 1000
+			}
+		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				mult = 1000
+				has_ethic = ethic_fanatic_militarist
+			}
+		}
+	}
+	option = { #Confirm Instrument of Desire
+		name = "io_chosen.1.c"
+		trigger = {
+			OR = {
+				has_ethic = ethic_fanatic_authoritarian
+				has_ethic = ethic_authoritarian
+			}
+		}
+		add_modifier = {
+			modifier = covenant_instrument_of_desire
+		}
+		give_technology = {
+			tech = tech_covenant_instrument
+			message = yes
+		}
+		capital_scope = {
+			add_building = building_instrument_sanctum
+		}
+		custom_tooltip = io_chaos_warriors_comes_instrument
+		begin_event_chain = {
+			event_chain = "instrument_covenant_chain"
+			target = this
+		}
+		hidden_effect = {
+			ruler = {
+				add_trait = leader_trait_instrument_chosen
+				remove_trait = leader_trait_psionic
+				set_skill = 5
+			}
+			create_leader = {
+				name = random
+				species = owner_main_species
+				class = official
+				skill = 5
+			}
+			last_created_leader = {
+				add_trait = leader_trait_instrument_chosen
+				remove_trait = leader_trait_psionic
+			}
+			create_leader = {
+				name = random
+				species = owner_main_species
+				class = scientist
+				skill = 5
+			}
+			last_created_leader = {
+				add_trait = leader_trait_instrument_chosen
+				remove_trait = leader_trait_psionic
+			}
+			create_leader = {
+				name = random
+				species = owner_main_species
+				class = commander
+				skill = 5
+			}
+			last_created_leader = {
+				add_trait = leader_trait_instrument_chosen
+				remove_trait = leader_trait_psionic
+			}
+			set_country_flag = instrument_covenant_confirmed
+			set_country_flag = instrument_covenant_rank_1
+			set_country_flag = instrument_covenant_rank_2
+			set_country_flag = instrument_covenant_rank_3
+			set_country_flag = instrument_covenant_rank_4
+			set_variable = {
+				which = instrument_covenant_rank
+				value = 1000
+			}
+		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				mult = 1000
+				has_ethic = ethic_fanatic_authoritarian
+			}
+		}
+	}
+	option = { #Confirm Whisperers in the Void
+		name = "io_chosen.1.d"
+		trigger = {
+			OR = {
+				has_ethic = ethic_fanatic_materialist
+				has_ethic = ethic_materialist
+			}
+		}
+		add_modifier = {
+			modifier = covenant_whisperers_in_the_void
+		}
+		give_technology = {
+			tech = tech_covenant_whisperers
+			message = yes
+		}
+		capital_scope = {
+			add_building = building_whisperers_sanctum
+		}
+		custom_tooltip = io_chaos_warriors_comes_whisperers
+		begin_event_chain = {
+			event_chain = "whisperers_covenant_chain"
+			target = this
+		}
+		hidden_effect = {
+			ruler = {
+				add_trait = leader_trait_whisperers_chosen
+				remove_trait = leader_trait_psionic
+				set_skill = 5
+			}
+			create_leader = {
+				name = random
+				species = owner_main_species
+				class = official
+				skill = 5
+			}
+			last_created_leader = {
+				add_trait = leader_trait_whisperers_chosen
+				remove_trait = leader_trait_psionic
+			}
+			create_leader = {
+				name = random
+				species = owner_main_species
+				class = scientist
+				skill = 5
+			}
+			last_created_leader = {
+				add_trait = leader_trait_whisperers_chosen
+				remove_trait = leader_trait_psionic
+			}
+			create_leader = {
+				name = random
+				species = owner_main_species
+				class = commander
+				skill = 5
+			}
+			last_created_leader = {
+				add_trait = leader_trait_whisperers_chosen
+				remove_trait = leader_trait_psionic
+			}
+			set_country_flag = whisperers_covenant_confirmed
+			set_country_flag = whisperers_covenant_rank_1
+			set_country_flag = whisperers_covenant_rank_2
+			set_country_flag = whisperers_covenant_rank_3
+			set_country_flag = whisperers_covenant_rank_4
+			set_variable = {
+				which = whisperers_covenant_rank
+				value = 1000
+			}
+		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				mult = 1000
+				has_ethic = ethic_fanatic_materialist
+			}
+		}
+	}
+}
+
+#胜利后获得祝福
+country_event = {
+	id = io_chosen.3
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_chosen_of_the_shroud
+	}
+
+	immediate = {
+		random_list = {
+			180 = {}
+			5 = {
+				modifier = {
+					factor = 0
+					fromfrom = {
+						exists = leader
+						OR = {
+							leader = {
+								OR = {
+									has_trait = leader_trait_eater_chosen
+									has_trait = leader_trait_whisperers_chosen
+									has_trait = leader_trait_instrument_chosen
+									has_trait = leader_trait_composer_chosen
+								}
+							}
+						}
+					}
+				}
+				fromfrom = {
+					fleet_event = { id = io_chosen.3029 }
+				}
+			}
+			1 = { 
+				modifier = {
+					factor = 0
+					has_modifier = shroud_happiness
+				}
+				country_event = { id = io_chosen.3030 }
+			}
+			1 = { 
+				modifier = {
+					factor = 0
+					has_modifier = shroud_ship_upkeep
+				}
+				country_event = { id = io_chosen.3031 }
+			}
+			1 = { 
+				modifier = {
+					factor = 0
+					has_modifier = shroud_research_speed
+				}
+				country_event = { id = io_chosen.3032 }
+			}
+			1 = { 
+				modifier = {
+					factor = 0
+					has_modifier = shroud_shield_boost
+				}
+				country_event = { id = io_chosen.3033 }
+			}
+			1 = { 
+				modifier = {
+					factor = 0
+					has_modifier = shroud_weapon_boost
+				}
+				country_event = { id = io_chosen.3034 }
+			}
+			1 = { 
+				modifier = {
+					factor = 0
+					has_modifier = shroud_firing_rate
+				}
+				country_event = { id = io_chosen.3035 }
+			}
+			1 = { 
+				modifier = {
+					factor = 0
+					has_modifier = shroud_ethic_boost
+				}
+				country_event = { id = io_chosen.3036 }
+			}
+			1 = { 
+				modifier = {
+					factor = 0
+					has_modifier = shroud_influence_boost
+				}
+				country_event = { id = io_chosen.3037 }
+			}
+			1 = { 
+				modifier = {
+					factor = 0
+					has_modifier = shroud_unity_boost
+				}
+				country_event = { id = io_chosen.3038 }
+			}
+			1 = { 
+				modifier = {
+					factor = 0
+					has_modifier = shroud_evasion
+				}
+				country_event = { id = io_chosen.3039 }
+			}
+			1 = { 
+				modifier = {
+					factor = 0
+					has_modifier = shroud_repair
+				}
+				country_event = { id = io_chosen.3040 }
+			}
+			1 = { 
+				country_event = { id = io_chosen.3041 }
+			}
+			1 = { 
+				modifier = {
+					factor = 0
+					has_modifier = shroud_speed
+				}
+				country_event = { id = io_chosen.3042 }
+			}
+			1 = { 
+				modifier = {
+					factor = 0
+					has_modifier = shroud_morale
+				}
+				country_event = { id = io_chosen.3043 }
+			}
+			1 = { 
+				modifier = {
+					factor = 0
+					has_modifier = shroud_sensors
+				}
+				country_event = { id = io_chosen.3044 }
+			}
+		}
+	}
+}
+
+#失败后获得诅咒
+
+country_event = {
+	id = io_chosen.4
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_chosen_of_the_shroud
+	}
+
+	immediate = {
+		random_list = {
+			81 = {}
+			1 = { 
+				modifier = {
+					factor = 0
+					has_modifier = shroud_neg_ethic
+				}
+				country_event = { id = io_chosen.3050 }
+			}
+			1 = { 
+				modifier = {
+					factor = 0
+					has_modifier = shroud_neg_armor
+				}
+				country_event = { id = io_chosen.3051 }
+			}
+			1 = { 
+				modifier = {
+					factor = 0
+					has_modifier = shroud_neg_growth
+				}
+				country_event = { id = io_chosen.3052 }
+			}
+			1 = { 
+				modifier = {
+					factor = 0
+					has_modifier = shroud_weapon_boost
+				}
+				country_event = { id = io_chosen.3053 }
+			}
+			1 = { 
+				modifier = {
+					factor = 0
+					has_modifier = shroud_neg_research
+				}
+				country_event = { id = io_chosen.3054 }
+			}
+			1 = { 
+				modifier = {
+					factor = 0
+					has_modifier = shroud_neg_influence
+				}
+				country_event = { id = io_chosen.3055 }
+			}
+			1 = { 
+				modifier = {
+					factor = 0
+					has_modifier = shroud_neg_unity
+				}
+				country_event = { id = io_chosen.3056 }
+			}
+			1 = { 
+				modifier = {
+					factor = 0
+					has_modifier = shroud_neg_speed
+				}
+				country_event = { id = io_chosen.3057 }
+			}
+			1 = { 
+				modifier = {
+					factor = 0
+					has_modifier = shroud_neg_morale
+				}
+				country_event = { id = io_chosen.3058 }
+			}
+		}
+	}
+}
+
+# 上将被选中
+fleet_event = {
+	id = io_chosen.3029
+	title = "boon.bestowed"
+	desc = "io_chosen.3029.desc"
+	picture = GFX_evt_psionics
+
+	is_triggered_only = yes
+
+	immediate = {
+		solar_system = {
+			save_event_target_as = won_location
+		}
+		leader = {
+			save_event_target_as = won_leader
+		}
+	}
+
+	option = {
+		trigger = {
+			owner = { has_country_flag = composer_covenant_confirmed }
+		}
+		leader = {
+			remove_trait = leader_trait_psionic
+			add_trait = leader_trait_composer_chosen
+		}
+		name = EXCELLENT
+	}
+
+	option = {
+		trigger = {
+			owner = { has_country_flag = eater_covenant_confirmed }
+		}
+		leader = {
+			remove_trait = leader_trait_psionic
+			add_trait = leader_trait_eater_chosen
+		}
+		name = EXCELLENT
+	}
+
+	option = {
+		trigger = {
+			owner = { has_country_flag = instrument_covenant_confirmed }
+		}
+		leader = {
+			add_trait = leader_trait_instrument_chosen
+		}
+		name = EXCELLENT
+	}
+
+	option = {
+		trigger = {
+			owner = { has_country_flag = whisperers_covenant_confirmed }
+		}
+		leader = {
+			remove_trait = leader_trait_psionic
+			add_trait = leader_trait_whisperers_chosen
+		}
+		name = EXCELLENT
+	}
+}
+
+
+country_event = {
+	id = io_chosen.11
+	title = io_chosen.11.name
+	desc = "io_chosen.11.desc"
+	picture = GFX_evt_psionics
+
+	is_triggered_only = yes
+
+	option = {
+		name = DISTURBING
+		add_modifier = {
+			modifier = covenant_composer_of_strands_0
+		}
+		begin_event_chain = {
+			event_chain = "composer_covenant_chain"
+			target = this
+		}
+		hidden_effect = {
+			set_country_flag = composer_covenant_confirmed
+			set_variable = {
+				which = composer_covenant_rank
+				value = 1
+			}
+		}
+	}
+}
+
+country_event = {
+	id = io_chosen.12
+	title = io_chosen.11.name
+	desc = "io_chosen.11.desc"
+	picture = GFX_evt_psionics
+
+	is_triggered_only = yes
+
+	option = {
+		name = DISTURBING
+		add_modifier = {
+			modifier = covenant_eater_of_worlds_0
+		}
+		begin_event_chain = {
+			event_chain = "eater_covenant_chain"
+			target = this
+		}
+		hidden_effect = {
+			set_country_flag = eater_covenant_confirmed
+			set_variable = {
+				which = eater_covenant_rank
+				value = 1
+			}
+		}
+	}
+}
+
+country_event = {
+	id = io_chosen.13
+	title = io_chosen.11.name
+	desc = "io_chosen.11.desc"
+	picture = GFX_evt_psionics
+
+	is_triggered_only = yes
+
+	option = {
+		name = DISTURBING
+		add_modifier = {
+			modifier = covenant_instrument_of_desire_0
+		}
+		begin_event_chain = {
+			event_chain = "instrument_covenant_chain"
+			target = this
+		}
+		hidden_effect = {
+			set_country_flag = instrument_covenant_confirmed
+			set_variable = {
+				which = instrument_covenant_rank
+				value = 1
+			}
+		}
+	}
+}
+
+country_event = {
+	id = io_chosen.14
+	title = io_chosen.11.name
+	desc = "io_chosen.11.desc"
+	picture = GFX_evt_psionics
+
+	is_triggered_only = yes
+
+	option = {
+		name = DISTURBING
+		add_modifier = {
+			modifier = covenant_whisperers_in_the_void_0
+		}
+		begin_event_chain = {
+			event_chain = "whisperers_covenant_chain"
+			target = this
+		}
+		hidden_effect = {
+			set_country_flag = whisperers_covenant_confirmed
+			set_variable = {
+				which = whisperers_covenant_rank
+				value = 1
+			}
+		}
+	}
+}
+
+### Modifiers
+
+# Happiness (SUCCESS)
+country_event = {
+	id = io_chosen.3030
+	title = "boon.bestowed"
+	desc = "io_chosen.3030.desc"
+	picture = GFX_evt_psionics
+
+	is_triggered_only = yes
+
+	option = {
+		name = EXCELLENT
+		add_modifier = {
+			modifier = "shroud_happiness"
+			days = 1800
+		}
+		default_hide_option = yes
+	}
+}
+
+# Ship Upkeep (SUCCESS)
+country_event = {
+	id = io_chosen.3031
+	title = "boon.bestowed"
+	desc = "io_chosen.3031.desc"
+	picture = GFX_evt_psionics
+	is_triggered_only = yes
+
+	option = {
+		name = EXCELLENT
+		add_modifier = {
+			modifier = "shroud_ship_upkeep"
+			days = 1800
+		}
+		default_hide_option = yes
+	}
+}
+
+# Research Speed (SUCCESS)
+country_event = {
+	id = io_chosen.3032
+	title = "boon.bestowed"
+	desc = "io_chosen.3032.desc"
+	picture = GFX_evt_psionics
+	is_triggered_only = yes
+
+	option = {
+		name = EXCELLENT
+		add_modifier = {
+			modifier = "shroud_research_speed"
+			days = 1800
+		}
+		default_hide_option = yes
+	}
+}
+
+# Shield Boost (SUCCESS)
+country_event = {
+	id = io_chosen.3033
+	title = "boon.bestowed"
+	desc = "io_chosen.3033.desc"
+	picture = GFX_evt_psionics
+	is_triggered_only = yes
+
+	option = {
+		name = EXCELLENT
+		add_modifier = {
+			modifier = "shroud_shield_boost"
+			days = 1800
+		}
+		default_hide_option = yes
+	}
+}
+
+# Weapon Boost (SUCCESS)
+country_event = {
+	id = io_chosen.3034
+	title = "boon.bestowed"
+	desc = "io_chosen.3034.desc"
+	picture = GFX_evt_psionics
+	is_triggered_only = yes
+
+	option = {
+		name = EXCELLENT
+		add_modifier = {
+			modifier = "shroud_weapon_boost"
+			days = 1800
+		}
+		default_hide_option = yes
+	}
+}
+
+# Firing Rate (SUCCESS)
+country_event = {
+	id = io_chosen.3035
+	title = "boon.bestowed"
+	desc = "io_chosen.3035.desc"
+	picture = GFX_evt_psionics
+	is_triggered_only = yes
+
+	option = {
+		name = EXCELLENT
+		add_modifier = {
+			modifier = "shroud_firing_rate"
+			days = 1800
+		}
+		default_hide_option = yes
+	}
+}
+
+# Ethic Boost (SUCCESS)
+country_event = {
+	id = io_chosen.3036
+	title = "boon.bestowed"
+	desc = "io_chosen.3036.desc"
+	picture = GFX_evt_psionics
+	is_triggered_only = yes
+
+	option = {
+		name = EXCELLENT
+		add_modifier = {
+			modifier = "shroud_ethic_boost"
+			days = 1800
+		}
+		default_hide_option = yes
+	}
+}
+
+# Influence Boost (SUCCESS)
+country_event = {
+	id = io_chosen.3037
+	title = "boon.bestowed"
+	desc = "io_chosen.3037.desc"
+	picture = GFX_evt_psionics
+	is_triggered_only = yes
+
+	option = {
+		name = EXCELLENT
+		add_modifier = {
+			modifier = "shroud_influence_boost"
+			days = 1800
+		}
+		default_hide_option = yes
+	}
+}
+
+# Unity Boost (SUCCESS)
+country_event = {
+	id = io_chosen.3038
+	title = "boon.bestowed"
+	desc = "io_chosen.3038.desc"
+	picture = GFX_evt_psionics
+	is_triggered_only = yes
+
+	option = {
+		name = EXCELLENT
+		add_modifier = {
+			modifier = "shroud_unity_boost"
+			days = 1800
+		}
+		default_hide_option = yes
+	}
+}
+
+# Evasion (SUCCESS)
+country_event = {
+	id = io_chosen.3039
+	title = "boon.bestowed"
+	desc = "io_chosen.3039.desc"
+	picture = GFX_evt_psionics
+	is_triggered_only = yes
+
+	option = {
+		name = EXCELLENT
+		add_modifier = {
+			modifier = "shroud_evasion"
+			days = 1800
+		}
+		default_hide_option = yes
+	}
+}
+
+# Ship Repair (SUCCESS)
+country_event = {
+	id = io_chosen.3040
+	title = "boon.bestowed"
+	desc = "io_chosen.3040.desc"
+	picture = GFX_evt_psionics
+	is_triggered_only = yes
+
+	option = {
+		name = EXCELLENT
+		add_modifier = {
+			modifier = "shroud_repair"
+			days = 1800
+		}
+		default_hide_option = yes
+	}
+}
+
+# Lifespan (SUCCESS)
+country_event = {
+	id = io_chosen.3041
+	title = "boon.bestowed"
+	desc = "io_chosen.3041.desc"
+	picture = GFX_evt_psionics
+	is_triggered_only = yes
+
+	option = {
+		name = EXCELLENT
+		custom_tooltip = io_chosen.3041.tooltip
+		hidden_effect = {
+			every_owned_leader = {
+				limit = {
+					species = { has_trait = trait_psionic }
+					NOR = {
+						has_trait = leader_trait_composer_chosen
+						has_trait = leader_trait_eater_chosen
+						has_trait = leader_trait_instrument_chosen
+						has_trait = leader_trait_whisperers_chosen
+						has_trait = leader_trait_chosen
+					}
+				}
+				add_trait = leader_trait_shroud_age
+			}
+		}
+		default_hide_option = yes
+	}
+}
+
+# Ship Speed (SUCCESS)
+country_event = {
+	id = io_chosen.3042
+	title = "boon.bestowed"
+	desc = "io_chosen.3042.desc"
+	picture = GFX_evt_psionics
+	is_triggered_only = yes
+
+	option = {
+		name = EXCELLENT
+		add_modifier = {
+			modifier = "shroud_speed"
+			days = 1800
+		}
+		default_hide_option = yes
+	}
+}
+
+# Army Morale (SUCCESS)
+country_event = {
+	id = io_chosen.3043
+	title = "boon.bestowed"
+	desc = "io_chosen.3043.desc"
+	picture = GFX_evt_psionics
+	is_triggered_only = yes
+
+	option = {
+		name = EXCELLENT
+		add_modifier = {
+			modifier = "shroud_morale"
+			days = 1800
+		}
+		default_hide_option = yes
+	}
+}
+
+# Sensor Range (SUCCESS)
+country_event = {
+	id = io_chosen.3044
+	title = "boon.bestowed"
+	desc = "io_chosen.3044.desc"
+	picture = GFX_evt_psionics
+	is_triggered_only = yes
+
+	option = {
+		name = EXCELLENT
+		add_modifier = {
+			modifier = "shroud_sensors"
+			days = 1800
+		}
+		default_hide_option = yes
+	}
+}
+
+# Negative Happiness (CRITICAL FAILURE)
+country_event = {
+	id = io_chosen.3050
+	title = "curse.bestowed"
+	desc = "io_chosen.3050.desc"
+	picture = GFX_evt_psionics
+	is_triggered_only = yes
+
+	option = {
+		name = UNFORTUNATE
+		add_modifier = {
+			modifier = "shroud_neg_happiness"
+			days = 1800
+		}
+		default_hide_option = yes
+	}
+}
+
+# Negative Ethics Attraction (CRITICAL FAILURE)
+country_event = {
+	id = io_chosen.3051
+	title = "curse.bestowed"
+	desc = "io_chosen.3051.desc"
+	picture = GFX_evt_psionics
+	is_triggered_only = yes
+
+	option = {
+		name = UNFORTUNATE
+		add_modifier = {
+			modifier = "shroud_neg_ethic"
+			days = 1800
+		}
+		default_hide_option = yes
+	}
+}
+
+# Negative Ship Armor (CRITICAL FAILURE)
+country_event = {
+	id = io_chosen.3052
+	title = "curse.bestowed"
+	desc = "io_chosen.3052.desc"
+	picture = GFX_evt_psionics
+	is_triggered_only = yes
+
+	option = {
+		name = UNFORTUNATE
+		add_modifier = {
+			modifier = "shroud_neg_armor"
+			days = 1800
+		}
+		default_hide_option = yes
+	}
+}
+
+# Negative Population Growth (CRITICAL FAILURE)
+country_event = {
+	id = io_chosen.3053
+	title = "curse.bestowed"
+	desc = "io_chosen.3053.desc"
+	picture = GFX_evt_psionics
+	is_triggered_only = yes
+
+	option = {
+		name = UNFORTUNATE
+		add_modifier = {
+			modifier = "shroud_neg_growth"
+			days = 1800
+		}
+		default_hide_option = yes
+	}
+}
+
+# Negative Research (CRITICAL FAILURE)
+country_event = {
+	id = io_chosen.3054
+	title = "curse.bestowed"
+	desc = "io_chosen.3054.desc"
+	picture = GFX_evt_psionics
+	is_triggered_only = yes
+
+	option = {
+		name = UNFORTUNATE
+		add_modifier = {
+			modifier = "shroud_neg_research"
+			days = 1800
+		}
+		default_hide_option = yes
+	}
+}
+
+# Negative Influence (CRITICAL FAILURE)
+country_event = {
+	id = io_chosen.3055
+	title = "curse.bestowed"
+	desc = "io_chosen.3055.desc"
+	picture = GFX_evt_psionics
+	is_triggered_only = yes
+
+	option = {
+		name = UNFORTUNATE
+		add_modifier = {
+			modifier = "shroud_neg_influence"
+			days = 1800
+		}
+		default_hide_option = yes
+	}
+}
+
+# Negative Unity (CRITICAL FAILURE)
+country_event = {
+	id = io_chosen.3056
+	title = "curse.bestowed"
+	desc = "io_chosen.3056.desc"
+	picture = GFX_evt_psionics
+	is_triggered_only = yes
+
+	option = {
+		name = UNFORTUNATE
+		add_modifier = {
+			modifier = "shroud_neg_unity"
+			days = 1800
+		}
+		default_hide_option = yes
+	}
+}
+
+# Negative Ship Speed (CRITICAL FAILURE)
+country_event = {
+	id = io_chosen.3057
+	title = "curse.bestowed"
+	desc = "io_chosen.3057.desc"
+	picture = GFX_evt_psionics
+	is_triggered_only = yes
+
+	option = {
+		name = UNFORTUNATE
+		add_modifier = {
+			modifier = "shroud_neg_speed"
+			days = 1800
+		}
+		default_hide_option = yes
+	}
+}
+
+# Negative Army Morale (CRITICAL FAILURE)
+country_event = {
+	id = io_chosen.3058
+	title = "curse.bestowed"
+	desc = "io_chosen.3058.desc"
+	picture = GFX_evt_psionics
+	is_triggered_only = yes
+
+	option = {
+		name = UNFORTUNATE
+		add_modifier = {
+			modifier = "shroud_neg_morale"
+			days = 1800
+		}
+		default_hide_option = yes
+	}
+}
+
+# Negative Sensor Range (CRITICAL FAILURE)
+country_event = {
+	id = io_chosen.3059
+	title = "curse.bestowed"
+	desc = "io_chosen.3059.desc"
+	picture = GFX_evt_psionics
+	is_triggered_only = yes
+
+	option = {
+		name = UNFORTUNATE
+		add_modifier = {
+			modifier = "shroud_neg_sensors"
+			days = 1800
+		}
+		default_hide_option = yes
+	}
+}
+
+#替换起源
+# Give techs
+country_event = {
+	id = io_chosen.2
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_chosen_of_the_shroud
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				NOT = {
+					any_country = {
+						OR = {
+							has_origin = origin_galactic_hegemon
+							has_origin = origin_galactic_custodian
+						}
+					}
+				}
+			}
+			set_origin = origin_default
+		}
+	}
+}
+
+country_event = {
+	id = io_chosen.2681
+	title = "io_chosen.2681.name"
+	desc = "io_chosen.2681.desc"
+	picture = GFX_evt_shroudwalker_enclave
+	show_sound = event_psionic
+	trackable = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_chosen_of_the_shroud
+	}
+
+	immediate = {
+		random_owned_leader = {
+			limit = { is_ruler = yes }
+			save_event_target_as = leader_1
+		}
+		random_owned_leader = {
+			limit = {
+				NOT = { is_same_value = event_target:leader_1 }
+				AND = {
+					owner = { has_country_flag = composer_covenant_rank_3 }
+					OR = {
+						leader_class = official
+						leader_class = scientist
+						leader_class = general
+					}
+				}
+			}
+			save_event_target_as = leader_2
+		}
+		random_owned_leader = {
+			limit = {
+				NOT = { is_same_value = event_target:leader_1 }
+				owner = { has_country_flag = eater_covenant_rank_3 }
+			}
+			if = {
+				limit = {
+					leader_class = commander
+				}
+				save_event_target_as = leader_2
+			}
+			else_if = {
+				limit = {
+					leader_class = general
+				}
+				save_event_target_as = leader_2
+			}
+			else_if = {
+				limit = {
+					leader_class = official
+				}
+				save_event_target_as = leader_2
+			}
+		}
+		random_owned_leader = {
+			limit = {
+				NOT = { is_same_value = event_target:leader_1 }
+				AND = {
+					owner = { has_country_flag = instrument_covenant_rank_3 }
+					OR = {
+						leader_class = official
+						leader_class = scientist
+						leader_class = commander
+					}
+				}
+			}
+			save_event_target_as = leader_2
+		}
+		random_owned_leader = {
+			limit = {
+				NOT = { is_same_value = event_target:leader_1 }
+				AND = {
+					owner = { has_country_flag = whisperers_covenant_rank_3 }
+					OR = {
+						leader_class = general
+						leader_class = scientist
+						leader_class = commander
+					}
+				}
+			}
+			save_event_target_as = leader_2
+		}
+		random_owned_leader = {
+			limit = {
+				NOR = {
+					is_same_value = event_target:leader_1
+					is_same_value = event_target:leader_2
+				}
+				AND = {
+					owner = { has_country_flag = composer_covenant_rank_3 }
+					OR = {
+						leader_class = official
+						leader_class = scientist
+						leader_class = general
+					}
+				}
+			}
+			save_event_target_as = leader_3
+		}
+		random_owned_leader = {
+			limit = {
+				NOR = {
+					is_same_value = event_target:leader_1
+					is_same_value = event_target:leader_2
+				}
+				AND = {
+					owner = { has_country_flag = eater_covenant_rank_3 }
+					OR = {
+						leader_class = official
+						leader_class = commander
+						leader_class = general
+					}
+				}
+			}
+			save_event_target_as = leader_3
+		}
+		random_owned_leader = {
+			limit = {
+				NOR = {
+					is_same_value = event_target:leader_1
+					is_same_value = event_target:leader_2
+				}
+				AND = {
+					owner = { has_country_flag = instrument_covenant_rank_3 }
+					OR = {
+						leader_class = official
+						leader_class = scientist
+						leader_class = commander
+					}
+				}
+			}
+			save_event_target_as = leader_3
+		}
+		random_owned_leader = {
+			limit = {
+				NOR = {
+					is_same_value = event_target:leader_1
+					is_same_value = event_target:leader_2
+				}
+				AND = {
+					owner = { has_country_flag = whisperers_covenant_rank_3 }
+					OR = {
+						leader_class = commander
+						leader_class = scientist
+						leader_class = general
+					}
+				}
+			}
+			save_event_target_as = leader_3
+		}
+		random_owned_leader = {
+			limit = {
+				NOR = {
+					is_same_value = event_target:leader_1
+					is_same_value = event_target:leader_2
+				}
+				OR = {
+					has_trait = leader_trait_chosen
+					has_trait = leader_trait_chosen
+					has_trait = leader_trait_chosen
+					has_trait = leader_trait_chosen
+					has_trait = leader_trait_chosen
+				}
+
+			}
+			save_event_target_as = leader_3
+		}
+		random_owned_leader = {
+			limit = {
+				NOR = {
+					is_same_value = event_target:leader_1
+					is_same_value = event_target:leader_2
+					is_same_value = event_target:leader_3
+				}
+				AND = {
+					owner = { has_country_flag = composer_covenant_rank_3 }
+					leader_class = scientist
+				}
+			}
+			save_event_target_as = leader_4
+		}
+		random_owned_leader = {
+			limit = {
+				NOR = {
+					is_same_value = event_target:leader_1
+					is_same_value = event_target:leader_2
+					is_same_value = event_target:leader_3
+				}
+				AND = {
+					owner = { has_country_flag = eater_covenant_rank_3 }
+					leader_class = commander
+				}
+			}
+			save_event_target_as = leader_4
+		}
+		random_owned_leader = {
+			limit = {
+				NOR = {
+					is_same_value = event_target:leader_1
+					is_same_value = event_target:leader_2
+					is_same_value = event_target:leader_3
+				}
+				AND = {
+					owner = { has_country_flag = instrument_covenant_rank_3 }
+					leader_class = official
+				}
+			}
+			save_event_target_as = leader_4
+		}
+		random_owned_leader = {
+			limit = {
+				NOR = {
+					is_same_value = event_target:leader_1
+					is_same_value = event_target:leader_2
+					is_same_value = event_target:leader_3
+				}
+				AND = {
+					owner = { has_country_flag = whisperers_covenant_rank_3 }
+					leader_class = scientist
+				}
+			}
+			save_event_target_as = leader_4
+		}
+	}
+
+	option = { #Ruler 1
+		name = "utopia.2681.a"
+		hidden_effect = {
+			event_target:leader_1 = { save_event_target_as = chosen_leader }
+			country_event = { id = utopia.2682 }
+		}
+	}
+	option = { #Ruler 2
+		name = "utopia.2681.b"
+		hidden_effect = {
+			event_target:leader_2 = { save_event_target_as = chosen_leader }
+			country_event = { id = utopia.2682 }
+		}
+	}
+	option = { #Ruler 3
+		name = "utopia.2681.c"
+		trigger = {
+			exists = event_target:leader_3
+		}
+		hidden_effect = {
+			event_target:leader_3 = { save_event_target_as = chosen_leader }
+			country_event = { id = utopia.2682 }
+		}
+	}
+	option = { #Ruler 4
+		name = "utopia.2681.d"
+		trigger = {
+			exists = event_target:leader_4
+		}
+		hidden_effect = {
+			event_target:leader_4 = { save_event_target_as = chosen_leader }
+			country_event = { id = utopia.2682 }
+		}
+	}
+}

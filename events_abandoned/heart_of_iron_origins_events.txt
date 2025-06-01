@@ -1,0 +1,95 @@
+############################
+#
+# Clone Army Origin Events
+#
+############################
+
+namespace = io_heart_of_iron
+
+# 星海割据
+country_event = {
+	id = io_heart_of_iron.1
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_secondary_hegemon
+		any_country = {
+			has_origin = origin_galactic_hegemon
+		}
+	}
+
+	immediate = {
+		summon_secondary_hegemon_vassal_1 = yes
+		summon_secondary_hegemon_vassal_2 = yes
+		summon_secondary_hegemon_vassal_3 = yes
+	}
+}
+
+#附庸
+country_event = {
+	id = io_heart_of_iron.2
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_prospecting_machine
+	}
+
+	immediate = {
+		random_playable_country = {
+			limit = {
+				is_galactic_emperor = yes
+			}
+			save_event_target_as = gal_emperor
+		}
+		set_subject_of = {
+			who = event_target:gal_emperor
+			preset = preset_prospectorium_mean_02
+		}
+	}
+}
+
+# 古老同盟
+country_event = {
+	id = io_heart_of_iron.3
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_old_alliance
+	}
+
+	immediate = {
+		add_permanent_councillor = yes
+	}
+}
+
+# 替换起源
+country_event = {
+	id = io_heart_of_iron.100
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			has_origin = origin_secondary_hegemon
+			has_origin = origin_old_alliance
+			has_origin = origin_prospecting_machine
+			has_origin = origin_esoteric_scholarium
+		}		
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				NOT = {
+					any_country = {
+						has_origin = origin_galactic_hegemon
+					}
+				}
+			}
+			set_origin = origin_default
+		}
+	}
+}

@@ -1,0 +1,99 @@
+no_resource_for_component = {
+	is_country_type = default
+	days_passed > 30
+	if = {
+		limit = {
+			AND = {
+				is_ai = no
+				resource_stockpile_compare = {
+					resource = $RESOURCE$
+					value > 100000		# instant_build sets storage limit to 1000000, so we'll check for 10% of that
+				}
+			}
+		}
+		always = no
+	}
+	else = {
+		OR = {
+			NOT = {
+				can_buy_on_market = $RESOURCE$ #i.e. has galactic market or positive income
+			}
+			AND = {
+				is_ai = yes
+				has_monthly_income = {
+					resource = $RESOURCE$
+					value < -2 #Reflexes to buy more tend to only kick in when below 0
+				}
+				resource_stockpile_compare = {
+					resource = $RESOURCE$
+					value < 150
+				}
+			}
+		}
+	}
+}
+
+io_expand_trigger_neighbor = {
+	OR = {
+		has_owner = no
+		is_owned_by = root
+	}
+	NOT = { has_star_flag = hostile_system }
+	NOT = {
+		any_neighbor_system = {
+			starbase = {
+				owner = { has_country_flag = fallen_empire_4 }
+			}
+		}
+	}
+}
+
+io_expand_trigger = {
+	OR = {
+		has_owner = no
+		is_owned_by = root
+	}
+	NOT = { has_star_flag = hostile_system }
+	NOR = {
+		has_star_flag = neighbor_t1
+		has_star_flag = neighbor_t1_first_colony
+		has_star_flag = neighbor_t2
+		has_star_flag = neighbor_t2_second_colony
+	}
+	NOT = {
+		any_neighbor_system = {
+			starbase = {
+				owner = { has_country_flag = fallen_empire_4 }
+			}
+		}
+	}
+}
+
+io_bonus_planet_trigger = {
+	is_ringworld = no
+	is_asteroid = no
+	is_star = no
+	is_moon = no
+	is_colonizable = no
+	NOT = { is_planet_class = pc_gas_giant }
+	solar_system = {
+		NOT = {
+			any_system_planet = {
+				OR = {
+					is_colonizable = yes
+					is_colony = yes
+				}
+			}
+		}
+		NOT = {
+			has_star_flag = bonus_planet_system
+		}
+	}
+}
+
+has_imperial_origin = {
+	OR = {
+		has_origin = origin_old_alliance
+		has_origin = origin_monopoly_chaebol
+	}
+}

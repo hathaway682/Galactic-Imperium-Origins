@@ -1,0 +1,403 @@
+io_tech_dummy_1 = {
+	attack_unarmed_orbital_stations = no
+	has_difficulty_bonuses = no
+	has_capital = no
+	destroys_starbases = no
+	pop_growth = no
+	show_in_contacts_list = no
+	enforces_borders = no
+	share_survey_data = no
+	share_communications = no
+	counts_for_victory = no
+	has_complete_sensor = yes
+	can_have_their_comms_shared = yes
+
+	observable = no
+	needs_survey = no
+
+
+
+	faction = {
+		needs_colony = no
+		auto_delete = no
+	}
+	ai = {
+		enabled = no
+		modules = {
+		}
+	}
+	modules = {
+		tiered_technology_module = {
+			tier = 1
+			rare = no
+		}
+		exclusive_diplomacy_module = { contact_rule = on_action_only } # Nothing is allowed, but we need this for relationships.Nothing is allowed, but we need this for relationships.
+	}
+}
+
+io_tech_dummy_2 = {
+	attack_unarmed_orbital_stations = no
+	has_difficulty_bonuses = no
+	has_capital = no
+	destroys_starbases = no
+	pop_growth = no
+	show_in_contacts_list = no
+	enforces_borders = no
+	share_survey_data = no
+	share_communications = no
+	counts_for_victory = no
+	has_complete_sensor = yes
+	can_have_their_comms_shared = yes
+
+	observable = no
+	needs_survey = no
+	
+	
+
+	faction = {
+		needs_colony = no
+		auto_delete = no
+	}
+	ai = {
+		enabled = no
+		modules = {
+		}
+	}
+	modules = {
+		tiered_technology_module = {
+			tier = 2
+			rare = no
+		}
+		exclusive_diplomacy_module = { contact_rule = on_action_only } # Nothing is allowed, but we need this for relationships.Nothing is allowed, but we need this for relationships.
+	}
+}
+
+io_tech_dummy_3 = {
+	attack_unarmed_orbital_stations = no
+	has_difficulty_bonuses = no
+	has_capital = no
+	destroys_starbases = no
+	pop_growth = no
+	show_in_contacts_list = no
+	enforces_borders = no
+	share_survey_data = no
+	share_communications = no
+	counts_for_victory = no
+	has_complete_sensor = yes
+	can_have_their_comms_shared = yes
+
+	observable = no
+	needs_survey = no
+	
+	
+
+	faction = {
+		needs_colony = no
+		auto_delete = no
+	}
+	ai = {
+		enabled = no
+		modules = {
+		}
+	}
+	modules = {
+		tiered_technology_module = {
+			tier = 3
+			rare = no
+		}
+		exclusive_diplomacy_module = { contact_rule = on_action_only } # Nothing is allowed, but we need this for relationships.Nothing is allowed, but we need this for relationships.
+	}
+}
+
+io_tech_dummy_4 = {
+	attack_unarmed_orbital_stations = no
+	has_difficulty_bonuses = no
+	has_capital = no
+	destroys_starbases = no
+	pop_growth = no
+	show_in_contacts_list = no
+	enforces_borders = no
+	share_survey_data = no
+	share_communications = no
+	counts_for_victory = no
+	has_complete_sensor = yes
+	can_have_their_comms_shared = yes
+
+	observable = no
+	needs_survey = no
+	
+	
+
+	faction = {
+		needs_colony = no
+		auto_delete = no
+	}
+	ai = {
+		enabled = no
+		modules = {
+		}
+	}
+	modules = {
+		tiered_technology_module = {
+			tier = 4
+			rare = no
+		}
+		exclusive_diplomacy_module = { contact_rule = on_action_only } # Nothing is allowed, but we need this for relationships.Nothing is allowed, but we need this for relationships.
+	}
+}
+
+io_tech_dummy_5 = {
+	attack_unarmed_orbital_stations = no
+	has_difficulty_bonuses = no
+	has_capital = no
+	destroys_starbases = no
+	pop_growth = no
+	show_in_contacts_list = no
+	enforces_borders = no
+	share_survey_data = no
+	share_communications = no
+	counts_for_victory = no
+	has_complete_sensor = yes
+	can_have_their_comms_shared = yes
+
+	observable = no
+	needs_survey = no
+	
+	
+
+	faction = {
+		needs_colony = no
+		auto_delete = no
+	}
+	ai = {
+		enabled = no
+		modules = {
+		}
+	}
+	modules = {
+		tiered_technology_module = {
+			tier = 5
+			rare = no
+		}
+		exclusive_diplomacy_module = { contact_rule = on_action_only } # Nothing is allowed, but we need this for relationships.Nothing is allowed, but we need this for relationships.
+	}
+}
+
+io_tech_dummy_1_rare = {
+	attack_unarmed_orbital_stations = no
+	has_difficulty_bonuses = no
+	has_capital = no
+	destroys_starbases = no
+	pop_growth = no
+	show_in_contacts_list = no
+	enforces_borders = no
+	share_survey_data = no
+	share_communications = no
+	counts_for_victory = no
+	has_complete_sensor = yes
+	can_have_their_comms_shared = yes
+
+	observable = no
+	needs_survey = no
+	
+	
+
+	faction = {
+		needs_colony = no
+		auto_delete = no
+	}
+	ai = {
+		enabled = no
+		modules = {
+		}
+	}
+	modules = {
+		tiered_technology_module = {
+			tier = 1
+			rare = yes
+		}
+		exclusive_diplomacy_module = { contact_rule = on_action_only } # Nothing is allowed, but we need this for relationships.Nothing is allowed, but we need this for relationships.
+	}
+}
+
+io_tech_dummy_2_rare = {
+	attack_unarmed_orbital_stations = no
+	has_difficulty_bonuses = no
+	has_capital = no
+	destroys_starbases = no
+	pop_growth = no
+	show_in_contacts_list = no
+	enforces_borders = no
+	share_survey_data = no
+	share_communications = no
+	counts_for_victory = no
+	has_complete_sensor = yes
+	can_have_their_comms_shared = yes
+
+	observable = no
+	needs_survey = no
+	
+	
+
+	faction = {
+		needs_colony = no
+		auto_delete = no
+	}
+	ai = {
+		enabled = no
+		modules = {
+		}
+	}
+	modules = {
+		tiered_technology_module = {
+			tier = 2
+			rare = yes
+		}
+		exclusive_diplomacy_module = { contact_rule = on_action_only } # Nothing is allowed, but we need this for relationships.Nothing is allowed, but we need this for relationships.
+	}
+}
+
+io_tech_dummy_3_rare = {
+	attack_unarmed_orbital_stations = no
+	has_difficulty_bonuses = no
+	has_capital = no
+	destroys_starbases = no
+	pop_growth = no
+	show_in_contacts_list = no
+	enforces_borders = no
+	share_survey_data = no
+	share_communications = no
+	counts_for_victory = no
+	has_complete_sensor = yes
+	can_have_their_comms_shared = yes
+
+	observable = no
+	needs_survey = no
+	
+	
+
+	faction = {
+		needs_colony = no
+		auto_delete = no
+	}
+	ai = {
+		enabled = no
+		modules = {
+		}
+	}
+	modules = {
+		tiered_technology_module = {
+			tier = 3
+			rare = yes
+		}
+		exclusive_diplomacy_module = { contact_rule = on_action_only } # Nothing is allowed, but we need this for relationships.Nothing is allowed, but we need this for relationships.
+	}
+}
+
+io_tech_dummy_4_rare = {
+	attack_unarmed_orbital_stations = no
+	has_difficulty_bonuses = no
+	has_capital = no
+	destroys_starbases = no
+	pop_growth = no
+	show_in_contacts_list = no
+	enforces_borders = no
+	share_survey_data = no
+	share_communications = no
+	counts_for_victory = no
+	has_complete_sensor = yes
+	can_have_their_comms_shared = yes
+
+	observable = no
+	needs_survey = no
+	
+	
+
+	faction = {
+		needs_colony = no
+		auto_delete = no
+	}
+	ai = {
+		enabled = no
+		modules = {
+		}
+	}
+	modules = {
+		tiered_technology_module = {
+			tier = 4
+			rare = yes
+		}
+		exclusive_diplomacy_module = { contact_rule = on_action_only } # Nothing is allowed, but we need this for relationships.Nothing is allowed, but we need this for relationships.
+	}
+}
+
+io_tech_dummy_5_rare = {
+	attack_unarmed_orbital_stations = no
+	has_difficulty_bonuses = no
+	has_capital = no
+	destroys_starbases = no
+	pop_growth = no
+	show_in_contacts_list = no
+	enforces_borders = no
+	share_survey_data = no
+	share_communications = no
+	counts_for_victory = no
+	has_complete_sensor = yes
+	can_have_their_comms_shared = yes
+
+	observable = no
+	needs_survey = no
+	
+	
+
+	faction = {
+		needs_colony = no
+		auto_delete = no
+	}
+	ai = {
+		enabled = no
+		modules = {
+		}
+	}
+	modules = {
+		tiered_technology_module = {
+			tier = 5
+			rare = yes
+		}
+		exclusive_diplomacy_module = { contact_rule = on_action_only } # Nothing is allowed, but we need this for relationships.Nothing is allowed, but we need this for relationships.
+	}
+}
+
+io_tech_dummy_all = {
+	attack_unarmed_orbital_stations = no
+	has_difficulty_bonuses = no
+	has_capital = no
+	destroys_starbases = no
+	pop_growth = no
+	show_in_contacts_list = no
+	enforces_borders = no
+	share_survey_data = no
+	share_communications = no
+	counts_for_victory = no
+	has_complete_sensor = yes
+	can_have_their_comms_shared = yes
+
+	observable = no
+	needs_survey = no
+
+
+
+	faction = {
+		needs_colony = no
+		auto_delete = no
+	}
+	ai = {
+		enabled = no
+		modules = {
+		}
+	}
+	modules = {
+		all_technology_module = {}
+		exclusive_diplomacy_module = { contact_rule = on_action_only } # Nothing is allowed, but we need this for relationships.Nothing is allowed, but we need this for relationships.
+	}
+}

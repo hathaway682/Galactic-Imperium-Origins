@@ -1,0 +1,12 @@
+﻿l_simp_chinese:
+ war_goal_wg_emperor_intervention:0 "Imperial Intervention"
+ war_goal_wg_emperor_intervention_desc:0 "The goal of the war is to uphold order within the Galactic Empire."
+ casus_belli_cb_io_intervention:0 "Intervention"
+ war_goal_wg_independence_governorate:0 "Governorate Uprise"
+ war_goal_wg_independence_governorate_desc:0 "War is waged to secure independence. This war goal can be used to the emperor freely, even the Pax Galactica is passed."
+ SUBJECT_imperial_governorate:0 "Imperial Governorate"
+ SUBJECT_DESC_imperial_governorate:0 "Imperial governorate are a special type of subject which subservient to Galactic Emperor. It diplomatically subservient to and protected by their Overlord, pays all kinds of resource in tribute to their Overlord, but are permitted to expand."
+ war_goal_wg_custodian_intervention:0 "Custodian Intervention"
+ war_goal_wg_custodian_intervention_desc:0 "The goal of the war is to uphold the axioms within the Galactic Community."
+ SUBJECT_supervised_state:0 "Supervised State"
+ SUBJECT_DESC_supervised_state:0 "Supervised State are a special type of subject which subservient to Galactic Custodian. It diplomatically subservient to and protected by their Overlord, pays Research Points, Alloys and Influence in tribute to their Overlord, but are permitted to expand."

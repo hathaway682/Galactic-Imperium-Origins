@@ -1,0 +1,13 @@
+﻿l_russian:
+ ####################################
+ # unlomtrois
+ ####################################
+ opinion_imperial_rival:0 "Враг Империума"
+ opinion_galactic_tyrant:0 "Галактический Тиран"
+ opinion_illegal_organization:0 "Незаконные формирования вне границ Империума"
+ casus_belli_cb_io_liberation:0 "Освободить из-под Имперского гнёта"
+ casus_belli_cb_io_dio:0 "Распустить незаконные анти-имперские формирования"
+ war_goal_wg_liberation_from_the_empire:0 "Освобождение из-под власти Империума"
+ war_goal_wg_liberation_from_the_empire_desc:0 "Война ведется с целью освободить их и-под власти Императора и затем включить в наш анти-имперский альянс."
+ war_goal_wg_destroy_illegal_organizations:0 "Уничтожить незаконные формирования"
+ war_goal_wg_destroy_illegal_organizations_desc:0 "Война ведется для уничтожения их альянса и дальнейшего включения в Галактический Империум."

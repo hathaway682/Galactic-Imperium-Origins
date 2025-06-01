@@ -1,0 +1,19 @@
+﻿l_english:
+ ####################################
+ # Hathaway682
+ ####################################
+ opinion_imperial_rival:0 "Imperium's Rival"
+ opinion_galactic_tyrant:0 "Galactic Tyrant"
+ opinion_illegal_organization:0 "Illegal organizations outside the empire"
+ casus_belli_cb_io_liberation:0 "Liberate Empire member"
+ casus_belli_cb_io_dio:0 "Dissolve illegal organization"
+ war_goal_wg_liberation_from_the_empire:0 "Liberation from the Galactic Imperium"
+ war_goal_wg_liberation_from_the_empire_desc:0 "This war is waged to liberate them from the Galactic Imperium and merge them into our federation."
+ war_goal_wg_destroy_illegal_organizations:0 "Destroy illegal organization"
+ war_goal_wg_destroy_illegal_organizations_desc:0 "This war is waged to destroy their federation and force them to merge into the Galactic Imperium."
+ galactic_origin.900.name:0 "Incorporated into the empire"
+ galactic_origin.900.desc:0 "We were eventually incorporated into the Empire, and our previous rivalry with the Empire no longer existed."
+ galactic_origin.901.name:0 "The collapse of the empire"
+ galactic_origin.901.desc:0 "With the collapse of the Galactic Empire and the return of the galaxy to freedom, we no longer need a powerful imaginary enemy to unite our people."
+ galactic_origin.902.name:0 "Enthrone"
+ galactic_origin.902.desc:0 "We are victorious, the throne of the entire galaxy is finally in our hands, and we should immediately begin to reform our administration to suit the governance of the entire galaxy."

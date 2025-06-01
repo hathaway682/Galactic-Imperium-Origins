@@ -1,0 +1,177 @@
+on_game_start = {
+    events = {
+        io_start_events.1
+    }
+}
+
+on_game_start_country = {
+    events = {
+        io_monopoly_chaebol.1
+    }
+}
+
+on_monthly_pulse_country = {
+    events = {
+        io_monopoly_chaebol.2
+    }
+}
+
+# on_game_start = {
+# 	events = {
+# 	galactic_starts.1
+# 	galactic_starts.2
+# 	galactic_starts.4
+# 	io_clones.1
+# 	}
+# }
+#
+# on_monthly_pulse = {
+# 	events = {
+# 		galactic_starts.100
+# 	}
+# }
+#
+# on_single_player_save_game_load = {
+# 	events = {
+# 		galactic_starts.100
+# 	}
+# }
+#
+#
+# on_yearly_pulse_country = {
+# 	events = {
+# 		galactic_origin.900
+# 		galactic_origin.901
+# 		galactic_origin.902
+# 	}
+# }
+
+# on_game_start_country = {
+# 	events = {
+# 		io_clones.2 # Clone Army Origin
+# 		io_clones.3 # Clone Army Origin pop creation
+# 		io_chaebol.3
+# 		io_imperial_border.1
+# 		io_imperial_border.2
+# 		io_imperial_border.3
+# 		io_imperial_border.4
+# 		io_imperial_border.100
+# 		io_heart_of_iron.1
+# 		io_heart_of_iron.2
+# 		io_heart_of_iron.3
+# 		io_heart_of_iron.100
+# 		io_chosen.1
+# 		io_chosen.2
+# 	}
+# }
+#
+# on_monthly_pulse_country = {
+# 	events = {
+# 		io_clones.3 #Clone Army Origin pop creation
+# 		io_clones.400
+# 		io_chaebol.2
+# 		io_clones.4
+# 		io_clones.10
+# 		io_imperial_border.5
+# 	}
+# }
+#
+# on_planet_bombarded = {
+# 	events = {
+# 		#io_curators.205
+# 	}
+# }
+#
+# on_colonized = {
+# 	events = {
+# 		io_clones.5 	#Clone Army (make sure pops don't migrate to die)
+# 	}
+# }
+#
+# on_pop_purged = {
+# 	events = {
+# 		io_clones.30 #Clone Army Cleanup
+# 	}
+# }
+#
+# on_terraforming_complete = {
+# 	events = {
+# 		io_clones.16
+# 	}
+# }
+#
+# on_pop_declined = {
+# 	events = {
+# 		io_clones.30 #Clone Army Cleanup
+# 	}
+# }
+#
+# on_planet_ownerless = {
+# 	events = {
+# 		io_clones.30 #Clone Army cleanup
+# 	}
+# }
+#
+# on_planet_transfer = {
+# 	events = {
+# 		io_clones.30 #Clone Army cleanup
+# 	}
+# }
+#
+# on_leader_spawned = {
+# 	events = {
+# 		io_clones.24 # New Leaders gain Clone Army commander traits
+# 		io_curators.100
+# 	}
+# }
+#
+# empire_init_capital_planet = {
+# 	events = {
+# 		io_clones.200
+# 		io_curators.1
+# 	}
+# }
+#
+# on_destroy_planet_with_PLANET_KILLER_GALACTIC_DEVOURER = {
+# 	events = {
+# 		#io_curators.4550
+# 	}
+# }
+#
+# on_destroy_planet_with_PLANET_KILLER_GALACTIC_DEVOURER_queued = {
+# }
+#
+# on_destroy_planet_with_PLANET_KILLER_GALACTIC_DEVOURER_unqueued = {
+# }
+#
+# # This = owner of fleet 1 (winner)
+# # From = owner of fleet 2 (loser)
+# # FromFrom = fleet 1
+# # FromFromFrom = fleet 2
+# on_space_battle_won = {
+# 	events = {
+# 		io_chosen.3
+# 	}
+# }
+#
+# # This = owner of fleet 1 (loser)
+# # From = owner of fleet 2 (winner)
+# # FromFrom = fleet 1
+# # FromFromFrom = fleet 2
+# on_space_battle_lost = {
+# 	events = {
+# 		io_chosen.4
+# 	}
+# }
+#
+# on_mid_game_pulse_country = {
+# 	events = {
+# 		io_clones.100
+# 	}
+# }
+#
+# on_war_won = {
+# 	events = {
+# 		io_chosen.2681
+# 	}
+# }

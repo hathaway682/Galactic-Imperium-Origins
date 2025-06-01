@@ -1,0 +1,260 @@
+
+namespace = crisis
+
+# On becoming a Crisis Empire (Crisis Level 1)
+country_event = {
+	id = crisis.4140
+	title = "crisis.4140.name"
+	desc = {
+		trigger = { NOT = { has_ethic = ethic_gestalt_consciousness } }
+		text = crisis.4140.desc
+	}
+	desc = {
+		trigger = { has_authority = auth_machine_intelligence }
+		text = crisis.4140.mach.desc
+	}
+	desc = {
+		trigger = { has_authority = auth_hive_mind }
+		text = crisis.4140.hive.desc
+	}
+	picture = GFX_evt_fleet_from_surface
+	show_sound = event_death_cult
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_country_flag = crisis_special_project_1_complete }
+	}
+
+	option = {
+		name = crisis.4140.a
+		begin_event_chain = {
+			event_chain = become_the_crisis_chain
+			target = root
+		}
+		add_event_chain_counter = {
+			event_chain = "become_the_crisis_chain"
+			counter = "crisis_level_reached"
+			amount = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_ethic = ethic_gestalt_consciousness
+				}
+			}
+			enable_special_project = {
+				name = "CRISIS_SPECIAL_PROJECT_1"
+				owner = ROOT
+			}
+		}
+		else_if = {
+			limit = {
+				has_authority = auth_machine_intelligence
+			}
+			enable_special_project = {
+				name = "CRISIS_SPECIAL_PROJECT_MACH_1"
+				owner = ROOT
+			}
+		}
+		else_if = {
+			limit = {
+				has_authority = auth_hive_mind
+			}
+			enable_special_project = {
+				name = "CRISIS_SPECIAL_PROJECT_HIVE_1"
+				owner = ROOT
+			}
+		}
+		custom_tooltip = new_crisis_perks_tt
+	}
+}
+
+# On reaching Crisis Level 2
+country_event = {
+	id = crisis.4145
+	title = "crisis.4145.name"
+	desc = {
+		trigger = { NOT = { has_ethic = ethic_gestalt_consciousness } }
+		text = crisis.4145.desc
+	}
+	desc = {
+		trigger = { has_authority = auth_machine_intelligence }
+		text = crisis.4145.mach.desc
+	}
+	desc = {
+		trigger = { has_authority = auth_hive_mind }
+		text = crisis.4145.hive.desc
+	}
+	picture = GFX_evt_victorious_army
+	show_sound = event_death_cult
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_country_flag = crisis_special_project_2_complete }
+	}
+
+	option = {
+		name = crisis.4145.a
+		root = {
+			if = {
+				limit = {
+					NOT = {
+						has_ethic = ethic_gestalt_consciousness
+					}
+				}
+				enable_special_project = {
+					name = "CRISIS_SPECIAL_PROJECT_2"
+					owner = ROOT
+				}
+			}
+			else_if = {
+				limit = {
+					has_authority = auth_machine_intelligence
+				}
+				enable_special_project = {
+					name = "CRISIS_SPECIAL_PROJECT_MACH_2"
+					owner = ROOT
+				}
+			}
+			else_if = {
+				limit = {
+					has_authority = auth_hive_mind
+				}
+				enable_special_project = {
+					name = "CRISIS_SPECIAL_PROJECT_HIVE_2"
+					owner = ROOT
+				}
+			}
+		}
+		custom_tooltip = new_crisis_perks_tt
+		custom_tooltip = unlock_crisis_corvette
+	}
+}
+
+# On reaching Crisis Level 3
+country_event = {
+	id = crisis.4150
+	title = "crisis.4150.name"
+	desc = {
+		trigger = { NOT = { has_ethic = ethic_gestalt_consciousness } }
+		text = crisis.4150.desc
+	}
+	desc = {
+		trigger = { has_authority = auth_machine_intelligence }
+		text = crisis.4150.mach.desc
+	}
+	desc = {
+		trigger = { has_authority = auth_hive_mind }
+		text = crisis.4150.hive.desc
+	}
+	picture = GFX_evt_death_from_above
+	show_sound = event_death_cult
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_country_flag = crisis_special_project_3_complete }
+	}
+
+	option = {
+		name = crisis.4150.a
+		root = {
+			if = {
+				limit = {
+					NOT = {
+						has_ethic = ethic_gestalt_consciousness
+					}
+				}
+				enable_special_project = {
+					name = "CRISIS_SPECIAL_PROJECT_3"
+					owner = ROOT
+				}
+			}
+			else_if = {
+				limit = {
+					has_authority = auth_machine_intelligence
+				}
+				enable_special_project = {
+					name = "CRISIS_SPECIAL_PROJECT_MACH_3"
+					owner = ROOT
+				}
+			}
+			else_if = {
+				limit = {
+					has_authority = auth_hive_mind
+				}
+				enable_special_project = {
+					name = "CRISIS_SPECIAL_PROJECT_HIVE_3"
+					owner = ROOT
+				}
+			}
+		}
+		custom_tooltip = new_crisis_perks_tt
+		custom_tooltip = unlock_crisis_destroyer
+	}
+}
+
+# On reaching Crisis Level 4
+country_event = {
+	id = crisis.4155
+	title = "crisis.4155.name"
+	desc = {
+		trigger = { NOT = { has_ethic = ethic_gestalt_consciousness } }
+		text = crisis.4155.desc
+	}
+	desc = {
+		trigger = { has_authority = auth_machine_intelligence }
+		text = crisis.4155.mach.desc
+	}
+	desc = {
+		trigger = { has_authority = auth_hive_mind }
+		text = crisis.4155.hive.desc
+	}
+	picture = GFX_evt_undertaker
+	show_sound = event_death_cult
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_country_flag = crisis_special_project_4_complete }
+	}
+
+	option = {
+		name = crisis.4155.a
+		root = {
+			if = {
+				limit = {
+					NOT = {
+						has_ethic = ethic_gestalt_consciousness
+					}
+				}
+				enable_special_project = {
+					name = "CRISIS_SPECIAL_PROJECT_4"
+					owner = ROOT
+				}
+			}
+			else_if = {
+				limit = {
+					has_authority = auth_machine_intelligence
+				}
+				enable_special_project = {
+					name = "CRISIS_SPECIAL_PROJECT_MACH_4"
+					owner = ROOT
+				}
+			}
+			else_if = {
+				limit = {
+					has_authority = auth_hive_mind
+				}
+				enable_special_project = {
+					name = "CRISIS_SPECIAL_PROJECT_HIVE_4"
+					owner = ROOT
+				}
+			}
+		}
+		custom_tooltip = new_crisis_perks_tt
+		custom_tooltip = unlock_crisis_cruiser
+	}
+}

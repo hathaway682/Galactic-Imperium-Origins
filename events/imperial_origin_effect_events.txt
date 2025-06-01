@@ -1,0 +1,129 @@
+namespace = io_monopoly_chaebol
+
+# 初始化贸易垄断
+country_event = {
+    id = io_monopoly_chaebol.1
+    hide_window = yes
+    is_triggered_only = yes
+
+    trigger = {
+        has_origin = origin_monopoly_chaebol
+    }
+
+    immediate = {
+        set_variable = {
+            which = io_monopoly_trade
+            value = 0
+        }
+        set_variable = {
+            which = io_imperium_trade
+            value = 0
+        }
+        every_playable_country = {
+            limit = {
+                is_galactic_community_member = yes
+            }
+            every_owned_planet = {
+                export_trigger_value_to_variable = {
+                    trigger = planet_resource_compare
+                    parameters = {
+                        type = produces
+                        resource = trade
+                    }
+                    variable = io_planet_trade
+                }
+                root = {
+                    change_variable = { 
+                        which = io_imperium_trade
+                        value = prev.io_planet_trade
+                    }
+                }
+            }
+        }
+    }
+}
+
+# 月结算贸易垄断
+country_event = {
+    id = io_monopoly_chaebol.2
+    hide_window = yes
+    is_triggered_only = yes
+
+    trigger = {
+        has_origin = origin_monopoly_chaebol
+        has_modifier = imperial_charter
+        days_passed > 1
+    }
+
+    immediate = {
+        remove_modifier = trade_monopoly
+        set_variable = {
+            which = io_monopoly_trade
+            value = 0
+        }
+        set_variable = {
+            which = io_imperium_trade
+            value = 0
+        }
+        every_playable_country = {
+            limit = {
+                is_galactic_community_member = yes
+            }
+            every_owned_planet = {
+                export_trigger_value_to_variable = {
+                    trigger = planet_resource_compare
+                    parameters = {
+                        type = produces
+                        resource = trade
+                    }
+                    variable = io_planet_trade
+                }
+                root = {
+                    change_variable = {
+                        which = io_imperium_trade
+                        value = prev.io_planet_trade
+                    }
+                }
+                if = {
+                    limit = {
+                        OR = {
+                            AND = {
+                                exists = branch_office_owner
+                                branch_office_owner = {
+                                    is_same_value = root
+                                }
+                            }
+                            AND = {
+                                exists = owner
+                                owner = {
+                                    OR = {
+                                        is_same_value = root
+                                        has_overlord = root
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    root = {
+                        change_variable = {
+                            which = io_monopoly_trade
+                            value = prev.io_planet_trade
+                        }
+                    }
+                }
+            }
+        }
+        set_variable = {
+            which = io_monopoly_percent
+            value = io_monopoly_trade
+        }
+        divide_variable = {
+            which = io_monopoly_percent
+            value = io_imperium_trade
+        }
+        add_modifier = {
+            modifier = trade_monopoly
+            multiplier = io_monopoly_percent
+        }
+    }
+}

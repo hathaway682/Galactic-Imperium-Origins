@@ -1,0 +1,234 @@
+wg_emperor_intervention = {
+	casus_belli = cb_io_intervention
+
+	hide_if_no_cb = yes
+	release_occupied_systems_on_status_quo = yes
+
+	allowed_peace_offers = {
+		status_quo
+		surrender
+		demand_surrender
+	}
+
+	surrender_acceptance = -100
+
+	potential = {
+		has_total_war_cb = no
+		is_galactic_emperor = yes
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = has_claimed_all_systems
+			from = {
+				is_country_type = default
+				any_owned_planet = {
+					is_colony = yes
+					root = {
+						NOT = { has_claim = prev.solar_system }
+					}
+				}
+			}
+		}
+	}
+	on_accept = {
+		if = {
+			limit = { from = { has_been_declared_crisis = no } }
+			from = {
+				set_subject_of = {
+					who = root
+				}
+			}
+		}
+	}
+
+	on_status_quo = {
+		if = {
+			limit = {
+				exists = last_created_country
+				last_created_country = {
+					has_country_flag = released_empire
+				}
+			}
+
+			last_created_country = {
+				set_subject_of = {
+					who = root
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 10
+		modifier = {
+			factor = 0
+			has_ai_personality_behaviour = wants_tribute
+		}
+	}
+}
+
+wg_custodian_intervention = {
+	casus_belli = cb_io_intervention
+
+	hide_if_no_cb = yes
+	release_occupied_systems_on_status_quo = yes
+
+	allowed_peace_offers = {
+		status_quo
+		surrender
+		demand_surrender
+	}
+
+	surrender_acceptance = -100
+
+	potential = {
+		has_total_war_cb = no
+		is_galactic_custodian = yes
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = has_claimed_all_systems
+			from = {
+				is_country_type = default
+				any_owned_planet = {
+					is_colony = yes
+					root = {
+						NOT = { has_claim = prev.solar_system }
+					}
+				}
+			}
+		}
+	}
+	on_accept = {
+		hidden_effect = {
+			from = {
+				add_threat = {
+					who = root
+					amount = 0.5
+				}
+			}
+		}
+		if = {
+			limit = { from = { has_been_declared_crisis = no } }
+			from = {
+				set_subject_of = {
+					who = root
+				}
+			}
+		}
+	}
+
+	on_status_quo = {
+		if = {
+			limit = {
+				exists = last_created_country
+				last_created_country = {
+					has_country_flag = released_empire
+				}
+			}
+
+			last_created_country = {
+				set_subject_of = {
+					who = root
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 10
+		modifier = {
+			factor = 0
+			has_ai_personality_behaviour = wants_tribute
+		}
+	}
+}
+
+wg_independence_governorate = {
+	casus_belli = cb_subject
+
+	hide_if_no_cb = yes
+	set_defender_wargoal = wg_assert_overlordship
+
+	potential = {
+		always = yes
+		overlord = {
+			is_galactic_emperor = yes
+		}
+	}
+	possible = {
+	}
+
+	allowed_peace_offers = {
+		status_quo
+		surrender
+		demand_surrender
+	}
+
+	on_status_quo = {
+		custom_tooltip = wg_independence_status_quo
+		hidden_effect = {
+			set_subject_of = {
+				who = none
+			}
+		}
+	}
+
+	on_accept = {
+		custom_tooltip = wg_independence_accept
+		hidden_effect = {
+			set_subject_of = {
+				who = none
+			}
+			every_system_within_border = {
+				limit = {
+					from = { has_claim = prev }
+				}
+				remove_claims = { who = from }
+			}
+		}
+	}
+
+	on_wargoal_set = {
+		every_system_within_border = {
+			limit = {
+				NOT = { from = { has_claim = prev } }
+			}
+			add_claims = { who = from }
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+wg_imperial_punishment = {
+	casus_belli = cb_event
+
+	total_war = yes
+
+	allowed_peace_offers = {
+		status_quo
+	}
+
+	surrender_acceptance = -1000
+	war_exhaustion = 0.5
+
+	set_defender_wargoal = wg_imperial_punishment
+
+	potential = {
+		always = no # event only
+	}
+	possible = {
+		always = yes
+	}
+
+	on_status_quo = {
+		add_imperial_authority = -50
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}

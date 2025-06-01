@@ -1,0 +1,666 @@
+namespace = galactic_origin
+
+country_event = {
+	id = galactic_origin.1
+
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		save_event_target_as = gal_emperor
+		clear_resources = yes
+		set_galactic_emperor = yes
+		set_country_flag = original_emperor
+		random_country = {
+			limit = { is_country_type = global_event }
+			change_variable = {
+				which = galactic_empires
+				value = 1
+			}
+		}
+		store_galactic_community_leader_backup_data = {
+			room = yes
+			flag = yes
+			name = yes
+			ethics = yes
+			government = yes
+		}
+		room_name_override = ""
+		if = {
+			limit = {
+				is_socialism = yes
+			    has_civic = civic_shared_burden
+			}
+			force_add_civic = civic_galactic_sovereign_people
+		}
+		else_if = {
+			limit = { is_megacorp = yes }
+			force_add_civic = civic_galactic_sovereign_megacorp
+			change_government = {
+				authority = auth_imperial
+				cooldown = no
+				remove_invalid_civics = yes
+			}
+		}
+		else = {
+			force_add_civic = civic_galactic_sovereign
+		}
+		every_playable_country = {
+			limit = {
+				has_origin = origin_monopoly_chaebol
+			}
+			pass_targeted_resolution = {
+				resolution = resolution_emperor_imperial_charter
+				target = this
+			}
+		}
+		every_playable_country = {
+			limit = {
+				has_origin = origin_galactic_hegemon
+				NOT = { is_same_value = root }
+			}
+			country_event = { id = galactic_origin.5 }
+		}
+		every_playable_country = {
+			limit = {
+				has_origin = origin_common_ground
+			}
+			country_event = { id = galactic_origin.2 }
+		}
+		every_playable_country = {
+			limit = {
+				has_origin = origin_hegemon
+			}
+			country_event = { id = galactic_origin.3 }
+		}
+		every_playable_country = {
+			limit = {
+				has_origin = origin_scion
+			}
+			overlord = {
+				save_event_target_as = scion_master
+			}
+			country_event = { id = galactic_origin.4 }
+		}
+		every_playable_country = {
+			limit = {
+				NOT = {
+				OR = {
+				has_origin = origin_common_ground
+				has_origin = origin_common_ground_npc
+				has_origin = origin_hegemon
+				has_origin = origin_hegemon_npc
+				has_origin = origin_scion
+				has_civic = civic_fanatic_purifiers
+				has_civic = civic_hive_devouring_swarm
+				has_civic = civic_machine_terminator
+				has_origin = origin_galactic_hegemon
+				}
+				}
+			}
+			country_event = { id = galactic_origin.5 }	
+		}
+		every_playable_country = {
+			limit = {
+				has_civic = civic_fanatic_purifiers
+			}
+			country_event = { id = galactic_origin.6 }	
+		}
+		every_playable_country = {
+			limit = {
+				has_civic = civic_machine_terminator
+			}
+			country_event = { id = galactic_origin.7 }
+		}
+		every_playable_country = {
+			limit = {
+				has_civic = civic_hive_devouring_swarm
+			}
+			country_event = { id = galactic_origin.8 }
+		}
+		every_playable_country = {
+			limit = {
+				has_origin = origin_common_ground_npc
+			}
+			country_event = { id = galactic_origin.9 }
+		}
+		every_playable_country = {
+			limit = {
+				has_origin = origin_hegemon_npc
+			}
+			country_event = { id = galactic_origin.10 }
+		}
+		set_government_cooldown = no
+		pass_resolution_no_cooldown = resolution_emperor_restore_council
+		pass_resolution_no_cooldown = resolution_emperor_by_election
+		pass_resolution_no_cooldown = resolution_emperor_volatile_motes_1
+		pass_resolution_no_cooldown = resolution_emperor_exotic_gases_1
+		pass_resolution_no_cooldown = resolution_emperor_rare_crystals_1
+		pass_resolution_no_cooldown = resolution_emperor_sr_living_metal_1
+		pass_resolution_no_cooldown = resolution_emperor_sr_zro_1
+		pass_resolution_no_cooldown = resolution_emperor_sr_dark_matter_1
+		add_resource = { energy = 50000	}
+		add_resource = { minerals = 50000 }
+		add_resource = { alloys = 5000	}
+		add_resource = { influence = 1000 }
+		add_resource = { food = 10000 }
+		if = {
+			limit = { country_uses_food = yes }
+			add_resource = { food = 50000 }
+		}
+		else = {
+			add_resource = { energy = 50000 }
+		}
+		if = {
+			limit = { is_gestalt = no }
+			add_resource = { consumer_goods = 5000 }
+		}
+		else = {
+			add_resource = { minerals = 5000 }
+		}
+		add_resource = { exotic_gases = 1000 }
+		add_resource = { rare_crystals = 1000 }
+		add_resource = { volatile_motes = 1000 }
+		add_start_modifiers = yes
+	}
+
+}
+
+country_event = {
+	id = galactic_origin.1000
+
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		clear_resources = yes
+		set_galactic_custodian = yes
+		add_modifier = { modifier = gal_custodian }
+		save_event_target_as = custodian
+		set_country_flag = original_custodian
+		store_galactic_community_leader_backup_data = {
+			room = yes
+		}
+		room_name_override = ""
+		every_playable_country = {
+			limit = {
+				has_origin = origin_galactic_hegemon
+				NOT = { is_same_value = root }
+			}
+			country_event = { id = galactic_origin.2 }
+		}
+		every_playable_country = {
+			limit = {
+				has_origin = origin_common_ground
+			}
+			country_event = { id = galactic_origin.2 }
+		}
+		every_playable_country = {
+			limit = {
+				has_origin = origin_hegemon
+			}
+			country_event = { id = galactic_origin.3 }
+		}
+		every_playable_country = {
+			limit = {
+				has_origin = origin_scion
+			}
+			overlord = {
+				save_event_target_as = scion_master
+			}
+			country_event = { id = galactic_origin.4 }	
+		}
+		every_playable_country = {
+			limit = {
+				NOT = {
+				OR = {
+				has_origin = origin_common_ground
+				has_origin = origin_common_ground_npc
+				has_origin = origin_hegemon
+				has_origin = origin_hegemon_npc
+				has_origin = origin_scion
+				has_civic = civic_fanatic_purifiers
+				has_civic = civic_hive_devouring_swarm
+				has_civic = civic_machine_terminator
+				has_origin = origin_galactic_hegemon
+				}
+				}
+			}
+			country_event = { id = galactic_origin.5 }	
+		}
+		every_playable_country = {
+			limit = {
+				has_civic = civic_fanatic_purifiers
+			}
+			country_event = { id = galactic_origin.6 }	
+		}
+		every_playable_country = {
+			limit = {
+				has_civic = civic_machine_terminator
+			}
+			country_event = { id = galactic_origin.7 }
+		}
+		every_playable_country = {
+			limit = {
+				has_civic = civic_hive_devouring_swarm
+			}
+			country_event = { id = galactic_origin.8 }
+		}
+		every_playable_country = {
+			limit = {
+				has_origin = origin_common_ground_npc
+			}
+			country_event = { id = galactic_origin.9 }
+		}
+		every_playable_country = {
+			limit = {
+				has_origin = origin_hegemon_npc
+			}
+			country_event = { id = galactic_origin.10 }
+		}
+		set_government_cooldown = no
+		pass_resolution_no_cooldown = resolution_galacticreforms_form_council
+		add_to_galactic_council = yes
+		add_resource = { energy = 50000	}
+		add_resource = { minerals = 50000 }
+		add_resource = { alloys = 5000	}
+		add_resource = { influence = 1000 }
+		if = {
+			limit = { country_uses_food = yes }
+			add_resource = { food = 50000 }
+		}
+		else = {
+			add_resource = { energy = 50000 }
+		}
+		if = {
+			limit = { is_gestalt = no }
+			add_resource = { consumer_goods = 5000 }
+		}
+		else = {
+			add_resource = { minerals = 5000 }
+		}
+		add_resource = { exotic_gases = 1000 }
+		add_resource = { rare_crystals = 1000 }
+		add_resource = { volatile_motes = 1000 }
+		add_start_modifiers = yes
+	}
+
+}
+
+country_event = {
+	id = galactic_origin.2
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		add_resource = { energy = 50000	}
+		add_resource = { minerals = 50000 }
+		add_resource = { alloys = 5000	}
+		add_resource = { influence = 1000 }
+		if = {
+			limit = { country_uses_food = yes }
+			add_resource = { food = 50000 }
+		}
+		else = {
+			add_resource = { energy = 50000 }
+		}
+		if = {
+			limit = { is_gestalt = no }
+			add_resource = { consumer_goods = 5000 }
+		}
+		else = {
+			add_resource = { minerals = 5000 }
+		}
+		add_resource = { exotic_gases = 1000 }
+		add_resource = { rare_crystals = 1000 }
+		add_resource = { volatile_motes = 1000 }
+		if = { limit = { has_galactic_emperor = yes } 
+		force_add_civic = civic_galactic_beacon
+		}
+		add_start_modifiers = yes
+	}
+}
+
+
+country_event = {
+	id = galactic_origin.3
+	hide_window = yes
+
+
+	is_triggered_only = yes
+
+	immediate = {
+		add_resource = { energy = 50000	}
+		add_resource = { minerals = 50000 }
+		add_resource = { alloys = 5000	}
+		add_resource = { influence = 1000 }
+		if = {
+			limit = { country_uses_food = yes }
+			add_resource = { food = 10000 }
+		}
+		else = {
+			add_resource = { energy = 10000 }
+		}
+		if = {
+			limit = { is_gestalt = no }
+			add_resource = { consumer_goods = 5000 }
+		}
+		else = {
+			add_resource = { minerals = 5000 }
+		}
+		add_resource = { exotic_gases = 1000 }
+		add_resource = { rare_crystals = 1000 }
+		add_resource = { volatile_motes = 1000 }
+		if = { limit = { has_galactic_emperor = yes } 
+		force_add_civic = civic_imperial_rival
+		}
+		add_start_modifiers = yes
+	}
+}
+
+country_event = {
+	id = galactic_origin.4
+	hide_window = yes
+
+
+	is_triggered_only = yes
+
+	immediate = {
+		add_resource = { energy = 50000	}
+		add_resource = { minerals = 50000 }
+		add_resource = { alloys = 5000	}
+		add_resource = { influence = 1000 }
+		if = {
+			limit = { country_uses_food = yes }
+			add_resource = { food = 10000 }
+		}
+		else = {
+			add_resource = { energy = 50000 }
+		}
+		if = {
+			limit = { is_gestalt = no }
+			add_resource = { consumer_goods = 5000 }
+		}
+		else = {
+			add_resource = { minerals = 5000 }
+		}
+		add_resource = { exotic_gases = 1000 }
+		add_resource = { rare_crystals = 1000 }
+		add_resource = { volatile_motes = 1000 }
+		add_start_modifiers = yes
+	}
+}
+
+country_event = {
+	id = galactic_origin.5
+	hide_window = yes
+
+
+	is_triggered_only = yes
+
+	immediate = {
+		add_resource = { energy = 50000	}
+		add_resource = { minerals = 50000 }
+		add_resource = { alloys = 5000	}
+		add_resource = { influence = 1000 }
+		if = {
+			limit = { country_uses_food = yes }
+			add_resource = { food = 10000 }
+		}
+		else = {
+			add_resource = { energy = 50000 }
+		}
+		if = {
+			limit = { is_gestalt = no }
+			add_resource = { consumer_goods = 5000 }
+		}
+		else = {
+			add_resource = { minerals = 5000 }
+		}
+		add_resource = { exotic_gases = 1000 }
+		add_resource = { rare_crystals = 1000 }
+		add_resource = { volatile_motes = 1000 }
+		add_start_modifiers = yes
+		
+	}
+}
+
+country_event = {
+	id = galactic_origin.6
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		add_resource = { energy = 50000	}
+		add_resource = { minerals = 50000 }
+		add_resource = { alloys = 5000	}
+		add_resource = { influence = 1000 }
+		if = {
+			limit = { country_uses_food = yes }
+			add_resource = { food = 10000 }
+		}
+		else = {
+			add_resource = { energy = 50000 }
+		}
+		if = {
+			limit = { is_gestalt = no }
+			add_resource = { consumer_goods = 5000 }
+		}
+		else = {
+			add_resource = { minerals = 5000 }
+		}
+		add_resource = { exotic_gases = 1000 }
+		add_resource = { rare_crystals = 1000 }
+		add_resource = { volatile_motes = 1000 }
+		add_start_modifiers = yes
+		
+	}
+}
+
+country_event = {
+	id = galactic_origin.7
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		add_resource = { energy = 50000	}
+		add_resource = { minerals = 50000 }
+		add_resource = { alloys = 5000	}
+		add_resource = { influence = 1000 }
+		if = {
+			limit = { country_uses_food = yes }
+			add_resource = { food = 10000 }
+		}
+		else = {
+			add_resource = { energy = 50000 }
+		}
+		if = {
+			limit = { is_gestalt = no }
+			add_resource = { consumer_goods = 5000 }
+		}
+		else = {
+			add_resource = { minerals = 5000 }
+		}
+		add_resource = { exotic_gases = 1000 }
+		add_resource = { rare_crystals = 1000 }
+		add_resource = { volatile_motes = 1000 }
+		add_start_modifiers = yes
+		
+	}
+}
+
+country_event = {
+	id = galactic_origin.8
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		add_resource = { energy = 50000	}
+		add_resource = { minerals = 50000 }
+		add_resource = { alloys = 5000	}
+		add_resource = { influence = 1000 }
+		if = {
+			limit = { country_uses_food = yes }
+			add_resource = { food = 10000 }
+		}
+		else = {
+			add_resource = { energy = 50000 }
+		}
+		if = {
+			limit = { is_gestalt = no }
+			add_resource = { consumer_goods = 5000 }
+		}
+		else = {
+			add_resource = { minerals = 5000 }
+		}
+		add_resource = { exotic_gases = 1000 }
+		add_resource = { rare_crystals = 1000 }
+		add_resource = { volatile_motes = 1000 }
+		add_start_modifiers = yes
+		
+	}
+}
+
+country_event = {
+	id = galactic_origin.9
+	hide_window = yes
+
+	is_triggered_only = yes
+
+
+	immediate = {
+		add_resource = { energy = 50000	}
+		add_resource = { minerals = 50000 }
+		add_resource = { alloys = 5000	}
+		add_resource = { influence = 1000 }
+		if = {
+			limit = { country_uses_food = yes }
+			add_resource = { food = 10000 }
+		}
+		else = {
+			add_resource = { energy = 50000 }
+		}
+		if = {
+			limit = { is_gestalt = no }
+			add_resource = { consumer_goods = 5000 }
+		}
+		else = {
+			add_resource = { minerals = 5000 }
+		}
+		add_resource = { exotic_gases = 1000 }
+		add_resource = { rare_crystals = 1000 }
+		add_resource = { volatile_motes = 1000 }
+		add_start_modifiers = yes
+		
+	}
+}
+
+country_event = {
+	id = galactic_origin.10
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		add_resource = { energy = 50000	}
+		add_resource = { minerals = 50000 }
+		add_resource = { alloys = 5000	}
+		add_resource = { influence = 1000 }
+		if = {
+			limit = { country_uses_food = yes }
+			add_resource = { food = 10000 }
+		}
+		else = {
+			add_resource = { energy = 50000 }
+		}
+		if = {
+			limit = { is_gestalt = no }
+			add_resource = { consumer_goods = 5000 }
+		}
+		else = {
+			add_resource = { minerals = 5000 }
+		}
+		add_resource = { exotic_gases = 1000 }
+		add_resource = { rare_crystals = 1000 }
+		add_resource = { volatile_motes = 1000 }
+		add_start_modifiers = yes
+		
+	}
+}
+
+country_event = {
+	id = galactic_origin.900
+	title = galactic_origin.900.name
+	desc = galactic_origin.900.desc
+	picture = GFX_evt_galactic_empire
+
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			has_civic = civic_galactic_beacon
+			has_civic = civic_imperial_rival
+		}
+		has_galactic_emperor = yes
+		is_galactic_community_member = yes
+		is_galactic_emperor = no
+	}
+
+	immediate = {
+		force_remove_civic = civic_galactic_beacon
+		force_remove_civic = civic_imperial_rival
+		force_remove_civic = civic_outside_the_border
+	}
+}
+
+country_event = {
+	id = galactic_origin.901
+	title = galactic_origin.901.name
+	desc = galactic_origin.901.desc
+	picture = GFX_evt_galactic_community
+
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			has_civic = civic_galactic_beacon
+			has_civic = civic_imperial_rival
+		}
+		has_galactic_emperor = no
+	}
+
+	immediate = {
+		force_remove_civic = civic_galactic_beacon
+		force_remove_civic = civic_imperial_rival
+		force_remove_civic = civic_outside_the_border
+	}
+}
+
+country_event = {
+	id = galactic_origin.902
+	title = galactic_origin.902.name
+	desc = galactic_origin.902.desc
+	picture = GFX_evt_coronation
+
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			has_civic = civic_galactic_beacon
+			has_civic = civic_imperial_rival
+		}
+		is_galactic_emperor = yes
+	}
+
+	immediate = {
+		force_remove_civic = civic_galactic_beacon
+		force_remove_civic = civic_imperial_rival
+		force_remove_civic = civic_outside_the_border
+	}
+}

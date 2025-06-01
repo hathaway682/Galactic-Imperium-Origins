@@ -1,0 +1,31 @@
+
+# All leaders will have a common trait-point value set in defines, which they use to grab traits
+
+# leader_trait = yes - this tags the trait as a leader-trait and not a species-trait
+# initial = no - if set to no, this trait can not be granted to leaders when they are generated
+# leader_class = { commander scientist } -- OR - if not set, it can be given to all leader-types except Rulers
+# requires_traits = { trait_psionic } -- AND - leader-trait can only be randomly given on generation if the leaders species has this trait
+# requires_governments = { despotic_hegemony ai_overlordship } -- OR - leader-trait can only be randomly given on generation if the Empire has this type of government form
+# prerequisites = { tech_psionic_theory } - AND - leader-trait can only be given if the technology specified has been researched by the Empire
+
+#####################
+# commander Traits	#
+#####################
+
+leader_trait_clone_army_perfect_commander = {
+	inline_script = {
+		script = trait/icon
+		CLASS = commander
+		ICON = "GFX_leader_trait_clone_soldier_ascendant"
+		RARITY = common
+		COUNCIL = no
+		TIER = none
+	}
+	modifier = {
+		ship_fire_rate_mult = 0.35
+		ships_upkeep_mult = -0.20
+	}
+	leader_class = { commander }
+	initial = no
+	randomized = no
+}

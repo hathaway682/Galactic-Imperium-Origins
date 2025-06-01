@@ -1,0 +1,119 @@
+opinion_imperial_rival = {
+	trigger = {
+		OR = {
+			is_galactic_emperor = yes
+		}
+	}
+	opinion = {
+		modifier = {
+			add = -1000
+			is_galactic_emperor = yes
+			FROM = { 
+			is_federation_leader = yes }
+			is_same_species = FROM
+		}
+	}
+}
+
+opinion_galactic_tyrant = {
+	trigger = {
+		is_galactic_community_member = no
+	}
+	opinion = {
+		base = 0
+		modifier = {
+			add = -800
+			is_federation_leader = yes
+			FROM = { 
+			is_galactic_emperor = yes 
+			}
+		}
+		modifier = {
+			add = -200
+			has_federation = yes
+			FROM = { 
+				is_galactic_emperor = yes 
+			}
+		}
+	}
+}
+
+opinion_illegal_organization = {
+	trigger = {
+		is_galactic_community_member = yes
+	}
+	opinion = {
+		base = 0
+		modifier = {
+			add = -100
+			is_galactic_emperor = yes
+			FROM = { 
+				has_federation = yes
+				is_galactic_community_member = no
+			}
+		}
+		modifier = {
+			add = -100
+			is_part_of_galactic_council = yes
+			has_galactic_emperor = yes
+			FROM = { 
+				has_federation = yes
+				is_galactic_community_member = no
+			}
+		}
+	}
+}
+
+
+opinion_old_alliance = {
+	trigger = {
+		OR = {
+			is_galactic_emperor = yes
+		}
+	}
+	opinion = {
+		modifier = {
+			add = 100
+			FROM = { has_origin = origin_old_alliance }
+		}
+	}
+}
+
+opinion_chosen_of_the_shroud = {
+	trigger = {
+		is_country_type = default
+		
+	}
+	opinion = {
+		modifier = {
+			add = -1000
+			is_country_type = default
+			NOR = {
+				has_origin = origin_chosen_of_the_shroud
+				AND = {
+					has_any_overlord = yes
+					overlord = {
+						has_origin = origin_chosen_of_the_shroud
+					}
+				}
+			}
+			FROM = { has_origin = origin_chosen_of_the_shroud }
+		}
+		modifier = {
+			add = -1000
+			has_origin = origin_chosen_of_the_shroud
+			FROM = {
+				NOR = {
+					has_origin = origin_chosen_of_the_shroud
+					AND = {
+						has_any_overlord = yes
+						overlord = {
+							has_origin = origin_chosen_of_the_shroud
+						}
+					}
+				}
+				is_country_type = default
+			}
+		}
+	}
+}

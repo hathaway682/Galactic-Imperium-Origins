@@ -1,0 +1,45 @@
+special_project = {
+	key = "CLONE_GUARD_UNLOCK_POTENTIAL"
+	cost = {
+		base = 500
+		scaled_modifier = {
+			limit = {
+			}
+			scope = this
+			add = 100
+			calc = pop_count
+		}
+	}
+	tech_department = society_technology
+	picture = GFX_evt_gladiators
+	icon = "gfx/interface/icons/situation_log/situation_log_society.dds"
+
+	event_scope = country_event
+
+	on_success = {
+		country_event = { id = io_clones.23 }
+	}
+}
+
+special_project = {
+	key = "CLONE_SOLDIER_GUARD_FERTILITY_PERFECT"
+	cost = {
+		base = 10000
+		scaled_modifier = {
+			limit = {
+			}
+			scope = this
+			add = 250
+			calc = pop_count
+		}
+	}
+	tech_department = society_technology
+	picture = GFX_evt_gladiators
+	icon = "gfx/interface/icons/situation_log/situation_log_society.dds"
+
+	event_scope = country_event
+
+	on_success = {
+		country_event = { id = io_clones.22 }
+	}
+}
