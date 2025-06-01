@@ -77,14 +77,7 @@ io_bonus_planet_trigger = {
 	is_colonizable = no
 	NOT = { is_planet_class = pc_gas_giant }
 	solar_system = {
-		NOT = {
-			any_system_planet = {
-				OR = {
-					is_colonizable = yes
-					is_colony = yes
-				}
-			}
-		}
+		is_on_border = yes
 		NOT = {
 			has_star_flag = bonus_planet_system
 		}

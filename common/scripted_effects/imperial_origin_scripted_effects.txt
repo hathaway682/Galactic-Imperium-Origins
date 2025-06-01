@@ -81,7 +81,24 @@ io_become_emperor = {
     set_government_cooldown = no
     pass_resolution_no_cooldown = resolution_emperor_restore_council
     pass_resolution_no_cooldown = resolution_emperor_by_election
-    pass_resolution_no_cooldown = resolution_council_denouncement
+    pass_resolution_no_cooldown = resolution_galacticreforms_enable_council_veto
+    pass_resolution_no_cooldown = resolution_galacticreforms_enable_council_denouncement
+}
+
+io_become_custodian = {
+    set_galactic_custodian = yes
+    store_galactic_community_leader_backup_data = {
+        ROOM = yes
+    }
+    room_name_override = ""
+    random_playable_country = {
+        limit = { is_galactic_custodian = yes }
+        add_modifier = { modifier = gal_custodian }
+        save_event_target_as = custodian
+    }
+    pass_resolution_no_cooldown = resolution_galacticreforms_form_council
+    pass_resolution_no_cooldown = resolution_galacticreforms_enable_council_veto
+    pass_resolution_no_cooldown = resolution_galacticreforms_enable_council_denouncement
 }
 
 io_create_tech_dummy = {
@@ -784,6 +801,14 @@ add_outpost_if_can = {
     if = {
         limit = {
             has_owner = no
+            NOT = {
+                any_neighbor_system = {
+                    exists = owner
+                    owner = {
+                        has_country_flag = fallen_empire_4
+                    }
+                }
+            }
         }
         create_starbase = {
             size = starbase_outpost
@@ -3779,9 +3804,14 @@ io_building_fe_colony = {
 io_add_zone_for_city = {
     if = {
         limit = {
-            has_planet_flag = prescripted_ideal
-            solar_system = {
-                has_star_flag = neighbor_t1_first_colony
+            OR = {
+                AND = {
+                    has_planet_flag = prescripted_ideal
+                    solar_system = {
+                        has_star_flag = neighbor_t1_first_colony
+                    }
+                }
+                has_planet_flag = first_custodian_bonus
             }
         }
         if = {
@@ -3837,9 +3867,14 @@ io_add_zone_for_city = {
     }
     if = {
         limit = {
-            has_planet_flag = prescripted_ideal
-            solar_system = {
-                has_star_flag = neighbor_t2_second_colony
+            OR = {
+                AND = {
+                    has_planet_flag = prescripted_ideal
+                    solar_system = {
+                        has_star_flag = neighbor_t2_second_colony
+                    }
+                }
+                has_planet_flag = second_custodian_bonus
             }
         }
         if = {
@@ -5030,6 +5065,7 @@ io_generate_energy_bonus_planet = {
             }
             remove_building = building_hive_capital
             add_building = building_hive_major_capital
+            add_building = building_expanded_warren
         }
         else_if = {
             limit = {
@@ -5041,6 +5077,7 @@ io_generate_energy_bonus_planet = {
             }
             remove_building = building_deployment_post
             add_building = building_machine_system_capital
+            add_building = building_drone_megastorage
         }
         else = {
             io_generate_bonus_planet_urban = {
@@ -5049,6 +5086,17 @@ io_generate_energy_bonus_planet = {
             }
             remove_building = building_colony_shelter
             add_building = building_system_capital
+            if = {
+                limit = {
+                    owner = {
+                        has_civic = civic_shared_burden
+                    }
+                }
+                add_building = building_communal_housing_large
+            }
+            else = {
+                add_building = building_paradise_dome
+            }
         }
         add_zone = {
             district = district_generator
@@ -5122,6 +5170,7 @@ io_generate_minerals_bonus_planet = {
             }
             remove_building = building_hive_capital
             add_building = building_hive_major_capital
+            add_building = building_expanded_warren
         }
         else_if = {
             limit = {
@@ -5135,6 +5184,7 @@ io_generate_minerals_bonus_planet = {
             }
             remove_building = building_deployment_post
             add_building = building_machine_system_capital
+            add_building = building_drone_megastorage
         }
         else = {
             io_generate_bonus_planet_urban = {
@@ -5143,6 +5193,17 @@ io_generate_minerals_bonus_planet = {
             }
             remove_building = building_colony_shelter
             add_building = building_system_capital
+            if = {
+                limit = {
+                    owner = {
+                        has_civic = civic_shared_burden
+                    }
+                }
+                add_building = building_communal_housing_large
+            }
+            else = {
+                add_building = building_paradise_dome
+            }
         }
         add_zone = {
             district = district_mining
@@ -5220,6 +5281,7 @@ io_generate_food_bonus_planet = {
             }
             remove_building = building_hive_capital
             add_building = building_hive_major_capital
+            add_building = building_expanded_warren
         }
         else_if = {
             limit = {
@@ -5233,6 +5295,7 @@ io_generate_food_bonus_planet = {
             }
             remove_building = building_deployment_post
             add_building = building_machine_system_capital
+            add_building = building_drone_megastorage
         }
         else = {
             io_generate_bonus_planet_urban = {
@@ -5241,6 +5304,17 @@ io_generate_food_bonus_planet = {
             }
             remove_building = building_colony_shelter
             add_building = building_system_capital
+            if = {
+                limit = {
+                    owner = {
+                        has_civic = civic_shared_burden
+                    }
+                }
+                add_building = building_communal_housing_large
+            }
+            else = {
+                add_building = building_paradise_dome
+            }
         }
         add_zone = {
             district = district_farming
@@ -5313,6 +5387,7 @@ io_generate_lithoid_bonus_planet = {
             }
             remove_building = building_hive_capital
             add_building = building_hive_major_capital
+            add_building = building_expanded_warren
         }
         else_if = {
             limit = {
@@ -5324,6 +5399,7 @@ io_generate_lithoid_bonus_planet = {
             }
             remove_building = building_deployment_post
             add_building = building_machine_system_capital
+            add_building = building_drone_megastorage
         }
         else = {
             io_generate_bonus_planet_urban = {
@@ -5332,6 +5408,17 @@ io_generate_lithoid_bonus_planet = {
             }
             remove_building = building_colony_shelter
             add_building = building_system_capital
+            if = {
+                limit = {
+                    owner = {
+                        has_civic = civic_shared_burden
+                    }
+                }
+                add_building = building_communal_housing_large
+            }
+            else = {
+                add_building = building_paradise_dome
+            }
         }
         add_zone = {
             district = district_mining
@@ -5438,6 +5525,7 @@ io_generate_machine_bonus_planet = {
         io_districts_placement = yes
         remove_building = building_deployment_post
         add_building =  building_machine_system_capital
+        add_building = building_drone_megastorage
         if = {
             limit = {
                 owner = {
@@ -5525,6 +5613,7 @@ io_generate_servitor_bonus_planet = {
         io_districts_placement = yes
         remove_building = building_deployment_post
         add_building =  building_machine_system_capital
+        add_building =  building_drone_megastorage
         while = {
             count = 6
             add_district = district_arcology_housing
@@ -5588,6 +5677,44 @@ io_generate_servitor_bonus_planet = {
                 }
             }
         }
+        io_bouns_planet_expand = yes
+    }
+}
+
+io_generate_custodian_first_bonus_planet = {
+    random_planet_within_border = {
+        limit = {
+            io_bonus_planet_trigger = yes
+        }
+        change_pc = root.owner_main_species
+        reroll_planet_modifiers = yes
+        reroll_deposits = yes
+        set_owner = root
+        remove_all_buildings = yes
+        set_planet_flag = first_custodian_bonus
+        io_districts_colony = yes
+        io_districts_placement = yes
+        io_building_colony = yes
+        io_fullize_planet_pop = yes
+        io_bouns_planet_expand = yes
+    }
+}
+
+io_generate_custodian_second_bonus_planet = {
+    random_planet_within_border = {
+        limit = {
+            io_bonus_planet_trigger = yes
+        }
+        change_pc = root.owner_main_species
+        reroll_planet_modifiers = yes
+        reroll_deposits = yes
+        set_owner = root
+        remove_all_buildings = yes
+        set_planet_flag = second_custodian_bonus
+        io_districts_colony = yes
+        io_districts_placement = yes
+        io_building_colony = yes
+        io_fullize_planet_pop = yes
         io_bouns_planet_expand = yes
     }
 }

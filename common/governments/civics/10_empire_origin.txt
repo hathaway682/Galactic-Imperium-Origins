@@ -33,10 +33,6 @@ origin_galactic_custodian = {
 	picture = GFX_origin_galactic_custodian
 	max_once_global = yes
 
-	playable = {
-		always = no
-	}
-
 	possible = {
         civics = {
 			NOR = {
