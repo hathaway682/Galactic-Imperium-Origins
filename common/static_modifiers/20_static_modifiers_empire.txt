@@ -18,6 +18,25 @@ io_ancient_fleet_modifier = {
 	ships_upkeep_mult = -10
 }
 
+io_transcendent_modifier = {
+	building_affluence_emporium_cap = 999999
+	building_nourishment_complex_cap = 999999
+	building_dimensional_replicator_cap = 999999
+	building_class_3_singularity_cap = 999999
+	building_micro_forge_cap = 999999
+	building_fe_sky_dome_cap = 999999
+	building_fe_fortress_cap = 999999
+	building_fe_administration_1_cap = 999999
+	building_fe_assembly_1_cap = 999999
+	building_fe_clinic_1_cap = 999999
+	building_fe_security_1_cap = 999999
+	building_fe_market_1_cap = 999999
+	building_fe_silo_1_cap = 999999
+	building_fe_entertainment_1_cap = 999999
+	building_fe_lab_1_cap = 999999
+	building_fe_mine_1_cap = 999999
+}
+
 gio_planet_life_heaven_modifier = {
 	icon = "gfx/interface/icons/planet_modifiers/pm_lush.dds"
 	icon_frame = 1

@@ -2427,7 +2427,7 @@ io_districts_city_world = {
         }
         set_variable = {
             which = city_districts
-            value = 12
+            value = 9
         }
         add_district = district_arcology_urban_1
         add_district = district_arcology_urban_2
@@ -2461,7 +2461,7 @@ io_districts_city_world = {
         }
         set_variable = {
             which = city_districts
-            value = 24
+            value = 27
         }
         add_district = district_arcology_urban_1
         add_district = district_arcology_urban_2
@@ -3977,38 +3977,38 @@ io_add_zone_for_generator = {
                 zone = $zone$
                 district = $district$
             }
-            # if = {
-            #     limit = {
-            #         owner = {
-            #             is_wilderness_empire = yes
-            #             check_variable = {
-            #                 which = io_setting_tech
-            #                 value >= 2
-            #             }
-            #         }
-            #     }
-            #     add_building = {
-            #         building = building_bioelectric_stimulator_4
-            #         zone = $zone$
-            #         district = $district$
-            #     }
-            # }
-            # else_if = {
-            #     limit = {
-            #         owner = {
-            #             is_wilderness_empire = yes
-            #             check_variable = {
-            #                 which = io_setting_tech
-            #                 value >= 1
-            #             }
-            #         }
-            #     }
-            #     add_building = {
-            #         building = building_bioelectric_stimulator_3
-            #         zone = $zone$
-            #         district = $district$
-            #     }
-            # }
+            if = {
+                limit = {
+                    owner = {
+                        is_wilderness_empire = yes
+                        check_variable = {
+                            which = io_setting_tech
+                            value >= 2
+                        }
+                    }
+                }
+                add_building = {
+                    building = building_bioelectric_stimulator_4
+                    zone = $zone$
+                    district = $district$
+                }
+            }
+            else_if = {
+                limit = {
+                    owner = {
+                        is_wilderness_empire = yes
+                        check_variable = {
+                            which = io_setting_tech
+                            value >= 1
+                        }
+                    }
+                }
+                add_building = {
+                    building = building_bioelectric_stimulator_3
+                    zone = $zone$
+                    district = $district$
+                }
+            }
             else_if = {
                 limit = {
                     owner = {
@@ -4021,21 +4021,21 @@ io_add_zone_for_generator = {
                     district = $district$
                 }
             }
-            # else_if = {
-            #     limit = {
-            #         owner = {
-            #             check_variable = {
-            #                 which = io_setting_tech
-            #                 value >= 2
-            #             }
-            #         }
-            #     }
-            #     add_building = {
-            #         building = building_energy_nexus
-            #         zone = $zone$
-            #         district = $district$
-            #     }
-            # }
+            else_if = {
+                limit = {
+                    owner = {
+                        check_variable = {
+                            which = io_setting_tech
+                            value >= 2
+                        }
+                    }
+                }
+                add_building = {
+                    building = building_energy_nexus
+                    zone = $zone$
+                    district = $district$
+                }
+            }
             else_if = {
                 limit = {
                     owner = {
@@ -4096,38 +4096,38 @@ io_add_zone_for_mining = {
                 zone = $zone$
                 district = $district$
             }
-            # if = {
-            #     limit = {
-            #         owner = {
-            #             is_wilderness_empire = yes
-            #             check_variable = {
-            #                 which = io_setting_tech
-            #                 value >= 2
-            #             }
-            #         }
-            #     }
-            #     add_building = {
-            #         building = building_churning_tunnels_4
-            #         zone = $zone$
-            #         district = $district$
-            #     }
-            # }
-            # else_if = {
-            #     limit = {
-            #         owner = {
-            #             is_wilderness_empire = yes
-            #             check_variable = {
-            #                 which = io_setting_tech
-            #                 value >= 1
-            #             }
-            #         }
-            #     }
-            #     add_building = {
-            #         building = building_churning_tunnels_3
-            #         zone = $zone$
-            #         district = $district$
-            #     }
-            # }
+            if = {
+                limit = {
+                    owner = {
+                        is_wilderness_empire = yes
+                        check_variable = {
+                            which = io_setting_tech
+                            value >= 2
+                        }
+                    }
+                }
+                add_building = {
+                    building = building_churning_tunnels_4
+                    zone = $zone$
+                    district = $district$
+                }
+            }
+            else_if = {
+                limit = {
+                    owner = {
+                        is_wilderness_empire = yes
+                        check_variable = {
+                            which = io_setting_tech
+                            value >= 1
+                        }
+                    }
+                }
+                add_building = {
+                    building = building_churning_tunnels_3
+                    zone = $zone$
+                    district = $district$
+                }
+            }
             else_if = {
                 limit = {
                     owner = {
@@ -4140,21 +4140,21 @@ io_add_zone_for_mining = {
                     district = $district$
                 }
             }
-            # else_if = {
-            #     limit = {
-            #         owner = {
-            #             check_variable = {
-            #                 which = io_setting_tech
-            #                 value >= 2
-            #             }
-            #         }
-            #     }
-            #     add_building = {
-            #         building = building_mineral_purification_hub
-            #         zone = $zone$
-            #         district = $district$
-            #     }
-            # }
+            else_if = {
+                limit = {
+                    owner = {
+                        check_variable = {
+                            which = io_setting_tech
+                            value >= 2
+                        }
+                    }
+                }
+                add_building = {
+                    building = building_mineral_purification_hub
+                    zone = $zone$
+                    district = $district$
+                }
+            }
             else_if = {
                 limit = {
                     owner = {
@@ -4215,38 +4215,38 @@ io_add_zone_for_farming = {
                 zone = $zone$
                 district = $district$
             }
-            # if = {
-            #     limit = {
-            #         owner = {
-            #             is_wilderness_empire = yes
-            #             check_variable = {
-            #                 which = io_setting_tech
-            #                 value >= 2
-            #             }
-            #         }
-            #     }
-            #     add_building = {
-            #         building = building_massive_growth_4
-            #         zone = $zone$
-            #         district = $district$
-            #     }
-            # }
-            # else_if = {
-            #     limit = {
-            #         owner = {
-            #             is_wilderness_empire = yes
-            #             check_variable = {
-            #                 which = io_setting_tech
-            #                 value >= 1
-            #             }
-            #         }
-            #     }
-            #     add_building = {
-            #         building = building_massive_growth_3
-            #         zone = $zone$
-            #         district = $district$
-            #     }
-            # }
+            if = {
+                limit = {
+                    owner = {
+                        is_wilderness_empire = yes
+                        check_variable = {
+                            which = io_setting_tech
+                            value >= 2
+                        }
+                    }
+                }
+                add_building = {
+                    building = building_massive_growth_4
+                    zone = $zone$
+                    district = $district$
+                }
+            }
+            else_if = {
+                limit = {
+                    owner = {
+                        is_wilderness_empire = yes
+                        check_variable = {
+                            which = io_setting_tech
+                            value >= 1
+                        }
+                    }
+                }
+                add_building = {
+                    building = building_massive_growth_3
+                    zone = $zone$
+                    district = $district$
+                }
+            }
             else_if = {
                 limit = {
                     owner = {
@@ -4259,21 +4259,21 @@ io_add_zone_for_farming = {
                     district = $district$
                 }
             }
-            # else_if = {
-            #     limit = {
-            #         owner = {
-            #             check_variable = {
-            #                 which = io_setting_tech
-            #                 value >= 2
-            #             }
-            #         }
-            #     }
-            #     add_building = {
-            #         building = building_food_processing_center
-            #         zone = $zone$
-            #         district = $district$
-            #     }
-            # }
+            else_if = {
+                limit = {
+                    owner = {
+                        check_variable = {
+                            which = io_setting_tech
+                            value >= 2
+                        }
+                    }
+                }
+                add_building = {
+                    building = building_food_processing_center
+                    zone = $zone$
+                    district = $district$
+                }
+            }
             else_if = {
                 limit = {
                     owner = {
@@ -4593,7 +4593,7 @@ io_create_community_fleet = {
 }
 
 io_create_community_battleship_fleet = {
-    create_fleet_from_naval_cap = { fraction = 4 ship_owner_type = galactic_community }
+    create_fleet_from_naval_cap = { fraction = 2 ship_owner_type = galactic_community }
     last_created_fleet = {
         every_owned_ship = {
             limit = {
@@ -5015,16 +5015,16 @@ io_bouns_planet_expand = {
 }
 
 io_generate_bonus_planet_urban = {
-    add_zone = {
-        district = $district$
-        zone = $zone$
-        zone_slot = 1
-    }
-    add_zone = {
-        district = $district$
-        zone = $zone$
-        zone_slot = 2
-    }
+    # add_zone = {
+    #     district = $district$
+    #     zone = $zone$
+    #     zone_slot = 1
+    # }
+    # add_zone = {
+    #     district = $district$
+    #     zone = $zone$
+    #     zone_slot = 2
+    # }
 }
 
 io_generate_energy_bonus_planet = {
@@ -5057,7 +5057,9 @@ io_generate_energy_bonus_planet = {
         add_district = district_generator
         if = {
             limit = {
-                is_hive_empire = yes
+                owner = {
+                    is_hive_empire = yes
+                }
             }
             io_generate_bonus_planet_urban = {
                 district = district_hive
@@ -5065,11 +5067,13 @@ io_generate_energy_bonus_planet = {
             }
             remove_building = building_hive_capital
             add_building = building_hive_major_capital
-            add_building = building_expanded_warren
+            add_building = building_hive_warren
         }
         else_if = {
             limit = {
-                is_machine_empire = yes
+                owner = {
+                    is_machine_empire = yes
+                }
             }
             io_generate_bonus_planet_urban = {
                 district = district_nexus
@@ -5077,7 +5081,7 @@ io_generate_energy_bonus_planet = {
             }
             remove_building = building_deployment_post
             add_building = building_machine_system_capital
-            add_building = building_drone_megastorage
+            add_building = building_drone_storage
         }
         else = {
             io_generate_bonus_planet_urban = {
@@ -5092,10 +5096,10 @@ io_generate_energy_bonus_planet = {
                         has_civic = civic_shared_burden
                     }
                 }
-                add_building = building_communal_housing_large
+                add_building = building_communal_housing
             }
             else = {
-                add_building = building_paradise_dome
+                add_building = building_luxury_residence
             }
         }
         add_zone = {
@@ -5170,7 +5174,7 @@ io_generate_minerals_bonus_planet = {
             }
             remove_building = building_hive_capital
             add_building = building_hive_major_capital
-            add_building = building_expanded_warren
+            add_building = building_hive_warren
         }
         else_if = {
             limit = {
@@ -5184,7 +5188,8 @@ io_generate_minerals_bonus_planet = {
             }
             remove_building = building_deployment_post
             add_building = building_machine_system_capital
-            add_building = building_drone_megastorage
+            add_building = building_drone_storage
+            add_building = building_drone_storage
         }
         else = {
             io_generate_bonus_planet_urban = {
@@ -5199,10 +5204,10 @@ io_generate_minerals_bonus_planet = {
                         has_civic = civic_shared_burden
                     }
                 }
-                add_building = building_communal_housing_large
+                add_building = building_communal_housing
             }
             else = {
-                add_building = building_paradise_dome
+                add_building = building_luxury_residence
             }
         }
         add_zone = {
@@ -5264,10 +5269,6 @@ io_generate_food_bonus_planet = {
         add_deposit = d_lush_jungle
         add_deposit = d_teeming_reef
         add_deposit = d_black_soil
-        set_variable = {
-            which = city_districts
-            value = 2
-        }
         add_district = district_farming
         if = {
             limit = {
@@ -5281,7 +5282,7 @@ io_generate_food_bonus_planet = {
             }
             remove_building = building_hive_capital
             add_building = building_hive_major_capital
-            add_building = building_expanded_warren
+            add_building = building_hive_warren
         }
         else_if = {
             limit = {
@@ -5295,7 +5296,7 @@ io_generate_food_bonus_planet = {
             }
             remove_building = building_deployment_post
             add_building = building_machine_system_capital
-            add_building = building_drone_megastorage
+            add_building = building_drone_storage
         }
         else = {
             io_generate_bonus_planet_urban = {
@@ -5310,10 +5311,10 @@ io_generate_food_bonus_planet = {
                         has_civic = civic_shared_burden
                     }
                 }
-                add_building = building_communal_housing_large
+                add_building = building_communal_housing
             }
             else = {
-                add_building = building_paradise_dome
+                add_building = building_luxury_residence
             }
         }
         add_zone = {
@@ -5387,7 +5388,7 @@ io_generate_lithoid_bonus_planet = {
             }
             remove_building = building_hive_capital
             add_building = building_hive_major_capital
-            add_building = building_expanded_warren
+            add_building = building_hive_warren
         }
         else_if = {
             limit = {
@@ -5399,7 +5400,7 @@ io_generate_lithoid_bonus_planet = {
             }
             remove_building = building_deployment_post
             add_building = building_machine_system_capital
-            add_building = building_drone_megastorage
+            add_building = building_drone_storage
         }
         else = {
             io_generate_bonus_planet_urban = {
@@ -5414,10 +5415,10 @@ io_generate_lithoid_bonus_planet = {
                         has_civic = civic_shared_burden
                     }
                 }
-                add_building = building_communal_housing_large
+                add_building = building_communal_housing
             }
             else = {
-                add_building = building_paradise_dome
+                add_building = building_luxury_residence
             }
         }
         add_zone = {
@@ -5525,7 +5526,7 @@ io_generate_machine_bonus_planet = {
         io_districts_placement = yes
         remove_building = building_deployment_post
         add_building =  building_machine_system_capital
-        add_building = building_drone_megastorage
+        add_building = building_drone_storage
         if = {
             limit = {
                 owner = {
@@ -5613,7 +5614,7 @@ io_generate_servitor_bonus_planet = {
         io_districts_placement = yes
         remove_building = building_deployment_post
         add_building =  building_machine_system_capital
-        add_building =  building_drone_megastorage
+        add_building =  building_drone_storage
         while = {
             count = 6
             add_district = district_arcology_housing

@@ -56,6 +56,7 @@ event = {
                             has_civic = civic_fanatic_purifiers
                             has_civic = civic_hive_devouring_swarm
                             has_civic = civic_machine_terminator
+                            has_civic = civic_outside_the_border
                             is_low_tech_start = yes
                             has_origin = origin_fear_of_the_dark
                             has_origin = origin_unplugged
@@ -106,6 +107,10 @@ event = {
                 set_variable = {
                     which = io_setting_tech
                     value = 3
+                }
+                set_variable = {
+                    which = io_setting_council
+                    value = 1
                 }
                 set_variable = {
                     which = io_setting_market
@@ -190,6 +195,7 @@ event = {
                             has_civic = civic_fanatic_purifiers
                             has_civic = civic_hive_devouring_swarm
                             has_civic = civic_machine_terminator
+                            has_civic = civic_outside_the_border
                             is_low_tech_start = yes
                             has_origin = origin_fear_of_the_dark
                             has_origin = origin_unplugged
@@ -360,6 +366,7 @@ event = {
                         has_civic = civic_fanatic_purifiers
                         has_civic = civic_hive_devouring_swarm
                         has_civic = civic_machine_terminator
+                        has_civic = civic_outside_the_border
                         is_low_tech_start = yes
                         has_origin = origin_fear_of_the_dark
                         has_origin = origin_unplugged
@@ -466,6 +473,10 @@ event = {
             set_variable = {
                 which = io_setting_tech
                 value = 3
+            }
+            set_variable = {
+                which = io_setting_council
+                value = 1
             }
             set_variable = {
                 which = io_setting_market
@@ -655,6 +666,35 @@ country_event = {
             else_if = {
                 limit = { check_variable = { which = io_setting_empire value = 99 } }
                 custom_tooltip = io_start_events.2.awaken.tooltip
+            }
+            country_event = { id = io_start_events.2 }
+        }
+    }
+    #帝国议会
+    option = {
+        name = {
+            text = io_start_events.2.council1
+            trigger = { check_variable = { which = io_setting_council value = 0 } }
+        }
+        name = {
+            text = io_start_events.2.council2
+            trigger = { check_variable = { which = io_setting_council value = 1 } }
+        }
+        name = {
+            text = io_start_events.2.council3
+            trigger = { check_variable = { which = io_setting_council value = 2 } }
+        }
+        name = {
+            text = io_start_events.2.council4
+            trigger = { check_variable = { which = io_setting_council value = 3 } }
+        }
+        hidden_effect = {
+            if = {
+                limit = { check_variable = { which = io_setting_council value = 3 } }
+                set_variable = { which = io_setting_council value = 0 }
+            }
+            else = {
+                change_variable = { which = io_setting_council value = 1 }
             }
             country_event = { id = io_start_events.2 }
         }
@@ -1278,6 +1318,11 @@ country_event = {
                         value = 5
                     }
                 }
+                pass_resolution_no_cooldown = resolution_emperor_food_4
+                pass_resolution_no_cooldown = resolution_emperor_minerals_4
+                pass_resolution_no_cooldown = resolution_emperor_energy_4
+                pass_resolution_no_cooldown = resolution_emperor_consumer_goods_3
+                pass_resolution_no_cooldown = resolution_emperor_alloys_3
                 pass_resolution_no_cooldown = resolution_emperor_basic_4
                 pass_resolution_no_cooldown = resolution_emperor_advanced_3
                 pass_resolution_no_cooldown = resolution_emperor_strategic_2
@@ -1350,6 +1395,9 @@ country_event = {
                         value = 10
                     }
                 }
+                add_modifier = {
+                    modifier = io_transcendent_modifier
+                }
                 pass_resolution_no_cooldown = resolution_emperor_food_5
                 pass_resolution_no_cooldown = resolution_emperor_minerals_5
                 pass_resolution_no_cooldown = resolution_emperor_energy_5
@@ -1360,6 +1408,26 @@ country_event = {
                 pass_resolution_no_cooldown = resolution_emperor_strategic_3
                 pass_resolution_no_cooldown = resolution_emperor_rare_2
                 add_imperial_authority = 100
+            }
+            #帝国议会
+            set_variable = {
+                which = io_setting_council
+                value = event_target:io_setting_country.io_setting_council
+            }
+            if = {
+                limit = { check_variable = { which = io_setting_council value = 1 } }
+                pass_resolution_no_cooldown = resolution_emperor_restore_council
+                pass_resolution_no_cooldown = resolution_emperor_by_election
+            }
+            if = {
+                limit = { check_variable = { which = io_setting_council value = 2 } }
+                pass_resolution_no_cooldown = resolution_emperor_restore_council
+                pass_resolution_no_cooldown = resolution_emperor_by_appointment
+            }
+            if = {
+                limit = { check_variable = { which = io_setting_council value = 3 } }
+                pass_resolution_no_cooldown = resolution_emperor_restore_council
+                pass_resolution_no_cooldown = resolution_emperor_trial_of_advancement
             }
             #帝国海军
             set_variable = {
@@ -2530,15 +2598,58 @@ country_event = {
             if = {
                 limit = {
                     owner = {
-                        has_origin = origin_clone_army
+                        is_galactic_emperor = yes
                     }
                 }
-                io_set_planet_pop = {
-                    pop = 7500
+                if = {
+                    limit = {
+                        owner = {
+                            check_variable = {
+                                which = io_setting_empire
+                                value >= 4
+                            }
+                        }
+                    }
+                    io_set_planet_pop = {
+                        pop = 25000
+                    }
+                }
+                if = {
+                    limit = {
+                        owner = {
+                            check_variable = {
+                                which = io_setting_empire
+                                value = 3
+                            }
+                        }
+                    }
+                    io_set_planet_pop = {
+                        pop = 20000
+                    }
+                }
+                else_if = {
+                    limit = {
+                        owner = {
+                            check_variable = {
+                                which = io_setting_empire
+                                value >= 2
+                            }
+                        }
+                    }
+                    io_set_planet_pop = {
+                        pop = 15000
+                    }
+                }
+                else = {
+                    io_set_planet_pop = {
+                        pop = 10000
+                    }
                 }
             }
             else = {
-                io_fullize_planet_pop = yes
+                io_set_planet_pop = {
+                    pop = 7500
+                }
             }
             set_planet_flag = planet_intialized
             solar_system = {
@@ -2597,6 +2708,109 @@ country_event = {
         }
         else = {
             io_expand_border = yes
+        }
+        #暂时不给哨兵阵列
+        #殖民固定星球
+        every_planet_within_border = {
+            limit = {
+                is_colonizable = yes
+                is_colony = no
+                has_planet_flag = prescripted_ideal
+                NOT = { has_modifier = holy_planet }
+            }
+            set_owner = root
+            remove_all_buildings = yes
+            if = {
+                limit = {
+                    owner = {
+                        has_country_flag = io_fe_emperor
+                    }
+                }
+                io_fe_planet_set = yes
+            }
+            else = {
+                io_districts_colony = yes
+                io_districts_placement = yes
+                io_building_colony = yes
+            }
+            io_set_planet_pop = {
+                pop = 2500
+            }
+        }
+        #殖民随机星球
+        if = {
+            limit = {
+                has_country_flag = io_fe_emperor
+            }
+            every_planet_within_border = {
+                limit = {
+                    is_colonizable = yes
+                    is_colony = no
+                    NOT = { has_modifier = holy_planet }
+                }
+                change_pc = pc_gaia
+                reroll_deposits = yes
+                set_owner = root
+                remove_all_buildings = yes
+                io_districts_fe_colony = yes
+                io_districts_placement = yes
+                io_building_fe_colony = yes
+                io_set_planet_pop = {
+                    pop = 2500
+                }
+            }
+        }
+        if = {
+            limit = {
+                is_galactic_emperor = yes
+                event_target:io_setting_country = {
+                    check_variable = {
+                        which = io_setting_bonus_planet
+                        value = 1
+                    }
+                }
+            }
+            io_generate_energy_bonus_planet = yes
+            reroll_random = yes
+            io_generate_minerals_bonus_planet = yes
+            reroll_random = yes
+            if = {
+                limit = {
+                    has_valid_civic = civic_machine_servitor
+                }
+                io_generate_servitor_bonus_planet = yes
+            }
+            else_if = {
+                limit = {
+                    OR = {
+                        is_machine_empire = yes
+                        is_individual_machine = yes
+                    }
+                    NOT = {
+                        country_uses_food = yes
+                    }
+                }
+                io_generate_machine_bonus_planet = yes
+            }
+            else_if = {
+                limit = {
+                    country_uses_food = no
+                }
+                io_generate_lithoid_bonus_planet = yes
+            }
+            else = {
+                io_generate_food_bonus_planet = yes
+            }
+            reroll_random = yes
+        }
+        if = {
+            limit = {
+                is_galactic_custodian = yes
+            }
+            io_generate_custodian_first_bonus_planet = yes
+            reroll_random = yes
+            io_generate_custodian_second_bonus_planet = yes
+            reroll_random = yes
         }
         #帝皇巨构奖励
         #默认：星际集会
@@ -2822,8 +3036,6 @@ country_event = {
                             OR = {
                                 is_planet_class = pc_neutron_star
                                 is_planet_class = pc_pulsar
-                                is_binary_star = yes
-                                is_trinary_star = yes
                             }
                         }
                     }
@@ -2836,117 +3048,6 @@ country_event = {
                     owner = root
                 }
             }
-        }
-        #暂时不给哨兵阵列
-        #殖民固定星球
-        every_planet_within_border = {
-            limit = {
-                is_colonizable = yes
-                is_colony = no
-                has_planet_flag = prescripted_ideal
-                NOT = { has_modifier = holy_planet }
-            }
-            set_owner = root
-            remove_all_buildings = yes
-            if = {
-                limit = {
-                    owner = {
-                        has_country_flag = io_fe_emperor
-                    }
-                }
-                io_fe_planet_set = yes
-            }
-            else = {
-                io_districts_colony = yes
-                io_districts_placement = yes
-                io_building_colony = yes
-            }
-            if = {
-                limit = {
-                    owner = {
-                        has_origin = origin_clone_army
-                    }
-                }
-                io_set_planet_pop = {
-                    pop = 2500
-                }
-            }
-            else = {
-                io_fullize_planet_pop = yes
-            }
-        }
-        #殖民随机星球
-        if = {
-            limit = {
-                has_country_flag = io_fe_emperor
-            }
-            every_planet_within_border = {
-                limit = {
-                    is_colonizable = yes
-                    is_colony = no
-                    NOT = { has_modifier = holy_planet }
-                }
-                change_pc = pc_gaia
-                reroll_deposits = yes
-                set_owner = root
-                remove_all_buildings = yes
-                io_districts_fe_colony = yes
-                io_districts_placement = yes
-                io_building_fe_colony = yes
-                io_fullize_planet_pop = yes
-            }
-        }
-        if = {
-            limit = {
-                is_galactic_emperor = yes
-                event_target:io_setting_country = {
-                    check_variable = {
-                        which = io_setting_bonus_planet
-                        value = 1
-                    }
-                }
-            }
-            io_generate_energy_bonus_planet = yes
-            reroll_random = yes
-            io_generate_minerals_bonus_planet = yes
-            reroll_random = yes
-            if = {
-                limit = {
-                    has_valid_civic = civic_machine_servitor
-                }
-                io_generate_servitor_bonus_planet = yes
-            }
-            else_if = {
-                limit = {
-                    OR = {
-                        is_machine_empire = yes
-                        is_individual_machine = yes
-                    }
-                    NOT = {
-                        country_uses_food = yes
-                    }
-                }
-                io_generate_machine_bonus_planet = yes
-            }
-            else_if = {
-                limit = {
-                    country_uses_food = no
-                }
-                io_generate_lithoid_bonus_planet = yes
-            }
-            else = {
-                io_generate_food_bonus_planet = yes
-            }
-            reroll_random = yes
-        }
-        if = {
-            limit = {
-                is_galactic_custodian = yes
-            }
-            io_generate_custodian_first_bonus_planet = yes
-            reroll_random = yes
-            io_generate_custodian_second_bonus_planet = yes
-            reroll_random = yes
         }
         #建造站点
         every_planet_within_border = {
@@ -3253,7 +3354,9 @@ country_event = {
             io_districts_captial = yes
             io_districts_placement = yes
             io_building_captial = yes
-            io_fullize_planet_pop = yes
+            io_set_planet_pop = {
+                pop = 7500
+            }
             set_planet_flag = planet_intialized
             solar_system = {
                 starbase = {
@@ -3398,7 +3501,6 @@ country_event = {
                 }
             }
             set_owner = root
-            io_fullize_planet_pop = yes
         }
         event_target:io_old_captial_2 = {
             solar_system = {
@@ -3407,7 +3509,6 @@ country_event = {
                 }
             }
             set_owner = root
-            io_fullize_planet_pop = yes
         }
         federation = {
             add_federation_experience = 6000
@@ -3451,7 +3552,9 @@ country_event = {
             io_districts_colony = yes
             io_districts_placement = yes
             io_building_colony = yes
-            io_fullize_planet_pop = yes
+            io_set_planet_pop = {
+                pop = 2500
+            }
         }
         #建造站点
         every_planet_within_border = {
@@ -3509,7 +3612,9 @@ country_event = {
             io_districts_captial = yes
             io_districts_placement = yes
             io_building_captial = yes
-            io_fullize_planet_pop = yes
+            io_set_planet_pop = {
+                pop = 7500
+            }
             set_planet_flag = planet_intialized
             solar_system = {
                 starbase = {

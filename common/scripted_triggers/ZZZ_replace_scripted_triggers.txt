@@ -75,11 +75,16 @@ io_bonus_planet_trigger = {
 	is_star = no
 	is_moon = no
 	is_colonizable = no
-	NOT = { is_planet_class = pc_gas_giant }
+	NOR = {
+		is_planet_class = pc_gas_giant
+		is_planet_class = pc_shrouded
+		is_planet_class = pc_astral_scar
+	}
 	solar_system = {
 		is_on_border = yes
-		NOT = {
+		NOR = {
 			has_star_flag = bonus_planet_system
+			any_system_planet = { is_colony = yes }
 		}
 	}
 }

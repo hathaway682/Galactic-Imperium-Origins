@@ -16,6 +16,9 @@
  io_pax_imperium_desc: "自从星海统一以来，经济一直在繁荣增长！"
  build_start_modifier:0 "国家发展计划"
 
+ io_transcendent_modifier: "超然伟力"
+ io_transcendent_modifier_desc: "诅咒你，蠢驴！你可耻的建筑上限再也无法束缚我了！"
+
  io_start_events.2.name:0 "星海帝皇起源设置"
  io_start_events.2.desc:0 ""
  io_start_events.2.t0:0 "银河起始科技：§PT0§!"

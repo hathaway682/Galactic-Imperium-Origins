@@ -84,7 +84,7 @@ country_event = {
 			set_country_flag = composer_covenant_rank_3
 			set_country_flag = composer_covenant_rank_4
 			ruler = {
-				add_trait = leader_trait_composer_chosen
+				add_trait = { trait = leader_trait_composer_chosen }
 				remove_trait = leader_trait_psionic
 				set_skill = 5
 			}
@@ -95,7 +95,7 @@ country_event = {
 				skill = 5
 			}
 			last_created_leader = {
-				add_trait = leader_trait_composer_chosen
+				add_trait = { trait = leader_trait_composer_chosen }
 				remove_trait = leader_trait_psionic
 			}
 			create_leader = {
@@ -105,7 +105,7 @@ country_event = {
 				skill = 5
 			}
 			last_created_leader = {
-				add_trait = leader_trait_composer_chosen
+				add_trait = { trait = leader_trait_composer_chosen }
 				remove_trait = leader_trait_psionic
 			}
 			create_leader = {
@@ -115,7 +115,7 @@ country_event = {
 				skill = 5
 			}
 			last_created_leader = {
-				add_trait = leader_trait_composer_chosen
+				add_trait = { trait = leader_trait_composer_chosen }
 				remove_trait = leader_trait_psionic
 			}
 			set_variable = {
@@ -156,7 +156,7 @@ country_event = {
 		}
 		hidden_effect = {
 			ruler = {
-				add_trait = leader_trait_eater_chosen
+				add_trait = { trait = leader_trait_eater_chosen }
 				remove_trait = leader_trait_psionic
 				set_skill = 5
 			}
@@ -167,7 +167,7 @@ country_event = {
 				skill = 5
 			}
 			last_created_leader = {
-				add_trait = leader_trait_eater_chosen
+				add_trait = { trait = leader_trait_eater_chosen }
 				remove_trait = leader_trait_psionic
 			}
 			create_leader = {
@@ -177,7 +177,7 @@ country_event = {
 				skill = 5
 			}
 			last_created_leader = {
-				add_trait = leader_trait_eater_chosen
+				add_trait = { trait = leader_trait_eater_chosen }
 				remove_trait = leader_trait_psionic
 			}
 			create_leader = {
@@ -187,7 +187,7 @@ country_event = {
 				skill = 5
 			}
 			last_created_leader = {
-				add_trait = leader_trait_eater_chosen
+				add_trait = { trait = leader_trait_eater_chosen }
 				remove_trait = leader_trait_psionic
 			}
 			set_country_flag = eater_covenant_confirmed
@@ -233,7 +233,7 @@ country_event = {
 		}
 		hidden_effect = {
 			ruler = {
-				add_trait = leader_trait_instrument_chosen
+				add_trait = { trait = leader_trait_instrument_chosen }
 				remove_trait = leader_trait_psionic
 				set_skill = 5
 			}
@@ -244,7 +244,7 @@ country_event = {
 				skill = 5
 			}
 			last_created_leader = {
-				add_trait = leader_trait_instrument_chosen
+				add_trait = { trait = leader_trait_instrument_chosen }
 				remove_trait = leader_trait_psionic
 			}
 			create_leader = {
@@ -254,7 +254,7 @@ country_event = {
 				skill = 5
 			}
 			last_created_leader = {
-				add_trait = leader_trait_instrument_chosen
+				add_trait = { trait = leader_trait_instrument_chosen }
 				remove_trait = leader_trait_psionic
 			}
 			create_leader = {
@@ -264,7 +264,7 @@ country_event = {
 				skill = 5
 			}
 			last_created_leader = {
-				add_trait = leader_trait_instrument_chosen
+				add_trait = { trait = leader_trait_instrument_chosen }
 				remove_trait = leader_trait_psionic
 			}
 			set_country_flag = instrument_covenant_confirmed
@@ -310,7 +310,7 @@ country_event = {
 		}
 		hidden_effect = {
 			ruler = {
-				add_trait = leader_trait_whisperers_chosen
+				add_trait = { trait = leader_trait_whisperers_chosen }
 				remove_trait = leader_trait_psionic
 				set_skill = 5
 			}
@@ -321,7 +321,7 @@ country_event = {
 				skill = 5
 			}
 			last_created_leader = {
-				add_trait = leader_trait_whisperers_chosen
+				add_trait = { trait = leader_trait_whisperers_chosen }
 				remove_trait = leader_trait_psionic
 			}
 			create_leader = {
@@ -331,7 +331,7 @@ country_event = {
 				skill = 5
 			}
 			last_created_leader = {
-				add_trait = leader_trait_whisperers_chosen
+				add_trait = { trait = leader_trait_whisperers_chosen }
 				remove_trait = leader_trait_psionic
 			}
 			create_leader = {
@@ -341,7 +341,7 @@ country_event = {
 				skill = 5
 			}
 			last_created_leader = {
-				add_trait = leader_trait_whisperers_chosen
+				add_trait = { trait = leader_trait_whisperers_chosen }
 				remove_trait = leader_trait_psionic
 			}
 			set_country_flag = whisperers_covenant_confirmed
@@ -608,7 +608,7 @@ fleet_event = {
 		}
 		leader = {
 			remove_trait = leader_trait_psionic
-			add_trait = leader_trait_composer_chosen
+			add_trait = { trait = leader_trait_composer_chosen }
 		}
 		name = EXCELLENT
 	}
@@ -619,7 +619,7 @@ fleet_event = {
 		}
 		leader = {
 			remove_trait = leader_trait_psionic
-			add_trait = leader_trait_eater_chosen
+			add_trait = { trait = leader_trait_eater_chosen }
 		}
 		name = EXCELLENT
 	}
@@ -629,7 +629,7 @@ fleet_event = {
 			owner = { has_country_flag = instrument_covenant_confirmed }
 		}
 		leader = {
-			add_trait = leader_trait_instrument_chosen
+			add_trait = { trait = leader_trait_instrument_chosen }
 		}
 		name = EXCELLENT
 	}
@@ -640,7 +640,7 @@ fleet_event = {
 		}
 		leader = {
 			remove_trait = leader_trait_psionic
-			add_trait = leader_trait_whisperers_chosen
+			add_trait = { trait = leader_trait_whisperers_chosen }
 		}
 		name = EXCELLENT
 	}
@@ -979,7 +979,7 @@ country_event = {
 						has_trait = leader_trait_chosen
 					}
 				}
-				add_trait = leader_trait_shroud_age
+				add_trait = { trait = leader_trait_shroud_age }
 			}
 		}
 		default_hide_option = yes
