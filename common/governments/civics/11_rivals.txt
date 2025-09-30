@@ -15,7 +15,7 @@ civic_galactic_beacon = {
 		country_naval_cap_mult = 0.25
 		country_unity_produces_mult = 0.25
 		empire_size_pops_mult = -0.25
-		pop_growth_from_immigration = 0.25
+		logistic_growth_mult = 0.25
 		pop_citizen_happiness = 0.10
 	}
 }

@@ -312,6 +312,7 @@ country_event = {
                     limit = {
                         has_imperial_origin = yes
                     }
+                    set_origin = origin_default
                 }
             }
         }
@@ -1084,8 +1085,10 @@ country_event = {
     option = {
         name = io_start_events.2.z
         default_hide_option = yes
-        country_event = {
-            id = io_start_events.3
+        hidden_effect = {
+            country_event = {
+                id = io_start_events.3
+            }
         }
     }
 }
@@ -1181,6 +1184,27 @@ country_event = {
                         tech_akx_worm_3
                     }
                 }
+            }
+            if = {
+                limit = {
+                    has_origin = origin_chosen_of_the_shroud
+                }
+                give_tech_no_error_effect = { MESSAGE = yes TECH = tech_psionic_theory }
+                give_tech_no_error_effect = { MESSAGE = yes TECH = tech_telepathy }
+                give_tech_no_error_effect = { MESSAGE = yes TECH = tech_precognition_interface }
+                give_tech_no_error_effect = { MESSAGE = yes TECH = tech_thought_enforcement }
+                give_tech_no_error_effect = { MESSAGE = yes TECH = tech_psi_jump_drive_1 }
+                give_tech_no_error_effect = { MESSAGE = yes TECH = tech_psionic_shield }
+                give_tech_no_error_effect = { MESSAGE = yes TECH = tech_psionic_aura }
+                give_tech_no_error_effect = { MESSAGE = yes TECH = tech_aura_intensification }
+                give_tech_no_error_effect = { MESSAGE = yes TECH = tech_aura_resonation }
+                give_tech_no_error_effect = { MESSAGE = yes TECH = tech_psionic_bombers }
+                give_tech_no_error_effect = { MESSAGE = yes TECH = tech_psionic_lightning }
+                give_tech_no_error_effect = { MESSAGE = yes TECH = tech_psionic_disruptor }
+                give_tech_no_error_effect = { MESSAGE = yes TECH = tech_zro_launcher }
+                give_tech_no_error_effect = { MESSAGE = yes TECH = tech_mine_zro }
+                give_tech_no_error_effect = { MESSAGE = yes TECH = tech_pk_godray }
+                give_tech_no_error_effect = { MESSAGE = yes TECH = tech_cloaking_psi }
             }
         }
         #帝皇设置
@@ -1394,9 +1418,6 @@ country_event = {
                         which = io_setting_tech
                         value = 10
                     }
-                }
-                add_modifier = {
-                    modifier = io_transcendent_modifier
                 }
                 pass_resolution_no_cooldown = resolution_emperor_food_5
                 pass_resolution_no_cooldown = resolution_emperor_minerals_5
@@ -1640,6 +1661,25 @@ country_event = {
             pass_targeted_resolution = {
                 resolution = resolution_emperor_imperial_charter
                 target = this
+            }
+            country_event = {
+                id = io_monopoly_chaebol.1
+            }
+        }
+        every_playable_country = {
+            limit = {
+                has_origin = origin_galactic_nemesis
+            }
+            country_event = {
+                id = io_galactic_nemesis.1
+            }
+        }
+        every_playable_country = {
+            limit = {
+                has_origin = origin_chosen_of_the_shroud
+            }
+            country_event = {
+                id = io_chosen.1
             }
         }
         #初始版图生成
@@ -2069,6 +2109,21 @@ country_event = {
             if = {
                 limit = { check_variable = { which = io_setting_gto value = 1 } }
                 pass_resolution_no_cooldown = resolution_custodian_gto
+            }
+        }
+        #处理特殊起源
+        every_playable_country = {
+            limit = {
+                has_origin = origin_monopoly_chaebol
+            }
+            set_origin = origin_default
+        }
+        every_playable_country = {
+            limit = {
+                has_origin = origin_galactic_nemesis
+            }
+            country_event = {
+                id = io_galactic_nemesis.1
             }
         }
         #初始版图生成
@@ -3824,16 +3879,20 @@ country_event = {
             }
             if = {
                 limit = {
-                    is_ai = yes
-                    is_homicidal = yes
+                    OR = {
+                        is_homicidal = yes
+                        has_origin = origin_galactic_nemesis
+                        has_origin = origin_chosen_of_the_shroud
+                    }
                 }
-                create_fleet_from_naval_cap = 0.4
+                create_fleet_from_naval_cap = 0.2
                 create_fleet_from_naval_cap = 0.3
-                create_fleet_from_naval_cap = 0.1
+                create_fleet_from_naval_cap = 0.4
+                create_fleet_from_naval_cap = 0.6
             }
             else = {
-                create_fleet_from_naval_cap = 0.1
-                create_fleet_from_naval_cap = 0.1
+                create_fleet_from_naval_cap = 0.4
+                create_fleet_from_naval_cap = 0.3
                 create_fleet_from_naval_cap = 0.1
             }
         }

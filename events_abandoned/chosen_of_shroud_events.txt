@@ -502,9 +502,7 @@ country_event = {
 		}
 	}
 }
-
 #失败后获得诅咒
-
 country_event = {
 	id = io_chosen.4
 	hide_window = yes

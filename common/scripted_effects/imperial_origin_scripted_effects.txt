@@ -244,6 +244,7 @@ io_create_tech_dummy = {
 
 io_give_extra_t1 = {
     #t1
+    give_technology = { tech = tech_xeno_linguistics message = no }
     give_technology = { tech = tech_automated_exploration message = no }
     give_technology = { tech = tech_alien_life_studies message = no }
     io_give_tech_tier_1_effect = yes
@@ -251,6 +252,7 @@ io_give_extra_t1 = {
 
 io_give_extra_t2 = {
     #t1
+    give_technology = { tech = tech_xeno_linguistics message = no }
     give_technology = { tech = tech_automated_exploration message = no }
     give_technology = { tech = tech_alien_life_studies message = no }
     io_give_tech_tier_1_effect = yes
@@ -267,6 +269,7 @@ io_give_extra_t2 = {
 
 io_give_extra_t3 = {
     #t1
+    give_technology = { tech = tech_xeno_linguistics message = no }
     give_technology = { tech = tech_automated_exploration message = no }
     give_technology = { tech = tech_alien_life_studies message = no }
     io_give_tech_tier_1_effect = yes
@@ -288,6 +291,7 @@ io_give_extra_t3 = {
 
 io_give_extra_t4 = {
     #t1
+    give_technology = { tech = tech_xeno_linguistics message = no }
     give_technology = { tech = tech_automated_exploration message = no }
     give_technology = { tech = tech_alien_life_studies message = no }
     io_give_tech_tier_1_effect = yes
@@ -319,6 +323,7 @@ io_give_extra_t4 = {
 
 io_give_extra_t5 = {
     #t1
+    give_technology = { tech = tech_xeno_linguistics message = no }
     give_technology = { tech = tech_automated_exploration message = no }
     give_technology = { tech = tech_alien_life_studies message = no }
     io_give_tech_tier_1_effect = yes
@@ -743,6 +748,7 @@ io_add_start_modifiers = {
             OR = {
                 is_unfriendly = yes
                 has_country_flag = io_fe_emperor
+                has_origin = origin_galactic_nemesis
             }
         }
         add_modifier = {

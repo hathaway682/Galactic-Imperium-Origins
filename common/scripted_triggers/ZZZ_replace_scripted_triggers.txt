@@ -93,5 +93,7 @@ has_imperial_origin = {
 	OR = {
 		has_origin = origin_old_alliance
 		has_origin = origin_monopoly_chaebol
+		has_origin = origin_galactic_nemesis
+		has_origin = origin_chosen_of_the_shroud
 	}
 }

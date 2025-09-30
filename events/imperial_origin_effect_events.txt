@@ -127,3 +127,945 @@ country_event = {
         }
     }
 }
+
+namespace = io_galactic_nemesis
+
+# 星海天罚
+country_event = {
+    id = io_galactic_nemesis.1
+    hide_window = yes
+    is_triggered_only = yes
+
+    trigger = {
+        has_origin = origin_galactic_nemesis
+    }
+
+    immediate = {
+        hidden_effect = {
+            set_ai_personality = became_the_crisis
+        }
+        set_country_flag = crisis_special_project_1_complete
+        set_country_flag = crisis_special_project_2_complete
+        set_country_flag = crisis_special_project_3_complete
+        set_country_flag = crisis_special_project_4_complete
+        add_ascension_perk = ap_become_the_crisis
+        country_event = {
+            id = io_galactic_nemesis.2
+            days = 1
+        }
+    }
+}
+
+# 星海天罚：开局提示
+country_event = {
+    id = io_galactic_nemesis.2
+    title = io_imperial_border.4.name
+    desc = io_imperial_border.4.desc
+    picture = GFX_evt_burning_city
+    is_triggered_only = yes
+
+    trigger = {
+        has_origin = origin_galactic_nemesis
+    }
+
+    option = {
+        name = io_imperial_border.4.a
+        activate_crisis_progression = nemesis_path
+        add_ascension_perk = ap_become_the_crisis
+        add_resource = { menace = 10000 }
+        custom_tooltip = tr_supremacy_complete
+        every_system = {
+            root = { set_visited = prev }
+        }
+    }
+}
+
+namespace = io_chosen
+
+# 天启先驱：开局提示
+country_event = {
+    id = io_chosen.1
+    title = io_chosen.1.name
+    desc = io_chosen.1.desc
+    picture = GFX_evt_shroud_end_of_the_cycle
+    is_triggered_only = yes
+
+    trigger = {
+        has_origin = origin_chosen_of_the_shroud
+    }
+
+    option = {
+        name = io_chosen.1.a
+        add_tradition = tr_psionics_shroud_adopt
+        add_tradition = tr_psionics_shroud_psi_corps
+        add_tradition = tr_psionics_shroud_great_awakening
+        add_tradition = tr_psionics_shroud_telekinesis
+        add_tradition = tr_psionics_shroud_clairvoyance
+        add_tradition = tr_psionics_shroud_psychometry
+        add_tradition = tr_psionics_shroud_finish
+        custom_tooltip = tr_psionic_complete
+        set_country_flag = can_access_shroud
+        set_country_flag = breached_shroud
+        set_country_flag = psionic_traditions_unlocked
+        start_situation = {
+            type = end_of_the_cycle
+        }
+        hidden_effect = {
+            set_patron_first_contact_state = { patron = end_of_the_cycle state = completed }
+            set_attunement = {
+                patron = end_of_the_cycle
+                value = @max_attunement
+            }
+        }
+        tooltip = {
+            accept_covenant = end_of_the_cycle
+        }
+        hidden_effect = {
+            disable_shroud_patrons = yes
+            accept_covenant = end_of_the_cycle
+            set_global_flag = end_of_the_cycle
+            set_global_flag = galactic_crisis_happened
+            set_timed_global_flag = {
+                flag = galactic_crisis_recently_fired
+                years = 12
+            }
+            set_country_flag = has_shroud_patron
+            set_country_flag = covenant_end_of_the_cycle
+            remove_country_flag = forging_our_own_path
+            every_owned_planet = {
+                limit = { NOT = { has_modifier = covenant_shroud_marked } }
+                add_modifier = { modifier = covenant_shroud_marked days = -1 }
+            }
+            every_subject = {
+                every_owned_planet = {
+                    limit = { NOT = { has_modifier = covenant_shroud_marked } }
+                    add_modifier = { modifier = covenant_shroud_marked days = -1 }
+                }
+            }
+            refresh_psionic_aura_type = yes
+            add_modifier = { modifier = reduce_next_delve_cooldown }
+            set_ai_preferred_patron = end_of_the_cycle
+        }
+        hidden_effect = {
+            set_country_flag = malevolent_aura_empire
+            country_event = { id = shroud.12160 }
+            save_event_target_as = malevolent_aura_empire
+            if = {
+                limit = { has_galactic_custodian = yes }
+                galactic_custodian = {
+                    save_event_target_as = community_war_leader
+                    give_technology = { tech = tech_psionic_suppression }
+                    if = {
+                        limit = { is_in_federation_with = event_target:malevolent_aura_empire }
+                        event_target:malevolent_aura_empire = {
+                            leave_alliance = { override_requirements = yes }
+                        }
+                    }
+                }
+            }
+            else_if = {
+                limit = { has_galactic_emperor = yes }
+                galactic_emperor = {
+                    save_event_target_as = community_war_leader
+                    give_technology = { tech = tech_psionic_suppression }
+                }
+            }
+            else = {
+                random_playable_country = {
+                    limit = {
+                        is_galactic_community_member = yes
+                        NOT = {
+                            is_same_value = event_target:malevolent_aura_empire
+                            is_in_federation_with = event_target:malevolent_aura_empire
+                        }
+                    }
+                    weights = {
+                        base = 1
+                        modifier = {
+                            add = 10000
+                            galactic_community_rank = 1
+                        }
+                        modifier = {
+                            add = 1000
+                            galactic_community_rank = 2
+                        }
+                        modifier = {
+                            add = 100
+                            galactic_community_rank = 3
+                        }
+                        modifier = {
+                            add = 10
+                            is_galactic_council_established = yes
+                            is_part_of_galactic_council = yes
+                        }
+                    }
+                    save_event_target_as = community_war_leader
+                    give_technology = { tech = tech_psionic_suppression }
+                }
+            }
+            declare_malevolent_aura_focus = yes
+        }
+        every_system = {
+            root = { set_visited = prev }
+        }
+    }
+    after = {
+        country_event = {
+            id = io_chosen.10
+            days = 1
+        }
+    }
+}
+
+country_event = {
+    id = io_chosen.10
+    hide_window = yes
+    is_triggered_only = yes
+
+    trigger = {
+        any_situation = {
+            is_situation_type = situation_breach_shroud
+        }
+    }
+
+    immediate = {
+        random_situation = {
+            limit = {
+                is_situation_type = situation_breach_shroud
+            }
+            destroy_situation = this
+        }
+    }
+}
+
+#胜利后获得祝福
+country_event = {
+    id = io_chosen.3
+    hide_window = yes
+    is_triggered_only = yes
+
+    trigger = {
+        has_origin = origin_chosen_of_the_shroud
+    }
+
+    immediate = {
+        random_list = {
+            135 = {}
+            1 = {
+                modifier = {
+                    factor = 0
+                    has_modifier = shroud_happiness
+                }
+                country_event = { id = io_chosen.3030 }
+            }
+            1 = {
+                modifier = {
+                    factor = 0
+                    has_modifier = shroud_ship_upkeep
+                }
+                country_event = { id = io_chosen.3031 }
+            }
+            1 = {
+                modifier = {
+                    factor = 0
+                    has_modifier = shroud_research_speed
+                }
+                country_event = { id = io_chosen.3032 }
+            }
+            1 = {
+                modifier = {
+                    factor = 0
+                    has_modifier = shroud_shield_boost
+                }
+                country_event = { id = io_chosen.3033 }
+            }
+            1 = {
+                modifier = {
+                    factor = 0
+                    has_modifier = shroud_weapon_boost
+                }
+                country_event = { id = io_chosen.3034 }
+            }
+            1 = {
+                modifier = {
+                    factor = 0
+                    has_modifier = shroud_firing_rate
+                }
+                country_event = { id = io_chosen.3035 }
+            }
+            1 = {
+                modifier = {
+                    factor = 0
+                    has_modifier = shroud_ethic_boost
+                }
+                country_event = { id = io_chosen.3036 }
+            }
+            1 = {
+                modifier = {
+                    factor = 0
+                    has_modifier = shroud_influence_boost
+                }
+                country_event = { id = io_chosen.3037 }
+            }
+            1 = {
+                modifier = {
+                    factor = 0
+                    has_modifier = shroud_unity_boost
+                }
+                country_event = { id = io_chosen.3038 }
+            }
+            1 = {
+                modifier = {
+                    factor = 0
+                    has_modifier = shroud_evasion
+                }
+                country_event = { id = io_chosen.3039 }
+            }
+            1 = {
+                modifier = {
+                    factor = 0
+                    has_modifier = shroud_repair
+                }
+                country_event = { id = io_chosen.3040 }
+            }
+            1 = {
+                country_event = { id = io_chosen.3041 }
+            }
+            1 = {
+                modifier = {
+                    factor = 0
+                    has_modifier = shroud_speed
+                }
+                country_event = { id = io_chosen.3042 }
+            }
+            1 = {
+                modifier = {
+                    factor = 0
+                    has_modifier = shroud_morale
+                }
+                country_event = { id = io_chosen.3043 }
+            }
+            1 = {
+                modifier = {
+                    factor = 0
+                    has_modifier = shroud_sensors
+                }
+                country_event = { id = io_chosen.3044 }
+            }
+        }
+    }
+}
+
+#失败后获得诅咒
+country_event = {
+    id = io_chosen.4
+    hide_window = yes
+    is_triggered_only = yes
+
+    trigger = {
+        has_origin = origin_chosen_of_the_shroud
+    }
+
+    immediate = {
+        random_list = {
+            81 = {}
+            1 = {
+                modifier = {
+                    factor = 0
+                    has_modifier = shroud_neg_ethic
+                }
+                country_event = { id = io_chosen.3050 }
+            }
+            1 = {
+                modifier = {
+                    factor = 0
+                    has_modifier = shroud_neg_armor
+                }
+                country_event = { id = io_chosen.3051 }
+            }
+            1 = {
+                modifier = {
+                    factor = 0
+                    has_modifier = shroud_neg_growth
+                }
+                country_event = { id = io_chosen.3052 }
+            }
+            1 = {
+                modifier = {
+                    factor = 0
+                    has_modifier = shroud_weapon_boost
+                }
+                country_event = { id = io_chosen.3053 }
+            }
+            1 = {
+                modifier = {
+                    factor = 0
+                    has_modifier = shroud_neg_research
+                }
+                country_event = { id = io_chosen.3054 }
+            }
+            1 = {
+                modifier = {
+                    factor = 0
+                    has_modifier = shroud_neg_influence
+                }
+                country_event = { id = io_chosen.3055 }
+            }
+            1 = {
+                modifier = {
+                    factor = 0
+                    has_modifier = shroud_neg_unity
+                }
+                country_event = { id = io_chosen.3056 }
+            }
+            1 = {
+                modifier = {
+                    factor = 0
+                    has_modifier = shroud_neg_speed
+                }
+                country_event = { id = io_chosen.3057 }
+            }
+            1 = {
+                modifier = {
+                    factor = 0
+                    has_modifier = shroud_neg_morale
+                }
+                country_event = { id = io_chosen.3058 }
+            }
+        }
+    }
+}
+
+#国家腐化
+country_event = {
+    id = io_chosen.5
+    hide_window = yes
+    is_triggered_only = yes
+
+    trigger = {
+        NOT = {
+            has_patron_aura = end_of_the_cycle
+        }
+        any_system_within_border = {
+            has_psionic_aura = end_aura
+        }
+        NOT = {
+            any_system_within_border = {
+                NOT = {
+                    has_psionic_aura = end_aura
+                }
+            }
+        }
+    }
+
+    immediate = {
+        ordered_galaxy_planet = {
+            order_by = trigger:distance_to_capital
+            position = 0
+            limit = {
+                exists = owner
+                owner = {
+                    has_origin = origin_chosen_of_the_shroud
+                }
+            }
+            owner = {
+                save_event_target_as = chosen_of_the_shroud
+            }
+        }
+        set_subject_of = {
+            who = event_target:chosen_of_the_shroud
+            preset = preset_vassal
+        }
+        every_war = {
+            limit = {
+                any_attacker = {
+                    is_same_value = event_target:chosen_of_the_shroud
+                }
+            }
+            root = {
+                join_war_on_side = {
+                    war = prev
+                    side = attackers
+                }
+            }
+        }
+        every_war = {
+            limit = {
+                any_defender = {
+                    is_same_value = event_target:chosen_of_the_shroud
+                }
+            }
+            root = {
+                join_war_on_side = {
+                    war = prev
+                    side = defenders
+                }
+            }
+        }
+    }
+}
+
+### Modifiers
+
+# Happiness (SUCCESS)
+country_event = {
+    id = io_chosen.3030
+    title = "boon.bestowed"
+    desc = "io_chosen.3030.desc"
+    picture = GFX_evt_psionics
+
+    is_triggered_only = yes
+
+    option = {
+        name = EXCELLENT
+        add_modifier = {
+            modifier = "shroud_happiness"
+            days = 1800
+        }
+        default_hide_option = yes
+    }
+}
+
+# Ship Upkeep (SUCCESS)
+country_event = {
+    id = io_chosen.3031
+    title = "boon.bestowed"
+    desc = "io_chosen.3031.desc"
+    picture = GFX_evt_psionics
+    is_triggered_only = yes
+
+    option = {
+        name = EXCELLENT
+        add_modifier = {
+            modifier = "shroud_ship_upkeep"
+            days = 1800
+        }
+        default_hide_option = yes
+    }
+}
+
+# Research Speed (SUCCESS)
+country_event = {
+    id = io_chosen.3032
+    title = "boon.bestowed"
+    desc = "io_chosen.3032.desc"
+    picture = GFX_evt_psionics
+    is_triggered_only = yes
+
+    option = {
+        name = EXCELLENT
+        add_modifier = {
+            modifier = "shroud_research_speed"
+            days = 1800
+        }
+        default_hide_option = yes
+    }
+}
+
+# Shield Boost (SUCCESS)
+country_event = {
+    id = io_chosen.3033
+    title = "boon.bestowed"
+    desc = "io_chosen.3033.desc"
+    picture = GFX_evt_psionics
+    is_triggered_only = yes
+
+    option = {
+        name = EXCELLENT
+        add_modifier = {
+            modifier = "shroud_shield_boost"
+            days = 1800
+        }
+        default_hide_option = yes
+    }
+}
+
+# Weapon Boost (SUCCESS)
+country_event = {
+    id = io_chosen.3034
+    title = "boon.bestowed"
+    desc = "io_chosen.3034.desc"
+    picture = GFX_evt_psionics
+    is_triggered_only = yes
+
+    option = {
+        name = EXCELLENT
+        add_modifier = {
+            modifier = "shroud_weapon_boost"
+            days = 1800
+        }
+        default_hide_option = yes
+    }
+}
+
+# Firing Rate (SUCCESS)
+country_event = {
+    id = io_chosen.3035
+    title = "boon.bestowed"
+    desc = "io_chosen.3035.desc"
+    picture = GFX_evt_psionics
+    is_triggered_only = yes
+
+    option = {
+        name = EXCELLENT
+        add_modifier = {
+            modifier = "shroud_firing_rate"
+            days = 1800
+        }
+        default_hide_option = yes
+    }
+}
+
+# Ethic Boost (SUCCESS)
+country_event = {
+    id = io_chosen.3036
+    title = "boon.bestowed"
+    desc = "io_chosen.3036.desc"
+    picture = GFX_evt_psionics
+    is_triggered_only = yes
+
+    option = {
+        name = EXCELLENT
+        add_modifier = {
+            modifier = "shroud_ethic_boost"
+            days = 1800
+        }
+        default_hide_option = yes
+    }
+}
+
+# Influence Boost (SUCCESS)
+country_event = {
+    id = io_chosen.3037
+    title = "boon.bestowed"
+    desc = "io_chosen.3037.desc"
+    picture = GFX_evt_psionics
+    is_triggered_only = yes
+
+    option = {
+        name = EXCELLENT
+        add_modifier = {
+            modifier = "shroud_influence_boost"
+            days = 1800
+        }
+        default_hide_option = yes
+    }
+}
+
+# Unity Boost (SUCCESS)
+country_event = {
+    id = io_chosen.3038
+    title = "boon.bestowed"
+    desc = "io_chosen.3038.desc"
+    picture = GFX_evt_psionics
+    is_triggered_only = yes
+
+    option = {
+        name = EXCELLENT
+        add_modifier = {
+            modifier = "shroud_unity_boost"
+            days = 1800
+        }
+        default_hide_option = yes
+    }
+}
+
+# Evasion (SUCCESS)
+country_event = {
+    id = io_chosen.3039
+    title = "boon.bestowed"
+    desc = "io_chosen.3039.desc"
+    picture = GFX_evt_psionics
+    is_triggered_only = yes
+
+    option = {
+        name = EXCELLENT
+        add_modifier = {
+            modifier = "shroud_evasion"
+            days = 1800
+        }
+        default_hide_option = yes
+    }
+}
+
+# Ship Repair (SUCCESS)
+country_event = {
+    id = io_chosen.3040
+    title = "boon.bestowed"
+    desc = "io_chosen.3040.desc"
+    picture = GFX_evt_psionics
+    is_triggered_only = yes
+
+    option = {
+        name = EXCELLENT
+        add_modifier = {
+            modifier = "shroud_repair"
+            days = 1800
+        }
+        default_hide_option = yes
+    }
+}
+
+# Lifespan (SUCCESS)
+country_event = {
+    id = io_chosen.3041
+    title = "boon.bestowed"
+    desc = "io_chosen.3041.desc"
+    picture = GFX_evt_psionics
+    is_triggered_only = yes
+
+    option = {
+        name = EXCELLENT
+        custom_tooltip = io_chosen.3041.tooltip
+        hidden_effect = {
+            every_owned_leader = {
+                limit = {
+                    species = { has_trait = trait_psionic }
+                    NOR = {
+                        has_trait = leader_trait_composer_chosen
+                        has_trait = leader_trait_eater_chosen
+                        has_trait = leader_trait_instrument_chosen
+                        has_trait = leader_trait_whisperers_chosen
+                        has_trait = leader_trait_chosen
+                    }
+                }
+                add_trait = { trait = leader_trait_shroud_age }
+            }
+        }
+        default_hide_option = yes
+    }
+}
+
+# Ship Speed (SUCCESS)
+country_event = {
+    id = io_chosen.3042
+    title = "boon.bestowed"
+    desc = "io_chosen.3042.desc"
+    picture = GFX_evt_psionics
+    is_triggered_only = yes
+
+    option = {
+        name = EXCELLENT
+        add_modifier = {
+            modifier = "shroud_speed"
+            days = 1800
+        }
+        default_hide_option = yes
+    }
+}
+
+# Army Morale (SUCCESS)
+country_event = {
+    id = io_chosen.3043
+    title = "boon.bestowed"
+    desc = "io_chosen.3043.desc"
+    picture = GFX_evt_psionics
+    is_triggered_only = yes
+
+    option = {
+        name = EXCELLENT
+        add_modifier = {
+            modifier = "shroud_morale"
+            days = 1800
+        }
+        default_hide_option = yes
+    }
+}
+
+# Sensor Range (SUCCESS)
+country_event = {
+    id = io_chosen.3044
+    title = "boon.bestowed"
+    desc = "io_chosen.3044.desc"
+    picture = GFX_evt_psionics
+    is_triggered_only = yes
+
+    option = {
+        name = EXCELLENT
+        add_modifier = {
+            modifier = "shroud_sensors"
+            days = 1800
+        }
+        default_hide_option = yes
+    }
+}
+
+# Negative Happiness (CRITICAL FAILURE)
+country_event = {
+    id = io_chosen.3050
+    title = "curse.bestowed"
+    desc = "io_chosen.3050.desc"
+    picture = GFX_evt_psionics
+    is_triggered_only = yes
+
+    option = {
+        name = UNFORTUNATE
+        add_modifier = {
+            modifier = "shroud_neg_happiness"
+            days = 1800
+        }
+        default_hide_option = yes
+    }
+}
+
+# Negative Ethics Attraction (CRITICAL FAILURE)
+country_event = {
+    id = io_chosen.3051
+    title = "curse.bestowed"
+    desc = "io_chosen.3051.desc"
+    picture = GFX_evt_psionics
+    is_triggered_only = yes
+
+    option = {
+        name = UNFORTUNATE
+        add_modifier = {
+            modifier = "shroud_neg_ethic"
+            days = 1800
+        }
+        default_hide_option = yes
+    }
+}
+
+# Negative Ship Armor (CRITICAL FAILURE)
+country_event = {
+    id = io_chosen.3052
+    title = "curse.bestowed"
+    desc = "io_chosen.3052.desc"
+    picture = GFX_evt_psionics
+    is_triggered_only = yes
+
+    option = {
+        name = UNFORTUNATE
+        add_modifier = {
+            modifier = "shroud_neg_armor"
+            days = 1800
+        }
+        default_hide_option = yes
+    }
+}
+
+# Negative Population Growth (CRITICAL FAILURE)
+country_event = {
+    id = io_chosen.3053
+    title = "curse.bestowed"
+    desc = "io_chosen.3053.desc"
+    picture = GFX_evt_psionics
+    is_triggered_only = yes
+
+    option = {
+        name = UNFORTUNATE
+        add_modifier = {
+            modifier = "shroud_neg_growth"
+            days = 1800
+        }
+        default_hide_option = yes
+    }
+}
+
+# Negative Research (CRITICAL FAILURE)
+country_event = {
+    id = io_chosen.3054
+    title = "curse.bestowed"
+    desc = "io_chosen.3054.desc"
+    picture = GFX_evt_psionics
+    is_triggered_only = yes
+
+    option = {
+        name = UNFORTUNATE
+        add_modifier = {
+            modifier = "shroud_neg_research"
+            days = 1800
+        }
+        default_hide_option = yes
+    }
+}
+
+# Negative Influence (CRITICAL FAILURE)
+country_event = {
+    id = io_chosen.3055
+    title = "curse.bestowed"
+    desc = "io_chosen.3055.desc"
+    picture = GFX_evt_psionics
+    is_triggered_only = yes
+
+    option = {
+        name = UNFORTUNATE
+        add_modifier = {
+            modifier = "shroud_neg_influence"
+            days = 1800
+        }
+        default_hide_option = yes
+    }
+}
+
+# Negative Unity (CRITICAL FAILURE)
+country_event = {
+    id = io_chosen.3056
+    title = "curse.bestowed"
+    desc = "io_chosen.3056.desc"
+    picture = GFX_evt_psionics
+    is_triggered_only = yes
+
+    option = {
+        name = UNFORTUNATE
+        add_modifier = {
+            modifier = "shroud_neg_unity"
+            days = 1800
+        }
+        default_hide_option = yes
+    }
+}
+
+# Negative Ship Speed (CRITICAL FAILURE)
+country_event = {
+    id = io_chosen.3057
+    title = "curse.bestowed"
+    desc = "io_chosen.3057.desc"
+    picture = GFX_evt_psionics
+    is_triggered_only = yes
+
+    option = {
+        name = UNFORTUNATE
+        add_modifier = {
+            modifier = "shroud_neg_speed"
+            days = 1800
+        }
+        default_hide_option = yes
+    }
+}
+
+# Negative Army Morale (CRITICAL FAILURE)
+country_event = {
+    id = io_chosen.3058
+    title = "curse.bestowed"
+    desc = "io_chosen.3058.desc"
+    picture = GFX_evt_psionics
+    is_triggered_only = yes
+
+    option = {
+        name = UNFORTUNATE
+        add_modifier = {
+            modifier = "shroud_neg_morale"
+            days = 1800
+        }
+        default_hide_option = yes
+    }
+}
+
+# Negative Sensor Range (CRITICAL FAILURE)
+country_event = {
+    id = io_chosen.3059
+    title = "curse.bestowed"
+    desc = "io_chosen.3059.desc"
+    picture = GFX_evt_psionics
+    is_triggered_only = yes
+
+    option = {
+        name = UNFORTUNATE
+        add_modifier = {
+            modifier = "shroud_neg_sensors"
+            days = 1800
+        }
+        default_hide_option = yes
+    }
+}
