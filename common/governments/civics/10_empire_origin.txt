@@ -79,6 +79,8 @@ origin_galactic_nemesis = {
 	description = "origin_galactic_nemesis_effects"
 
 	modifier = {
+		country_naval_cap_mult = 1
+		ships_upkeep_mult = -0.50
 	}
 
 	random_weight = {
@@ -90,6 +92,7 @@ origin_chosen_of_the_shroud = {
 	is_origin = yes
 	icon = "gfx/interface/icons/origins/origin_chosen_of_the_shroud.dds"
 	picture = GFX_origin_chosen_of_the_shroud
+	max_once_global = yes
 
 	possible = {
 		ethics = {
@@ -119,8 +122,9 @@ origin_chosen_of_the_shroud = {
 	negative_description = "origin_chosen_of_the_shroudnegative_effects"
 
 	modifier = {
-		country_naval_cap_mult = 1
-		ships_upkeep_mult = -0.50
+		country_war_exhaustion_mult = -0.5
+		ship_psionic_aura_speed_mult = 0.25
+		ship_psionic_aura_fire_rate_mult = 0.25
 	}
 
 	traits = {
@@ -128,7 +132,7 @@ origin_chosen_of_the_shroud = {
 	}
 
 	random_weight = {
-		base = 5
+		base = 0
 	}
 }
 

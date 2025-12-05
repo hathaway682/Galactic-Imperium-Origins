@@ -1478,6 +1478,22 @@ io_expand_border_federation_npc = {
     }
 }
 
+io_expand_border_extra = {
+    every_system_within_border = {
+        every_neighbor_system = {
+            if = {
+                limit = {
+                    io_expand_trigger = yes
+                    NOT = {
+                        has_star_flag = empire_cluster
+                    }
+                }
+                add_outpost_if_can = yes
+            }
+        }
+    }
+}
+
 io_save_secondery_pop = {
     if = {
         limit = {
@@ -3513,6 +3529,31 @@ io_building_captial = {
     else = {
         io_building_captial_regular = yes
     }
+    if = {
+        limit = {
+            owner = {
+                OR = {
+                    has_origin = origin_galactic_nemesis
+                    has_origin = origin_chosen_of_the_shroud
+                }
+            }
+        }
+        if = {
+            limit = {
+                owner = {
+                    has_policy_flag = robots_allowed
+                    check_variable = {
+                        which = io_setting_tech
+                        value >= 2
+                    }
+                }
+            }
+            add_building = building_fortress
+        }
+        else = {
+            add_building = building_stronghold
+        }
+    }
 }
 
 io_districts_colony = {
@@ -3718,6 +3759,31 @@ io_building_colony = {
             }
         }
         add_building = building_robot_assembly_plant
+    }
+    if = {
+        limit = {
+            owner = {
+                OR = {
+                    has_origin = origin_galactic_nemesis
+                    has_origin = origin_chosen_of_the_shroud
+                }
+            }
+        }
+        if = {
+            limit = {
+                owner = {
+                    has_policy_flag = robots_allowed
+                    check_variable = {
+                        which = io_setting_tech
+                        value >= 2
+                    }
+                }
+            }
+            add_building = building_fortress
+        }
+        else = {
+            add_building = building_stronghold
+        }
     }
 }
 
@@ -4595,6 +4661,36 @@ io_create_community_fleet = {
     }
     else = {
         create_fleet_from_naval_cap = { fraction = 1 ship_owner_type = galactic_community }
+    }
+}
+
+io_create_federation_fleet = {
+    if = {
+        limit = { max_naval_capacity > 900 }
+        create_fleet_from_naval_cap = { fraction = 0.4 ship_owner_type = federation }
+    }
+    else_if = {
+        limit = { max_naval_capacity > 800 }
+        create_fleet_from_naval_cap = { fraction = 0.44 ship_owner_type = federation }
+    }
+    else_if = {
+        limit = { max_naval_capacity > 700 }
+        create_fleet_from_naval_cap = { fraction = 0.5 ship_owner_type = federation }
+    }
+    else_if = {
+        limit = { max_naval_capacity > 600 }
+        create_fleet_from_naval_cap = { fraction = 0.57 ship_owner_type = federation }
+    }
+    else_if = {
+        limit = { max_naval_capacity > 500 }
+        create_fleet_from_naval_cap = { fraction = 0.67 ship_owner_type = federation }
+    }
+    else_if = {
+        limit = { max_naval_capacity > 400 }
+        create_fleet_from_naval_cap = { fraction = 0.8 ship_owner_type = federation }
+    }
+    else = {
+        create_fleet_from_naval_cap = { fraction = 1 ship_owner_type = federation }
     }
 }
 

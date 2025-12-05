@@ -148,7 +148,6 @@ country_event = {
         set_country_flag = crisis_special_project_2_complete
         set_country_flag = crisis_special_project_3_complete
         set_country_flag = crisis_special_project_4_complete
-        add_ascension_perk = ap_become_the_crisis
         country_event = {
             id = io_galactic_nemesis.2
             days = 1
@@ -174,8 +173,10 @@ country_event = {
         add_ascension_perk = ap_become_the_crisis
         add_resource = { menace = 10000 }
         custom_tooltip = tr_supremacy_complete
-        every_system = {
-            root = { set_visited = prev }
+        hidden_effect = {
+            every_system = {
+                root = { set_visited = prev }
+            }
         }
     }
 }
@@ -207,106 +208,56 @@ country_event = {
         set_country_flag = can_access_shroud
         set_country_flag = breached_shroud
         set_country_flag = psionic_traditions_unlocked
-        start_situation = {
-            type = end_of_the_cycle
-        }
+        set_global_flag = galactic_focus_crisis_malevolent_aura
+        accept_end_of_the_cycle = yes
         hidden_effect = {
-            set_patron_first_contact_state = { patron = end_of_the_cycle state = completed }
-            set_attunement = {
-                patron = end_of_the_cycle
-                value = @max_attunement
-            }
-        }
-        tooltip = {
-            accept_covenant = end_of_the_cycle
-        }
-        hidden_effect = {
-            disable_shroud_patrons = yes
-            accept_covenant = end_of_the_cycle
-            set_global_flag = end_of_the_cycle
-            set_global_flag = galactic_crisis_happened
-            set_timed_global_flag = {
-                flag = galactic_crisis_recently_fired
-                years = 12
-            }
-            set_country_flag = has_shroud_patron
-            set_country_flag = covenant_end_of_the_cycle
-            remove_country_flag = forging_our_own_path
             every_owned_planet = {
-                limit = { NOT = { has_modifier = covenant_shroud_marked } }
-                add_modifier = { modifier = covenant_shroud_marked days = -1 }
+                set_planet_flag = shroud_avatar_generated
             }
-            every_subject = {
-                every_owned_planet = {
-                    limit = { NOT = { has_modifier = covenant_shroud_marked } }
-                    add_modifier = { modifier = covenant_shroud_marked days = -1 }
+            every_playable_country = {
+                limit = {
+                    is_galactic_community_member = yes
+                }
+                give_technology = {
+                    tech = tech_psionic_suppression
                 }
             }
-            refresh_psionic_aura_type = yes
-            add_modifier = { modifier = reduce_next_delve_cooldown }
-            set_ai_preferred_patron = end_of_the_cycle
-        }
-        hidden_effect = {
-            set_country_flag = malevolent_aura_empire
-            country_event = { id = shroud.12160 }
-            save_event_target_as = malevolent_aura_empire
             if = {
-                limit = { has_galactic_custodian = yes }
-                galactic_custodian = {
-                    save_event_target_as = community_war_leader
-                    give_technology = { tech = tech_psionic_suppression }
-                    if = {
-                        limit = { is_in_federation_with = event_target:malevolent_aura_empire }
-                        event_target:malevolent_aura_empire = {
-                            leave_alliance = { override_requirements = yes }
-                        }
+                limit = {
+                    exists = galactic_emperor
+                }
+                galactic_emperor = {
+                    pass_targeted_resolution = {
+                        resolution = resolution_galactic_focus_crisis_malevolent_aura
+                        target = root
                     }
                 }
             }
             else_if = {
-                limit = { has_galactic_emperor = yes }
-                galactic_emperor = {
-                    save_event_target_as = community_war_leader
-                    give_technology = { tech = tech_psionic_suppression }
+                limit = {
+                    exists = galactic_custodian
+                }
+                galactic_custodian = {
+                    pass_targeted_resolution = {
+                        resolution = resolution_galactic_focus_crisis_malevolent_aura
+                        target = root
+                    }
                 }
             }
-            else = {
-                random_playable_country = {
-                    limit = {
-                        is_galactic_community_member = yes
-                        NOT = {
-                            is_same_value = event_target:malevolent_aura_empire
-                            is_in_federation_with = event_target:malevolent_aura_empire
-                        }
-                    }
-                    weights = {
-                        base = 1
-                        modifier = {
-                            add = 10000
-                            galactic_community_rank = 1
-                        }
-                        modifier = {
-                            add = 1000
-                            galactic_community_rank = 2
-                        }
-                        modifier = {
-                            add = 100
-                            galactic_community_rank = 3
-                        }
-                        modifier = {
-                            add = 10
-                            is_galactic_council_established = yes
-                            is_part_of_galactic_council = yes
-                        }
-                    }
-                    save_event_target_as = community_war_leader
-                    give_technology = { tech = tech_psionic_suppression }
+            every_country = {
+                limit = {
+                    has_civic = civic_mindwarden_enclave
+                }
+                set_faction_hostility = {
+                    target = root
+                    set_hostile = yes
                 }
             }
-            declare_malevolent_aura_focus = yes
         }
-        every_system = {
-            root = { set_visited = prev }
+        hidden_effect = {
+            every_system = {
+                root = { set_visited = prev }
+            }
         }
     }
     after = {
@@ -543,6 +494,7 @@ country_event = {
     is_triggered_only = yes
 
     trigger = {
+        is_country_type = default
         NOT = {
             has_patron_aura = end_of_the_cycle
         }
@@ -556,9 +508,39 @@ country_event = {
                 }
             }
         }
+        OR = {
+            NOT = {
+                exists = overlord
+            }
+            overlord = {
+                NOT = {
+                    has_origin = origin_chosen_of_the_shroud
+                }
+            }
+        }
     }
 
     immediate = {
+        remove_from_galactic_community = yes
+        owner_main_species = {
+            save_event_target_as = slave_species
+        }
+        if = {
+            limit = {
+                is_galactic_emperor = yes
+            }
+            restore_galactic_community_leader_backup_data = yes
+            set_galactic_emperor = no
+            set_council_size = 0
+            remove_global_flag = galactic_council_formed
+            cancel_resolution = resolution_galacticreforms_form_council
+        }
+        every_owned_megastructure = {
+            limit = {
+                is_megastructure_type = shroud_seal
+            }
+            delete_megastructure = this
+        }
         ordered_galaxy_planet = {
             order_by = trigger:distance_to_capital
             position = 0
@@ -572,35 +554,216 @@ country_event = {
                 save_event_target_as = chosen_of_the_shroud
             }
         }
-        set_subject_of = {
-            who = event_target:chosen_of_the_shroud
-            preset = preset_vassal
-        }
-        every_war = {
+        if = {
             limit = {
-                any_attacker = {
-                    is_same_value = event_target:chosen_of_the_shroud
+                event_target:chosen_of_the_shroud = {
+                    is_ai = yes
                 }
+
             }
-            root = {
-                join_war_on_side = {
-                    war = prev
-                    side = attackers
-                }
+            set_subject_of = {
+                who = event_target:chosen_of_the_shroud
+                preset = preset_vassal_mean_03
             }
         }
-        every_war = {
+        else = {
+            set_subject_of = {
+                who = event_target:chosen_of_the_shroud
+                preset = preset_vassal
+            }
+        }
+        #神圣的牺牲
+        # every_owned_planet = {
+        #     random_list = {
+        #         33 = {
+        #             random_owned_pop_group = {
+        #                 limit = {
+        #                     pop_group_size >= 100
+        #                 }
+        #                 kill_pop_group = {
+        #                     pop_group = this
+        #                     amount = 100
+        #                 }
+        #             }
+        #         }
+        #         33 = {
+        #             random_owned_pop_group = {
+        #                 limit = {
+        #                     pop_group_size >= 200
+        #                 }
+        #                 kill_pop_group = {
+        #                     pop_group = this
+        #                     amount = 200
+        #                 }
+        #             }
+        #         }
+        #         33 = {
+        #             random_owned_pop_group = {
+        #                 limit = {
+        #                     pop_group_size >= 300
+        #                 }
+        #                 kill_pop_group = {
+        #                     pop_group = this
+        #                     amount = 300
+        #                 }
+        #             }
+        #         }
+        #     }
+        # }
+        event_target:chosen_of_the_shroud = {
+            # create_fleet = {
+            #     name = {
+            #         key = "NAME_Enslaved_Species_Souls"
+            #         variable_string = "\\[slave_species.GetName\\]"
+            #     }
+            #     settings = {
+            #         can_upgrade = no
+            #         can_change_composition = no
+            #         can_change_leader = no
+            #         uses_naval_capacity = no
+            #         spawn_debris = no
+            #     }
+            #     effect = {
+            #         set_owner = event_target:chosen_of_the_shroud
+            #         create_ship = {
+            #             name = {
+            #                 key = "NAME_Enslaved_Species_Souls"
+            #                 variable_string = "\\[slave_species.GetName\\]"
+            #             }
+            #             design = "NAME_Shroud_Avatar"
+            #             prefix = no
+            #             upgradable = no
+            #         }
+            #         set_location = root.capital_scope
+            #     }
+            # }
+            every_war = {
+                limit = {
+                    any_attacker = {
+                        is_same_value = event_target:chosen_of_the_shroud
+                    }
+                }
+                root = {
+                    join_war_on_side = {
+                        war = prev
+                        side = attackers
+                    }
+                }
+            }
+            every_war = {
+                limit = {
+                    any_defender = {
+                        is_same_value = event_target:chosen_of_the_shroud
+                    }
+                }
+                root = {
+                    join_war_on_side = {
+                        war = prev
+                        side = defenders
+                    }
+                }
+            }
+        }
+    }
+}
+
+#星系腐化
+country_event = {
+    id = io_chosen.6
+    hide_window = yes
+    is_triggered_only = yes
+
+    trigger = {
+        has_origin = origin_chosen_of_the_shroud
+        from.solar_system = {
+            has_psionic_aura = no
+        }
+    }
+
+    immediate = {
+        from.solar_system = {
+            spawn_psionic_aura = {
+                owner = root
+            }
+        }
+    }
+}
+
+# #星球腐化
+# planet_event = {
+#     id = io_chosen.7
+#     hide_window = yes
+#     is_triggered_only = yes
+#
+#     trigger = {
+#         from = {
+#             has_origin = origin_chosen_of_the_shroud
+#         }
+#         NOT = {
+#             has_planet_flag = shroud_avatar_generated
+#         }
+#     }
+#
+#     immediate = {
+#         set_planet_flag = shroud_avatar_generated
+#         create_fleet = {
+#             name = "NAME_Psionic_Avatar"
+#             settings = {
+#                 can_upgrade = no
+#                 can_change_composition = no
+#                 can_change_leader = no
+#                 uses_naval_capacity = no
+#                 spawn_debris = no
+#             }
+#             effect = {
+#                 set_owner = from
+#                 create_ship = {
+#                     name = "NAME_Avatar"
+#                     design = "NAME_Shroud_Avatar"
+#                     prefix = no
+#                     upgradable = no
+#                 }
+#                 set_location = root
+#             }
+#         }
+#         #伟大的献祭
+#         create_pop_group = {
+#             species = owner_main_species
+#             size = 1000
+#         }
+#         every_owned_pop_group = {
+#             limit = {
+#                 NOT = {
+#                     is_same_species = owner_main_species
+#                 }
+#             }
+#             kill_all_pop = yes
+#         }
+#     }
+# }
+
+#封印破坏
+country_event = {
+    id = io_chosen.8
+    hide_window = yes
+    is_triggered_only = yes
+
+    trigger = {
+        exists = overlord
+        overlord = {
+            has_origin = origin_chosen_of_the_shroud
+        }
+        any_owned_megastructure = {
+            is_megastructure_type = shroud_seal
+        }
+    }
+
+    immediate = {
+        every_owned_megastructure = {
             limit = {
-                any_defender = {
-                    is_same_value = event_target:chosen_of_the_shroud
-                }
+                is_megastructure_type = shroud_seal
             }
-            root = {
-                join_war_on_side = {
-                    war = prev
-                    side = defenders
-                }
-            }
+            delete_megastructure = this
         }
     }
 }

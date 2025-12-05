@@ -2179,6 +2179,7 @@ country_event = {
                 limit = {
                     OR = {
                         has_origin = origin_galactic_nemesis
+                        has_origin = origin_chosen_of_the_shroud
                     }
                 }
                 set_variable = {
@@ -2316,7 +2317,6 @@ country_event = {
             limit = {
                 OR = {
                     has_origin = origin_galactic_nemesis
-                    has_origin = origin_chosen_of_the_shroud
                 }
             }
             set_variable = {
@@ -2336,6 +2336,18 @@ country_event = {
                 value = 6
             }
             country_event = { id = io_start_events.100 }
+        }
+        else_if = {
+            limit = {
+                OR = {
+                    has_origin = origin_chosen_of_the_shroud
+                }
+            }
+            set_variable = {
+                which = io_setting_expand
+                value = 8
+            }
+            country_event = { id = io_start_events.100 days = 1 }
         }
         else_if = {
             limit = {
@@ -2765,6 +2777,45 @@ country_event = {
             io_expand_border = yes
         }
         #暂时不给哨兵阵列
+        if = {
+            limit = {
+                has_origin = origin_galactic_hegemon
+            }
+            while = {
+                count = 4
+                io_expand_border_extra = yes
+            }
+        }
+        else_if = {
+            limit = {
+                has_origin = origin_galactic_custodian
+            }
+            while = {
+                count = 3
+                io_expand_border_extra = yes
+            }
+        }
+        else_if = {
+            limit = {
+                OR = {
+                    has_origin = origin_galactic_nemesis
+                    has_origin = origin_chosen_of_the_shroud
+                }
+            }
+            while = {
+                count = 2
+                io_expand_border_extra = yes
+            }
+        }
+        else_if = {
+            limit = {
+                has_origin = origin_default
+            }
+            while = {
+                count = 1
+                io_expand_border_extra = yes
+            }
+        }
         #殖民固定星球
         every_planet_within_border = {
             limit = {
@@ -2790,6 +2841,14 @@ country_event = {
             }
             io_set_planet_pop = {
                 pop = 2500
+            }
+            if = {
+                limit = {
+                    owner = {
+                        has_origin = origin_chosen_of_the_shroud
+                    }
+                }
+                set_planet_flag = shroud_avatar_generated
             }
         }
         #殖民随机星球
@@ -3147,7 +3206,6 @@ country_event = {
 
     immediate = {
         #给予资源和修正
-        io_add_start_modifiers = yes
         io_add_start_resources = yes
         #母星设置
         capital_scope = {
@@ -3274,13 +3332,15 @@ country_event = {
 
     immediate = {
         #给予资源和修正
-        io_add_start_modifiers = yes
         io_add_start_resources = yes
         #母星设置
         capital_scope = {
             io_save_secondery_pop = yes
             io_clear_planet = yes
             clear_blockers = yes
+            io_set_planet_pop = {
+                pop = 7500
+            }
             io_districts_captial = yes
             io_districts_placement = yes
             io_building_captial = yes
@@ -3399,7 +3459,6 @@ country_event = {
 
     immediate = {
         #给予资源和修正
-        io_add_start_modifiers = yes
         io_add_start_resources = yes
         #母星设置
         capital_scope = {
@@ -3611,6 +3670,10 @@ country_event = {
                 pop = 2500
             }
         }
+        while = {
+            count = 2
+            io_expand_border_extra = yes
+        }
         #建造站点
         every_planet_within_border = {
             limit = {
@@ -3657,7 +3720,6 @@ country_event = {
 
     immediate = {
         #给予资源和修正
-        io_add_start_modifiers = yes
         io_add_start_resources = yes
         #母星设置
         capital_scope = {
@@ -3730,6 +3792,15 @@ country_event = {
         export_trigger_value_to_variable = {
             trigger = max_starbase_capacity
             variable = starbase_to_add
+        }
+        if = {
+            limit = {
+                has_origin = origin_chosen_of_the_shroud
+            }
+            change_variable = {
+                which = starbase_to_add
+                value = 10
+            }
         }
         subtract_variable = {
             which = starbase_to_add
@@ -3841,7 +3912,7 @@ country_event = {
                 limit = {
                     is_federation_leader = yes
                 }
-                create_fleet_from_naval_cap = { fraction = 1 ship_owner_type = federation }
+                io_create_federation_fleet = yes
             }
             if = {
                 limit = {
@@ -3894,6 +3965,20 @@ country_event = {
                 create_fleet_from_naval_cap = 0.4
                 create_fleet_from_naval_cap = 0.3
                 create_fleet_from_naval_cap = 0.1
+            }
+            if = {
+                limit = {
+                    OR = {
+                        has_origin = origin_galactic_nemesis
+                        has_origin = origin_chosen_of_the_shroud
+                    }
+                }
+                every_owned_starbase = {
+                    while = {
+                        count = 15
+                        spawn_free_defense_platform = yes
+                    }
+                }
             }
         }
     }

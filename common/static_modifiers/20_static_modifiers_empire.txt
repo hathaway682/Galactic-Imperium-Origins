@@ -68,10 +68,8 @@ trade_monopoly = {
 }
 
 ai_shourd_chosen = {
-	station_gatherers_produces_mult = 1
-	station_researchers_produces_mult = 1
-	planet_jobs_produces_mult = 1
-	country_naval_cap_mult = 1
-	country_starbase_capacity_add = 10
-	country_covenant_influence_produces_add = 5
+	country_base_energy_produces_add = 150
+	country_base_sr_zro_produces_add = 30
+	ship_psionic_aura_speed_mult = 0.75
+	ship_psionic_aura_fire_rate_mult = 0.75
 }

@@ -240,7 +240,7 @@
  origin_internal_border_desc:0 "这一政权在星际组织权力扩张与银河自决的冲突中被撕裂成两个互不承认的政权。一半的领土被帝国/共同体的忠诚成员占据，而另一半则保持独立。"
  origin_internal_border_effects:0 "—将会生成一个物种相同的邻国，拥有和皇帝/监管人相同的政府和思潮并加入星海帝国/共同体。\n—两个国家互相获得对方全境的宣称。\n—如果没有§H星海霸业§!或§H星海监管§!起源的国家，这个起源会被替换为§H繁荣一统§!。\n\n§R警告：此起源国家与皇帝必须都是普通/蜂巢/机械类型，否则会导致闪退！§!"
  origin_galactic_nemesis:0 "§M星海天罚§!"
- origin_galactic_nemesis_desc:0 "这一文明获得了某种不可知的力量支持他们的大业，试图以埋葬整个银河为代价促成他们的飞升。"
+ origin_galactic_nemesis_desc:0 "§R-警告：有挑战性的起源§!\n这一文明获得了某种不可知的力量支持他们的大业，试图以埋葬整个银河为代价促成他们的飞升。"
  origin_galactic_nemesis_effects:0 "—在一开始就解锁§M星海天罚§!飞升天赋。\n—最高的§M威慑力等级§!将会被立刻解锁，并§R引发与整个银河的战争§!。\n—如果没有§H星海霸业§!或§H星海监管§!起源的国家，这个起源会被替换为§H繁荣一统§!。"
  io_imperial_border.4.name:0 "§M星海天罚§!"
  io_imperial_border.4.desc:0 "往日困扰我们的一切疑惑已然得到解答，往日环绕我们的一切痛苦即将得到解脱。星光将会在整个银河熄灭，而我们将会是唯一的光。如今挡在我们面前的障碍只有一个——[global_event_country.GetGalCommunityOrGalImperium]。这一非法组织的腐败政客正在讲坛上声嘶力竭，妄图动员他们的乌合之众来破坏我们的伟业。银河正呼唤一场全面战争，一场比一切智慧生命所能想象的更全面更彻底的战争，而我们必将取胜。"
@@ -292,9 +292,11 @@
  io_chosen.1.a:0 "而这就是终结的开端。"
  tr_psionic_complete:0 "§M灵能§!传统树已完成，全银河的星图已被揭示。"
  origin_chosen_of_the_shroud:0 "§M天启先驱§!"
- origin_chosen_of_the_shroud_desc:0 "这一文明在进入太空之前便早已被来自虚境的远古存在选中，作为此方世界的毁灭者。"
+ origin_chosen_of_the_shroud_desc:0 "§R-警告：有挑战性的起源§!\n这一文明在进入太空之前便早已被来自虚境的远古存在选中，作为此方世界的毁灭者。"
  origin_chosen_of_the_shroud_effects:0 "—开局时候便已完成整条§M灵能§!传统树，获得所有§M灵能§!科技，并与§M轮回之终末§!达成契约。\n—任何被§M终末光环§!完全覆盖的国家将会被§M腐化§!为我们的§Y附庸国§!。\n—开局时将会被指定为§G天灾§!，导致与整个星海帝国处于§G全面战争状态§!。\n—每次舰队战胜利都将带来额外的§G虚境恩赐§!。\n—如果没有§H星海霸业§!或§H星海监管§!起源的国家，这个起源会被替换为§H繁荣一统§!。"
- origin_chosen_of_the_shroudnegative_effects:0 "\n—开局时将会被指定为§R天灾§!，导致与整个星海帝国处于§R全面战争状态§!。\n—每次舰队战失败都将带来额外的§R虚境诅咒§!。\n—所有星海帝国成员国获得§Y灵能封印§!科技。"
+ origin_chosen_of_the_shroudnegative_effects:0 "—开局时将会被指定为§R天灾§!，导致与整个星海帝国处于§R全面战争状态§!。\n—每次舰队战失败都将带来额外的§R虚境诅咒§!。\n—所有星海帝国成员国获得§Y灵能封印§!科技。"
+ ai_shourd_chosen:0 "虚境赋能"
+ NAME_Enslaved_Species_Souls: "被奴役的[slave_species.GetName]灵魂"
 
  boon.io_chosen:0 "看起来虚境中的强大存在对我们最近的胜利非常满意，并乐意给我们一点小小的支持。"
  
@@ -329,42 +331,41 @@
  io_chosen.3058.desc:0 "$boon.io_chosen_neg$$curse.psi.link$\n\n这种负面能量侵蚀了我们地面部队的士气，这期间他们在战场上的效率会更低。"
  io_chosen.3059.desc:0 "$boon.io_chosen_neg$一股强大的灵能反噬沿着我们与虚境建立的传导通路袭来，而且这似乎干扰了我们的星际传感器。\n\n从所有来源收到的传感器分辨率都大幅降低了，导致探测距离变短。"
 
- job_overlord_telepath:0 "宗主灵能使"
- job_overlord_telepath_plural:0 "宗主灵能使"
- job_overlord_telepath_desc:0 "为该国的虚境崇拜者宗主服务的灵能者部队，监督着这一附庸以确保其为他们的神奉献一切。"
- job_overlord_telepath_effect_desc:1 "£job_overlord_telepath£ $job_overlord_telepath_plural$生产 £unity£ §Y$unity$§!，并减少£crime£ §Y$PLANET_CRIME_TITLE$§!，根据宗主签订的契约的不同为行星提供减益并为宗主产出资源。"
- mod_job_overlord_telepath_add:0 "$job_overlord_telepath$岗位"
- mod_job_overlord_telepath_per_pop:0 "每$VALUE$个人口提供§G+1§!个$job_overlord_telepath$岗位"
- mod_job_overlord_telepath_per_pop_short:0 "\n每$VALUE$ £pop£ §G+1§! £mod_job_overlord_telepath_add£ "
-
- io_chosen.11.name:0 "契约"
- io_chosen.11.desc:0 "在我们首都的圣所落成之后，我们的宗主强迫我们在其中与他们的虚境神明签订了契约。"
-
- building_composer_sanctum_holding:0 "织缕分支圣所"
- building_composer_sanctum_holding_desc:0 "宗主大发慈悲地建造了这个圣所，确保他们的附庸也有一处与生命之织缕沟通的地方。"
- building_eater_sanctum_holding:0 "喰煞分支圣所"
- building_eater_sanctum_holding_desc:0 "宗主大发慈悲地建造了这个圣所，确保他们的附庸也有一处与世界之喰煞沟通的地方。"
- building_instrument_sanctum_holding:0 "器具分支圣所"
- building_instrument_sanctum_holding_desc:0 "宗主大发慈悲地建造了这个圣所，确保他们的附庸也有一处与渴求之器具沟通的地方。"
- building_whisperers_sanctum_holding:0 "低语分支圣所"
- building_whisperers_sanctum_holding_desc:0 "宗主大发慈悲地建造了这个圣所，确保他们的附庸也有一处与虚空之低语沟通的地方。"
-
- casus_belli_cb_io_chosen_of_the_shroud:0 "虚境谕使"
- war_goal_wg_chosen_of_the_shroud:0 "黑暗远征"
- war_goal_wg_chosen_of_the_shroud_desc:0 "这场战争是为了让敌人屈服于我们超主的意志。"
- war_goal_wg_death_to_te_false_emperor:0 "伪帝去死！"
- war_goal_wg_death_to_te_false_emperor_desc:0 "这场战争是为了彻底毁灭妄称银河之主的凡人国度。"
- war_goal_wg_end_threat_chosen_of_shroud:0 "消灭威胁"
- war_goal_wg_end_threat_chosen_of_shroud_desc:0 "这场战争是为了驱逐虚境力量在凡世的代理人。"
- opinion_chosen_of_the_shroud:0 "虚境诸神的代理人"
-
- personality_chosen_of_the_shroud:0 "虚境谕使"
- personality_chosen_of_the_shroud_desc:0 "虚境谕使与一位强大的远古存在签订了契约，作为其代理人在凡间以战争扩展其影响力。"
-
- ai_shourd_chosen:0 "更大的秘密"
-
- io_chosen.2681.name:0 "新的获选者"
- io_chosen.2681.desc:0 "我们的超主，§Y[GetShroudPatron]§!，对§Y[FromFrom.GetName]§!的胜利非常满意，并在虚境中分出了一小份能量赐予我们。灵能使密团确信，我们与超主之间的亲密关系能让我们安全吸收这些能量并加以运用。我们挑选了一些候选人，但其中只能有一个人可以得到运用这份力量的机会，这个人会是谁呢？"
+ # job_overlord_telepath:0 "宗主灵能使"
+ # job_overlord_telepath_plural:0 "宗主灵能使"
+ # job_overlord_telepath_desc:0 "为该国的虚境崇拜者宗主服务的灵能者部队，监督着这一附庸以确保其为他们的神奉献一切。"
+ # job_overlord_telepath_effect_desc:1 "£job_overlord_telepath£ $job_overlord_telepath_plural$生产 £unity£ §Y$unity$§!，并减少£crime£ §Y$PLANET_CRIME_TITLE$§!，根据宗主签订的契约的不同为行星提供减益并为宗主产出资源。"
+ # mod_job_overlord_telepath_add:0 "$job_overlord_telepath$岗位"
+ # mod_job_overlord_telepath_per_pop:0 "每$VALUE$个人口提供§G+1§!个$job_overlord_telepath$岗位"
+ # mod_job_overlord_telepath_per_pop_short:0 "\n每$VALUE$ £pop£ §G+1§! £mod_job_overlord_telepath_add£ "
+ #
+ # io_chosen.11.name:0 "契约"
+ # io_chosen.11.desc:0 "在我们首都的圣所落成之后，我们的宗主强迫我们在其中与他们的虚境神明签订了契约。"
+ #
+ # building_composer_sanctum_holding:0 "织缕分支圣所"
+ # building_composer_sanctum_holding_desc:0 "宗主大发慈悲地建造了这个圣所，确保他们的附庸也有一处与生命之织缕沟通的地方。"
+ # building_eater_sanctum_holding:0 "喰煞分支圣所"
+ # building_eater_sanctum_holding_desc:0 "宗主大发慈悲地建造了这个圣所，确保他们的附庸也有一处与世界之喰煞沟通的地方。"
+ # building_instrument_sanctum_holding:0 "器具分支圣所"
+ # building_instrument_sanctum_holding_desc:0 "宗主大发慈悲地建造了这个圣所，确保他们的附庸也有一处与渴求之器具沟通的地方。"
+ # building_whisperers_sanctum_holding:0 "低语分支圣所"
+ # building_whisperers_sanctum_holding_desc:0 "宗主大发慈悲地建造了这个圣所，确保他们的附庸也有一处与虚空之低语沟通的地方。"
+ #
+ # casus_belli_cb_io_chosen_of_the_shroud:0 "虚境谕使"
+ # war_goal_wg_chosen_of_the_shroud:0 "黑暗远征"
+ # war_goal_wg_chosen_of_the_shroud_desc:0 "这场战争是为了让敌人屈服于我们超主的意志。"
+ # war_goal_wg_death_to_te_false_emperor:0 "伪帝去死！"
+ # war_goal_wg_death_to_te_false_emperor_desc:0 "这场战争是为了彻底毁灭妄称银河之主的凡人国度。"
+ # war_goal_wg_end_threat_chosen_of_shroud:0 "消灭威胁"
+ # war_goal_wg_end_threat_chosen_of_shroud_desc:0 "这场战争是为了驱逐虚境力量在凡世的代理人。"
+ # opinion_chosen_of_the_shroud:0 "虚境诸神的代理人"
+ #
+ # personality_chosen_of_the_shroud:0 "虚境谕使"
+ # personality_chosen_of_the_shroud_desc:0 "虚境谕使与一位强大的远古存在签订了契约，作为其代理人在凡间以战争扩展其影响力。"
+ #
+ #
+ # io_chosen.2681.name:0 "新的获选者"
+ # io_chosen.2681.desc:0 "我们的超主，§Y[GetShroudPatron]§!，对§Y[FromFrom.GetName]§!的胜利非常满意，并在虚境中分出了一小份能量赐予我们。灵能使密团确信，我们与超主之间的亲密关系能让我们安全吸收这些能量并加以运用。我们挑选了一些候选人，但其中只能有一个人可以得到运用这份力量的机会，这个人会是谁呢？"
 
  community_overlord_failtext:0 "§R宗主在帝国外时，我们不能加入帝国。§!"
 
