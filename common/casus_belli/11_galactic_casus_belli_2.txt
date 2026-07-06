@@ -25,8 +25,8 @@ cb_io_intervention = { #干预战争借口，建立帝国总督府或共同体�
 	show_notification = yes
 	potential = {
 		OR = {
-		is_galactic_emperor = yes
-		is_galactic_custodian = yes
+			is_galactic_emperor = yes
+			is_galactic_custodian = yes
 		}
 	}
 	is_valid = {
@@ -43,10 +43,10 @@ cb_io_intervention = { #干预战争借口，建立帝国总督府或共同体�
 						}
 					}
 					has_modifier = resolution_denounced #被帝国议会/理事会谴责
-					is_in_breach_of_any = yes #违反银河法查明是义军
-					NOT = {
-						is_in_federation_with = root
-					}
+					is_in_breach_of_any = yes #违反银河法
+				}
+				NOT = {
+					is_in_federation_with = root
 				}
 			}
 	}

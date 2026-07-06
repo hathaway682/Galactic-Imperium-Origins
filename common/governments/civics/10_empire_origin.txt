@@ -197,10 +197,6 @@ origin_secondary_hegemon = {
 	icon = "gfx/interface/icons/origins/origin_secondary_hegemon.dds"
 	picture = GFX_origin_secondary_hegemon
 
-	playable = {
-		always = no
-	}
-
 	possible = {
         civics = {
 			NOR = {
@@ -210,6 +206,7 @@ origin_secondary_hegemon = {
 				value = civic_outside_the_border
 			}
 		}
+		is_nomadic = no
 	}
 
 	description = "origin_tooltip_secondary_hegemon_effects"
@@ -218,6 +215,7 @@ origin_secondary_hegemon = {
 	}
 
 	modifier = {
+		divided_patrongage_max_subjects = 3
 		country_subject_power_penalty_mult = -0.25
 	}
 

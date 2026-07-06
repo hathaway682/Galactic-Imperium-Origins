@@ -70,6 +70,4 @@ trade_monopoly = {
 ai_shourd_chosen = {
 	country_base_energy_produces_add = 150
 	country_base_sr_zro_produces_add = 30
-	ship_psionic_aura_speed_mult = 0.75
-	ship_psionic_aura_fire_rate_mult = 0.75
 }

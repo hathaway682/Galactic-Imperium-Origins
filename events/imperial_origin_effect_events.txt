@@ -232,6 +232,12 @@ country_event = {
                         target = root
                     }
                 }
+                galactic_emperor = {
+                    pass_targeted_resolution = {
+                        resolution = resolution_declare_crisis_empire
+                        target = root
+                    }
+                }
             }
             else_if = {
                 limit = {
@@ -240,6 +246,12 @@ country_event = {
                 galactic_custodian = {
                     pass_targeted_resolution = {
                         resolution = resolution_galactic_focus_crisis_malevolent_aura
+                        target = root
+                    }
+                }
+                galactic_custodian = {
+                    pass_targeted_resolution = {
+                        resolution = resolution_declare_crisis
                         target = root
                     }
                 }

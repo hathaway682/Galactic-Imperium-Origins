@@ -1888,11 +1888,11 @@ io_districts_placement = {
             }
             add_district_and_planet_size_if_needed_effect_amount = {
                 amount = energy_districts
-                district = district_generator_uncapped
+                district = district_generator
             }
             io_add_zone_for_generator = {
                 zone = zone_energy
-                district = district_generator_uncapped
+                district = district_generator
             }
         }
         else_if = {
@@ -1959,11 +1959,11 @@ io_districts_placement = {
             }
             add_district_and_planet_size_if_needed_effect_amount = {
                 amount = mining_districts
-                district = district_mining_uncapped
+                district = district_mining
             }
             io_add_zone_for_mining = {
                 zone = zone_minerals
-                district = district_mining_uncapped
+                district = district_mining
             }
         }
         else_if = {
@@ -2030,11 +2030,11 @@ io_districts_placement = {
             }
             add_district_and_planet_size_if_needed_effect_amount = {
                 amount = farming_districts
-                district = district_farming_uncapped
+                district = district_farming
             }
             io_add_zone_for_farming = {
                 zone = zone_food
-                district = district_farming_uncapped
+                district = district_farming
             }
         }
         else_if = {
@@ -3772,7 +3772,6 @@ io_building_colony = {
         if = {
             limit = {
                 owner = {
-                    has_policy_flag = robots_allowed
                     check_variable = {
                         which = io_setting_tech
                         value >= 2
@@ -4637,30 +4636,58 @@ io_upgrade_starbase_by_tech = {
 io_create_community_fleet = {
     if = {
         limit = { max_naval_capacity > 900 }
-        create_fleet_from_naval_cap = { fraction = 0.4 ship_owner_type = galactic_community }
+        create_fleet_from_naval_cap = { fraction = 1 ship_owner_type = galactic_community }
     }
     else_if = {
         limit = { max_naval_capacity > 800 }
-        create_fleet_from_naval_cap = { fraction = 0.44 ship_owner_type = galactic_community }
+        create_fleet_from_naval_cap = { fraction = 1.11 ship_owner_type = galactic_community }
     }
     else_if = {
         limit = { max_naval_capacity > 700 }
-        create_fleet_from_naval_cap = { fraction = 0.5 ship_owner_type = galactic_community }
+        create_fleet_from_naval_cap = { fraction = 1.33 ship_owner_type = galactic_community }
     }
     else_if = {
         limit = { max_naval_capacity > 600 }
-        create_fleet_from_naval_cap = { fraction = 0.57 ship_owner_type = galactic_community }
+        create_fleet_from_naval_cap = { fraction = 1.5 ship_owner_type = galactic_community }
     }
     else_if = {
         limit = { max_naval_capacity > 500 }
-        create_fleet_from_naval_cap = { fraction = 0.67 ship_owner_type = galactic_community }
+        create_fleet_from_naval_cap = { fraction = 1.66 ship_owner_type = galactic_community }
     }
     else_if = {
         limit = { max_naval_capacity > 400 }
-        create_fleet_from_naval_cap = { fraction = 0.8 ship_owner_type = galactic_community }
+        create_fleet_from_naval_cap = { fraction = 2 ship_owner_type = galactic_community }
+    }
+    else_if = {
+        limit = { max_naval_capacity > 300 }
+        create_fleet_from_naval_cap = { fraction = 3 ship_owner_type = galactic_community }
+    }
+    else_if = {
+        limit = { max_naval_capacity > 200 }
+        create_fleet_from_naval_cap = { fraction = 4 ship_owner_type = galactic_community }
+    }
+    else_if = {
+        limit = { max_naval_capacity > 166 }
+        create_fleet_from_naval_cap = { fraction = 5 ship_owner_type = galactic_community }
+    }
+    else_if = {
+        limit = { max_naval_capacity > 142 }
+        create_fleet_from_naval_cap = { fraction = 6 ship_owner_type = galactic_community }
+    }
+    else_if = {
+        limit = { max_naval_capacity > 125 }
+        create_fleet_from_naval_cap = { fraction = 7 ship_owner_type = galactic_community }
+    }
+    else_if = {
+        limit = { max_naval_capacity > 111 }
+        create_fleet_from_naval_cap = { fraction = 8 ship_owner_type = galactic_community }
+    }
+    else_if = {
+        limit = { max_naval_capacity > 100 }
+        create_fleet_from_naval_cap = { fraction = 9 ship_owner_type = galactic_community }
     }
     else = {
-        create_fleet_from_naval_cap = { fraction = 1 ship_owner_type = galactic_community }
+        create_fleet_from_naval_cap = { fraction = 10 ship_owner_type = galactic_community }
     }
 }
 
@@ -5820,4 +5847,54 @@ io_generate_custodian_second_bonus_planet = {
         io_fullize_planet_pop = yes
         io_bouns_planet_expand = yes
     }
+}
+
+io_set_advanced_arkship = {
+    set_timed_carrier_flag = {
+        flag = ignore_ai_building_limitations
+        days = 1
+    }
+
+    owner = {
+        if = {
+            limit = {
+                NOT = {
+                    has_technology = tech_planetary_engineering
+                }
+            }
+            give_technology = {
+                tech = tech_planetary_engineering
+                message = no
+            }
+        }
+    }
+
+    if = {
+        limit = {
+            is_capital = yes
+        }
+        # Upgrade capital Arkship to tier 2
+        fleet = {
+            starbase = {
+                switch = {
+                    trigger = is_ship_size
+                    civilian_arkship_tier_1 = {
+                        set_starbase_size = civilian_arkship_tier_2
+                    }
+                    science_arkship_tier_1 = {
+                        set_starbase_size = science_arkship_tier_2
+                    }
+                    military_arkship_tier_1 = {
+                        set_starbase_size = military_arkship_tier_2
+                    }
+                }
+            }
+        }
+        add_advanced_empire_arkship_capital_districts_effect = yes
+    }
+    else = {
+        add_advanced_empire_arkship_colony_districts_effect = yes
+        add_advanced_empire_colony_buildings_effect = yes
+    }
+    add_advanced_empire_capital_pops_effect = yes
 }

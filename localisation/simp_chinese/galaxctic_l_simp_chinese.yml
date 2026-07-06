@@ -19,6 +19,8 @@
  io_to_blaze_a_trail: "终启山林"
  io_to_blaze_a_trail_desc: "通过斗争和胜利，我们再次踏上了母星的土地。这段伟大的旅程将在未来永远激励我们的人民。"
 
+ NAME_Imperial_Arkship: "皇家方舟"
+
  build_start_modifier:0 "国家发展计划"
 
  io_start_events.2.name:0 "星海帝皇起源设置"
@@ -254,7 +256,7 @@
  origin_secondary_hemegon_vassal_desc:0 "这一文明在进入太空后不久即被另一星海霸权征服并沦为附庸。"
  origin_secondary_hegemon:0 "§Y星海割据§!"
  origin_secondary_hegemon_desc:0 "这一文明打造了自己的霸权与星海帝国对立。尽管其势力范围较小，但在其辖制的一方水土有着极强的掌控力。"
- origin_tooltip_secondary_hegemon_effects:0 "—在开局拥有更大的版图，更多的舰队和三个物种、思潮全部随机的不同类型的专精§H附庸国§!。\n-你的§Y附属§!不会因为你拥有过多附属而负担$r_loyalty$惩罚。\n—可以对帝国成员使用§H强制附庸§!战争借口。\n—如果没有§H星海霸业§!起源的国家，这个起源会被替换为§H繁荣一统§!。"
+ origin_tooltip_secondary_hegemon_effects:0 "—在开局拥有更大的版图，更多的舰队和三个不同类型的专精§H附庸国§!。\n—可以对帝国成员使用§H强制附庸§!战争借口。\n—如果没有§H星海霸业§!起源的国家，这个起源会被替换为§H繁荣一统§!。"
  war_goal_wg_conquer_imperial_member:0 "附庸帝国成员"
  war_goal_wg_conquer_imperial_member_desc:0 "这场战争是为了强迫帝国的成员离开帝国并成为我们的附庸。\n\n若是通过“维持现状”结束战争的话，我们所占据的恒星系将会被释放为新的附庸，前提是他们被释放后必须拥有至少一个行星。"
  casus_belli_cb_io_invade:0 "征服帝国"

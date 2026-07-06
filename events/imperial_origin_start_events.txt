@@ -50,6 +50,8 @@ event = {
                             has_origin = origin_common_ground_npc
                             has_origin = origin_hegemon
                             has_origin = origin_hegemon_npc
+                            has_origin = origin_secondary_hegemon
+                            has_origin = origin_secondary_hemegon_vassal
                             has_origin = origin_scion
                             has_origin = origin_imperial_vassal
                             has_origin = origin_imperial_vassal_overlord
@@ -1748,7 +1750,7 @@ country_event = {
             else = {
                 change_variable = { which = io_setting_tech value = 1 }
             }
-            country_event = { id = io_start_events.2 }
+            country_event = { id = io_start_events.4 }
         }
     }
     ###TODO:监管人强度
@@ -2154,6 +2156,7 @@ country_event = {
         if = {
             limit = {
                 is_ai = no
+                is_nomadic = no
             }
             if = {
                 limit = {
@@ -2161,7 +2164,7 @@ country_event = {
                         has_origin = origin_galactic_hegemon
                     }
                 }
-                country_event = { id = io_start_events.100 }
+                country_event = { id = io_start_events.100 days = 1 }
             }
             else_if = {
                 limit = {
@@ -2173,7 +2176,7 @@ country_event = {
                     which = io_setting_expand
                     value = 8
                 }
-                country_event = { id = io_start_events.100 }
+                country_event = { id = io_start_events.100 days = 1 }
             }
             else_if = {
                 limit = {
@@ -2186,7 +2189,7 @@ country_event = {
                     which = io_setting_expand
                     value = 8
                 }
-                country_event = { id = io_start_events.100 }
+                country_event = { id = io_start_events.100 days = 1 }
             }
             else_if = {
                 limit = {
@@ -2206,7 +2209,6 @@ country_event = {
                     OR = {
                         has_origin = origin_slavers
                         has_origin = origin_old_alliance
-                        has_origin = origin_secondary_hegemon
                         has_origin = origin_chosen_of_the_shroud
                     }
                 }
@@ -2214,7 +2216,19 @@ country_event = {
                     which = io_setting_expand
                     value = 6
                 }
-                country_event = { id = io_start_events.100 }
+                country_event = { id = io_start_events.100 days = 1 }
+            }
+            else_if = {
+                limit = {
+                    OR = {
+                        has_origin = origin_secondary_hegemon
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 6
+                }
+                country_event = { id = io_start_events.105 days = 1 }
             }
             else_if = {
                 limit = {
@@ -2226,7 +2240,7 @@ country_event = {
                     which = io_setting_expand
                     value = 1
                 }
-                country_event = { id = io_start_events.100 }
+                country_event = { id = io_start_events.100 days = 1 }
             }
             else_if = {
                 limit =  {
@@ -2238,7 +2252,7 @@ country_event = {
                     which = io_setting_expand
                     value = 3
                 }
-                country_event = { id = io_start_events.100 }
+                country_event = { id = io_start_events.100 days = 1 }
             }
             else_if = {
                 limit = {
@@ -2276,7 +2290,7 @@ country_event = {
                     which = io_setting_expand
                     value = 6
                 }
-                country_event = { id = io_start_events.100 }
+                country_event = { id = io_start_events.100 days = 1 }
             }
             else_if = {
                 limit = {
@@ -2290,320 +2304,743 @@ country_event = {
                     which = io_setting_expand
                     value = 4
                 }
-                country_event = { id = io_start_events.100 }
+                country_event = { id = io_start_events.100 days = 1 }
             }
         }
         else_if = {
             limit = {
-                OR = {
-                    has_origin = origin_galactic_hegemon
-                }
+                is_ai = no
+                is_nomadic = yes
             }
-            country_event = { id = io_start_events.100 }
+            if = {
+                limit = {
+                    OR = {
+                        has_origin = origin_galactic_hegemon
+                    }
+                }
+                country_event = { id = io_start_events.110 days = 1 }
+            }
+            else_if = {
+                limit = {
+                    OR = {
+                        has_origin = origin_galactic_custodian
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 8
+                }
+                country_event = { id = io_start_events.110 days = 1 }
+            }
+            else_if = {
+                limit = {
+                    OR = {
+                        has_origin = origin_galactic_nemesis
+                        has_origin = origin_chosen_of_the_shroud
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 8
+                }
+                country_event = { id = io_start_events.110 days = 1 }
+            }
+            else_if = {
+                limit = {
+                    OR = {
+                        has_origin = origin_hegemon
+                        has_origin = origin_common_ground
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 6
+                }
+                country_event = { id = io_start_events.110 days = 1 }
+            }
+            else_if = {
+                limit = {
+                    OR = {
+                        has_origin = origin_slavers
+                        has_origin = origin_old_alliance
+                        #has_origin = origin_secondary_hegemon
+                        has_origin = origin_chosen_of_the_shroud
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 6
+                }
+                country_event = { id = io_start_events.110 days = 1 }
+            }
+            else_if = {
+                limit = {
+                    OR = {
+                        has_origin = origin_imperial_vassal
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 1
+                }
+                country_event = { id = io_start_events.110 days = 1 }
+            }
+            else_if = {
+                limit =  {
+                    OR = {
+                        has_origin = origin_internal_border
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 3
+                }
+                country_event = { id = io_start_events.110 days = 1 }
+            }
+            else_if = {
+                limit = {
+                    OR = {
+                        has_civic = civic_outside_the_border
+                        has_civic = civic_fanatic_purifiers
+                        has_civic = civic_hive_devouring_swarm
+                        has_civic = civic_machine_terminator
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 6
+                }
+                country_event = { id = io_start_events.110 days = 1 }
+            }
+            else_if = {
+                limit = {
+                    NOR = {
+                        has_origin = origin_fear_of_the_dark
+                        has_origin = origin_unplugged
+                        is_low_tech_start = yes
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 4
+                }
+                country_event = { id = io_start_events.110 days = 1 }
+            }
         }
         else_if = {
             limit = {
-                OR = {
-                    has_origin = origin_galactic_custodian
+                is_ai = yes
+                is_nomadic = no
+            }
+            if = {
+                limit = {
+                    OR = {
+                        has_origin = origin_galactic_hegemon
+                    }
                 }
+                country_event = { id = io_start_events.100 days = 1 }
             }
-            set_variable = {
-                which = io_setting_expand
-                value = 8
+            else_if = {
+                limit = {
+                    OR = {
+                        has_origin = origin_galactic_custodian
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 8
+                }
+                country_event = { id = io_start_events.100 days = 1 }
             }
-            country_event = { id = io_start_events.100 }
+            else_if = {
+                limit = {
+                    OR = {
+                        has_origin = origin_galactic_nemesis
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 8
+                }
+                country_event = { id = io_start_events.100 days = 1 }
+            }
+            else_if = {
+                limit = {
+                    OR = {
+                        has_origin = origin_slavers
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 6
+                }
+                country_event = { id = io_start_events.100 days = 1 }
+            }
+            else_if = {
+                limit = {
+                    OR = {
+                        has_origin = origin_chosen_of_the_shroud
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 8
+                }
+                country_event = { id = io_start_events.100 days = 1 }
+            }
+            else_if = {
+                limit = {
+                    OR = {
+                        has_origin = origin_hegemon
+                        has_origin = origin_common_ground
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 6
+                }
+                country_event = { id = io_start_events.103 days = 1 }
+            }
+            else_if = {
+                limit = {
+                    has_origin = origin_secondary_hegemon
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 6
+                }
+                country_event = { id = io_start_events.105 days = 1 }
+            }
+            else_if = {
+                limit =  {
+                    OR = {
+                        has_origin = origin_imperial_vassal
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 1
+                }
+                country_event = { id = io_start_events.100 days = 1 }
+            }
+            else_if = {
+                limit =  {
+                    OR = {
+                        has_origin = origin_imperial_vassal_overlord
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 7
+                }
+                country_event = { id = io_start_events.100 days = 2 }
+            }
+            else_if = {
+                limit =  {
+                    OR = {
+                        has_origin = origin_internal_border
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 3
+                }
+                country_event = { id = io_start_events.100 days = 2 }
+            }
+            else_if = {
+                limit =  {
+                    OR = {
+                        has_origin = origin_common_ground_npc
+                        has_origin = origin_hegemon_npc
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 4
+                }
+                country_event = { id = io_start_events.104 days = 2 }
+            }
+            # else_if = {
+            #     limit =  { has_origin = origin_secondary_hemegon_vassal }
+            #     set_variable = {
+            #         which = io_setting_expand
+            #         value = 2
+            #     }
+            #     country_event = { id = io_start_events.100 days = 2 }
+            # }
+            else_if = {
+                limit =  {
+                    OR = {
+                        has_origin = origin_clone_guard
+                        has_origin = origin_monopoly_chaebol
+                        has_origin = origin_prospecting_machine
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 4
+                }
+                country_event = { id = io_start_events.100 days = 3 }
+            }
+            else_if = {
+                limit =  {
+                    OR = {
+                        has_origin = origin_outside_the_border
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 6
+                }
+                country_event = { id = io_start_events.100 days = 3 }
+            }
+            else_if = {
+                limit = {
+                    OR = {
+                        has_origin = origin_void_dwellers
+                        has_origin = origin_void_machines
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 4
+                }
+                country_event = { id = io_start_events.101 days = 3 }
+            }
+            else_if = {
+                limit = {
+                    has_origin = origin_shattered_ring
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 4
+                }
+                country_event = { id = io_start_events.102 days = 3 }
+            }
+            else_if = {
+                limit =  {
+                    OR = {
+                        has_civic = civic_outside_the_border
+                        has_civic = civic_fanatic_purifiers
+                        has_civic = civic_hive_devouring_swarm
+                        has_civic = civic_machine_terminator
+                        has_civic = civic_outside_the_border
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 6
+                }
+                country_event = { id = io_start_events.100 days = 3 }
+            }
+            else_if = {
+                limit =  {
+                    OR = {
+                        has_ai_personality = metalhead
+                        has_ai_personality = fanatic_befrienders
+                        has_ai_personality = scorching_infernals
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 4
+                }
+                country_event = { id = io_start_events.100 days = 3 }
+            }
+            else_if = {
+                limit =  {
+                    OR = {
+                        has_ai_personality = assimilators
+                        has_ai_personality = honorbound_warriors
+                        has_ai_personality = hive_mind
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 4
+                }
+                country_event = { id = io_start_events.100 days = 4 }
+            }
+            else_if = {
+                limit =  {
+                    OR = {
+                        has_ai_personality = honorbound_warriors
+                        has_ai_personality = hive_mind_friend
+                        has_ai_personality = evangelising_zealots
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 4
+                }
+                country_event = { id = io_start_events.100 days = 5 }
+            }
+            else_if = {
+                limit =  {
+                    OR = {
+                        has_ai_personality = democratic_crusaders
+                        has_ai_personality = machine_intelligence
+                        has_ai_personality = ruthless_capitalists
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 4
+                }
+                country_event = { id = io_start_events.100 days = 6 }
+            }
+            else_if = {
+                limit =  {
+                    OR = {
+                        has_ai_personality = erudite_explorers
+                        has_ai_personality = federation_builders
+                        has_ai_personality = servitors
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 4
+                }
+                country_event = { id = io_start_events.100 days = 7 }
+            }
+            else_if = {
+                limit =  {
+                    OR = {
+                        has_ai_personality = decadent_hierarchy
+                        has_ai_personality = harmonious_hierarchy
+                        has_ai_personality = xenophobic_isolationists
+                        has_ai_personality = peaceful_traders
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 4
+                }
+                country_event = { id = io_start_events.100 days = 8 }
+            }
+            else_if = {
+                limit =  {
+                    OR = {
+                        has_ai_personality = spiritual_seekers
+                        has_ai_personality = migrating_flock
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 4
+                }
+                country_event = { id = io_start_events.100 days = 9 }
+            }
+            else_if = {
+                limit = {
+                    NOR = {
+                        has_origin = origin_fear_of_the_dark
+                        has_origin = origin_unplugged
+                        is_low_tech_start = yes
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 4
+                }
+                country_event = { id = io_start_events.100 days = 10 }
+            }
         }
         else_if = {
             limit = {
-                OR = {
-                    has_origin = origin_galactic_nemesis
+                is_ai = yes
+                is_nomadic = yes
+            }
+            if = {
+                limit = {
+                    OR = {
+                        has_origin = origin_galactic_hegemon
+                    }
                 }
+                country_event = { id = io_start_events.110 days = 1 }
             }
-            set_variable = {
-                which = io_setting_expand
-                value = 8
-            }
-            country_event = { id = io_start_events.100 }
-        }
-        else_if = {
-            limit = {
-                OR = {
-                    has_origin = origin_slavers
+            else_if = {
+                limit = {
+                    OR = {
+                        has_origin = origin_galactic_custodian
+                    }
                 }
-            }
-            set_variable = {
-                which = io_setting_expand
-                value = 6
-            }
-            country_event = { id = io_start_events.100 }
-        }
-        else_if = {
-            limit = {
-                OR = {
-                    has_origin = origin_chosen_of_the_shroud
+                set_variable = {
+                    which = io_setting_expand
+                    value = 8
                 }
+                country_event = { id = io_start_events.110 days = 1 }
             }
-            set_variable = {
-                which = io_setting_expand
-                value = 8
-            }
-            country_event = { id = io_start_events.100 days = 1 }
-        }
-        else_if = {
-            limit = {
-                OR = {
-                    has_origin = origin_hegemon
-                    has_origin = origin_common_ground
+            else_if = {
+                limit = {
+                    OR = {
+                        has_origin = origin_galactic_nemesis
+                    }
                 }
-            }
-            set_variable = {
-                which = io_setting_expand
-                value = 6
-            }
-            country_event = { id = io_start_events.103 days = 1 }
-        }
-        else_if = {
-            limit = {
-                has_origin = origin_secondary_hegemon
-            }
-            set_variable = {
-                which = io_setting_expand
-                value = 6
-            }
-            country_event = { id = io_start_events.100 days = 1 }
-        }
-        else_if = {
-            limit =  {
-                OR = {
-                    has_origin = origin_imperial_vassal
+                set_variable = {
+                    which = io_setting_expand
+                    value = 8
                 }
+                country_event = { id = io_start_events.110 days = 1 }
             }
-            set_variable = {
-                which = io_setting_expand
-                value = 1
-            }
-            country_event = { id = io_start_events.100 days = 1 }
-        }
-        else_if = {
-            limit =  {
-                OR = {
-                    has_origin = origin_imperial_vassal_overlord
+            else_if = {
+                limit = {
+                    OR = {
+                        has_origin = origin_slavers
+                    }
                 }
-            }
-            set_variable = {
-                which = io_setting_expand
-                value = 7
-            }
-            country_event = { id = io_start_events.100 days = 2 }
-        }
-        else_if = {
-            limit =  {
-                OR = {
-                    has_origin = origin_internal_border
+                set_variable = {
+                    which = io_setting_expand
+                    value = 6
                 }
+                country_event = { id = io_start_events.110 days = 1 }
             }
-            set_variable = {
-                which = io_setting_expand
-                value = 3
-            }
-            country_event = { id = io_start_events.100 days = 2 }
-        }
-        else_if = {
-            limit =  {
-                OR = {
-                    has_origin = origin_common_ground_npc
-                    has_origin = origin_hegemon_npc
+            else_if = {
+                limit = {
+                    OR = {
+                        has_origin = origin_chosen_of_the_shroud
+                    }
                 }
-            }
-            set_variable = {
-                which = io_setting_expand
-                value = 4
-            }
-            country_event = { id = io_start_events.104 days = 2 }
-        }
-        else_if = {
-            limit =  { has_origin = origin_secondary_hemegon_vassal }
-            set_variable = {
-                which = io_setting_expand
-                value = 2
-            }
-            country_event = { id = io_start_events.100 days = 2 }
-        }
-        else_if = {
-            limit =  {
-                OR = {
-                    has_origin = origin_clone_guard
-                    has_origin = origin_monopoly_chaebol
-                    has_origin = origin_prospecting_machine
+                set_variable = {
+                    which = io_setting_expand
+                    value = 8
                 }
+                country_event = { id = io_start_events.110 days = 1 }
             }
-            set_variable = {
-                which = io_setting_expand
-                value = 4
-            }
-            country_event = { id = io_start_events.100 days = 3 }
-        }
-        else_if = {
-            limit =  {
-                OR = {
-                    has_origin = origin_outside_the_border
+            else_if = {
+                limit = {
+                    OR = {
+                        has_origin = origin_hegemon
+                        has_origin = origin_common_ground
+                    }
                 }
-            }
-            set_variable = {
-                which = io_setting_expand
-                value = 6
-            }
-            country_event = { id = io_start_events.100 days = 3 }
-        }
-        else_if = {
-            limit = {
-                OR = {
-                    has_origin = origin_void_dwellers
-                    has_origin = origin_void_machines
+                set_variable = {
+                    which = io_setting_expand
+                    value = 6
                 }
+                country_event = { id = io_start_events.110 days = 1 }
             }
-            set_variable = {
-                which = io_setting_expand
-                value = 4
-            }
-            country_event = { id = io_start_events.101 days = 3 }
-        }
-        else_if = {
-            limit = {
-                has_origin = origin_shattered_ring
-            }
-            set_variable = {
-                which = io_setting_expand
-                value = 4
-            }
-            country_event = { id = io_start_events.102 days = 3 }
-        }
-        else_if = {
-            limit =  {
-                OR = {
-                    has_civic = civic_outside_the_border
-                    has_civic = civic_fanatic_purifiers
-                    has_civic = civic_hive_devouring_swarm
-                    has_civic = civic_machine_terminator
-                    has_civic = civic_outside_the_border
+            # else_if = {
+            #     limit = {
+            #         has_origin = origin_secondary_hegemon
+            #     }
+            #     set_variable = {
+            #         which = io_setting_expand
+            #         value = 6
+            #     }
+            #     country_event = { id = io_start_events.110 days = 1 }
+            # }
+            else_if = {
+                limit =  {
+                    OR = {
+                        has_origin = origin_imperial_vassal
+                    }
                 }
-            }
-            set_variable = {
-                which = io_setting_expand
-                value = 6
-            }
-            country_event = { id = io_start_events.100 days = 3 }
-        }
-        else_if = {
-            limit =  {
-                OR = {
-                    has_ai_personality = metalhead
-                    has_ai_personality = fanatic_befrienders
+                set_variable = {
+                    which = io_setting_expand
+                    value = 1
                 }
+                country_event = { id = io_start_events.110 days = 1 }
             }
-            set_variable = {
-                which = io_setting_expand
-                value = 4
-            }
-            country_event = { id = io_start_events.100 days = 3 }
-        }
-        else_if = {
-            limit =  {
-                OR = {
-                    has_ai_personality = assimilators
-                    has_ai_personality = honorbound_warriors
-                    has_ai_personality = hive_mind
+            else_if = {
+                limit =  {
+                    OR = {
+                        has_origin = origin_imperial_vassal_overlord
+                    }
                 }
-            }
-            set_variable = {
-                which = io_setting_expand
-                value = 4
-            }
-            country_event = { id = io_start_events.100 days = 4 }
-        }
-        else_if = {
-            limit =  {
-                OR = {
-                    has_ai_personality = honorbound_warriors
-                    has_ai_personality = hive_mind_friend
-                    has_ai_personality = evangelising_zealots
+                set_variable = {
+                    which = io_setting_expand
+                    value = 7
                 }
+                country_event = { id = io_start_events.110 days = 2 }
             }
-            set_variable = {
-                which = io_setting_expand
-                value = 4
-            }
-            country_event = { id = io_start_events.100 days = 5 }
-        }
-        else_if = {
-            limit =  {
-                OR = {
-                    has_ai_personality = democratic_crusaders
-                    has_ai_personality = machine_intelligence
-                    has_ai_personality = ruthless_capitalists
+            else_if = {
+                limit =  {
+                    OR = {
+                        has_origin = origin_internal_border
+                    }
                 }
-            }
-            set_variable = {
-                which = io_setting_expand
-                value = 4
-            }
-            country_event = { id = io_start_events.100 days = 6 }
-        }
-        else_if = {
-            limit =  {
-                OR = {
-                    has_ai_personality = erudite_explorers
-                    has_ai_personality = federation_builders
-                    has_ai_personality = servitors
+                set_variable = {
+                    which = io_setting_expand
+                    value = 3
                 }
+                country_event = { id = io_start_events.110 days = 2 }
             }
-            set_variable = {
-                which = io_setting_expand
-                value = 4
-            }
-            country_event = { id = io_start_events.100 days = 7 }
-        }
-        else_if = {
-            limit =  {
-                OR = {
-                    has_ai_personality = decadent_hierarchy
-                    has_ai_personality = harmonious_hierarchy
-                    has_ai_personality = xenophobic_isolationists
-                    has_ai_personality = peaceful_traders
+            else_if = {
+                limit =  {
+                    OR = {
+                        has_origin = origin_common_ground_npc
+                        has_origin = origin_hegemon_npc
+                    }
                 }
-            }
-            set_variable = {
-                which = io_setting_expand
-                value = 4
-            }
-            country_event = { id = io_start_events.100 days = 8 }
-        }
-        else_if = {
-            limit =  {
-                OR = {
-                    has_ai_personality = spiritual_seekers
-                    has_ai_personality = migrating_flock
+                set_variable = {
+                    which = io_setting_expand
+                    value = 4
                 }
+                country_event = { id = io_start_events.110 days = 2 }
             }
-            set_variable = {
-                which = io_setting_expand
-                value = 4
-            }
-            country_event = { id = io_start_events.100 days = 9 }
-        }
-        else_if = {
-            limit = {
-                NOR = {
-                    has_origin = origin_fear_of_the_dark
-                    has_origin = origin_unplugged
-                    is_low_tech_start = yes
+            # else_if = {
+            #     limit =  { has_origin = origin_secondary_hemegon_vassal }
+            #     set_variable = {
+            #         which = io_setting_expand
+            #         value = 2
+            #     }
+            #     country_event = { id = io_start_events.110 days = 2 }
+            # }
+            else_if = {
+                limit =  {
+                    OR = {
+                        has_origin = origin_clone_guard
+                        has_origin = origin_monopoly_chaebol
+                        has_origin = origin_prospecting_machine
+                    }
                 }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 4
+                }
+                country_event = { id = io_start_events.110 days = 3 }
             }
-            set_variable = {
-                which = io_setting_expand
-                value = 4
+            else_if = {
+                limit =  {
+                    OR = {
+                        has_origin = origin_outside_the_border
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 6
+                }
+                country_event = { id = io_start_events.110 days = 3 }
             }
-            country_event = { id = io_start_events.100 days = 10 }
+            else_if = {
+                limit =  {
+                    OR = {
+                        has_civic = civic_outside_the_border
+                        has_civic = civic_fanatic_purifiers
+                        has_civic = civic_hive_devouring_swarm
+                        has_civic = civic_machine_terminator
+                        has_civic = civic_outside_the_border
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 6
+                }
+                country_event = { id = io_start_events.110 days = 3 }
+            }
+            else_if = {
+                limit =  {
+                    OR = {
+                        has_ai_personality = metalhead
+                        has_ai_personality = fanatic_befrienders
+                        has_ai_personality = scorching_infernals
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 4
+                }
+                country_event = { id = io_start_events.110 days = 3 }
+            }
+            else_if = {
+                limit =  {
+                    OR = {
+                        has_ai_personality = assimilators
+                        has_ai_personality = honorbound_warriors
+                        has_ai_personality = hive_mind
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 4
+                }
+                country_event = { id = io_start_events.110 days = 4 }
+            }
+            else_if = {
+                limit =  {
+                    OR = {
+                        has_ai_personality = honorbound_warriors
+                        has_ai_personality = hive_mind_friend
+                        has_ai_personality = evangelising_zealots
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 4
+                }
+                country_event = { id = io_start_events.110 days = 5 }
+            }
+            else_if = {
+                limit =  {
+                    OR = {
+                        has_ai_personality = democratic_crusaders
+                        has_ai_personality = machine_intelligence
+                        has_ai_personality = ruthless_capitalists
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 4
+                }
+                country_event = { id = io_start_events.110 days = 6 }
+            }
+            else_if = {
+                limit =  {
+                    OR = {
+                        has_ai_personality = erudite_explorers
+                        has_ai_personality = federation_builders
+                        has_ai_personality = servitors
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 4
+                }
+                country_event = { id = io_start_events.110 days = 7 }
+            }
+            else_if = {
+                limit =  {
+                    OR = {
+                        has_ai_personality = decadent_hierarchy
+                        has_ai_personality = harmonious_hierarchy
+                        has_ai_personality = xenophobic_isolationists
+                        has_ai_personality = peaceful_traders
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 4
+                }
+                country_event = { id = io_start_events.110 days = 8 }
+            }
+            else_if = {
+                limit =  {
+                    OR = {
+                        has_ai_personality = spiritual_seekers
+                        has_ai_personality = migrating_flock
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 4
+                }
+                country_event = { id = io_start_events.110 days = 9 }
+            }
+            else_if = {
+                limit = {
+                    NOR = {
+                        has_origin = origin_fear_of_the_dark
+                        has_origin = origin_unplugged
+                        is_low_tech_start = yes
+                    }
+                }
+                set_variable = {
+                    which = io_setting_expand
+                    value = 4
+                }
+                country_event = { id = io_start_events.110 days = 10 }
+            }
         }
     }
 }
@@ -2623,6 +3060,7 @@ country_event = {
             has_origin = origin_fear_of_the_dark
             has_origin = origin_unplugged
             is_low_tech_start = yes
+            is_nomadic = yes
         }
     }
 
@@ -2678,7 +3116,7 @@ country_event = {
                         }
                     }
                     io_set_planet_pop = {
-                        pop = 25000
+                        pop = 20000
                     }
                 }
                 if = {
@@ -2715,7 +3153,7 @@ country_event = {
             }
             else = {
                 io_set_planet_pop = {
-                    pop = 7500
+                    pop = 8000
                 }
             }
             set_planet_flag = planet_intialized
@@ -2840,7 +3278,7 @@ country_event = {
                 io_building_colony = yes
             }
             io_set_planet_pop = {
-                pop = 2500
+                pop = 2000
             }
             if = {
                 limit = {
@@ -2870,7 +3308,27 @@ country_event = {
                 io_districts_placement = yes
                 io_building_fe_colony = yes
                 io_set_planet_pop = {
-                    pop = 2500
+                    pop = 2000
+                }
+            }
+        }
+        else = {
+            every_planet_within_border = {
+                limit = {
+                    is_colonizable = yes
+                    is_colony = no
+                    NOT = { has_modifier = holy_planet }
+                    habitability = {
+                        who = root.owner_main_species
+                        value > 0.4
+                    }
+                }
+                set_owner = root
+                io_districts_colony = yes
+                io_districts_placement = yes
+                io_building_colony = yes
+                io_set_planet_pop = {
+                    pop = 1000
                 }
             }
         }
@@ -3182,9 +3640,31 @@ country_event = {
                 owner = ROOT
             }
         }
+        #添加恒星基地
+        export_trigger_value_to_variable = {
+            trigger = max_starbase_capacity
+            variable = starbase_to_add
+        }
+        if = {
+            limit = {
+                has_origin = origin_chosen_of_the_shroud
+            }
+            change_variable = {
+                which = starbase_to_add
+                value = 10
+            }
+        }
+        subtract_variable = {
+            which = starbase_to_add
+            value = 1
+        }
+        while = {
+            count = starbase_to_add
+            io_upgrade_starbase = yes
+        }
         country_event = {
             id = io_start_events.200
-            days = 1
+            days = 2
         }
     }
 }
@@ -3201,6 +3681,9 @@ country_event = {
         OR = {
             has_origin = origin_void_dwellers
             has_origin = origin_void_machines
+        }
+        NOT = {
+            is_nomadic = yes
         }
     }
 
@@ -3309,9 +3792,31 @@ country_event = {
                 owner = ROOT
             }
         }
+        #添加恒星基地
+        export_trigger_value_to_variable = {
+            trigger = max_starbase_capacity
+            variable = starbase_to_add
+        }
+        if = {
+            limit = {
+                has_origin = origin_chosen_of_the_shroud
+            }
+            change_variable = {
+                which = starbase_to_add
+                value = 10
+            }
+        }
+        subtract_variable = {
+            which = starbase_to_add
+            value = 1
+        }
+        while = {
+            count = starbase_to_add
+            io_upgrade_starbase = yes
+        }
         country_event = {
             id = io_start_events.200
-            days = 1
+            days = 2
         }
     }
 }
@@ -3328,6 +3833,9 @@ country_event = {
         OR = {
             has_origin = origin_shattered_ring
         }
+        NOT = {
+            is_nomadic = yes
+        }
     }
 
     immediate = {
@@ -3339,7 +3847,7 @@ country_event = {
             io_clear_planet = yes
             clear_blockers = yes
             io_set_planet_pop = {
-                pop = 7500
+                pop = 8000
             }
             io_districts_captial = yes
             io_districts_placement = yes
@@ -3432,9 +3940,31 @@ country_event = {
                 owner = ROOT
             }
         }
+        #添加恒星基地
+        export_trigger_value_to_variable = {
+            trigger = max_starbase_capacity
+            variable = starbase_to_add
+        }
+        if = {
+            limit = {
+                has_origin = origin_chosen_of_the_shroud
+            }
+            change_variable = {
+                which = starbase_to_add
+                value = 10
+            }
+        }
+        subtract_variable = {
+            which = starbase_to_add
+            value = 1
+        }
+        while = {
+            count = starbase_to_add
+            io_upgrade_starbase = yes
+        }
         country_event = {
             id = io_start_events.200
-            days = 1
+            days = 2
         }
     }
 }
@@ -3455,6 +3985,9 @@ country_event = {
             has_origin = origin_unplugged
             is_low_tech_start = yes
         }
+        NOT = {
+            is_nomadic = yes
+        }
     }
 
     immediate = {
@@ -3469,7 +4002,7 @@ country_event = {
             io_districts_placement = yes
             io_building_captial = yes
             io_set_planet_pop = {
-                pop = 7500
+                pop = 8000
             }
             set_planet_flag = planet_intialized
             solar_system = {
@@ -3667,7 +4200,7 @@ country_event = {
             io_districts_placement = yes
             io_building_colony = yes
             io_set_planet_pop = {
-                pop = 2500
+                pop = 2000
             }
         }
         while = {
@@ -3693,9 +4226,31 @@ country_event = {
                 owner = ROOT
             }
         }
+        #添加恒星基地
+        export_trigger_value_to_variable = {
+            trigger = max_starbase_capacity
+            variable = starbase_to_add
+        }
+        if = {
+            limit = {
+                has_origin = origin_chosen_of_the_shroud
+            }
+            change_variable = {
+                which = starbase_to_add
+                value = 10
+            }
+        }
+        subtract_variable = {
+            which = starbase_to_add
+            value = 1
+        }
+        while = {
+            count = starbase_to_add
+            io_upgrade_starbase = yes
+        }
         country_event = {
             id = io_start_events.200
-            days = 1
+            days = 2
         }
     }
 }
@@ -3716,9 +4271,13 @@ country_event = {
             has_origin = origin_unplugged
             is_low_tech_start = yes
         }
+        NOT = {
+            is_nomadic = yes
+        }
     }
 
     immediate = {
+        set_country_flag = galcom_form_nay
         #给予资源和修正
         io_add_start_resources = yes
         #母星设置
@@ -3730,7 +4289,7 @@ country_event = {
             io_districts_placement = yes
             io_building_captial = yes
             io_set_planet_pop = {
-                pop = 7500
+                pop = 8000
             }
             set_planet_flag = planet_intialized
             solar_system = {
@@ -3772,22 +4331,6 @@ country_event = {
                 owner = ROOT
             }
         }
-        country_event = {
-            id = io_start_events.200
-            days = 1
-        }
-    }
-}
-
-#生成舰队
-country_event = {
-    id = io_start_events.200
-
-    hide_window = yes
-
-    is_triggered_only = yes
-
-    immediate = {
         #添加恒星基地
         export_trigger_value_to_variable = {
             trigger = max_starbase_capacity
@@ -3810,6 +4353,832 @@ country_event = {
             count = starbase_to_add
             io_upgrade_starbase = yes
         }
+        country_event = {
+            id = io_start_events.200
+            days = 2
+        }
+    }
+}
+
+#星海割据
+country_event = {
+    id = io_start_events.105
+
+    hide_window = yes
+
+    is_triggered_only = yes
+
+    trigger = {
+        has_origin = origin_secondary_hegemon
+        NOT = {
+            is_nomadic = yes
+        }
+    }
+
+    immediate = {
+        #给予资源和修正
+        io_add_start_resources = yes
+        set_country_flag = galcom_form_nay
+        #母星设置
+        capital_scope = {
+            io_save_secondery_pop = yes
+            io_clear_planet = yes
+            clear_blockers = yes
+            io_districts_captial = yes
+            io_districts_placement = yes
+            io_building_captial = yes
+            io_set_planet_pop = {
+                pop = 8000
+            }
+            set_planet_flag = planet_intialized
+            solar_system = {
+                starbase = {
+                    io_upgrade_starbase_by_tech = yes
+                }
+            }
+        }
+        #高级AI殖民地设置
+        if = {
+            limit = {
+                has_country_flag = is_advanced_start_AI
+            }
+            every_owned_planet = {
+                limit = {
+                    is_capital = no
+                    NOT = {
+                        has_planet_flag = toxic_knights_habitat
+                    }
+                }
+                io_clear_planet = yes
+                io_districts_colony = yes
+                io_districts_placement = yes
+                io_building_colony = yes
+                set_planet_flag = planet_intialized
+            }
+        }
+        #创建学邦附庸
+        capital_scope = {
+            closest_system = {
+                min_steps = 7
+                max_steps = 20
+                limit = {
+                    count_neighbor_system = {
+                        count >= 2
+                    }
+                    any_system_planet = {
+                        OR = {
+                            is_ringworld = no
+                            is_asteroid = no
+                            is_star = no
+                            is_moon = no
+                            is_colonizable = no
+                            NOT = { is_planet_class = pc_gas_giant }
+                        }
+                    }
+                    NOR = {
+                        has_owner = yes
+                        has_star_flag = empire_home_system
+                        has_star_flag = empire_cluster
+                        has_star_flag = hostile_system
+                    }
+                    NOT = {
+                        any_neighbor_system = {
+                            OR = {
+                                has_owner = yes
+                                has_star_flag = empire_home_system
+                                has_star_flag = empire_cluster
+                                has_star_flag = hostile_system
+                            }
+                        }
+                    }
+                }
+
+                set_star_flag = empire_home_system
+                set_star_flag = empire_cluster
+                every_neighbor_system = {
+                    set_star_flag = empire_cluster
+                    every_neighbor_system = {
+                        set_star_flag = empire_cluster
+                    }
+                }
+                random_system_planet = {
+                    limit = {
+                        is_ringworld = no
+                        is_asteroid = no
+                        is_star = no
+                        is_moon = no
+                        is_colonizable = no
+                        NOT = { is_planet_class = pc_gas_giant }
+                    }
+                    random_list = {
+                        20 = { set_planet_size = 18 }
+                        20 = { set_planet_size = 19 }
+                        20 = { set_planet_size = 20 }
+                        20 = { set_planet_size = 21 }
+                        20 = { set_planet_size = 22 }
+                    }
+                    random_list = {
+                        1 = { change_pc = pc_tropical }
+                        1 = { change_pc = pc_arid }
+                        1 = { change_pc = pc_continental }
+                        1 = { change_pc = pc_ocean }
+                        1 = { change_pc = pc_tundra }
+                        1 = { change_pc = pc_arctic }
+                        1 = { change_pc = pc_alpine }
+                        1 = { change_pc = pc_savannah }
+                        1 = { change_pc = pc_desert }
+                    }
+                    create_country = {
+                        name_list = random
+                        species = random
+                        type = default
+                        origin = "origin_secondary_hemegon_vassal"
+                        ignore_initial_colony_error = yes
+                        day_zero_contact = no
+                        randomize_ethos = yes
+                        ethos = {
+                            ethic = "ethic_xenophile"
+                            ethic = "ethic_materialist"
+                            ethic = "ethic_fanatic_materialist"
+                        }
+                        government_restrictions = {
+                            civics = {
+                                NOR = {
+                                    value = civic_fanatic_purifiers
+                                    value = civic_scorched_earth
+                                }
+                            }
+                        }
+                        effect = {
+                            save_event_target_as = vassal_contry_1
+                            establish_communications_no_message = root
+                            set_subject_of = {
+                                who = root
+                                preset = preset_scholarium
+                            }
+                        }
+                    }
+                    set_owner = event_target:vassal_contry_1
+                    generate_start_deposits_and_blockers = yes
+                    generate_start_buildings_and_districts = yes
+                    generate_start_pops = yes
+                    generate_home_planet_final_pass = yes
+                    set_capital = yes
+                }
+                create_starbase = {
+                    size = starbase_starport
+                    owner = event_target:vassal_contry_1
+                    module = shipyard
+                    module = shipyard
+                    building = crew_quarters
+                }
+            }
+        }
+        #创建戍邦附庸
+        capital_scope = {
+            closest_system = {
+                min_steps = 7
+                max_steps = 20
+                limit = {
+                    count_neighbor_system = {
+                        count >= 2
+                    }
+                    any_system_planet = {
+                        OR = {
+                            is_ringworld = no
+                            is_asteroid = no
+                            is_star = no
+                            is_moon = no
+                            is_colonizable = no
+                            NOT = { is_planet_class = pc_gas_giant }
+                        }
+                    }
+                    NOR = {
+                        has_owner = yes
+                        has_star_flag = empire_home_system
+                        has_star_flag = empire_cluster
+                        has_star_flag = hostile_system
+                    }
+                    NOT = {
+                        any_neighbor_system = {
+                            OR = {
+                                has_owner = yes
+                                has_star_flag = empire_home_system
+                                has_star_flag = empire_cluster
+                                has_star_flag = hostile_system
+                            }
+                        }
+                    }
+                }
+
+                set_star_flag = empire_home_system
+                set_star_flag = empire_cluster
+                every_neighbor_system = {
+                    set_star_flag = empire_cluster
+                    every_neighbor_system = {
+                        set_star_flag = empire_cluster
+                    }
+                }
+                random_system_planet = {
+                    limit = {
+                        is_ringworld = no
+                        is_asteroid = no
+                        is_star = no
+                        is_moon = no
+                        is_colonizable = no
+                        NOT = { is_planet_class = pc_gas_giant }
+                    }
+                    random_list = {
+                        20 = { set_planet_size = 18 }
+                        20 = { set_planet_size = 19 }
+                        20 = { set_planet_size = 20 }
+                        20 = { set_planet_size = 21 }
+                        20 = { set_planet_size = 22 }
+                    }
+                    random_list = {
+                        1 = { change_pc = pc_tropical }
+                        1 = { change_pc = pc_arid }
+                        1 = { change_pc = pc_continental }
+                        1 = { change_pc = pc_ocean }
+                        1 = { change_pc = pc_tundra }
+                        1 = { change_pc = pc_arctic }
+                        1 = { change_pc = pc_alpine }
+                        1 = { change_pc = pc_savannah }
+                        1 = { change_pc = pc_desert }
+                    }
+                    create_country = {
+                        name_list = random
+                        species = random
+                        type = default
+                        origin = "origin_secondary_hemegon_vassal"
+                        ignore_initial_colony_error = yes
+                        day_zero_contact = no
+                        randomize_ethos = yes
+                        ethos = {
+                            ethic = "ethic_xenophile"
+                            ethic = "ethic_militarist"
+                            ethic = "ethic_fanatic_militarist"
+                        }
+                        government_restrictions = {
+                            civics = {
+                                NOR = {
+                                    value = civic_fanatic_purifiers
+                                    value = civic_scorched_earth
+                                }
+                            }
+                        }
+                        effect = {
+                            save_event_target_as = vassal_contry_2
+                            establish_communications_no_message = root
+                            set_subject_of = {
+                                who = root
+                                preset = preset_bulwark
+                            }
+                        }
+                    }
+                    set_owner = event_target:vassal_contry_2
+                    generate_start_deposits_and_blockers = yes
+                    generate_start_buildings_and_districts = yes
+                    generate_start_pops = yes
+                    generate_home_planet_final_pass = yes
+                    set_capital = yes
+                }
+                create_starbase = {
+                    size = starbase_starport
+                    owner = event_target:vassal_contry_2
+                    module = shipyard
+                    module = shipyard
+                    building = crew_quarters
+                }
+            }
+        }
+        #创建开发邦附庸
+        capital_scope = {
+            closest_system = {
+                min_steps = 7
+                max_steps = 20
+                limit = {
+                    count_neighbor_system = {
+                        count >= 2
+                    }
+                    any_system_planet = {
+                        OR = {
+                            is_ringworld = no
+                            is_asteroid = no
+                            is_star = no
+                            is_moon = no
+                            is_colonizable = no
+                            NOT = { is_planet_class = pc_gas_giant }
+                        }
+                    }
+                    NOR = {
+                        has_owner = yes
+                        has_star_flag = empire_home_system
+                        has_star_flag = empire_cluster
+                        has_star_flag = hostile_system
+                    }
+                    NOT = {
+                        any_neighbor_system = {
+                            OR = {
+                                has_owner = yes
+                                has_star_flag = empire_home_system
+                                has_star_flag = empire_cluster
+                                has_star_flag = hostile_system
+                            }
+                        }
+                    }
+                }
+
+                set_star_flag = empire_home_system
+                set_star_flag = empire_cluster
+                every_neighbor_system = {
+                    set_star_flag = empire_cluster
+                    every_neighbor_system = {
+                        set_star_flag = empire_cluster
+                    }
+                }
+                random_system_planet = {
+                    limit = {
+                        is_ringworld = no
+                        is_asteroid = no
+                        is_star = no
+                        is_moon = no
+                        is_colonizable = no
+                        NOT = { is_planet_class = pc_gas_giant }
+                    }
+                    random_list = {
+                        20 = { set_planet_size = 18 }
+                        20 = { set_planet_size = 19 }
+                        20 = { set_planet_size = 20 }
+                        20 = { set_planet_size = 21 }
+                        20 = { set_planet_size = 22 }
+                    }
+                    random_list = {
+                        1 = { change_pc = pc_tropical }
+                        1 = { change_pc = pc_arid }
+                        1 = { change_pc = pc_continental }
+                        1 = { change_pc = pc_ocean }
+                        1 = { change_pc = pc_tundra }
+                        1 = { change_pc = pc_arctic }
+                        1 = { change_pc = pc_alpine }
+                        1 = { change_pc = pc_savannah }
+                        1 = { change_pc = pc_desert }
+                    }
+                    create_country = {
+                        name_list = random
+                        species = random
+                        type = default
+                        origin = "origin_secondary_hemegon_vassal"
+                        ignore_initial_colony_error = yes
+                        day_zero_contact = no
+                        randomize_ethos = yes
+                        ethos = {
+                            ethic = "ethic_xenophile"
+                            ethic = "ethic_pacifist"
+                            ethic = "ethic_fanatic_pacifist"
+                        }
+                        government_restrictions = {
+                            civics = {
+                                NOR = {
+                                    value = civic_fanatic_purifiers
+                                    value = civic_scorched_earth
+                                }
+                            }
+                        }
+                        effect = {
+                            save_event_target_as = vassal_contry_3
+                            establish_communications_no_message = root
+                            set_subject_of = {
+                                who = root
+                                preset = preset_prospectorium
+                            }
+                        }
+                    }
+                    set_owner = event_target:vassal_contry_3
+                    generate_start_deposits_and_blockers = yes
+                    generate_start_buildings_and_districts = yes
+                    generate_start_pops = yes
+                    generate_home_planet_final_pass = yes
+                    set_capital = yes
+                }
+                create_starbase = {
+                    size = starbase_starport
+                    owner = event_target:vassal_contry_3
+                    module = shipyard
+                    module = shipyard
+                    building = crew_quarters
+                }
+            }
+        }
+
+        #扩张边界
+        if = {
+            limit = {
+                check_variable = {
+                    which = io_setting_expand
+                    value > event_target:io_setting_country.io_setting_expand
+                }
+            }
+            set_variable = {
+                which = io_setting_expand
+                value = event_target:io_setting_country.io_setting_expand
+            }
+        }
+        io_expand_border_federation = yes
+        #殖民
+        every_planet_within_border = {
+            limit = {
+                is_colonizable = yes
+                is_colony = no
+                has_planet_flag = prescripted_ideal
+                NOT = { has_modifier = holy_planet }
+            }
+            set_owner = root
+            remove_all_buildings = yes
+            io_districts_colony = yes
+            io_districts_placement = yes
+            io_building_colony = yes
+            io_set_planet_pop = {
+                pop = 2000
+            }
+        }
+        while = {
+            count = 2
+            io_expand_border_extra = yes
+        }
+        #建造站点
+        every_planet_within_border = {
+            limit = {
+                has_deposit_for = shipclass_mining_station
+                has_mining_station = no
+            }
+            create_mining_station = {
+                owner = ROOT
+            }
+        }
+        every_planet_within_border = {
+            limit = {
+                has_deposit_for = shipclass_research_station
+                has_research_station = no
+            }
+            create_research_station = {
+                owner = ROOT
+            }
+        }
+        #添加恒星基地
+        export_trigger_value_to_variable = {
+            trigger = max_starbase_capacity
+            variable = starbase_to_add
+        }
+        if = {
+            limit = {
+                has_origin = origin_chosen_of_the_shroud
+            }
+            change_variable = {
+                which = starbase_to_add
+                value = 10
+            }
+        }
+        subtract_variable = {
+            which = starbase_to_add
+            value = 1
+        }
+        while = {
+            count = starbase_to_add
+            io_upgrade_starbase = yes
+        }
+        event_target:vassal_contry_1 = {
+            country_event = {
+                id = io_start_events.104
+            }
+        }
+        event_target:vassal_contry_2 = {
+            country_event = {
+                id = io_start_events.104
+            }
+        }
+        event_target:vassal_contry_3 = {
+            country_event = {
+                id = io_start_events.104
+            }
+        }
+        country_event = {
+            id = io_start_events.200
+            days = 2
+        }
+    }
+}
+
+#游牧国家
+country_event = {
+    id = io_start_events.110
+
+    hide_window = yes
+
+    is_triggered_only = yes
+
+    trigger = {
+        is_nomadic = yes
+    }
+
+    immediate = {
+        give_technology = {
+            tech = tech_arkship_construction
+            message = no
+        }
+        give_technology = {
+            tech = tech_planetary_engineering
+            message = no
+        }
+
+        # Capital system waystation. Creates one if none exists, or upgrades an existing one (e.g. Caravan Masters).
+        capital_scope = {
+            solar_system = {
+                if = {
+                    limit = {
+                        NOT = {
+                            any_fleet_in_system = {
+                                is_waystation_ship = yes
+                            }
+                        }
+                    }
+                    create_waystation_effect = {
+                        OWNER = root
+                        ANGLE = 120
+                    }
+                }
+                else = {
+                    random_fleet_in_system = {
+                        limit = {
+                            is_waystation_ship = yes
+                            owner = {
+                                is_same_value = root
+                            }
+                        }
+                        starbase? = {
+                        set_starbase_size = starbase_waystation_2
+                        }
+                    }
+                }
+            }
+        }
+
+        # Research system
+        closest_system = {
+            limit = {
+                has_star_flag = neighbor_t1
+            }
+            max_steps = 3
+            convert_to_research_system_effect = yes
+            set_surveyed = {
+                surveyed = yes
+                surveyor = root
+            }
+            create_waystation_effect = {
+                OWNER = root
+                ANGLE = 120
+            }
+        }
+        closest_system = {
+            limit = {
+                has_star_flag = neighbor_t1_first_colony
+            }
+            max_steps = 3
+            save_event_target_as = advanced_nomad_t1_system
+            convert_to_research_system_effect = yes
+            set_surveyed = {
+                surveyed = yes
+                surveyor = root
+            }
+            create_waystation_effect = {
+                OWNER = root
+                ANGLE = 120
+            }
+            random_ship_in_system = {
+                limit = {
+                    is_waystation_ship = yes
+                    owner = {
+                        is_same_value = root
+                    }
+                }
+                starbase = {
+                    if = {
+                        limit = {
+                            solar_system = {
+                                # This should always be true, but as a failsafe.
+                                any_system_planet = {
+                                    has_deposit_for = shipclass_research_station
+                                }
+                            }
+                        }
+                        set_starbase_module = {
+                            slot = 1
+                            module = waystation_research_module
+                        }
+                    }
+                }
+            }
+        }
+        capital_scope = {
+            ship = {
+                if = {
+                    limit = { is_civilian_arkship = yes }
+                    create_arkship_effect = {
+                        TYPE = civilian_arkship
+                        OWNER = root
+                        LOCATION = event_target:advanced_nomad_t1_system
+                    }
+                }
+                else_if = {
+                    limit = { is_science_arkship = yes }
+                    create_arkship_effect = {
+                        TYPE = science_arkship
+                        OWNER = root
+                        LOCATION = event_target:advanced_nomad_t1_system
+                    }
+                }
+                else_if = {
+                    limit = { is_military_arkship = yes }
+                    create_arkship_effect = {
+                        TYPE = military_arkship
+                        OWNER = root
+                        LOCATION = event_target:advanced_nomad_t1_system
+                    }
+                }
+            }
+        }
+        random_owned_colony = {
+            limit = {
+                solar_system = {
+                    is_same_value = event_target:advanced_nomad_t1_system
+                }
+            }
+            colony_event = {
+                id = game_start.21
+            }
+            add_advanced_empire_arkship_colony_districts_effect = yes
+            add_advanced_empire_colony_buildings_effect = yes
+        }
+
+        # Resource system
+        closest_system = {
+            limit = {
+                has_star_flag = neighbor_t2_second_colony
+            }
+            max_steps = 6
+            save_event_target_as = advanced_nomad_t2_system
+            convert_to_resource_system_effect = yes
+            set_surveyed = {
+                surveyed = yes
+                surveyor = root
+            }
+            create_waystation_effect = {
+                OWNER = root
+                ANGLE = 120
+            }
+            random_ship_in_system = {
+                limit = {
+                    is_waystation_ship = yes
+                    owner = {
+                        is_same_value = root
+                    }
+                }
+                starbase = {
+                    if = {
+                        limit = {
+                            solar_system = {
+                                # This should always be true, but as a failsafe.
+                                any_system_planet = {
+                                    has_deposit_for = shipclass_mining_station
+                                }
+                            }
+                        }
+                        set_starbase_module = {
+                            slot = 1
+                            module = waystation_mining_module
+                        }
+                    }
+                }
+            }
+        }
+        capital_scope = {
+            ship = {
+                if = {
+                    limit = { is_civilian_arkship = yes }
+                    create_arkship_effect = {
+                        TYPE = civilian_arkship
+                        OWNER = root
+                        LOCATION = event_target:advanced_nomad_t2_system
+                    }
+                }
+                else_if = {
+                    limit = { is_science_arkship = yes }
+                    create_arkship_effect = {
+                        TYPE = science_arkship
+                        OWNER = root
+                        LOCATION = event_target:advanced_nomad_t2_system
+                    }
+                }
+                else_if = {
+                    limit = { is_military_arkship = yes }
+                    create_arkship_effect = {
+                        TYPE = military_arkship
+                        OWNER = root
+                        LOCATION = event_target:advanced_nomad_t2_system
+                    }
+                }
+            }
+        }
+        random_owned_colony = {
+            limit = {
+                solar_system = {
+                    is_same_value = event_target:advanced_nomad_t2_system
+                }
+            }
+            colony_event = {
+                id = game_start.21
+            }
+            add_advanced_empire_arkship_colony_districts_effect = yes
+            add_advanced_empire_colony_buildings_effect = yes
+        }
+
+        if = {
+            limit = {
+                OR = {
+                    has_origin = origin_galactic_hegemon
+                    has_origin = origin_galactic_custodian
+                }
+            }
+            every_owned_colony = {
+                set_timed_carrier_flag = {
+                    flag = ignore_ai_building_limitations
+                    days = 1
+                }
+                fleet = {
+                    starbase = {
+                        switch = {
+                            trigger = is_ship_size
+                            civilian_arkship_tier_1 = {
+                                set_starbase_size = civilian_arkship_tier_3
+                            }
+                            science_arkship_tier_1 = {
+                                set_starbase_size = science_arkship_tier_3
+                            }
+                            military_arkship_tier_1 = {
+                                set_starbase_size = military_arkship_tier_3
+                            }
+                        }
+                    }
+                }
+                add_advanced_empire_arkship_capital_districts_effect = yes
+                add_advanced_empire_arkship_capital_districts_effect = yes
+                add_advanced_empire_capital_pops_effect = yes
+                add_advanced_empire_capital_pops_effect = yes
+            }
+        }
+        else = {
+            capital_scope = {
+                set_timed_carrier_flag = {
+                    flag = ignore_ai_building_limitations
+                    days = 1
+                }
+                fleet = {
+                    starbase = {
+                        switch = {
+                            trigger = is_ship_size
+                            civilian_arkship_tier_1 = {
+                                set_starbase_size = civilian_arkship_tier_2
+                            }
+                            science_arkship_tier_1 = {
+                                set_starbase_size = science_arkship_tier_2
+                            }
+                            military_arkship_tier_1 = {
+                                set_starbase_size = military_arkship_tier_2
+                            }
+                        }
+                    }
+                }
+                add_advanced_empire_arkship_capital_districts_effect = yes
+                add_advanced_empire_capital_pops_effect = yes
+            }
+        }
+
+        country_event = {
+            id = io_start_events.200
+            days = 2
+        }
+    }
+}
+
+#生成舰队
+country_event = {
+    id = io_start_events.200
+
+    hide_window = yes
+
+    is_triggered_only = yes
+
+    immediate = {
         #移除一开始的舰队
         every_owned_fleet = {
             limit = { is_ship_class = shipclass_military }
