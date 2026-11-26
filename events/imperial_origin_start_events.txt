@@ -58,6 +58,8 @@ event = {
                             has_civic = civic_fanatic_purifiers
                             has_civic = civic_hive_devouring_swarm
                             has_civic = civic_machine_terminator
+                            has_civic = civic_scorched_earth
+                            has_civic = civic_hive_scorched_earth
                             has_civic = civic_outside_the_border
                             is_low_tech_start = yes
                             has_origin = origin_fear_of_the_dark
@@ -75,6 +77,9 @@ event = {
                     has_origin = origin_galactic_hegemon
                 }
                 io_become_emperor = yes
+                every_system = {
+                    root = { set_visited = prev }
+                }
                 set_variable = {
                     which = galaxy_food
                     value = 0
@@ -1684,6 +1689,33 @@ country_event = {
                 id = io_chosen.1
             }
         }
+        every_playable_country = {
+            limit = {
+                has_origin = origin_imperial_bulwark
+            }
+            set_subject_of = {
+                who = galactic_emperor
+                preset = preset_bulwark
+            }
+        }
+        every_playable_country = {
+            limit = {
+                has_origin = origin_imperial_scholarium
+            }
+            set_subject_of = {
+                who = galactic_emperor
+                preset = preset_scholarium
+            }
+        }
+        every_playable_country = {
+            limit = {
+                has_origin = origin_imperial_prospectorium
+            }
+            set_subject_of = {
+                who = galactic_emperor
+                preset = preset_prospectorium
+            }
+        }
         #初始版图生成
         if = {
             limit = { check_variable = { which = io_setting_start_border value = 1 } }
@@ -2920,6 +2952,8 @@ country_event = {
                         has_civic = civic_fanatic_purifiers
                         has_civic = civic_hive_devouring_swarm
                         has_civic = civic_machine_terminator
+                        has_civic = civic_scorched_earth
+                        has_civic = civic_hive_scorched_earth
                         has_civic = civic_outside_the_border
                     }
                 }
@@ -3638,6 +3672,35 @@ country_event = {
             }
             create_research_station = {
                 owner = ROOT
+            }
+        }
+        #生成星门
+        if = {
+            limit = {
+                OR = {
+                    has_origin = origin_imperial_bulwark
+                    has_origin = origin_imperial_scholarium
+                    has_origin = origin_imperial_prospectorium
+                    AND = {
+                        is_galactic_emperor = yes
+                        any_playable_country = {
+                            OR = {
+                                has_origin = origin_imperial_bulwark
+                                has_origin = origin_imperial_scholarium
+                                has_origin = origin_imperial_prospectorium
+                            }
+                        }
+                    }
+                }
+            }
+            random_system_within_border = {
+                spawn_megastructure = {
+                    type = "gateway_final"
+                    random_pos = yes
+                    graphical_culture = root
+                    owner = root
+                    orbit_angle = 360		# range of the randomization
+                }
             }
         }
         #添加恒星基地
@@ -4426,14 +4489,12 @@ country_event = {
                         count >= 2
                     }
                     any_system_planet = {
-                        OR = {
-                            is_ringworld = no
-                            is_asteroid = no
-                            is_star = no
-                            is_moon = no
-                            is_colonizable = no
-                            NOT = { is_planet_class = pc_gas_giant }
-                        }
+                        is_ringworld = no
+                        is_asteroid = no
+                        is_star = no
+                        is_moon = no
+                        is_colonizable = no
+                        NOT = { is_planet_class = pc_gas_giant }
                     }
                     NOR = {
                         has_owner = yes
@@ -4516,6 +4577,16 @@ country_event = {
                                 who = root
                                 preset = preset_scholarium
                             }
+                            every_playable_country = {
+                                limit = {
+                                    NOR = {
+                                        is_low_tech_start = yes
+                                        has_origin = origin_fear_of_the_dark
+                                        has_origin = origin_unplugged
+                                    }
+                                }
+                                establish_communications_no_message = prev
+                            }
                         }
                     }
                     set_owner = event_target:vassal_contry_1
@@ -4544,14 +4615,12 @@ country_event = {
                         count >= 2
                     }
                     any_system_planet = {
-                        OR = {
-                            is_ringworld = no
-                            is_asteroid = no
-                            is_star = no
-                            is_moon = no
-                            is_colonizable = no
-                            NOT = { is_planet_class = pc_gas_giant }
-                        }
+                        is_ringworld = no
+                        is_asteroid = no
+                        is_star = no
+                        is_moon = no
+                        is_colonizable = no
+                        NOT = { is_planet_class = pc_gas_giant }
                     }
                     NOR = {
                         has_owner = yes
@@ -4634,6 +4703,16 @@ country_event = {
                                 who = root
                                 preset = preset_bulwark
                             }
+                            every_playable_country = {
+                                limit = {
+                                    NOR = {
+                                        is_low_tech_start = yes
+                                        has_origin = origin_fear_of_the_dark
+                                        has_origin = origin_unplugged
+                                    }
+                                }
+                                establish_communications_no_message = prev
+                            }
                         }
                     }
                     set_owner = event_target:vassal_contry_2
@@ -4662,14 +4741,12 @@ country_event = {
                         count >= 2
                     }
                     any_system_planet = {
-                        OR = {
-                            is_ringworld = no
-                            is_asteroid = no
-                            is_star = no
-                            is_moon = no
-                            is_colonizable = no
-                            NOT = { is_planet_class = pc_gas_giant }
-                        }
+                        is_ringworld = no
+                        is_asteroid = no
+                        is_star = no
+                        is_moon = no
+                        is_colonizable = no
+                        NOT = { is_planet_class = pc_gas_giant }
                     }
                     NOR = {
                         has_owner = yes
@@ -4751,6 +4828,16 @@ country_event = {
                             set_subject_of = {
                                 who = root
                                 preset = preset_prospectorium
+                            }
+                            every_playable_country = {
+                                limit = {
+                                    NOR = {
+                                        is_low_tech_start = yes
+                                        has_origin = origin_fear_of_the_dark
+                                        has_origin = origin_unplugged
+                                    }
+                                }
+                                establish_communications_no_message = prev
                             }
                         }
                     }
@@ -4882,6 +4969,8 @@ country_event = {
     }
 
     immediate = {
+        io_add_start_resources = yes
+
         give_technology = {
             tech = tech_arkship_construction
             message = no
@@ -5244,8 +5333,9 @@ country_event = {
                         value = 10
                     }
                 }
-                io_create_community_battleship_fleet = yes
-                io_create_community_battleship_fleet = yes
+                io_create_community_fleet = yes
+                io_create_community_fleet = yes
+                io_create_community_fleet = yes
             }
             if = {
                 limit = {
@@ -5255,8 +5345,9 @@ country_event = {
                         value = 20
                     }
                 }
-                io_create_community_battleship_fleet = yes
-                io_create_community_battleship_fleet = yes
+                io_create_community_fleet = yes
+                io_create_community_fleet = yes
+                io_create_community_fleet = yes
                 io_create_fe_emperor_fleet = yes
                 io_create_fe_emperor_fleet = yes
                 io_create_fe_emperor_fleet = yes
@@ -5270,6 +5361,7 @@ country_event = {
                         value = 30
                     }
                 }
+                io_create_community_fleet = yes
                 io_create_community_fleet = yes
                 io_create_community_fleet = yes
                 io_create_fe_emperor_fleet = yes
@@ -5330,6 +5422,24 @@ country_event = {
                 create_fleet_from_naval_cap = 0.4
                 create_fleet_from_naval_cap = 0.6
             }
+            else_if = {
+                limit = {
+                    OR = {
+                        check_variable = {
+                            which = io_setting_ia
+                            value = 10
+                        }
+                        check_variable = {
+                            which = io_setting_ia
+                            value = 20
+                        }
+                        check_variable = {
+                            which = io_setting_ia
+                            value = 30
+                        }
+                    }
+                }
+            }
             else = {
                 create_fleet_from_naval_cap = 0.4
                 create_fleet_from_naval_cap = 0.3
@@ -5337,14 +5447,11 @@ country_event = {
             }
             if = {
                 limit = {
-                    OR = {
-                        has_origin = origin_galactic_nemesis
-                        has_origin = origin_chosen_of_the_shroud
-                    }
+                    has_origin = origin_imperial_bulwark
                 }
                 every_owned_starbase = {
                     while = {
-                        count = 15
+                        count = 10
                         spawn_free_defense_platform = yes
                     }
                 }

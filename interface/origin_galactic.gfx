@@ -11,12 +11,12 @@ spriteTypes = {
 		alwaystransparent = yes
 	}
 	spriteType = {
-		name = "GFX_origin_clone_guard"
+		name = "GFX_origin_imperial_bulwark"
 		texturefile = "gfx/event_pictures/origins/origin_clone_guard.dds"
 		alwaystransparent = yes
 	}
 	spriteType = {
-		name = "GFX_origin_esoteric_scholarium"
+		name = "GFX_origin_imperial_scholarium"
 		texturefile = "gfx/event_pictures/origins/origin_esoteric_scholarium.dds"
 		alwaystransparent = yes
 	}
@@ -51,7 +51,7 @@ spriteTypes = {
 		alwaystransparent = yes
 	}
 	spriteType = {
-		name = "GFX_origin_prospecting_machine"
+		name = "GFX_origin_imperial_prospectorium"
 		texturefile = "gfx/event_pictures/origins/origin_prospecting_machine.dds"
 		alwaystransparent = yes
 	}

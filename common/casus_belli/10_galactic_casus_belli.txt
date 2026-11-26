@@ -29,6 +29,7 @@ cb_io_dio = {
 	is_valid = {
 		from = {
 			has_federation = yes
+			is_country_type = default
 			NOT = {
 				is_in_federation_with = root
 			}
@@ -42,6 +43,7 @@ cb_io_liberation = {
 	potential = {
 		has_galactic_emperor = yes
 		has_federation = yes
+		is_country_type = default
 	}
 	is_valid = {
 		from = {

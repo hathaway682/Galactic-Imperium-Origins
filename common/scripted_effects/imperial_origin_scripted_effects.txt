@@ -735,25 +735,56 @@ io_add_start_modifiers = {
     if = {
         limit = {
             is_ai = yes
-            has_origin = origin_chosen_of_the_shroud
-        }
-        add_modifier = {
-            modifier = ai_shourd_chosen
-            days = -1
-        }
-    }
-    if = {
-        limit = {
-            is_ai = yes
             OR = {
                 is_unfriendly = yes
                 has_country_flag = io_fe_emperor
                 has_origin = origin_galactic_nemesis
+                has_origin = origin_chosen_of_the_shroud
             }
         }
         add_modifier = {
             modifier = fe_ship_cost_modifier
             days = -1
+        }
+    }
+    if = {
+        limit = {
+            has_origin = origin_default
+        }
+        if = {
+            limit = {
+                is_gestalt = yes
+            }
+            add_modifier = {
+                modifier = io_pax_imperium_gestalt
+                days = -1
+            }
+        }
+        else = {
+            add_modifier = {
+                modifier = io_pax_imperium
+                days = -1
+            }
+        }
+    }
+    if = {
+        limit = {
+            has_origin = origin_lost_colony
+        }
+        if = {
+            limit = {
+                is_gestalt = yes
+            }
+            add_modifier = {
+                modifier = io_through_wildness
+                days = -1
+            }
+        }
+        else = {
+            add_modifier = {
+                modifier = io_through_wildness
+                days = -1
+            }
         }
     }
 }
@@ -3532,16 +3563,12 @@ io_building_captial = {
     if = {
         limit = {
             owner = {
-                OR = {
-                    has_origin = origin_galactic_nemesis
-                    has_origin = origin_chosen_of_the_shroud
-                }
+                has_origin = origin_imperial_bulwark
             }
         }
         if = {
             limit = {
                 owner = {
-                    has_policy_flag = robots_allowed
                     check_variable = {
                         which = io_setting_tech
                         value >= 2
@@ -3763,10 +3790,7 @@ io_building_colony = {
     if = {
         limit = {
             owner = {
-                OR = {
-                    has_origin = origin_galactic_nemesis
-                    has_origin = origin_chosen_of_the_shroud
-                }
+                has_origin = origin_imperial_bulwark
             }
         }
         if = {

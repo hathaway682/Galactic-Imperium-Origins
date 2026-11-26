@@ -9,10 +9,12 @@ origin_galactic_hegemon = {
 	possible = {
         civics = {
 			NOR = {
+				text = civic_tooltip_not_genocidal
 				value = civic_fanatic_purifiers
 				value = civic_hive_devouring_swarm
 				value = civic_machine_terminator
-				value = civic_outside_the_border
+				value = civic_scorched_earth
+				value = civic_hive_scorched_earth
 			}
 		}
 	}
@@ -36,10 +38,12 @@ origin_galactic_custodian = {
 	possible = {
         civics = {
 			NOR = {
+				text = civic_tooltip_not_genocidal
 				value = civic_fanatic_purifiers
 				value = civic_hive_devouring_swarm
 				value = civic_machine_terminator
-				value = civic_outside_the_border
+				value = civic_scorched_earth
+				value = civic_hive_scorched_earth
 			}
 		}
 	}
@@ -77,6 +81,8 @@ origin_galactic_nemesis = {
 	}
 
 	description = "origin_galactic_nemesis_effects"
+
+	negative_description = "origin_galactic_nemesis_negative_effects"
 
 	modifier = {
 		country_naval_cap_mult = 1
@@ -119,12 +125,11 @@ origin_chosen_of_the_shroud = {
 
 	description = "origin_chosen_of_the_shroud_effects"
 
-	negative_description = "origin_chosen_of_the_shroudnegative_effects"
+	negative_description = "origin_chosen_of_the_shroud_negative_effects"
 
 	modifier = {
 		country_war_exhaustion_mult = -0.5
-		ship_psionic_aura_speed_mult = 0.25
-		ship_psionic_aura_fire_rate_mult = 0.25
+		category_psionics_research_speed_mult = 1
 	}
 
 	traits = {
@@ -251,52 +256,35 @@ origin_secondary_hemegon_vassal = {
 	}
 }
 
-origin_clone_guard = {
+origin_imperial_bulwark = {
 	is_origin = yes
 	icon = "gfx/interface/icons/origins/origin_clone_guard.dds"
-	picture = GFX_origin_clone_guard
+	picture = GFX_origin_imperial_bulwark
 	max_once_global = yes
 
-	playable = {
-		always = no
-	}
-
 	possible = {
-		ethics = {
-			OR = {
-				value = ethic_militarist
-				value = ethic_fanatic_militarist
+		civics = {
+			NOR = {
+				value = civic_inwards_perfection
+				value = civic_machine_assimilator
 			}
 			NOR = {
-				value = ethic_gestalt_consciousness
-				value = ethic_fanatic_xenophobe
-			}
-		}
-		civics = {
-			NOR = { 
-			value = civic_permanent_employment
-			value = civic_pompous_purists
-			value = civic_outside_the_border
+				text = civic_tooltip_not_genocidal
+				value = civic_fanatic_purifiers
+				value = civic_hive_devouring_swarm
+				value = civic_machine_terminator
+				value = civic_scorched_earth
+				value = civic_hive_scorched_earth
 			}
 		}
 	}
 
-	description = "origin_clone_guard_effects"
+	description = "origin_imperial_bulwark_effects"
 
 	flags = { custom_start_screen }
 
-	traits = {
-		trait = trait_clone_soldier_infertile
-	}
-
-	has_secondary_species = {
-		title = origin_clone_guard_secondary_species
-	}
-
 	modifier = {
-		modify_species_cost_mult = -0.25
-		category_biology_research_speed_mult = 0.20
-		pop_growth_speed = -0.5
+
 	}
 
 	random_weight = {
@@ -304,57 +292,38 @@ origin_clone_guard = {
 	}
 }
 
-origin_esoteric_scholarium = {
+origin_imperial_scholarium = {
 	is_origin = yes
 	icon = "gfx/interface/icons/origins/origin_esoteric_scholarium.dds"
-	picture = GFX_origin_esoteric_scholarium
+	picture = GFX_origin_imperial_scholarium
 	max_once_global = yes
 
-	initializers = { esoteric_scholarium_system esoteric_scholarium_system_sol }
-
-	playable = {
-		always = no
-	}
-
 	possible = {
-		ethics = {
-			NOR = {
-				value = ethic_gestalt_consciousness
-				value = ethic_fanatic_xenophobe
-			}
-		}
 		civics = {
-			OR = {
-				value = civic_cyber_demos_cratos
-				value = civic_science_directorate
-				value = civic_cyber_dictatorship
-				value = civic_technocracy
+			NOR = {
+				value = civic_inwards_perfection
+				value = civic_machine_assimilator
 			}
-			NOR = { 
-				value = civic_pompous_purists
-				value = civic_outside_the_border
+			NOR = {
+				text = civic_tooltip_not_genocidal
+				value = civic_fanatic_purifiers
+				value = civic_hive_devouring_swarm
+				value = civic_machine_terminator
+				value = civic_scorched_earth
+				value = civic_hive_scorched_earth
 			}
 		}
 	}
 
-	description = "origin_esoteric_scholarium_effects"
+	description = "origin_imperial_scholarium_effects"
 
 	flags = {  }
 
-	traits = {
-		trait = trait_curator_defector
-	}
-
 	has_secondary_species = {
 		title = origin_clone_guard_secondary_species
 	}
 
 	modifier = {
-		station_researchers_produces_mult = 1
-		ship_sensor_range_add = 1
-		ships_upkeep_mult = 0.33
-		weapon_archaeotech_weapon_damage_mult = 0.33
-		empire_size_penalty_mult = 1
 	}
 
 	random_weight = {
@@ -362,40 +331,35 @@ origin_esoteric_scholarium = {
 	}
 }
 
-origin_prospecting_machine = {
+origin_imperial_prospectorium = {
 	is_origin = yes
 	icon = "gfx/interface/icons/origins/origin_prospecting_machine.dds"
-	picture = GFX_origin_prospecting_machine
-
-	playable = {
-		always = no
-	}
+	picture = GFX_origin_imperial_prospectorium
 
 	possible = {
-		authority = {
-			value = auth_machine_intelligence
-		}
 		civics = {
-			NOR = { 
-				value = civic_machine_servitor
-				value = civic_machine_terminator
+			NOR = {
+				value = civic_inwards_perfection
 				value = civic_machine_assimilator
-				value = civic_outside_the_border
+			}
+			NOR = {
+				text = civic_tooltip_not_genocidal
+				value = civic_fanatic_purifiers
+				value = civic_hive_devouring_swarm
+				value = civic_machine_terminator
+				value = civic_scorched_earth
+				value = civic_hive_scorched_earth
 			}
 		}
 	}
 
 	starting_colony = pc_nuked
 
-	description = "origin_prospecting_machine_effects"
+	description = "origin_imperial_prospectorium_effects"
 
 	flags = {  }
 
 	modifier = {
-		station_gatherers_produces_mult = 1
-		planet_jobs_simple_drone_produces_mult = 0.15
-		planet_jobs_alloys_produces_mult = 0.15
-		all_technology_research_speed = -0.25
 	}
 
 	random_weight = {

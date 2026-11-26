@@ -8,7 +8,9 @@ on_monthly_pulse_country = {
     events = {
         io_monopoly_chaebol.2
         io_chosen.5
-        io_chosen.8
+
+
+        io_effect.3
     }
 }
 
@@ -56,6 +58,40 @@ on_starbase_occupied = {
 on_starbase_transfer = {
     events = {
         io_chosen.6
+    }
+}
+
+# This = Country, first member added
+on_galactic_community_formed = {
+    events = {
+        galcom.60
+        timeline.74 # Timeline Galactic Community Formed
+    }
+}
+
+# This = Country
+on_add_community_member = {
+    events = {
+        io_effect.2
+    }
+}
+
+# This = subject
+# From = subject's overlord
+on_becoming_subject = {
+    events = {
+        io_effect.2
+    }
+}
+
+
+# Fired whenever a new owner is set for a planet, following a war or through trade
+# This = Colony scope
+# From = Country scope (new owner)
+# FromFrom = Country scope (previous owner, if any)
+on_colony_transfer = {
+    events = {
+        io_effect.2
     }
 }
 

@@ -12,14 +12,30 @@
  civic_galactic_beacon_desc:0 "这一国家及其所领导的联邦是银河帝国治下黑暗银河系中的平等主义孤岛，也是许多反帝国人士的政治庇护所。"
  civic_imperial_rival:0 "帝国宿敌"
  civic_imperial_rival_desc:0 "这一国家与银河帝国现领导者为了争夺银河霸权进行了长期的对抗，他们一直寻求超越帝国，尤其是在军事力量上压倒帝国。"
+
  io_pax_imperium: "帝国和平"
  io_pax_imperium_desc: "自从星海统一以来，经济一直在繁荣增长！\n\n§Y该修正会在首次进入战争状态后移除。§!"
+ io_pax_imperium_gestalt: "$io_pax_imperium$"
+ io_pax_imperium_gestalt_desc : "$io_pax_imperium_desc$"
+ io_effect.1.name:0 "帝国和平的终结"
+ io_effect.1.desc:0 "星海统一曾经带来了暂时的和平，但如今，战争已经再次降临我们的国家。"
+ io_effect.1.a:0 "拿起武器！"
+
  io_through_wildness: "筚路蓝缕"
- io_through_wildness_desc: "自从我们决定在星海的边疆开拓新生已经过去了很久，艰苦的创业经历带给我们的是宝贵的独立自主的精神。也许我们的母星已经屈服于星海帝国的暴政，但我们将独自屹立，直到有朝一日得以归乡。\n\n§Y该修正会在加入星海帝国或成为附庸国后移除。如果能在保持独立的前提下控制自身的母星，该修正将会升级为更强大且不会被移除的§H终启山林§!修正。§!"
+ io_through_wildness_desc: "自从我们决定在遥远的边疆开拓新生已经过去了很久，艰苦的创业经历带给我们的是宝贵的独立自主的精神。也许我们的母星已经屈服于星海帝国的暴政，但我们将独自屹立，直到有朝一日得以归乡。\n\n§Y该修正会在加入星海帝国或成为附庸国后移除。如果能在保持独立的前提下控制自身的母星，该修正将会升级为更强大且不会被移除的§H终启山林§!修正。§!"
+ io_through_wildness_gestalt: "$io_through_wildness$"
+ io_through_wildness_gestalt_desc : "$io_through_wildness_desc$"
+ io_effect.2.name:0 "妥协"
+ io_effect.2.desc:0 "在过去，我们的祖先独自建立了我们的国家。但我们尚未强大到足以独力战胜一切……如今我们只得屈居人下。"
+ io_effect.2.a:0 "此非吾之所愿，实形式所迫耳。"
+
  io_to_blaze_a_trail: "终启山林"
  io_to_blaze_a_trail_desc: "通过斗争和胜利，我们再次踏上了母星的土地。这段伟大的旅程将在未来永远激励我们的人民。"
-
- NAME_Imperial_Arkship: "皇家方舟"
+ io_to_blaze_a_trail_gestalt: "$io_to_blaze_a_trail$"
+ io_to_blaze_a_trail_gestalt_desc : "$io_to_blaze_a_trail_desc$"
+ io_effect.3.name:0 "归乡"
+ io_effect.3.desc:0 "今日，我们正式收复了我们种族的发源地——[Root.GetName]。虽然关于这颗星球在我们的社会中有过很多的传说，但从各种角度看，它都只是一颗普通的星球，我们远离她是如此之久，以至于我们对她感到陌生。然而，收复它的意义远不止一颗星球那么简单。我们一度被人遗忘，从无到有的建立起我们的国家，一路历经了无数的挑战。最终，我们证明了我们独立自主的力量足以战胜一切，超越我们母星的同胞，甚至胜过星海帝国。作为游子的我们最终回到了故乡，但我们绝不会遗忘这段伟大的旅程，它在未来也将激励我们的人民。"
+ io_effect.3.a:0 "Nothing……Everything！"
 
  build_start_modifier:0 "国家发展计划"
 
@@ -119,19 +135,37 @@
  io_start_events.1000.b: "好好睡，好好睡。"
 
  origin_imperial_bulwark:0 "§Y帝国铁壁§!"
- origin_imperial_bulwark_desc:0 ""
- origin_imperial_bulwark_effects:0 "—作为帝国的§H戍邦§!特殊附庸开局。"
+ origin_imperial_bulwark_desc:0 "这一文明作为星海帝皇的忠诚附庸，担负了为其保卫星海秩序的职责。"
+ origin_imperial_bulwark_effects:0 "—作为帝国的§H戍邦§!特殊附庸开局。\n—初始拥有额外的防御平台和星球要塞。"
 
- origin_imperial_scholarium:0 "§Y学术乐土§!"
- origin_imperial_scholarium_desc:0 ""
- origin_imperial_scholarium_effects:0 "—作为帝国的§H学邦§!特殊附庸开局。"
+ origin_imperial_scholarium:0 "§Y帝国智库§!"
+ origin_imperial_scholarium_desc:0 "这一文明作为星海帝皇的忠诚附庸，担负了为其研究先进科技的职责。"
+ origin_imperial_scholarium_effects:0 "—作为帝国的§H学邦§!特殊附庸开局。\n—初始拥有更高一级的起始科技。"
 
- origin_imperial_prospectorium:0 "§Y财富之泉§!"
- origin_imperial_prospectorium_desc:0 ""
- origin_imperial_prospectorium_effects:0 "—作为帝国的§H开发邦§!特殊附庸开局。"
+ origin_imperial_prospectorium:0 "§Y帝国矿场§!"
+ origin_imperial_prospectorium_desc:0 "这一文明作为星海帝皇的忠诚附庸，担负了为其上贡矿产资源的职责。"
+ origin_imperial_prospectorium_effects:0 "—作为帝国的§H开发邦§!特殊附庸开局。\n—母星获得§Y超品矿物§!修正。"
+
+ origin_rebel_nomad:0 "§R抵抗星火§!"
+ origin_rebel_nomad_desc:0 "这一流浪舰队是反对星海帝国成立的义军的残余，至今仍在继续与星海帝国的斗争。"
+ origin_rebel_nomad_effects:0 "—§Y舰队§!与§Y驿站§!自动获得隐形能力。\n—解锁特殊的§Y合同§!以削弱帝国统治并增长自身实力，但会增加§R暴露§!的风险。\n—只要帝国权威足够低，便可通过特殊的宣战借口发动§Y繁星之乱§!，通过特定的§Y合同§!可以保证指定国家在其爆发时站在你的阵营。"
+ origin_rebel_nomad_negative_effects:0 "—只要§R星海帝国§!存在，就会拥有持续的§R暴露度§!局势。\n—随着局势进展，会遭到频率越来越高的§R帝国追击部队§!袭扰。\n—当局势进度满时，将不得不同§R星海帝国§!陷入§R全面战争。§!"
 
  civic_outside_the_border:0 "化外之民"
  civic_outside_the_border_desc:0 "如果有国家使用了监管人或者帝皇起源，这一帝国开始不会加入星海共同体/帝国。如果没有皇帝或监管人，游戏开始后会自动移除。"
+
+ heirs_military_contract_special: "义军活动"
+ contract_intercept_raid_heirs: "伏击运输队"
+ contract_intercept_raid_heirs_desc: "我们获得可靠情报，帝国海军的运输舰队将经过此恒星系。这将是一个埋伏他们的绝佳机会。"
+ contract_intercept_raid_heirs_chain_title: "$contract_intercept_raid_heirs$"
+ contract_intercept_raid_heirs_chain_desc: "$contract_intercept_raid_heirs_desc$"
+ contract_intercept_raid_heirs_issuer_desc: "$contract_intercept_raid_heirs_desc$"
+ contract_intercept_raid_heirs_counter: "伏击运输队"
+ intercept_raid_poi_name: "运输舰队"
+ intercept_raid_poi_desc: "运输舰队将经过此恒星系，我们在进入之前应当集结兵力。"
+ contract_intercept_raid_heirs_lore_completed: "§L“他们的舰队已被击败。下次他们可能就不会这么莽了。”§!"
+ contract_intercept_raid_heirs_success: "降低帝国权威"
+
  origin_clone_guard:0 "§Y克隆铁卫§!"
  origin_clone_guard_desc:0 "这一种族在被星海帝国创始者发现其战争潜力后接受了提升改造以及大规模复制以供战争之用。在帝国最终征服银河后，他们也获得了一片封地作为自己的家园。"
  origin_clone_guard_effects:0 "—作为帝国的§H戍邦§!特殊附庸开局。\n—开始拥有§H克隆人士兵§!特质（机制与§H克隆大军§!起源相同）。这些克隆人士兵还可以从事一些此起源专属的岗位，并按照其占总人口的比例提供加成。\n—开局比初始科技等级更高一级的战舰图纸以及一支额外舰队。\n—不同于§H克隆大军§!起源，可以自由进行基因改造（请无视特质上的红字）。\n—在完成§Y基因种子纯化§!科技后，可以通过特殊项目获得§H克隆人士兵先裔§!特质，并解锁一个新的专精飞升，允许你选择默认物种特质的§Y强夺天工§!版本。同时这些特质还可以被§Y不问后果§!法令进一步增强。\n—除非§R找回自己种族的发源地§!，否则没有§R恢复生育能力§!的可能。\n—如果没有§H星海霸业§!起源的国家，这个起源会被替换为§H繁荣一统§!。"
@@ -243,9 +277,10 @@
  origin_internal_border_effects:0 "—将会生成一个物种相同的邻国，拥有和皇帝/监管人相同的政府和思潮并加入星海帝国/共同体。\n—两个国家互相获得对方全境的宣称。\n—如果没有§H星海霸业§!或§H星海监管§!起源的国家，这个起源会被替换为§H繁荣一统§!。\n\n§R警告：此起源国家与皇帝必须都是普通/蜂巢/机械类型，否则会导致闪退！§!"
  origin_galactic_nemesis:0 "§M星海天罚§!"
  origin_galactic_nemesis_desc:0 "§R-警告：有挑战性的起源§!\n这一文明获得了某种不可知的力量支持他们的大业，试图以埋葬整个银河为代价促成他们的飞升。"
- origin_galactic_nemesis_effects:0 "—在一开始就解锁§M星海天罚§!飞升天赋。\n—最高的§M威慑力等级§!将会被立刻解锁，并§R引发与整个银河的战争§!。\n—如果没有§H星海霸业§!或§H星海监管§!起源的国家，这个起源会被替换为§H繁荣一统§!。"
+ origin_galactic_nemesis_effects:0 "—在一开始就解锁§M星海天罚§!飞升天赋，最高的§M威慑力等级§!将会被立刻解锁\n—如果没有§H星海霸业§!或§H星海监管§!起源的国家，这个起源会被替换为§H繁荣一统§!。"
+ origin_galactic_nemesis_negative_effects:0 "—开局时将会被指定为§R天灾§!，导致与整个星海帝国处于§R全面战争状态§!。"
  io_imperial_border.4.name:0 "§M星海天罚§!"
- io_imperial_border.4.desc:0 "往日困扰我们的一切疑惑已然得到解答，往日环绕我们的一切痛苦即将得到解脱。星光将会在整个银河熄灭，而我们将会是唯一的光。如今挡在我们面前的障碍只有一个——[global_event_country.GetGalCommunityOrGalImperium]。这一非法组织的腐败政客正在讲坛上声嘶力竭，妄图动员他们的乌合之众来破坏我们的伟业。银河正呼唤一场全面战争，一场比一切智慧生命所能想象的更全面更彻底的战争，而我们必将取胜。"
+ io_imperial_border.4.desc:0 "往日困扰我们的一切疑惑已然得到解答，往日环绕我们的一切痛苦即将得到解脱。星光将会在整个银河熄灭，而我们将会是唯一的光。如今挡在我们面前的障碍只有一个——[global_event_country.GetGalCommunityOrGalImperium]。这一非法组织的腐败政客正在讲坛上声嘶力竭，妄图动员他们的乌合之众来破坏我们的伟业。银河正呼唤一场全面战争，一场比一切智慧生命所能想象的更全面更彻底的战争，而这场战争的胜利，必将属于我们。"
  io_imperial_border.4.a:0 "来吧。"
  tr_supremacy_complete:0 "§M星海天罚§!飞升天赋已完成，全银河的星图已被揭示。"
  
@@ -263,11 +298,6 @@
  origin_prospecting_machine:0 "§Y开发机械§!"
  origin_prospecting_machine_desc:0 "这一机械智能网络被帝国部署至银河统一战争留下的废土，以在这些被破坏到有机生物几乎无法居住的地区开采资源并进行工业生产。"
  origin_prospecting_machine_effects:0 "—作为帝国的§H开发邦§!附庸开始游戏。\n—可以无限制建造§H采矿区划§!，采矿区划提供+2住房，每三个采矿区划+1建筑槽位。\n—可以将荒芜星球改造为§H机械世界§!且无需机械世界飞升。\n—如果没有§H星海霸业§!起源的国家，这个起源会被替换为§H繁荣一统§!。"
- START_PROSPECTING_MACHINE:0 "正在加载日志……\n\n“是的，这该死的鬼地方完全没法住人了”"
- SUBJECT_academy_territory:0 "科研领"
- SUBJECT_DESC_academy_territory:0 "皇帝划定的自由科研地区，不受帝国政府的直接干涉，仅负责向中央提供科研成果。"
- SUBJECT_industrial_network:0 "工业网络"
- SUBJECT_DESC_industrial_network:0 "由帝国部署负责资源开发和精炼的人工智能网络，需要上交开采的资源且没有外交权力。"
 
  origin_prime_minister_in_silver:0 "§Y银衣宰相§!"
  origin_prime_minister_in_silver_desc:0 "这一机械智能网络被帝国最天才的头脑设计用以协助整个银河的治理。其拥有高度自主权和独立控制的武装，以及绝对忠于帝国的程序。"
@@ -296,9 +326,8 @@
  origin_chosen_of_the_shroud:0 "§M天启先驱§!"
  origin_chosen_of_the_shroud_desc:0 "§R-警告：有挑战性的起源§!\n这一文明在进入太空之前便早已被来自虚境的远古存在选中，作为此方世界的毁灭者。"
  origin_chosen_of_the_shroud_effects:0 "—开局时候便已完成整条§M灵能§!传统树，获得所有§M灵能§!科技，并与§M轮回之终末§!达成契约。\n—任何被§M终末光环§!完全覆盖的国家将会被§M腐化§!为我们的§Y附庸国§!。\n—开局时将会被指定为§G天灾§!，导致与整个星海帝国处于§G全面战争状态§!。\n—每次舰队战胜利都将带来额外的§G虚境恩赐§!。\n—如果没有§H星海霸业§!或§H星海监管§!起源的国家，这个起源会被替换为§H繁荣一统§!。"
- origin_chosen_of_the_shroudnegative_effects:0 "—开局时将会被指定为§R天灾§!，导致与整个星海帝国处于§R全面战争状态§!。\n—每次舰队战失败都将带来额外的§R虚境诅咒§!。\n—所有星海帝国成员国获得§Y灵能封印§!科技。"
+ origin_chosen_of_the_shroud_negative_effects:0 "—开局时将会被指定为§R天灾§!，导致与整个星海帝国处于§R全面战争状态§!。\n—每次舰队战失败都将带来额外的§R虚境诅咒§!。\n—所有星海帝国成员国获得§Y灵能封印§!科技。"
  ai_shourd_chosen:0 "虚境赋能"
- NAME_Enslaved_Species_Souls: "被奴役的[slave_species.GetName]灵魂"
 
  boon.io_chosen:0 "看起来虚境中的强大存在对我们最近的胜利非常满意，并乐意给我们一点小小的支持。"
  
@@ -373,4 +402,4 @@
 
  origin_after_the_end:0 "§U离去之后§!"
  origin_after_the_end_desc:0 "告别了乘坐视界探针踏上多元宇宙之旅的同胞，留在母星的少数遗民选择在这个宇宙延续这个文明。银河的其他部分因为探针陷入了时间停止，这给了他们漫长的时间重建帝国的核心地带——长到与世隔绝的他们最终厌倦了一切，开始在自动化技术带来的无尽享受下沉沦。然而在时间停止结束后，他们发现银河已经一片残破，这毫无疑问被其他文明归咎于他们。不过，有着离去的同胞留下的无敌的科技遗产，谁会在乎一帮弱者的意见呢？只要将这些遗产重新启动……等等，还有人记得怎么启动吗？"
- origin_after_the_end_effects:0 "—开始游戏时成为一个特殊的§U视界守望者§!堕落帝国，拥有强力的舰船和建筑，但在完成§Y觉醒§!前无法建造新的。\n—在初始获得§Y觉醒§!局势，局势过程相当漫长，但随着局势进行，你将逐渐恢复使用§Y堕落帝国科技§!的能力。\n—银河系在一开始便是§U宇宙起源§!天灾之后的景象，许多星系和行星将会遭到破坏。\n—其他国家，尤其是其他§Y堕落帝国§!将会由于这些后果敌视你，你很可能成为一场§P危机战争§!甚至§R天堂之战§!的目标，然而，由于它们对你的科技的兴趣，你也有可能获得外交机遇。\n—作为其他国家，与使用该起源的国家共同进行游戏时，也会拥有独特的事件链从危机中恢复，并选择如何与新的堕落帝国相处。（强烈建议体验其他国家，尤其是皇帝/监管人的视角！）"
+ origin_after_the_end_effects:0 "—开始游戏时成为一个特殊的§U视界守望者§!堕落帝国，拥有强力的舰船和建筑，但在完成§Y觉醒§!前无法建造新的。\n—在初始获得§Y觉醒§!局势，局势过程相当漫长，但随着局势进行，你将逐渐恢复使用§Y堕落帝国科技§!的能力。\n—银河系在一开始便是§U宇宙起源§!天灾之后的景象，许多星系和行星将会遭到破坏。"
